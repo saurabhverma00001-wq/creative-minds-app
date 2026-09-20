@@ -1,10 +1,12 @@
 {
   "name": "The Creative Minds Coaching Institute",
   "short_name": "Creative Minds",
+  "id": "creative-minds-app",
+  "description": "The Creative Minds Coaching Institute app for students and parents.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#2563eb",
+  "background_color": "#0F172A",
+  "theme_color": "#2563EB",
   "icons": [
     {
       "src": "/logo.png",
@@ -18,4 +20,3 @@
     }
   ]
 }
-
