@@ -9,15 +9,15 @@
   "theme_color": "#2563EB",
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/saurabhverma00001-wq/creative-minds-app/main/logo.png",
+      "src": "/logo.png",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "https://raw.githubusercontent.com/saurabhverma00001-wq/creative-minds-app/main/logo.png",
+      "src": "/logo.png",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     }
   ]
