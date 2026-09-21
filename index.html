@@ -7,124 +7,120 @@
     <link rel="manifest" href="/manifest.json">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #0f172a; color: #f8fafc; line-height: 1.6; padding-bottom: 40px; }
-        header { background: #1e293b; padding: 20px; text-align: center; border-bottom: 3px solid #3b82f6; position: sticky; top: 0; z-index: 100; }
-        header h1 { font-size: 22px; color: #38bdf8; margin-bottom: 5px; }
-        header p { font-size: 14px; color: #94a3b8; }
-        .nav-tabs { display: flex; overflow-x: auto; background: #334155; padding: 10px; gap: 10px; white-space: nowrap; }
-        .nav-tabs button { background: #475569; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 14px; }
-        .nav-tabs button:hover, .nav-tabs button.active { background: #3b82f6; }
+        body { background: #042f2e; color: #f0fdfa; line-height: 1.6; padding-bottom: 50px; }
+        
+        /* Header & Rocket Branding */
+        header { background: #0f766e; padding: 20px; text-align: center; border-bottom: 4px solid #f97316; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+        .logo-area { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 5px; }
+        .logo-area img { width: 40px; height: 40px; object-fit: contain; }
+        header h1 { font-size: 22px; color: #ffffff; font-weight: 800; letter-spacing: 0.5px; }
+        header p { font-size: 13px; color: #ccfbf1; font-weight: 500; }
+
+        /* Navigation Tabs */
+        .nav-tabs { display: flex; overflow-x: auto; background: #134e4a; padding: 12px 10px; gap: 10px; white-space: nowrap; scrollbar-width: none; }
+        .nav-tabs::-webkit-scrollbar { display: none; }
+        .nav-tabs button { background: #115e59; color: #f0fdfa; border: none; padding: 10px 18px; border-radius: 25px; cursor: pointer; font-size: 14px; font-weight: 600; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s ease; }
+        .nav-tabs button:hover, .nav-tabs button.active { background: #f97316; color: #ffffff; transform: translateY(-2px); }
+
+        /* Container & Cards */
         .container { padding: 20px; max-width: 600px; margin: auto; }
-        .section { display: none; margin-bottom: 30px; background: #1e293b; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        .section.active { display: block; }
-        h2 { color: #38bdf8; margin-bottom: 15px; font-size: 20px; border-bottom: 2px solid #334155; padding-bottom: 8px; }
-        p { margin-bottom: 15px; color: #cbd5e1; font-size: 15px; }
-        ul { margin-left: 20px; margin-bottom: 15px; color: #cbd5e1; }
-        li { margin-bottom: 8px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; color: #94a3b8; font-size: 14px; }
-        input, select, textarea { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: white; font-size: 15px; }
-        button.submit-btn { background: #25d366; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        button.submit-btn:hover { background: #1ebe5d; }
-        .hero-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
-        .hero-btn { background: #3b82f6; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); }
-        .hero-btn:hover { background: #2563eb; }
+        .section { display: none; margin-bottom: 30px; background: #0f766e; padding: 22px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); border: 1px solid #14b8a6; }
+        .section.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { color: #ffffff; margin-bottom: 15px; font-size: 20px; border-bottom: 2px solid #115e59; padding-bottom: 8px; display: flex; align-items: center; gap: 10px; font-weight: 700; }
+        p { margin-bottom: 15px; color: #ccfbf1; font-size: 15px; font-weight: 400; }
+        ul { margin-left: 20px; margin-bottom: 15px; color: #ccfbf1; }
+        li { margin-bottom: 8px; font-size: 15px; }
+
+        /* Form Controls */
+        .form-group { margin-bottom: 16px; }
+        label { display: block; margin-bottom: 6px; color: #ccfbf1; font-size: 14px; font-weight: 600; }
+        input, select, textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #14b8a6; background: #042f2e; color: white; font-size: 15px; outline: none; }
+        input:focus, select:focus, textarea:focus { border-color: #f97316; }
+
+        /* Buttons Style */
+        .submit-btn { background: #f97316; color: white; border: none; padding: 14px; width: 100%; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4); transition: background 0.2s; }
+        .submit-btn:hover { background: #ea580c; }
+        
+        .hero-buttons { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .hero-btn { background: #f97316; color: white; text-align: center; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .hero-btn:hover { background: #ea580c; }
+
+        /* Download & Quiz Cards */
+        .card-item { background: #115e59; padding: 15px; border-radius: 12px; margin-bottom: 12px; border-left: 5px solid #f97316; display: flex; justify-content: space-between; align-items: center; }
+        .download-btn { background: #f97316; color: white; padding: 8px 14px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: bold; }
+        
+        .quiz-box { background: #134e4a; padding: 15px; border-radius: 10px; margin-top: 15px; }
+        .quiz-options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .quiz-opt { background: #0f766e; border: 1px solid #14b8a6; padding: 10px; border-radius: 8px; color: white; cursor: pointer; text-align: left; font-size: 14px; }
+        .quiz-opt:hover { background: #f97316; border-color: #f97316; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>The Creative Minds Coaching Institute</h1>
+        <div class="logo-area">
+            <span style="font-size: 26px;">🚀</span>
+            <h1>Creative Minds Coaching Institute</h1>
+        </div>
         <p>Rajajipuram, Lucknow | Think Smart, Learn Fast</p>
     </header>
 
     <div class="nav-tabs">
-        <button onclick="showSection('home')" class="active">Home</button>
-        <button onclick="showSection('courses')">Courses</button>
-        <button onclick="showSection('about')">About Director</button>
-        <button onclick="showSection('tution')">Home Tuition</button>
-        <button onclick="showSection('faculty')">Faculty</button>
+        <button onclick="showSection('home')" class="active">🏠 Home</button>
+        <button onclick="showSection('courses')">📚 Courses</button>
+        <button onclick="showSection('about')">👨‍💼 About Us</button>
+        <button onclick="showSection('material')">📥 Notes</button>
+        <button onclick="showSection('quiz')">✍️ Quiz</button>
+        <button onclick="showSection('tution')">🏡 Home Tuition</button>
+        <button onclick="showSection('faculty')">⭐ Faculty</button>
     </div>
 
     <div class="container">
         <!-- HOME SECTION -->
         <div id="home" class="section active">
-            <h2>Welcome to Creative Minds</h2>
-            <p>Empowering students with smart learning, conceptual clarity, and academic excellence. Choose your registration path below:</p>
+            <h2>🚀 Welcome to Creative Minds</h2>
+            <p>Empowering students with smart learning, conceptual clarity, and academic excellence under expert mentorship.</p>
             <div class="hero-buttons">
-                <a href="#studentForm" onclick="showSection('studentReg')" class="hero-btn">📝 New Student Registration</a>
-                <a href="#teacherForm" onclick="showSection('teacherReg')" class="hero-btn" style="background: #8b5cf6;">👨‍🏫 New Teacher Application</a>
+                <a href="#" onclick="showSection('studentReg')" class="hero-btn">📝 New Student Registration</a>
+                <a href="#" onclick="showSection('teacherReg')" class="hero-btn" style="background: #0d9488; border: 1px solid #2dd4bf;">👨‍🏫 New Teacher Application</a>
             </div>
         </div>
 
         <!-- STUDENT REGISTRATION FORM -->
         <div id="studentReg" class="section">
-            <h2>New Student Registration</h2>
+            <h2>📝 Student Registration</h2>
             <form onsubmit="sendStudentWhatsApp(event)">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="s_name" required placeholder="Enter student's name">
+                <div class="form-group"><label>Full Name</label><input type="text" id="s_name" required placeholder="Enter student's name"></div>
+                <div class="form-group"><label>Class</label><input type="text" id="s_class" required placeholder="e.g. 10th / 12th"></div>
+                <div class="form-group"><label>School Name</label><input type="text" id="s_school" required placeholder="Enter school name"></div>
+                <div class="form-group"><label>Board</label>
+                    <select id="s_board"><option value="ICSE / ISC">ICSE / ISC</option><option value="CBSE">CBSE</option><option value="UP Board">UP Board</option></select>
                 </div>
-                <div class="form-group">
-                    <label>Class</label>
-                    <input type="text" id="s_class" required placeholder="e.g. 10th / 12th">
-                </div>
-                <div class="form-group">
-                    <label>School Name</label>
-                    <input type="text" id="s_school" required placeholder="Enter school name">
-                </div>
-                <div class="form-group">
-                    <label>Board</label>
-                    <select id="s_board">
-                        <option value="ICSE / ISC">ICSE / ISC</option>
-                        <option value="CBSE">CBSE</option>
-                        <option value="UP Board">UP Board</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" id="s_num" required placeholder="Enter contact number">
-                </div>
-                <div class="form-group">
-                    <label>Address</label>
-                    <textarea id="s_address" rows="2" required placeholder="Enter residential address"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit via WhatsApp</button>
+                <div class="form-group"><label>Phone Number</label><input type="tel" id="s_num" required placeholder="Enter contact number"></div>
+                <div class="form-group"><label>Address</label><textarea id="s_address" rows="2" required placeholder="Enter address"></textarea></div>
+                <button type="submit" class="submit-btn">Submit via WhatsApp 🚀</button>
             </form>
         </div>
 
         <!-- TEACHER APPLICATION FORM -->
         <div id="teacherReg" class="section">
-            <h2>New Teacher Application</h2>
+            <h2>👨‍🏫 Teacher Application</h2>
             <form onsubmit="sendTeacherWhatsApp(event)">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="t_name" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label>Qualification</label>
-                    <input type="text" id="t_qual" required placeholder="e.g. B.Tech / M.Sc / B.Ed">
-                </div>
-                <div class="form-group">
-                    <label>Subject Expertise</label>
-                    <input type="text" id="t_exp_sub" required placeholder="e.g. Mathematics / Physics / Coding">
-                </div>
-                <div class="form-group">
-                    <label>Teaching Experience</label>
-                    <input type="text" id="t_exp_years" required placeholder="e.g. 3 Years">
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" id="t_num" required placeholder="Enter your mobile number">
-                </div>
-                <button type="submit" class="submit-btn">Apply via WhatsApp</button>
+                <div class="form-group"><label>Full Name</label><input type="text" id="t_name" required placeholder="Enter your full name"></div>
+                <div class="form-group"><label>Qualification</label><input type="text" id="t_qual" required placeholder="e.g. B.Tech / M.Sc / B.Ed"></div>
+                <div class="form-group"><label>Subject Expertise</label><input type="text" id="t_exp_sub" required placeholder="e.g. Math / Physics / Coding"></div>
+                <div class="form-group"><label>Teaching Experience</label><input type="text" id="t_exp_years" required placeholder="e.g. 3 Years"></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" id="t_num" required placeholder="Enter mobile number"></div>
+                <button type="submit" class="submit-btn">Apply via WhatsApp 🚀</button>
             </form>
         </div>
 
         <!-- COURSES SECTION -->
         <div id="courses" class="section">
-            <h2>Our Courses & Expertise</h2>
-            <p>We provide comprehensive coaching across multiple streams with strong fundamental grounding:</p>
+            <h2>📚 Our Courses & Programs</h2>
+            <p>Comprehensive coaching designed for strong conceptual foundation:</p>
             <ul>
                 <li><strong>Mathematics:</strong> Standard, Core, and Applied Mathematics.</li>
                 <li><strong>Science:</strong> Physics, Chemistry, and Biology with practical insights.</li>
@@ -134,49 +130,67 @@
             </ul>
         </div>
 
-        <!-- ABOUT SECTION -->
+        <!-- ABOUT US SECTION -->
         <div id="about" class="section">
-            <h2>About the Director</h2>
-            <p><strong>Saurabh Verma</strong> is the visionary Founder and Director of The Creative Minds Coaching Institute, located in Rajajipuram, Lucknow.</p>
-            <p>An alumnus of the prestigious <strong>City Montessori School (CMS)</strong> and an ICSE board background, he holds a professional degree in <strong>Bachelor of Technology (B.Tech) in Electronics and Communication Engineering</strong> from Shri Ram Swaroop Memorial University.</p>
-            <p>With over <strong>10+ years of rich teaching experience</strong>, he specializes in simplifying complex concepts in Mathematics, Science, and Programming, steering students toward absolute academic excellence.</p>
+            <h2>👨‍💼 About Us & Director</h2>
+            <p><strong>The Creative Minds Coaching Institute</strong> in Rajajipuram, Lucknow is dedicated to nurturing brilliant analytical minds through innovative teaching methodologies.</p>
+            <p>Founded and directed by <strong>Saurabh Verma</strong>, an alumnus of the prestigious <strong>City Montessori School (CMS)</strong> with an ICSE board background.</p>
+            <p>He holds a professional degree in <strong>Bachelor of Technology (B.Tech) in Electronics and Communication Engineering</strong> and brings over <strong>10+ years of rich teaching experience</strong> in Mathematics, Science, and Programming.</p>
+        </div>
+
+        <!-- STUDY MATERIAL DOWNLOAD -->
+        <div id="material" class="section">
+            <h2>📥 Study Material & Notes</h2>
+            <p>Download chapter-wise revision notes and sample question papers for quick exam prep:</p>
+            <div class="card-item">
+                <span>📄 Mathematics Formula Sheet (ICSE/CBSE)</span>
+                <a href="#" onclick="alert('Downloading sample notes PDF...')" class="download-btn">Download PDF</a>
+            </div>
+            <div class="card-item">
+                <span>📄 Science Physics Quick Revision Notes</span>
+                <a href="#" onclick="alert('Downloading sample notes PDF...')" class="download-btn">Download PDF</a>
+            </div>
+            <div class="card-item">
+                <span>📄 Computer Java Coding Cheat Sheet</span>
+                <a href="#" onclick="alert('Downloading sample notes PDF...')" class="download-btn">Download PDF</a>
+            </div>
+        </div>
+
+        <!-- INTERACTIVE PRACTICE QUIZ -->
+        <div id="quiz" class="section">
+            <h2>✍️ Daily Practice Quiz</h2>
+            <p>Test your knowledge instantly with our practice MCQs and get your score immediately!</p>
+            <div class="quiz-box">
+                <p id="q-text" style="font-weight: 600; color: #ffffff;">Q1. What is the output of 5 + 2 * 3 in Programming / Math?</p>
+                <div class="quiz-options">
+                    <button class="quiz-opt" onclick="checkAnswer(1, 1)">A) 21</button>
+                    <button class="quiz-opt" onclick="checkAnswer(1, 2)">B) 11 (Correct)</button>
+                    <button class="quiz-opt" onclick="checkAnswer(1, 3)">C) 16</button>
+                </div>
+                <p id="q-result" style="margin-top: 10px; font-weight: bold; color: #f97316;"></p>
+            </div>
         </div>
 
         <!-- HOME TUITION ENQUIRY SECTION -->
         <div id="tution" class="section">
-            <h2>Home Tuition Services</h2>
-            <p>To ensure complete transparency and personalized learning, The Creative Minds Coaching Institute also provides verified expert home tutors across Lucknow. Parents seeking dedicated one-on-one mentorship at home can easily hire experienced tutors through our structured service.</p>
-            <h3 style="color:#38bdf8; font-size:16px; margin: 15px 0 10px 0;">Home Tuition Enquiry Form</h3>
+            <h2>🏡 Home Tuition Services</h2>
+            <p>We provide verified, expert home tutors across Lucknow for complete learning transparency and individual attention at your home.</p>
             <form onsubmit="sendTutionWhatsApp(event)">
-                <div class="form-group">
-                    <label>Student's Name</label>
-                    <input type="text" id="tu_name" required placeholder="Enter student's name">
+                <div class="form-group"><label>Student's Name</label><input type="text" id="tu_name" required placeholder="Enter student's name"></div>
+                <div class="form-group"><label>School & Board</label><input type="text" id="tu_school" required placeholder="e.g. CMS, ICSE"></div>
+                <div class="form-group"><label>Subjects Required</label><input type="text" id="tu_subs" required placeholder="e.g. Math, Physics"></div>
+                <div class="form-group"><label>Teacher Preference</label>
+                    <select id="tu_pref"><option value="Male Teacher">Male Teacher</option><option value="Female Teacher">Female Teacher</option><option value="No Preference">No Preference</option></select>
                 </div>
-                <div class="form-group">
-                    <label>School & Board</label>
-                    <input type="text" id="tu_school" required placeholder="e.g. CMS, ICSE">
-                </div>
-                <div class="form-group">
-                    <label>Subjects Required</label>
-                    <input type="text" id="tu_subs" required placeholder="e.g. Math, Physics">
-                </div>
-                <div class="form-group">
-                    <label>Teacher Preference</label>
-                    <select id="tu_pref">
-                        <option value="Male Teacher">Male Teacher</option>
-                        <option value="Female Teacher">Female Teacher</option>
-                        <option value="No Preference">No Preference</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit-btn">Enquire via WhatsApp</button>
+                <button type="submit" class="submit-btn">Enquire via WhatsApp 🚀</button>
             </form>
         </div>
 
         <!-- FACULTY SECTION -->
         <div id="faculty" class="section">
-            <h2>Our Expert Faculty</h2>
-            <p>At Creative Minds, our faculty consists of passionate subject-matter experts dedicated to transforming education. We believe in an interactive, fun-filled learning environment where conceptual clarity takes center stage.</p>
-            <p>Every mentor focuses on resolving student doubts instantly, bridging learning gaps, and creating a strong friendly bond that motivates students to excel naturally without study pressure.</p>
+            <h2>⭐ Our Expert Faculty</h2>
+            <p>At Creative Minds, our faculty consists of passionate subject-matter experts dedicated to transforming education.</p>
+            <p>We believe in an interactive, fun-filled learning environment where every mentor focuses on clearing concepts instantly, resolving doubts, and building strong student rapport without study pressure.</p>
         </div>
     </div>
 
@@ -189,41 +203,34 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        const myWhatsAppNumber = "918756866588"; // Apna WhatsApp number yahan daal lena (with country code 91)
+        function checkAnswer(qNo, optNo) {
+            let res = document.getElementById('q-result');
+            if(optNo === 2) {
+                res.innerHTML = "✅ Correct! Great job! (11)";
+                res.style.color = "#34d399";
+            } else {
+                res.innerHTML = "❌ Incorrect. Try again! (Correct answer is B)";
+                res.style.color = "#f87171";
+            }
+        }
+
+        const myWhatsAppNumber = "918756866588"; // Apna real WhatsApp number yahan daal dena
 
         function sendStudentWhatsApp(e) {
             e.preventDefault();
-            let name = document.getElementById('s_name').value;
-            let cls = document.getElementById('s_class').value;
-            let school = document.getElementById('s_school').value;
-            let board = document.getElementById('s_board').value;
-            let num = document.getElementById('s_num').value;
-            let address = document.getElementById('s_address').value;
-
-            let msg = `*New Student Registration*%0A*Name:* ${name}%0A*Class:* ${cls}%0A*School:* ${school}%0A*Board:* ${board}%0A*Phone:* ${num}%0A*Address:* ${address}`;
+            let msg = `*New Student Registration*%0A*Name:* ${document.getElementById('s_name').value}%0A*Class:* ${document.getElementById('s_class').value}%0A*School:* ${document.getElementById('s_school').value}%0A*Board:* ${document.getElementById('s_board').value}%0A*Phone:* ${document.getElementById('s_num').value}%0A*Address:* ${document.getElementById('s_address').value}`;
             window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
         }
 
         function sendTeacherWhatsApp(e) {
             e.preventDefault();
-            let name = document.getElementById('t_name').value;
-            let qual = document.getElementById('t_qual').value;
-            let sub = document.getElementById('t_exp_sub').value;
-            let exp = document.getElementById('t_exp_years').value;
-            let num = document.getElementById('t_num').value;
-
-            let msg = `*New Teacher Application*%0A*Name:* ${name}%0A*Qualification:* ${qual}%0A*Expertise:* ${sub}%0A*Experience:* ${exp}%0A*Phone:* ${num}`;
+            let msg = `*New Teacher Application*%0A*Name:* ${document.getElementById('t_name').value}%0A*Qualification:* ${document.getElementById('t_qual').value}%0A*Expertise:* ${document.getElementById('t_exp_sub').value}%0A*Experience:* ${document.getElementById('t_exp_years').value}%0A*Phone:* ${document.getElementById('t_num').value}`;
             window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
         }
 
         function sendTutionWhatsApp(e) {
             e.preventDefault();
-            let name = document.getElementById('tu_name').value;
-            let school = document.getElementById('tu_school').value;
-            let subs = document.getElementById('tu_subs').value;
-            let pref = document.getElementById('tu_pref').value;
-
-            let msg = `*Home Tuition Enquiry*%0A*Student Name:* ${name}%0A*School & Board:* ${school}%0A*Subjects:* ${subs}%0A*Preference:* ${pref}`;
+            let msg = `*Home Tuition Enquiry*%0A*Student Name:* ${document.getElementById('tu_name').value}%0A*School & Board:* ${document.getElementById('tu_school').value}%0A*Subjects:* ${document.getElementById('tu_subs').value}%0A*Preference:* ${document.getElementById('tu_pref').value}`;
             window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
         }
     </script>
