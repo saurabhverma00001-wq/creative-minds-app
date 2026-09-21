@@ -1,14 +1,231 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Creative Minds Coaching Institute</title>
     <link rel="manifest" href="/manifest.json">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #0f172a; color: #f8fafc; line-height: 1.6; padding-bottom: 40px; }
+        header { background: #1e293b; padding: 20px; text-align: center; border-bottom: 3px solid #3b82f6; position: sticky; top: 0; z-index: 100; }
+        header h1 { font-size: 22px; color: #38bdf8; margin-bottom: 5px; }
+        header p { font-size: 14px; color: #94a3b8; }
+        .nav-tabs { display: flex; overflow-x: auto; background: #334155; padding: 10px; gap: 10px; white-space: nowrap; }
+        .nav-tabs button { background: #475569; color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 14px; }
+        .nav-tabs button:hover, .nav-tabs button.active { background: #3b82f6; }
+        .container { padding: 20px; max-width: 600px; margin: auto; }
+        .section { display: none; margin-bottom: 30px; background: #1e293b; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .section.active { display: block; }
+        h2 { color: #38bdf8; margin-bottom: 15px; font-size: 20px; border-bottom: 2px solid #334155; padding-bottom: 8px; }
+        p { margin-bottom: 15px; color: #cbd5e1; font-size: 15px; }
+        ul { margin-left: 20px; margin-bottom: 15px; color: #cbd5e1; }
+        li { margin-bottom: 8px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #94a3b8; font-size: 14px; }
+        input, select, textarea { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: white; font-size: 15px; }
+        button.submit-btn { background: #25d366; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        button.submit-btn:hover { background: #1ebe5d; }
+        .hero-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+        .hero-btn { background: #3b82f6; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); }
+        .hero-btn:hover { background: #2563eb; }
+    </style>
 </head>
-<body style="background: #0f172a; color: white; font-family: Arial; padding: 20px;">
-    <h1>The Creative Minds Coaching Institute</h1>
-    <p>Rajajipuram, Lucknow</p>
-    <h3>Courses: Math, Science, Computer, English, HCG</h3>
+<body>
+
+    <header>
+        <h1>The Creative Minds Coaching Institute</h1>
+        <p>Rajajipuram, Lucknow | Think Smart, Learn Fast</p>
+    </header>
+
+    <div class="nav-tabs">
+        <button onclick="showSection('home')" class="active">Home</button>
+        <button onclick="showSection('courses')">Courses</button>
+        <button onclick="showSection('about')">About Director</button>
+        <button onclick="showSection('tution')">Home Tuition</button>
+        <button onclick="showSection('faculty')">Faculty</button>
+    </div>
+
+    <div class="container">
+        <!-- HOME SECTION -->
+        <div id="home" class="section active">
+            <h2>Welcome to Creative Minds</h2>
+            <p>Empowering students with smart learning, conceptual clarity, and academic excellence. Choose your registration path below:</p>
+            <div class="hero-buttons">
+                <a href="#studentForm" onclick="showSection('studentReg')" class="hero-btn">📝 New Student Registration</a>
+                <a href="#teacherForm" onclick="showSection('teacherReg')" class="hero-btn" style="background: #8b5cf6;">👨‍🏫 New Teacher Application</a>
+            </div>
+        </div>
+
+        <!-- STUDENT REGISTRATION FORM -->
+        <div id="studentReg" class="section">
+            <h2>New Student Registration</h2>
+            <form onsubmit="sendStudentWhatsApp(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="s_name" required placeholder="Enter student's name">
+                </div>
+                <div class="form-group">
+                    <label>Class</label>
+                    <input type="text" id="s_class" required placeholder="e.g. 10th / 12th">
+                </div>
+                <div class="form-group">
+                    <label>School Name</label>
+                    <input type="text" id="s_school" required placeholder="Enter school name">
+                </div>
+                <div class="form-group">
+                    <label>Board</label>
+                    <select id="s_board">
+                        <option value="ICSE / ISC">ICSE / ISC</option>
+                        <option value="CBSE">CBSE</option>
+                        <option value="UP Board">UP Board</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="s_num" required placeholder="Enter contact number">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea id="s_address" rows="2" required placeholder="Enter residential address"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit via WhatsApp</button>
+            </form>
+        </div>
+
+        <!-- TEACHER APPLICATION FORM -->
+        <div id="teacherReg" class="section">
+            <h2>New Teacher Application</h2>
+            <form onsubmit="sendTeacherWhatsApp(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="t_name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Qualification</label>
+                    <input type="text" id="t_qual" required placeholder="e.g. B.Tech / M.Sc / B.Ed">
+                </div>
+                <div class="form-group">
+                    <label>Subject Expertise</label>
+                    <input type="text" id="t_exp_sub" required placeholder="e.g. Mathematics / Physics / Coding">
+                </div>
+                <div class="form-group">
+                    <label>Teaching Experience</label>
+                    <input type="text" id="t_exp_years" required placeholder="e.g. 3 Years">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="t_num" required placeholder="Enter your mobile number">
+                </div>
+                <button type="submit" class="submit-btn">Apply via WhatsApp</button>
+            </form>
+        </div>
+
+        <!-- COURSES SECTION -->
+        <div id="courses" class="section">
+            <h2>Our Courses & Expertise</h2>
+            <p>We provide comprehensive coaching across multiple streams with strong fundamental grounding:</p>
+            <ul>
+                <li><strong>Mathematics:</strong> Standard, Core, and Applied Mathematics.</li>
+                <li><strong>Science:</strong> Physics, Chemistry, and Biology with practical insights.</li>
+                <li><strong>Computer Science:</strong> Java, Python, C++, HTML Coding, and AI (Artificial Intelligence).</li>
+                <li><strong>HCG:</strong> History, Civics, and Geography.</li>
+                <li><strong>English:</strong> Literature, Language grammar, and Spoken English fluency.</li>
+            </ul>
+        </div>
+
+        <!-- ABOUT SECTION -->
+        <div id="about" class="section">
+            <h2>About the Director</h2>
+            <p><strong>Saurabh Verma</strong> is the visionary Founder and Director of The Creative Minds Coaching Institute, located in Rajajipuram, Lucknow.</p>
+            <p>An alumnus of the prestigious <strong>City Montessori School (CMS)</strong> and an ICSE board background, he holds a professional degree in <strong>Bachelor of Technology (B.Tech) in Electronics and Communication Engineering</strong> from Shri Ram Swaroop Memorial University.</p>
+            <p>With over <strong>10+ years of rich teaching experience</strong>, he specializes in simplifying complex concepts in Mathematics, Science, and Programming, steering students toward absolute academic excellence.</p>
+        </div>
+
+        <!-- HOME TUITION ENQUIRY SECTION -->
+        <div id="tution" class="section">
+            <h2>Home Tuition Services</h2>
+            <p>To ensure complete transparency and personalized learning, The Creative Minds Coaching Institute also provides verified expert home tutors across Lucknow. Parents seeking dedicated one-on-one mentorship at home can easily hire experienced tutors through our structured service.</p>
+            <h3 style="color:#38bdf8; font-size:16px; margin: 15px 0 10px 0;">Home Tuition Enquiry Form</h3>
+            <form onsubmit="sendTutionWhatsApp(event)">
+                <div class="form-group">
+                    <label>Student's Name</label>
+                    <input type="text" id="tu_name" required placeholder="Enter student's name">
+                </div>
+                <div class="form-group">
+                    <label>School & Board</label>
+                    <input type="text" id="tu_school" required placeholder="e.g. CMS, ICSE">
+                </div>
+                <div class="form-group">
+                    <label>Subjects Required</label>
+                    <input type="text" id="tu_subs" required placeholder="e.g. Math, Physics">
+                </div>
+                <div class="form-group">
+                    <label>Teacher Preference</label>
+                    <select id="tu_pref">
+                        <option value="Male Teacher">Male Teacher</option>
+                        <option value="Female Teacher">Female Teacher</option>
+                        <option value="No Preference">No Preference</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Enquire via WhatsApp</button>
+            </form>
+        </div>
+
+        <!-- FACULTY SECTION -->
+        <div id="faculty" class="section">
+            <h2>Our Expert Faculty</h2>
+            <p>At Creative Minds, our faculty consists of passionate subject-matter experts dedicated to transforming education. We believe in an interactive, fun-filled learning environment where conceptual clarity takes center stage.</p>
+            <p>Every mentor focuses on resolving student doubts instantly, bridging learning gaps, and creating a strong friendly bond that motivates students to excel naturally without study pressure.</p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        const myWhatsAppNumber = "918756866588"; // Apna WhatsApp number yahan daal lena (with country code 91)
+
+        function sendStudentWhatsApp(e) {
+            e.preventDefault();
+            let name = document.getElementById('s_name').value;
+            let cls = document.getElementById('s_class').value;
+            let school = document.getElementById('s_school').value;
+            let board = document.getElementById('s_board').value;
+            let num = document.getElementById('s_num').value;
+            let address = document.getElementById('s_address').value;
+
+            let msg = `*New Student Registration*%0A*Name:* ${name}%0A*Class:* ${cls}%0A*School:* ${school}%0A*Board:* ${board}%0A*Phone:* ${num}%0A*Address:* ${address}`;
+            window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
+        }
+
+        function sendTeacherWhatsApp(e) {
+            e.preventDefault();
+            let name = document.getElementById('t_name').value;
+            let qual = document.getElementById('t_qual').value;
+            let sub = document.getElementById('t_exp_sub').value;
+            let exp = document.getElementById('t_exp_years').value;
+            let num = document.getElementById('t_num').value;
+
+            let msg = `*New Teacher Application*%0A*Name:* ${name}%0A*Qualification:* ${qual}%0A*Expertise:* ${sub}%0A*Experience:* ${exp}%0A*Phone:* ${num}`;
+            window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
+        }
+
+        function sendTutionWhatsApp(e) {
+            e.preventDefault();
+            let name = document.getElementById('tu_name').value;
+            let school = document.getElementById('tu_school').value;
+            let subs = document.getElementById('tu_subs').value;
+            let pref = document.getElementById('tu_pref').value;
+
+            let msg = `*Home Tuition Enquiry*%0A*Student Name:* ${name}%0A*School & Board:* ${school}%0A*Subjects:* ${subs}%0A*Preference:* ${pref}`;
+            window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
+        }
+    </script>
 </body>
 </html>
-
