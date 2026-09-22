@@ -10,10 +10,10 @@
         body { background: #f4f6f8; overflow-x: hidden; color: #333; }
 
         /* Top Header */
-        header { background: #ffffff; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: fixed; top: 0; width: 100%; z-index: 100; }
-        .header-left { display: flex; align-items: center; gap: 12px; }
+        header { background: #ffffff; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: fixed; top: 0; width: 100%; z-index: 100; }
+        .header-left { display: flex; align-items: center; gap: 10px; }
         .menu-btn { font-size: 22px; cursor: pointer; background: none; border: none; color: #115e59; font-weight: bold; }
-        .brand-title { font-size: 16px; font-weight: bold; color: #115e59; }
+        .brand-title { font-size: 15px; font-weight: bold; color: #115e59; }
 
         /* Slide-out Side Menu Drawer */
         .side-drawer { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: #ffffff; box-shadow: 4px 0 15px rgba(0,0,0,0.1); z-index: 200; transition: 0.3s ease-in-out; padding: 20px; overflow-y: auto; }
@@ -36,9 +36,11 @@
         .section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Cards Styling */
+        /* Cards Styling with Stickers Layout */
         .card { background: #ffffff; border-radius: 12px; padding: 18px; margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid #f0f0f0; }
-        .card h3 { color: #115e59; margin-bottom: 8px; font-size: 18px; }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .card-header img { width: 42px; height: 42px; object-fit: contain; }
+        .card h3 { color: #115e59; font-size: 18px; }
         .card p { color: #666; font-size: 14px; margin-bottom: 12px; line-height: 1.5; }
 
         /* Buttons & Forms */
@@ -66,7 +68,7 @@
     <header>
         <div class="header-left">
             <button class="menu-btn" onclick="toggleDrawer()">☰</button>
-            <div class="brand-title">The Creative Minds Coaching Institute</div>
+            <div class="brand-title">The Creative Minds</div>
         </div>
     </header>
 
@@ -91,7 +93,10 @@
         <!-- 1. HOME SECTION -->
         <div id="home" class="section active">
             <div class="card" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: none;">
-                <h3>Welcome to Creative Minds 🚀</h3>
+                <div class="card-header">
+                    <img src="images/student.png" alt="Student Sticker">
+                    <h3>Welcome to Creative Minds 🚀</h3>
+                </div>
                 <p>Empowering students with smart learning, conceptual clarity, and academic excellence in Rajajipuram, Lucknow.</p>
                 <button class="btn" onclick="showSection('studentReg')">📝 New Student Registration</button>
                 <button class="btn" style="background: #0d9488; margin-top: 8px;" onclick="showSection('teacherReg')">👨‍🏫 New Teacher Application</button>
@@ -99,7 +104,10 @@
 
             <!-- Batches Access -->
             <div class="card">
-                <h3>📚 Explore Coaching Batches</h3>
+                <div class="card-header">
+                    <img src="images/batches.png" alt="Batches Sticker">
+                    <h3>Explore Coaching Batches</h3>
+                </div>
                 <p>Select your class to access upload topics, exam papers, and notes.</p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
                     <button class="btn" style="margin:0; background: #0f766e;" onclick="showSection('notes')">Class 9th</button>
@@ -111,14 +119,20 @@
 
             <!-- Daily Quiz Short Access -->
             <div class="card">
-                <h3>✍️ Daily Practice Quiz</h3>
+                <div class="card-header">
+                    <img src="images/quiz.png" alt="Quiz Sticker">
+                    <h3>Daily Practice Quiz</h3>
+                </div>
                 <p>Test your knowledge with daily updated questions and instant result evaluations.</p>
                 <button class="btn" onclick="showSection('quiz')">Start Today's Quiz</button>
             </div>
 
             <!-- Reviews & Toppers Wall -->
             <div class="card">
-                <h3>⭐ Toppers & Student Reviews</h3>
+                <div class="card-header">
+                    <img src="images/reviews.png" alt="Reviews Sticker">
+                    <h3>Toppers & Student Reviews</h3>
+                </div>
                 <div class="review-card">
                     <span class="badge">Class 10 ICSE - 96.4%</span>
                     <p><strong>Aarav Sharma</strong> (CMS Alumnus): "The conceptual clarity in Math and Science helped me top my school!"</p>
@@ -133,7 +147,10 @@
         <!-- 2. STUDENT REGISTRATION FORM SECTION -->
         <div id="studentReg" class="section">
             <div class="card">
-                <h3>📝 New Student Registration</h3>
+                <div class="card-header">
+                    <img src="images/student.png" alt="Registration Sticker">
+                    <h3>New Student Registration</h3>
+                </div>
                 <p>Fill out this form to register for upcoming batches.</p>
                 <form onsubmit="sendStudentWhatsApp(event)">
                     <div class="form-group"><label>Student Name</label><input type="text" id="s_name" required placeholder="Enter full name"></div>
@@ -156,7 +173,10 @@
         <!-- 3. TEACHER APPLICATION FORM SECTION -->
         <div id="teacherReg" class="section">
             <div class="card">
-                <h3>👨‍🏫 New Teacher Application</h3>
+                <div class="card-header">
+                    <img src="images/teacher.png" alt="Teacher Sticker">
+                    <h3>New Teacher Application</h3>
+                </div>
                 <p>Join our expert faculty team.</p>
                 <form onsubmit="sendTeacherWhatsApp(event)">
                     <div class="form-group"><label>Full Name</label><input type="text" id="t_name" required placeholder="Enter name"></div>
@@ -172,7 +192,10 @@
         <!-- 4. COURSES SECTION -->
         <div id="courses" class="section">
             <div class="card">
-                <h3>📖 Comprehensive Courses</h3>
+                <div class="card-header">
+                    <img src="images/courses.png" alt="Courses Sticker">
+                    <h3>Comprehensive Courses</h3>
+                </div>
                 <p><strong>Mathematics:</strong> Standard, Core, and Applied.</p>
                 <p><strong>Science:</strong> Physics, Chemistry, and Biology.</p>
                 <p><strong>Computer:</strong> Basic, MS Office, and Programming Languages (Java, Python, C++, HTML coding, and AI).</p>
@@ -184,7 +207,10 @@
         <!-- 5. HOME TUITION ENQUIRY SECTION -->
         <div id="tuition" class="section">
             <div class="card">
-                <h3>🏠 Home Tuition Services Enquiry</h3>
+                <div class="card-header">
+                    <img src="images/tuition.png" alt="Tuition Sticker">
+                    <h3>Home Tuition Services Enquiry</h3>
+                </div>
                 <p>We provide verified, expert home tutors across Lucknow for complete learning transparency and individual focus.</p>
                 <form onsubmit="sendTuitionWhatsApp(event)">
                     <div class="form-group"><label>Student Name</label><input type="text" id="tu_name" required placeholder="Full Name"></div>
@@ -204,7 +230,10 @@
         <!-- 6. DAILY QUIZ SECTION -->
         <div id="quiz" class="section">
             <div class="card">
-                <h3>✍️ Daily Practice Quiz (20 Questions format)</h3>
+                <div class="card-header">
+                    <img src="images/quiz.png" alt="Quiz Sticker">
+                    <h3>Daily Practice Quiz</h3>
+                </div>
                 <p id="q-text" style="font-weight: 600; color:#333;">Q1. What is the standard value of acceleration due to gravity (g)?</p>
                 <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
                     <button class="btn" style="background:#f0fdf4; color:#115e59; border: 1px solid #115e59;" onclick="checkQuizAnswer(1)">A) 9.8 m/s²</button>
@@ -218,26 +247,24 @@
         <!-- 7. ABOUT US SECTION -->
         <div id="about" class="section">
             <div class="card">
-                <h3>ℹ️ About The Creative Minds</h3>
-                <p>Founded in 2014 in Rajajipuram, Lucknow, <strong>The Creative Minds Coaching Institute</strong> has successfully guided hundreds of students to achieve academic brilliance and build robust professional careers. We take pride in guaranteeing targeted performance enhancement and top-tier percentage results for every student.</p>
+                <div class="card-header">
+                    <img src="images/about.png" alt="About Sticker">
+                    <h3>About The Creative Minds</h3>
+                </div>
+                <p>Founded in 2014 in Rajajipuram, Lucknow, <strong>The Creative Minds Coaching Institute</strong> has successfully guided hundreds of students to achieve academic brilliance and build robust professional careers.</p>
                 
                 <p style="margin-top: 10px;"><strong>Founder & Director: Saurabh Verma</strong><br>
-                An alumnus of the prestigious <em>City Montessori School (CMS)</em>, ICSE Board, holding a Bachelor of Technology (B.Tech) degree in Electronics and Communication Engineering, backed by over 10 years of extensive mentoring experience.</p>
-
-                <h4 style="margin-top: 15px; color: #115e59; font-size: 15px;">Why Choose Us?</h4>
-                <p style="margin-top: 5px;">• One-on-one individual attention<br>• Conceptual depth with practical insights<br>• Regular assessment & performance tracking<br>• Fun-filled learning environment with live examples</p>
-            </div>
-
-            <div class="card">
-                <h3>🌟 Special Professional Courses</h3>
-                <p>Website Building | App Building | Graphic Design | Video Editing | YouTube Video Making | SEO</p>
+                An alumnus of <em>City Montessori School (CMS)</em>, B.Tech in Electronics & Communication, with 10+ years of mentoring experience.</p>
             </div>
         </div>
 
         <!-- 8. NOTES SECTION -->
         <div id="notes" class="section">
             <div class="card">
-                <h3>📖 Study Material & Class Notes</h3>
+                <div class="card-header">
+                    <img src="images/notes.png" alt="Notes Sticker">
+                    <h3>Study Material & Class Notes</h3>
+                </div>
                 <p>Select your category to access uploaded sheets, revision papers, and solution notes.</p>
                 <button class="btn" onclick="alert('Downloading 4th to 8th Notes PDF...')">Download 4th to 8th Notes</button>
                 <button class="btn" style="margin-top: 8px;" onclick="alert('Downloading 9th & 10th Notes PDF...')">Download 9th & 10th Notes</button>
@@ -248,15 +275,21 @@
         <!-- 9. FACULTY SECTION -->
         <div id="faculty" class="section">
             <div class="card">
-                <h3>🎓 Our Expert Faculty</h3>
-                <p>Our faculty consists of passionate subject-matter experts dedicated to transforming student potential. Teachers are experienced professionals who provide one-on-one attention, clear doubts meticulously, and explain complex concepts through fun ways, live examples, and practical experiments.</p>
+                <div class="card-header">
+                    <img src="images/faculty.png" alt="Faculty Sticker">
+                    <h3>Our Expert Faculty</h3>
+                </div>
+                <p>Our faculty consists of passionate subject-matter experts dedicated to transforming student potential with one-on-one attention and live examples.</p>
             </div>
         </div>
 
-        <!-- 10. REGISTERED STUDENTS SECTION (Menu Drawer link) -->
+        <!-- 10. REGISTERED STUDENTS SECTION -->
         <div id="registeredStudents" class="section">
             <div class="card">
-                <h3>👥 Registered Students Directory</h3>
+                <div class="card-header">
+                    <img src="images/directory.png" alt="Students Sticker">
+                    <h3>Registered Students Directory</h3>
+                </div>
                 <p>List of previously enrolled and currently active students:</p>
                 <ul style="padding-left: 20px; font-size: 14px; color: #444; line-height: 1.8; margin-top: 10px;">
                     <li>Aarav Sharma</li>
@@ -269,10 +302,13 @@
             </div>
         </div>
 
-        <!-- 11. ONLINE CLASSES SECTION (Menu Drawer link) -->
+        <!-- 11. ONLINE CLASSES SECTION -->
         <div id="onlineClasses" class="section">
             <div class="card">
-                <h3>💻 Online Classes</h3>
+                <div class="card-header">
+                    <img src="images/online.png" alt="Online Class Sticker">
+                    <h3>Online Classes</h3>
+                </div>
                 <p>Access live lectures, recorded backup videos, and interactive online whiteboard modules here.</p>
                 <button class="btn" onclick="alert('Redirecting to online live sessions...')">Join Live Class</button>
             </div>
@@ -282,41 +318,24 @@
 
     <!-- Bottom Navigation Bar -->
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="showSection('home', this)">
-            <span class="nav-icon">🏠</span>Home
-        </div>
-        <div class="nav-item" onclick="showSection('courses', this)">
-            <span class="nav-icon">📚</span>Courses
-        </div>
-        <div class="nav-item" onclick="showSection('tuition', this)">
-            <span class="nav-icon">🏠</span>Tuition
-        </div>
-        <div class="nav-item" onclick="showSection('quiz', this)">
-            <span class="nav-icon">✍️</span>Quiz
-        </div>
-        <div class="nav-item" onclick="showSection('about', this)">
-            <span class="nav-icon">ℹ️</span>About Us
-        </div>
-        <div class="nav-item" onclick="showSection('notes', this)">
-            <span class="nav-icon">📖</span>Notes
-        </div>
-        <div class="nav-item" onclick="showSection('faculty', this)">
-            <span class="nav-icon">🎓</span>Faculty
-        </div>
+        <div class="nav-item active" onclick="showSection('home', this)"><span class="nav-icon">🏠</span>Home</div>
+        <div class="nav-item" onclick="showSection('courses', this)"><span class="nav-icon">📚</span>Courses</div>
+        <div class="nav-item" onclick="showSection('tuition', this)"><span class="nav-icon">🏠</span>Tuition</div>
+        <div class="nav-item" onclick="showSection('quiz', this)"><span class="nav-icon">✍️</span>Quiz</div>
+        <div class="nav-item" onclick="showSection('about', this)"><span class="nav-icon">ℹ️</span>About</div>
+        <div class="nav-item" onclick="showSection('notes', this)"><span class="nav-icon">📖</span>Notes</div>
+        <div class="nav-item" onclick="showSection('faculty', this)"><span class="nav-icon">🎓</span>Faculty</div>
     </div>
 
     <!-- JavaScript Logic -->
     <script>
-        // WhatsApp Number Configuration (apna real WhatsApp number yahan daal sakte hain)
         const myWhatsAppNumber = "918756866588"; 
 
-        // Toggle Slide-out Drawer
         function toggleDrawer() {
             document.getElementById('sideDrawer').classList.toggle('open');
             document.getElementById('overlay').classList.toggle('active');
         }
 
-        // Section Switcher Logic
         function showSection(sectionId, element = null) {
             document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
             document.getElementById(sectionId).classList.add('active');
@@ -328,7 +347,6 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // Student Registration WhatsApp Sender
         function sendStudentWhatsApp(e) {
             e.preventDefault();
             let name = document.getElementById('s_name').value;
@@ -337,12 +355,10 @@
             let board = document.getElementById('s_board').value;
             let subs = document.getElementById('s_subs').value;
             let phone = document.getElementById('s_phone').value;
-
-            let msg = `*New Student Registration*%0A%E2%80%A2 Name: ${name}%0A%E2%80%A2 Class: ${cls}%0A%E2%80%A2 School: ${school}%0A%E2%80%A2 Board: ${board}%0A%E2%80%A2 Subjects: ${subs}%0A%E2%80%A2 Phone: ${phone}`;
+            let msg = `*New Student Registration*%0A• Name: ${name}%0A• Class: ${cls}%0A• School: ${school}%0A• Board: ${board}%0A• Subjects: ${subs}%0A• Phone: ${phone}`;
             window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
         }
 
-        // Teacher Application WhatsApp Sender
         function sendTeacherWhatsApp(e) {
             e.preventDefault();
             let name = document.getElementById('t_name').value;
@@ -350,24 +366,20 @@
             let spec = document.getElementById('t_spec').value;
             let exp = document.getElementById('t_exp').value;
             let phone = document.getElementById('t_phone').value;
-
-            let msg = `*Teacher Application*%0A%E2%80%A2 Name: ${name}%0A%E2%80%A2 Qualification: ${quali}%0A%E2%80%A2 Specialization: ${spec}%0A%E2%80%A2 Experience: ${exp}%0A%E2%80%A2 Phone: ${phone}`;
+            let msg = `*Teacher Application*%0A• Name: ${name}%0A• Qualification: ${quali}%0A• Specialization: ${spec}%0A• Experience: ${exp}%0A• Phone: ${phone}`;
             window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
         }
 
-        // Home Tuition Enquiry WhatsApp Sender
         function sendTuitionWhatsApp(e) {
             e.preventDefault();
             let name = document.getElementById('tu_name').value;
             let school = document.getElementById('tu_school').value;
             let subs = document.getElementById('tu_subs').value;
             let pref = document.getElementById('tu_pref').value;
-
-            let msg = `*Home Tuition Enquiry*%0A%E2%80%A2 Student Name: ${name}%0A%E2%80%A2 Class/Board: ${school}%0A%E2%80%A2 Subjects: ${subs}%0A%E2%80%A2 Preference: ${pref}`;
+            let msg = `*Home Tuition Enquiry*%0A• Student Name: ${name}%0A• Class/Board: ${school}%0A• Subjects: ${subs}%0A• Preference: ${pref}`;
             window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
         }
 
-        // Quiz check logic
         function checkQuizAnswer(opt) {
             let res = document.getElementById('q-result');
             res.style.display = 'block';
