@@ -10,28 +10,28 @@
         body { background: #f4f6f8; overflow-x: hidden; color: #333; }
 
         /* Top Header */
-        header { background: #ffffff; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: fixed; top: 0; width: 100%; z-index: 100; }
-        .header-left { display: flex; align-items: center; gap: 12px; }
-        .menu-btn { font-size: 24px; cursor: pointer; background: none; border: none; color: #115e59; font-weight: bold; }
-        .brand-title { font-size: 16px; font-weight: bold; color: #115e59; }
+        header { background: #ffffff; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: fixed; top: 0; width: 100%; z-index: 100; }
+        .header-left { display: flex; align-items: center; gap: 14px; }
+        .menu-btn { font-size: 26px; cursor: pointer; background: none; border: none; color: #115e59; font-weight: bold; }
+        .brand-title { font-size: 17px; font-weight: bold; color: #115e59; }
 
         /* Slide-out Side Menu Drawer */
-        .side-drawer { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: #ffffff; box-shadow: 4px 0 15px rgba(0,0,0,0.1); z-index: 200; transition: 0.3s ease-in-out; padding: 20px; overflow-y: auto; }
+        .side-drawer { position: fixed; top: 0; left: -300px; width: 300px; height: 100%; background: #ffffff; box-shadow: 4px 0 15px rgba(0,0,0,0.15); z-index: 200; transition: 0.3s ease-in-out; padding: 20px; overflow-y: auto; }
         .side-drawer.open { left: 0; }
-        .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .drawer-header h3 { font-size: 16px; color: #115e59; }
-        .close-drawer { font-size: 20px; cursor: pointer; background: none; border: none; color: #666; }
+        .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
+        .drawer-header h3 { font-size: 17px; color: #115e59; }
+        .close-drawer { font-size: 22px; cursor: pointer; background: none; border: none; color: #666; }
         
-        .drawer-item { display: flex; align-items: center; gap: 12px; padding: 10px 8px; font-size: 14px; color: #444; cursor: pointer; border-bottom: 1px solid #f9f9f9; text-decoration: none; border-radius: 6px; }
+        .drawer-item { display: flex; align-items: center; gap: 14px; padding: 12px 10px; font-size: 15px; color: #444; cursor: pointer; border-bottom: 1px solid #f9f9f9; text-decoration: none; border-radius: 8px; font-weight: 500; }
         .drawer-item:hover { background: #f0fdf4; color: #115e59; }
-        .drawer-item img { width: 28px; height: 28px; object-fit: contain; }
+        .drawer-item img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
 
         /* Overlay for Drawer */
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 150; display: none; }
         .overlay.active { display: block; }
 
         /* Main Content Scrollable Area */
-        .main-content { margin-top: 70px; padding: 15px; margin-bottom: 90px; }
+        .main-content { margin-top: 75px; padding: 15px; margin-bottom: 100px; }
 
         /* Section Handling */
         .section { display: none; animation: fadeIn 0.3s ease-in-out; }
@@ -39,29 +39,32 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Cards Styling with Proper Sticker Sizes */
-        .card { background: #ffffff; border-radius: 12px; padding: 18px; margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid #f0f0f0; }
-        .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
-        .card-header img { width: 48px; height: 48px; object-fit: contain; flex-shrink: 0; }
-        .card h3 { color: #115e59; font-size: 18px; }
-        .card p { color: #666; font-size: 14px; margin-bottom: 12px; line-height: 1.5; }
+        .card { background: #ffffff; border-radius: 14px; padding: 20px; margin-bottom: 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.05); border: 1px solid #eaeaea; }
+        .card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+        .card-header img { width: 52px; height: 52px; object-fit: contain; flex-shrink: 0; }
+        .card h3 { color: #115e59; font-size: 19px; font-weight: 700; }
+        .card p { color: #555; font-size: 14px; margin-bottom: 12px; line-height: 1.6; }
 
         /* Buttons & Forms */
-        .btn { display: block; width: 100%; background: #115e59; color: #fff; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; text-align: center; border: none; cursor: pointer; margin-top: 10px; font-size: 14px; }
+        .btn { display: block; width: 100%; background: #115e59; color: #fff; padding: 13px; border-radius: 9px; text-decoration: none; font-weight: bold; text-align: center; border: none; cursor: pointer; margin-top: 10px; font-size: 15px; box-shadow: 0 2px 6px rgba(17,94,89,0.2); }
         .btn:hover { background: #0f4c48; }
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; margin-bottom: 5px; font-size: 13px; font-weight: 600; color: #444; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background: #fafafa; }
+        
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 600; color: #444; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; background: #fafafa; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #115e59; outline: none; background: #fff; }
 
-        /* Bottom Navigation Bar */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; display: flex; justify-content: space-around; padding: 8px 2px; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 100; border-top: 1px solid #eaeaea; overflow-x: auto; }
-        .nav-item { text-align: center; color: #777; cursor: pointer; font-size: 10px; flex: 1; min-width: 55px; }
+        /* Bottom Navigation Bar with Proper Large Icon Sizes */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; display: flex; justify-content: space-around; padding: 8px 4px; box-shadow: 0 -3px 12px rgba(0,0,0,0.06); z-index: 100; border-top: 1px solid #eaeaea; overflow-x: auto; }
+        .nav-item { text-align: center; color: #666; cursor: pointer; font-size: 11px; font-weight: 500; flex: 1; min-width: 55px; }
         .nav-item.active { color: #115e59; font-weight: bold; }
-        .nav-icon { width: 22px; height: 22px; object-fit: contain; display: block; margin: 0 auto 2px auto; }
+        .nav-icon { width: 30px; height: 30px; object-fit: contain; display: block; margin: 0 auto 3px auto; }
 
         /* Reviews & Badges */
-        .review-card { background: #fdfdfd; border-left: 4px solid #115e59; padding: 12px; border-radius: 6px; margin-bottom: 10px; font-size: 13px; }
-        .badge { background: #e0f2fe; color: #0369a1; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; display: inline-block; margin-bottom: 5px; }
+        .review-card { background: #fdfdfd; border-left: 4px solid #115e59; padding: 14px; border-radius: 8px; margin-bottom: 12px; font-size: 14px; }
+        .badge { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; display: inline-block; margin-bottom: 6px; }
+        .feature-list { padding-left: 20px; font-size: 14px; color: #444; line-height: 1.8; margin-top: 10px; }
+        .feature-list li { margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -74,7 +77,7 @@
         </div>
     </header>
 
-    <!-- Side Menu Drawer with Correct Stickers -->
+    <!-- Side Menu Drawer with Full Detailed Items -->
     <div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
     <div class="side-drawer" id="sideDrawer">
         <div class="drawer-header">
@@ -85,10 +88,13 @@
             <img src="images/directory.png" alt="Students"> Registered Students
         </a>
         <a class="drawer-item" onclick="toggleDrawer(); showSection('faculty')">
-            <img src="images/faculty.png" alt="Faculty"> Faculty
+            <img src="images/faculty.png" alt="Faculty"> Expert Faculty
         </a>
         <a class="drawer-item" onclick="toggleDrawer(); showSection('onlineClasses')">
             <img src="images/online.png" alt="Online"> Online Classes
+        </a>
+        <a class="drawer-item" onclick="toggleDrawer(); showSection('specialCourses')">
+            <img src="images/courses.png" alt="Special Courses"> Special Tech Courses
         </a>
         <a class="drawer-item" onclick="toggleDrawer(); showSection('notes')">
             <img src="images/notes.png" alt="Notes"> 4th to 8th Class Notes
@@ -111,18 +117,28 @@
                     <img src="images/student.png" alt="Student Sticker">
                     <h3>Welcome to Creative Minds 🚀</h3>
                 </div>
-                <p>Empowering students with smart learning, conceptual clarity, and academic excellence in Rajajipuram, Lucknow.</p>
+                <p>Empowering students with smart learning, conceptual clarity, individual attention, and academic excellence in Rajajipuram, Lucknow.</p>
                 <button class="btn" onclick="showSection('studentReg')">📝 New Student Registration</button>
                 <button class="btn" style="background: #0d9488; margin-top: 8px;" onclick="showSection('teacherReg')">👨‍🏫 New Teacher Application</button>
+            </div>
+
+            <!-- Special Tech Courses Quick Banner -->
+            <div class="card" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #bfdbfe;">
+                <div class="card-header">
+                    <img src="images/courses.png" alt="Special Tech Courses">
+                    <h3>Special Tech & Creative Courses</h3>
+                </div>
+                <p>Give your career a head start! Learn App Making, Website Development, Video Editing, Graphics Design, and YouTube Video Creation from experts.</p>
+                <button class="btn" style="background: #0284c7;" onclick="showSection('specialCourses')">Explore Special Courses</button>
             </div>
 
             <!-- Batches Access -->
             <div class="card">
                 <div class="card-header">
                     <img src="images/batches.png" alt="Batches Sticker">
-                    <h3>Explore Coaching Batches</h3>
+                    <h3>Explore Academic Batches</h3>
                 </div>
-                <p>Select your class to access upload topics, exam papers, and notes.</p>
+                <p>Select your class to access upload topics, previous year exam papers, and comprehensive revision notes.</p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
                     <button class="btn" style="margin:0; background: #0f766e;" onclick="showSection('notes')">Class 9th</button>
                     <button class="btn" style="margin:0; background: #0f766e;" onclick="showSection('notes')">Class 10th</button>
@@ -137,7 +153,7 @@
                     <img src="images/quiz.png" alt="Quiz Sticker">
                     <h3>Daily Practice Quiz</h3>
                 </div>
-                <p>Test your knowledge with daily updated questions and instant result evaluations.</p>
+                <p>Test your knowledge with daily updated interactive questions and instant performance evaluations.</p>
                 <button class="btn" onclick="showSection('quiz')">Start Today's Quiz</button>
             </div>
 
@@ -149,11 +165,11 @@
                 </div>
                 <div class="review-card">
                     <span class="badge">Class 10 ICSE - 96.4%</span>
-                    <p><strong>Aarav Sharma</strong> (CMS Alumnus): "The conceptual clarity in Math and Science helped me top my school!"</p>
+                    <p><strong>Aarav Sharma</strong> (CMS Alumnus): "The conceptual clarity in Math and Science helped me top my school and build solid confidence!"</p>
                 </div>
                 <div class="review-card">
                     <span class="badge">Class 12 CBSE - 95.2%</span>
-                    <p><strong>Priya Singh</strong>: "One-on-one doubt clearing sessions and regular tests made all the difference."</p>
+                    <p><strong>Priya Singh</strong>: "One-on-one doubt clearing sessions, friendly environment, and regular tests made all the difference in my board exams."</p>
                 </div>
             </div>
         </div>
@@ -165,7 +181,7 @@
                     <img src="images/student.png" alt="Registration Sticker">
                     <h3>New Student Registration</h3>
                 </div>
-                <p>Fill out this form to register for upcoming batches.</p>
+                <p>Fill out this form to register for upcoming academic batches at our Rajajipuram centre.</p>
                 <form onsubmit="sendStudentWhatsApp(event)">
                     <div class="form-group"><label>Student Name</label><input type="text" id="s_name" required placeholder="Enter full name"></div>
                     <div class="form-group"><label>Class</label><input type="text" id="s_class" required placeholder="e.g. 10th"></div>
@@ -177,7 +193,7 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <div class="form-group"><label>Subject Wanted</label><input type="text" id="s_subs" required placeholder="Math, Science, etc."></div>
+                    <div class="form-group"><label>Subject Wanted</label><input type="text" id="s_subs" required placeholder="Math, Science, Computer, etc."></div>
                     <div class="form-group"><label>Phone Number</label><input type="tel" id="s_phone" required placeholder="10-digit mobile number"></div>
                     <button type="submit" class="btn">Submit via WhatsApp</button>
                 </form>
@@ -191,10 +207,10 @@
                     <img src="images/teacher.png" alt="Teacher Sticker">
                     <h3>New Teacher Application</h3>
                 </div>
-                <p>Join our expert faculty team.</p>
+                <p>Join our prestigious expert faculty team at The Creative Minds.</p>
                 <form onsubmit="sendTeacherWhatsApp(event)">
-                    <div class="form-group"><label>Full Name</label><input type="text" id="t_name" required placeholder="Enter name"></div>
-                    <div class="form-group"><label>Qualification</label><input type="text" id="t_quali" required placeholder="e.g. B.Tech / M.Sc"></div>
+                    <div class="form-group"><label>Full Name</label><input type="text" id="t_name" required placeholder="Enter full name"></div>
+                    <div class="form-group"><label>Qualification</label><input type="text" id="t_quali" required placeholder="e.g. B.Tech / M.Sc / Ph.D"></div>
                     <div class="form-group"><label>Subject Specialization</label><input type="text" id="t_spec" required placeholder="e.g. Mathematics / Physics"></div>
                     <div class="form-group"><label>Experience (Years)</label><input type="text" id="t_exp" required placeholder="e.g. 5 Years"></div>
                     <div class="form-group"><label>Phone Number</label><input type="tel" id="t_phone" required placeholder="Mobile number"></div>
@@ -208,24 +224,70 @@
             <div class="card">
                 <div class="card-header">
                     <img src="images/courses.png" alt="Courses Sticker">
-                    <h3>Comprehensive Courses</h3>
+                    <h3>Comprehensive Academic Courses</h3>
                 </div>
-                <p><strong>Mathematics:</strong> Standard, Core, and Applied.</p>
-                <p><strong>Science:</strong> Physics, Chemistry, and Biology.</p>
-                <p><strong>Computer:</strong> Basic, MS Office, and Programming Languages (Java, Python, C++, HTML coding, and AI).</p>
-                <p><strong>HCG:</strong> History, Civics, and Geography.</p>
-                <p><strong>English:</strong> Literature, Language, and Speaking.</p>
+                <p>We provide deep concept-building and result-oriented coaching across various disciplines:</p>
+                <ul class="feature-list">
+                    <li><strong>Mathematics:</strong> Standard, Core, and Applied Math with shortcut tricks and rigorous problem-solving.</li>
+                    <li><strong>Science:</strong> Physics, Chemistry, and Biology with practical demonstrations and numerical practice.</li>
+                    <li><strong>Computer & Programming:</strong> Basic computers, MS Office, Java, Python, C++, HTML coding, and Artificial Intelligence modules.</li>
+                    <li><strong>HCG (History, Civics & Geography):</strong> Engaging story-based teaching methods for long-term memory retention.</li>
+                    <li><strong>English Language & Literature:</strong> Comprehensive grammar rules, creative writing, and spoken English fluency training.</li>
+                </ul>
             </div>
         </div>
 
-        <!-- 5. HOME TUITION ENQUIRY SECTION -->
+        <!-- 5. SPECIAL TECH COURSES SECTION (NEWLY EXPANDED) -->
+        <div id="specialCourses" class="section">
+            <div class="card" style="background: linear-gradient(135deg, #f8fafc, #eff6ff);">
+                <div class="card-header">
+                    <img src="images/courses.png" alt="Special Courses">
+                    <h3>Special Tech & Creative Courses</h3>
+                </div>
+                <p>In today's digital era, academic excellence combined with digital skills creates unstoppable leaders. Explore our specialized industry-grade training modules:</p>
+                
+                <div class="review-card" style="border-left-color: #0284c7; background: #fff;">
+                    <span class="badge" style="background: #e0f2fe; color: #0369a1;">Module 1</span>
+                    <h4 style="color: #0369a1; margin-bottom: 5px;">📱 App Making (Android & iOS)</h4>
+                    <p>Learn how to design, build, and publish mobile applications from scratch using modern frameworks and intuitive block/text coding tools.</p>
+                </div>
+
+                <div class="review-card" style="border-left-color: #0d9488; background: #fff;">
+                    <span class="badge" style="background: #ccfbf1; color: #115e59;">Module 2</span>
+                    <h4 style="color: #115e59; margin-bottom: 5px;">🌐 Website Development</h4>
+                    <p>Master HTML, CSS, JavaScript, and responsive design principles to create professional business websites, portfolios, and e-commerce stores.</p>
+                </div>
+
+                <div class="review-card" style="border-left-color: #d97706; background: #fff;">
+                    <span class="badge" style="background: #fef3c7; color: #b45309;">Module 3</span>
+                    <h4 style="color: #b45309; margin-bottom: 5px;">🎬 Professional Video Editing</h4>
+                    <p>Learn cinematic transitions, color grading, sound design, and green-screen removal using industry-standard editing software.</p>
+                </div>
+
+                <div class="review-card" style="border-left-color: #7c3aed; background: #fff;">
+                    <span class="badge" style="background: #ede9fe; color: #6d28d9;">Module 4</span>
+                    <h4 style="color: #6d28d9; margin-bottom: 5px;">🎨 Graphics Design & Branding</h4>
+                    <p>Design eye-catching posters, social media banners, logos, and digital artwork using professional tools like Photoshop and Canva.</p>
+                </div>
+
+                <div class="review-card" style="border-left-color: #dc2626; background: #fff;">
+                    <span class="badge" style="background: #fee2e2; color: #991b1b;">Module 5</span>
+                    <h4 style="color: #991b1b; margin-bottom: 5px;">▶️ YouTube Video Creation & Optimization</h4>
+                    <p>Understand video scripting, thumbnail psychology, SEO ranking, audience retention techniques, and channel monetization strategies.</p>
+                </div>
+
+                <button class="btn" style="background: #0284c7; margin-top: 15px;" onclick="showSection('studentReg')">Enroll in Special Courses Now</button>
+            </div>
+        </div>
+
+        <!-- 6. HOME TUITION ENQUIRY SECTION -->
         <div id="tuition" class="section">
             <div class="card">
                 <div class="card-header">
                     <img src="images/tuition.png" alt="Tuition Sticker">
                     <h3>Home Tuition Services Enquiry</h3>
                 </div>
-                <p>We provide verified, expert home tutors across Lucknow for complete learning transparency and individual focus.</p>
+                <p>We provide verified, expert home tutors across Lucknow for complete learning transparency, safety, and focused personal attention.</p>
                 <form onsubmit="sendTuitionWhatsApp(event)">
                     <div class="form-group"><label>Student Name</label><input type="text" id="tu_name" required placeholder="Full Name"></div>
                     <div class="form-group"><label>Class & Board</label><input type="text" id="tu_school" required placeholder="Class / Board"></div>
@@ -241,7 +303,7 @@
             </div>
         </div>
 
-        <!-- 6. DAILY QUIZ SECTION -->
+        <!-- 7. DAILY QUIZ SECTION -->
         <div id="quiz" class="section">
             <div class="card">
                 <div class="card-header">
@@ -254,89 +316,116 @@
                     <button class="btn" style="background:#f0fdf4; color:#115e59; border: 1px solid #115e59;" onclick="checkQuizAnswer(2)">B) 8.9 m/s²</button>
                     <button class="btn" style="background:#f0fdf4; color:#115e59; border: 1px solid #115e59;" onclick="checkQuizAnswer(3)">C) 10 m/s²</button>
                 </div>
-                <div id="q-result" style="margin-top: 15px; font-weight: bold; padding: 10px; border-radius: 5px; display: none;"></div>
+                <div id="q-result" style="margin-top: 15px; font-weight: bold; padding: 12px; border-radius: 8px; display: none;"></div>
             </div>
         </div>
 
-        <!-- 7. ABOUT US SECTION -->
+        <!-- 8. ABOUT US SECTION (EXPANDED & DETAILED WITH WHY CHOOSE US) -->
         <div id="about" class="section">
             <div class="card">
                 <div class="card-header">
                     <img src="images/about.png" alt="About Sticker">
                     <h3>About The Creative Minds</h3>
                 </div>
-                <p>Founded in 2014 in Rajajipuram, Lucknow, <strong>The Creative Minds Coaching Institute</strong> has successfully guided hundreds of students to achieve academic brilliance and build robust professional careers.</p>
+                <p>Founded in 2014 in the heart of Rajajipuram, Lucknow, <strong>The Creative Minds Coaching Institute</strong> has successfully guided hundreds of students to achieve stellar academic brilliance, school ranks, and build robust professional careers.</p>
                 
-                <p style="margin-top: 10px;"><strong>Founder & Director: Saurabh Verma</strong><br>
-                An alumnus of <em>City Montessori School (CMS)</em>, B.Tech in Electronics & Communication, with 10+ years of mentoring experience.</p>
+                <p style="margin-top: 12px;"><strong>Founder & Director: Saurabh Verma</strong><br>
+                An alumnus of the prestigious <em>City Montessori School (CMS)</em>, B.Tech in Electronics & Communication, bringing over 10+ years of passionate mentoring and teaching expertise to shape young minds.</p>
+
+                <h4 style="color: #115e59; margin-top: 18px; margin-bottom: 8px; font-size: 16px;">🌟 Why Choose Us? (Our Core Strengths)</h4>
+                <ul class="feature-list">
+                    <li><strong>Conceptual Clarity First:</strong> We focus on 'why' things happen rather than rote memorization.</li>
+                    <li><strong>Individual Attention:</strong> Small batch sizes ensure every single student gets personal mentorship from expert teachers.</li>
+                    <li><strong>Regular Test Series & Assessments:</strong> Weekly tests and continuous performance tracking keep students board-exam ready.</li>
+                    <li><strong>Doubt Clearing Sessions:</strong> Dedicated one-on-one doubt removal windows after every chapter.</li>
+                    <li><strong>Holistic Development:</strong> Along with regular school syllabus, we train students in modern tech skills like coding, video editing, and app development.</li>
+                </ul>
             </div>
         </div>
 
-        <!-- 8. NOTES SECTION -->
+        <!-- 9. NOTES SECTION -->
         <div id="notes" class="section">
             <div class="card">
                 <div class="card-header">
                     <img src="images/notes.png" alt="Notes Sticker">
                     <h3>Study Material & Class Notes</h3>
                 </div>
-                <p>Select your category to access uploaded sheets, revision papers, and solution notes.</p>
+                <p>Select your category to access uploaded sheets, chapter-wise revision summaries, and solved numerical solution notes.</p>
                 <button class="btn" onclick="alert('Downloading 4th to 8th Notes PDF...')">Download 4th to 8th Notes</button>
-                <button class="btn" style="margin-top: 8px;" onclick="alert('Downloading 9th & 10th Notes PDF...')">Download 9th & 10th Notes</button>
-                <button class="btn" style="margin-top: 8px;" onclick="alert('Downloading 11th & 12th Notes PDF...')">Download 11th & 12th Notes</button>
+                <button class="btn" style="margin-top: 10px;" onclick="alert('Downloading 9th & 10th Notes PDF...')">Download 9th & 10th Notes</button>
+                <button class="btn" style="margin-top: 10px;" onclick="alert('Downloading 11th & 12th Notes PDF...')">Download 11th & 12th Notes</button>
             </div>
         </div>
 
-        <!-- 9. FACULTY SECTION -->
+        <!-- 10. FACULTY SECTION (EXPANDED & DETAILED) -->
         <div id="faculty" class="section">
             <div class="card">
                 <div class="card-header">
                     <img src="images/faculty.png" alt="Faculty Sticker">
-                    <h3>Our Expert Faculty</h3>
+                    <h3>Our Expert Faculty Team</h3>
                 </div>
-                <p>Our faculty consists of passionate subject-matter experts dedicated to transforming student potential with one-on-one attention and live examples.</p>
+                <p>At <strong>The Creative Minds</strong>, our faculty members are not just teachers; they are career mentors and passionate guides dedicated to transforming student potential.</p>
+                
+                <div class="review-card" style="margin-top: 15px;">
+                    <span class="badge">Director & Math/Science Expert</span>
+                    <p><strong>Er. Saurabh Verma (B.Tech, CMS Alumnus)</strong><br>10+ years of experience in simplifying complex concepts of Mathematics and Physics for ICSE/CBSE students with real-life practical examples.</p>
+                </div>
+
+                <div class="review-card">
+                    <span class="badge">Language & Literature Specialist</span>
+                    <p><strong>Senior Academic Mentors</strong><br>Experts with over 8+ years of experience in nurturing English grammar fluency, creative expression, and Social Studies concept mapping.</p>
+                </div>
+
+                <div class="review-card">
+                    <span class="badge">Tech & Computer Faculty</span>
+                    <p><strong>Coding & Digital Instructors</strong><br>Industry professionals teaching Java, Python, App Making, and Graphic Designing with hands-on project training.</p>
+                </div>
             </div>
         </div>
 
-        <!-- 10. REGISTERED STUDENTS SECTION -->
+        <!-- 11. REGISTERED STUDENTS SECTION -->
         <div id="registeredStudents" class="section">
             <div class="card">
                 <div class="card-header">
                     <img src="images/directory.png" alt="Students Sticker">
                     <h3>Registered Students Directory</h3>
                 </div>
-                <p>List of previously enrolled and currently active students:</p>
-                <ul style="padding-left: 20px; font-size: 14px; color: #444; line-height: 1.8; margin-top: 10px;">
-                    <li>Aarav Sharma</li>
-                    <li>Priya Singh</li>
-                    <li>Rohan Verma</li>
-                    <li>Sneha Gupta</li>
-                    <li>Aditya Mishra</li>
-                    <li>Ananya Pandey</li>
+                <p>List of previously enrolled toppers and currently active students achieving academic milestones:</p>
+                <ul class="feature-list">
+                    <li>Aarav Sharma (Class 10 ICSE - 96.4%)</li>
+                    <li>Priya Singh (Class 12 CBSE - 95.2%)</li>
+                    <li>Rohan Verma (Class 10 CBSE - 94.8%)</li>
+                    <li>Sneha Gupta (Class 9 - School Topper)</li>
+                    <li>Aditya Mishra (Class 11 Science)</li>
+                    <li>Ananya Pandey (Class 12 Commerce)</li>
                 </ul>
             </div>
         </div>
 
-        <!-- 11. ONLINE CLASSES SECTION -->
+        <!-- 12. ONLINE CLASSES SECTION -->
         <div id="onlineClasses" class="section">
             <div class="card">
                 <div class="card-header">
                     <img src="images/online.png" alt="Online Class Sticker">
-                    <h3>Online Classes</h3>
+                    <h3>Online Interactive Classes</h3>
                 </div>
-                <p>Access live lectures, recorded backup videos, and interactive online whiteboard modules here.</p>
-                <button class="btn" onclick="alert('Redirecting to online live sessions...')">Join Live Class</button>
+                <p>Access live interactive lectures, HD recorded backup video sessions, digital whiteboard notes, and online assignment submissions securely from home.</p>
+                <button class="btn" onclick="alert('Redirecting to secure online live classroom...')">Join Live Class Portal</button>
             </div>
         </div>
 
     </div>
 
-    <!-- Bottom Navigation Bar with Image Icons -->
+    <!-- Bottom Navigation Bar with Prominent Large Icons -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="showSection('home', this)">
             <img src="images/student.png" class="nav-icon" alt="Home">Home
         </div>
         <div class="nav-item" onclick="showSection('courses', this)">
             <img src="images/courses.png" class="nav-icon" alt="Courses">Courses
+        </div>
+        <div class="nav-item" onclick="showSection('specialCourses', this)">
+            <img src="images/batches.png" class="nav-icon" alt="Tech">Tech
         </div>
         <div class="nav-item" onclick="showSection('tuition', this)">
             <img src="images/tuition.png" class="nav-icon" alt="Tuition">Tuition
@@ -412,11 +501,11 @@
             let res = document.getElementById('q-result');
             res.style.display = 'block';
             if(opt === 1) {
-                res.innerHTML = '✅ Correct! 9.8 m/s² is the standard value.';
+                res.innerHTML = '✅ Correct! 9.8 m/s² is the standard value of acceleration due to gravity.';
                 res.style.backgroundColor = '#dcfce7';
                 res.style.color = '#166534';
             } else {
-                res.innerHTML = '❌ Incorrect. The correct answer is 9.8 m/s².';
+                res.innerHTML = '❌ Incorrect. The correct standard answer is 9.8 m/s².';
                 res.style.backgroundColor = '#fee2e2';
                 res.style.color = '#991b1b';
             }
