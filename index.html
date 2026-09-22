@@ -322,4 +322,65 @@
             document.getElementById(sectionId).classList.add('active');
 
             if(element) {
-                document.queryS
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                element.classList.add('active');
+            }
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Student Registration WhatsApp Sender
+        function sendStudentWhatsApp(e) {
+            e.preventDefault();
+            let name = document.getElementById('s_name').value;
+            let cls = document.getElementById('s_class').value;
+            let school = document.getElementById('s_school').value;
+            let board = document.getElementById('s_board').value;
+            let subs = document.getElementById('s_subs').value;
+            let phone = document.getElementById('s_phone').value;
+
+            let msg = `*New Student Registration*%0A%E2%80%A2 Name: ${name}%0A%E2%80%A2 Class: ${cls}%0A%E2%80%A2 School: ${school}%0A%E2%80%A2 Board: ${board}%0A%E2%80%A2 Subjects: ${subs}%0A%E2%80%A2 Phone: ${phone}`;
+            window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
+        }
+
+        // Teacher Application WhatsApp Sender
+        function sendTeacherWhatsApp(e) {
+            e.preventDefault();
+            let name = document.getElementById('t_name').value;
+            let quali = document.getElementById('t_quali').value;
+            let spec = document.getElementById('t_spec').value;
+            let exp = document.getElementById('t_exp').value;
+            let phone = document.getElementById('t_phone').value;
+
+            let msg = `*Teacher Application*%0A%E2%80%A2 Name: ${name}%0A%E2%80%A2 Qualification: ${quali}%0A%E2%80%A2 Specialization: ${spec}%0A%E2%80%A2 Experience: ${exp}%0A%E2%80%A2 Phone: ${phone}`;
+            window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
+        }
+
+        // Home Tuition Enquiry WhatsApp Sender
+        function sendTuitionWhatsApp(e) {
+            e.preventDefault();
+            let name = document.getElementById('tu_name').value;
+            let school = document.getElementById('tu_school').value;
+            let subs = document.getElementById('tu_subs').value;
+            let pref = document.getElementById('tu_pref').value;
+
+            let msg = `*Home Tuition Enquiry*%0A%E2%80%A2 Student Name: ${name}%0A%E2%80%A2 Class/Board: ${school}%0A%E2%80%A2 Subjects: ${subs}%0A%E2%80%A2 Preference: ${pref}`;
+            window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
+        }
+
+        // Quiz check logic
+        function checkQuizAnswer(opt) {
+            let res = document.getElementById('q-result');
+            res.style.display = 'block';
+            if(opt === 1) {
+                res.innerHTML = '✅ Correct! 9.8 m/s² is the standard value.';
+                res.style.backgroundColor = '#dcfce7';
+                res.style.color = '#166534';
+            } else {
+                res.innerHTML = '❌ Incorrect. The correct answer is 9.8 m/s².';
+                res.style.backgroundColor = '#fee2e2';
+                res.style.color = '#991b1b';
+            }
+        }
+    </script>
+</body>
+</html>
