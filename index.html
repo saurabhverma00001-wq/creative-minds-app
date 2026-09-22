@@ -11,9 +11,9 @@
 
         /* Top Header */
         header { background: #ffffff; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.05); position: fixed; top: 0; width: 100%; z-index: 100; }
-        .header-left { display: flex; align-items: center; gap: 10px; }
-        .menu-btn { font-size: 22px; cursor: pointer; background: none; border: none; color: #115e59; font-weight: bold; }
-        .brand-title { font-size: 15px; font-weight: bold; color: #115e59; }
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .menu-btn { font-size: 24px; cursor: pointer; background: none; border: none; color: #115e59; font-weight: bold; }
+        .brand-title { font-size: 16px; font-weight: bold; color: #115e59; }
 
         /* Slide-out Side Menu Drawer */
         .side-drawer { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: #ffffff; box-shadow: 4px 0 15px rgba(0,0,0,0.1); z-index: 200; transition: 0.3s ease-in-out; padding: 20px; overflow-y: auto; }
@@ -21,8 +21,10 @@
         .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         .drawer-header h3 { font-size: 16px; color: #115e59; }
         .close-drawer { font-size: 20px; cursor: pointer; background: none; border: none; color: #666; }
-        .drawer-item { padding: 12px 10px; font-size: 14px; color: #444; cursor: pointer; border-bottom: 1px solid #f9f9f9; display: block; text-decoration: none; }
-        .drawer-item:hover { background: #f0fdf4; color: #115e59; border-radius: 6px; }
+        
+        .drawer-item { display: flex; align-items: center; gap: 12px; padding: 10px 8px; font-size: 14px; color: #444; cursor: pointer; border-bottom: 1px solid #f9f9f9; text-decoration: none; border-radius: 6px; }
+        .drawer-item:hover { background: #f0fdf4; color: #115e59; }
+        .drawer-item img { width: 28px; height: 28px; object-fit: contain; }
 
         /* Overlay for Drawer */
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 150; display: none; }
@@ -36,10 +38,10 @@
         .section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Cards Styling with Stickers Layout */
+        /* Cards Styling with Proper Sticker Sizes */
         .card { background: #ffffff; border-radius: 12px; padding: 18px; margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid #f0f0f0; }
-        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-        .card-header img { width: 42px; height: 42px; object-fit: contain; }
+        .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+        .card-header img { width: 48px; height: 48px; object-fit: contain; flex-shrink: 0; }
         .card h3 { color: #115e59; font-size: 18px; }
         .card p { color: #666; font-size: 14px; margin-bottom: 12px; line-height: 1.5; }
 
@@ -55,7 +57,7 @@
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; display: flex; justify-content: space-around; padding: 8px 2px; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 100; border-top: 1px solid #eaeaea; overflow-x: auto; }
         .nav-item { text-align: center; color: #777; cursor: pointer; font-size: 10px; flex: 1; min-width: 55px; }
         .nav-item.active { color: #115e59; font-weight: bold; }
-        .nav-icon { font-size: 18px; display: block; margin-bottom: 2px; }
+        .nav-icon { width: 22px; height: 22px; object-fit: contain; display: block; margin: 0 auto 2px auto; }
 
         /* Reviews & Badges */
         .review-card { background: #fdfdfd; border-left: 4px solid #115e59; padding: 12px; border-radius: 6px; margin-bottom: 10px; font-size: 13px; }
@@ -72,19 +74,31 @@
         </div>
     </header>
 
-    <!-- Side Menu Drawer -->
+    <!-- Side Menu Drawer with Correct Stickers -->
     <div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
     <div class="side-drawer" id="sideDrawer">
         <div class="drawer-header">
             <h3>Menu Options</h3>
             <button class="close-drawer" onclick="toggleDrawer()">✕</button>
         </div>
-        <div class="drawer-item" onclick="toggleDrawer(); showSection('registeredStudents')">👥 Registered Students</div>
-        <div class="drawer-item" onclick="toggleDrawer(); showSection('faculty')">🎓 Faculty</div>
-        <div class="drawer-item" onclick="toggleDrawer(); showSection('onlineClasses')">💻 Online Classes</div>
-        <div class="drawer-item" onclick="toggleDrawer(); showSection('notes')">📖 4th to 8th Class Notes</div>
-        <div class="drawer-item" onclick="toggleDrawer(); showSection('notes')">📘 9th & 10th Special Notes</div>
-        <div class="drawer-item" onclick="toggleDrawer(); showSection('notes')">📙 11th & 12th Special Notes</div>
+        <a class="drawer-item" onclick="toggleDrawer(); showSection('registeredStudents')">
+            <img src="images/directory.png" alt="Students"> Registered Students
+        </a>
+        <a class="drawer-item" onclick="toggleDrawer(); showSection('faculty')">
+            <img src="images/faculty.png" alt="Faculty"> Faculty
+        </a>
+        <a class="drawer-item" onclick="toggleDrawer(); showSection('onlineClasses')">
+            <img src="images/online.png" alt="Online"> Online Classes
+        </a>
+        <a class="drawer-item" onclick="toggleDrawer(); showSection('notes')">
+            <img src="images/notes.png" alt="Notes"> 4th to 8th Class Notes
+        </a>
+        <a class="drawer-item" onclick="toggleDrawer(); showSection('notes')">
+            <img src="images/notes.png" alt="Notes"> 9th & 10th Special Notes
+        </a>
+        <a class="drawer-item" onclick="toggleDrawer(); showSection('notes')">
+            <img src="images/notes.png" alt="Notes"> 11th & 12th Special Notes
+        </a>
     </div>
 
     <!-- Main Content Area -->
@@ -316,15 +330,29 @@
 
     </div>
 
-    <!-- Bottom Navigation Bar -->
+    <!-- Bottom Navigation Bar with Image Icons -->
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="showSection('home', this)"><span class="nav-icon">🏠</span>Home</div>
-        <div class="nav-item" onclick="showSection('courses', this)"><span class="nav-icon">📚</span>Courses</div>
-        <div class="nav-item" onclick="showSection('tuition', this)"><span class="nav-icon">🏠</span>Tuition</div>
-        <div class="nav-item" onclick="showSection('quiz', this)"><span class="nav-icon">✍️</span>Quiz</div>
-        <div class="nav-item" onclick="showSection('about', this)"><span class="nav-icon">ℹ️</span>About</div>
-        <div class="nav-item" onclick="showSection('notes', this)"><span class="nav-icon">📖</span>Notes</div>
-        <div class="nav-item" onclick="showSection('faculty', this)"><span class="nav-icon">🎓</span>Faculty</div>
+        <div class="nav-item active" onclick="showSection('home', this)">
+            <img src="images/student.png" class="nav-icon" alt="Home">Home
+        </div>
+        <div class="nav-item" onclick="showSection('courses', this)">
+            <img src="images/courses.png" class="nav-icon" alt="Courses">Courses
+        </div>
+        <div class="nav-item" onclick="showSection('tuition', this)">
+            <img src="images/tuition.png" class="nav-icon" alt="Tuition">Tuition
+        </div>
+        <div class="nav-item" onclick="showSection('quiz', this)">
+            <img src="images/quiz.png" class="nav-icon" alt="Quiz">Quiz
+        </div>
+        <div class="nav-item" onclick="showSection('about', this)">
+            <img src="images/about.png" class="nav-icon" alt="About">About
+        </div>
+        <div class="nav-item" onclick="showSection('notes', this)">
+            <img src="images/notes.png" class="nav-icon" alt="Notes">Notes
+        </div>
+        <div class="nav-item" onclick="showSection('faculty', this)">
+            <img src="images/faculty.png" class="nav-icon" alt="Faculty">Faculty
+        </div>
     </div>
 
     <!-- JavaScript Logic -->
