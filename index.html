@@ -21,10 +21,10 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col">
+<body class="bg-slate-50 min-h-screen flex flex-col pb-24">
 
     <!-- HEADER / NAVIGATION BAR -->
-    <header class="blue-gradient text-white sticky top-0 z-50 shadow-md">
+    <header class="blue-gradient text-white sticky top-0 z-50 shadow-ec">
         <div class="max-w-md mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <img src="images/logo.png" alt="Logo" class="w-10 h-10 rounded-full object-cover border-2 border-blue-400">
@@ -34,17 +34,17 @@
                 </div>
             </div>
             <!-- Auth Toggle Button -->
-            <button onclick="toggleAuthModal()" class="bg-blue-600 hover:bg-blue-700 text-xs px-3 py-1.5 rounded-full font-semibold transition flex items-center space-x-1 shadow">
-                <img src="images/student.png" class="w-3.5 h-3.5 inline filter invert" alt="Login">
+            <button onclick="toggleAuthModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1.5 shadow-md transition">
+                <img src="images/student.png" class="w-3.5 h-3.5 filter invert" alt="Login">
                 <span id="authBtnText">Student Login</span>
             </button>
         </div>
     </header>
 
     <!-- MAIN APP CONTAINER -->
-    <main class="max-w-md mx-auto w-full p-4 flex-grow pb-24">
+    <main class="max-w-md mx-auto w-full p-4 flex-grow space-y-4">
 
-        <!-- ================= VISITOR VIEW (Marketing & Admissions) ================= -->
+        <!-- VISITOR VIEW (Marketing & Admissions) -->
         <div id="visitorView" class="space-y-5">
             
             <!-- Promo Banner -->
@@ -54,26 +54,26 @@
 
             <!-- Quick Action Grid -->
             <div class="grid grid-cols-4 gap-3 text-center">
-                <div onclick="switchTab('courses')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:bg-blue-50 transition">
+                <div onclick="switchTab('courses')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:border-blue-300 transition">
                     <img src="images/courses.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Courses">
                     <span class="text-[11px] font-semibold text-slate-700">Courses</span>
                 </div>
-                <div onclick="switchTab('notes')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:bg-blue-50 transition">
+                <div onclick="switchTab('notes')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:border-blue-300 transition">
                     <img src="images/notes.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Notes">
                     <span class="text-[11px] font-semibold text-slate-700">Notes</span>
                 </div>
-                <div onclick="switchTab('batches')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:bg-blue-50 transition">
+                <div onclick="switchTab('batches')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:border-blue-300 transition">
                     <img src="images/batches.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Batches">
                     <span class="text-[11px] font-semibold text-slate-700">Batches</span>
                 </div>
-                <div onclick="switchTab('quiz')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:bg-blue-50 transition">
+                <div onclick="switchTab('quiz')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:border-blue-300 transition">
                     <img src="images/quiz.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Quiz">
                     <span class="text-[11px] font-semibold text-slate-700">Quiz</span>
                 </div>
             </div>
 
             <!-- Academic Subjects Section -->
-            <section class="space-y-3">
+            <section id="coursesSection" class="space-y-3">
                 <div class="flex justify-between items-center">
                     <h2 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
                         <span class="w-2 h-4 bg-blue-600 rounded-full inline-block"></span>
@@ -81,7 +81,6 @@
                     </h2>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
-                    <!-- Math Card -->
                     <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
                         <img src="images/math.png" class="w-10 h-10 object-contain" alt="Math">
                         <div>
@@ -89,7 +88,6 @@
                             <p class="text-[10px] text-slate-500">Class 6 - 12 (ICSE/CBSE)</p>
                         </div>
                     </div>
-                    <!-- Science Card -->
                     <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
                         <img src="images/science.png" class="w-10 h-10 object-contain" alt="Science">
                         <div>
@@ -97,7 +95,6 @@
                             <p class="text-[10px] text-slate-500">Physics, Chem, Bio</p>
                         </div>
                     </div>
-                    <!-- Computer Card -->
                     <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
                         <img src="images/computer.png" class="w-10 h-10 object-contain" alt="Computer">
                         <div>
@@ -105,11 +102,10 @@
                             <p class="text-[10px] text-slate-500">Java, Python, C++</p>
                         </div>
                     </div>
-                    <!-- HCG Card -->
                     <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
                         <img src="images/hcg.png" class="w-10 h-10 object-contain" alt="HCG">
                         <div>
-                            <h3 class="font-bold text-xs text-slate-800">H.C.G</h3>
+                            <h3 class="font-bold text-xs text-slate-800">H.C.G.</h3>
                             <p class="text-[10px] text-slate-500">History & Civics</p>
                         </div>
                     </div>
@@ -131,7 +127,7 @@
                         </div>
                     </div>
                     <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
-                        <img src="images/web_dev.png" class="w-10 h-10 object-contain" alt="Web Dev">
+                        <img src="images/web_dev.png" class="w-10 h-10 object-contain" alt="Web">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Web Dev</h3>
                             <p class="text-[10px] text-slate-500">HTML, CSS, JS</p>
@@ -154,38 +150,46 @@
                 </div>
             </section>
 
+            <!-- Faculty Info Section -->
+            <section id="facultySection" class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-2">
+                <h2 class="font-bold text-slate-800 text-sm">About The Instructor</h2>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Operated by professional expert educators since 2016 in Rajajipuram, Lucknow. Specialized in ICSE/CBSE board mentorship, coding languages (Java, C++, Python, AI), and practical skill development.
+                </p>
+            </section>
+
             <!-- Admission / Enquiry CTA Box -->
             <div class="blue-gradient text-white p-5 rounded-2xl card-shadow text-center space-y-3">
                 <h3 class="font-bold text-sm">Want to Join Creative Minds?</h3>
                 <p class="text-xs text-blue-200">Register now for new batches in Rajajipuram, Lucknow.</p>
-                <a href="https://wa.me/91XXXXXXXXXX?text=Hello,%20I%20want%20to%20enquire%20about%20admissions%20at%20Creative%20Minds." target="_blank" class="inline-flex items-center justify-center space-x-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition w-full">
-                    <img src="images/whatsapp_icon.png" class="w-4 h-4 object-contain filter invert" alt="WhatsApp">
+                <a href="https://wa.me/919000000000?text=Hello,%20I%20want%20to%20enquire%20about%20admissions%20at%20Creative%20Minds." target="_blank" class="inline-flex items-center justify-center space-x-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2.5 px-5 rounded-xl shadow-md w-full transition">
+                    <img src="images/whatsapp.png" class="w-4 h-4 object-contain filter invert" alt="WhatsApp">
                     <span>Chat on WhatsApp</span>
                 </a>
             </div>
         </div>
 
-        <!-- ================= STUDENT DASHBOARD (Logged-In View) ================= -->
+        <!-- STUDENT DASHBOARD (Logged-In View) -->
         <div id="studentDashboard" class="hidden space-y-4">
             <!-- Welcome Header Card -->
             <div class="blue-gradient text-white p-5 rounded-2xl card-shadow relative overflow-hidden">
-                <div class="relative z-10">
+                <div class="relative z-10 space-y-1">
                     <span class="bg-blue-600 text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full font-bold">Student Portal</span>
-                    <h2 class="text-lg font-bold mt-2" id="displayName">Welcome, Student!</h2>
-                    <p class="text-xs text-blue-200 mt-0.5">Class: <span id="displayClass" class="font-semibold text-white">ICSE Class 10</span></p>
+                    <h2 id="displayName" class="font-extrabold text-base pt-2">Welcome, Student!</h2>
+                    <p class="text-xs text-blue-200">Class: <span id="displayClass" class="font-semibold text-white">ICSE Class 10</span></p>
                 </div>
             </div>
 
             <!-- Enrolled Subjects / Batches -->
-            <div class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
+            <div id="batchesSection" class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
                 <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
                     <img src="images/batches.png" class="w-4 h-4 object-contain" alt="">
                     <span>Your Enrolled Batches</span>
                 </h3>
                 <div class="space-y-2">
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center">
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-800">Mathematics & Computer Batch</h4>
+                            <h4 class="font-bold text-xs text-slate-800">Mathematics & Computer Batches</h4>
                             <p class="text-[10px] text-slate-500">Batch Timing: 4:00 PM - 5:30 PM</p>
                         </div>
                         <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-md">Active</span>
@@ -194,25 +198,19 @@
             </div>
 
             <!-- Assigned Study Notes & PDFs -->
-            <div class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
+            <div id="notesSection" class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
                 <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
                     <img src="images/notes.png" class="w-4 h-4 object-contain" alt="">
                     <span>Latest Study Notes & Homework</span>
                 </h3>
                 <div class="space-y-2 text-xs">
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center hover:bg-blue-50 transition cursor-pointer">
-                        <div>
-                            <p class="font-bold text-slate-800">Java Programming - Chapter 1 Notes.pdf</p>
-                            <p class="text-[10px] text-slate-400">Uploaded Today</p>
-                        </div>
-                        <span class="text-blue-600 font-bold text-[11px]">Download</span>
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center">
+                        <p class="font-bold text-slate-800">Java Programming - Chapter 1 Notes.pdf</p>
+                        <span class="text-blue-600 font-bold text-[11px] cursor-pointer" onclick="alert('Downloading Java Notes...')">Download</span>
                     </div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center hover:bg-blue-50 transition cursor-pointer">
-                        <div>
-                            <p class="font-bold text-slate-800">Quadratic Equations Assignment.pdf</p>
-                            <p class="text-[10px] text-slate-400">Uploaded 2 days ago</p>
-                        </div>
-                        <span class="text-blue-600 font-bold text-[11px]">Download</span>
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center">
+                        <p class="font-bold text-slate-800">Quadratic Equations Assignment.pdf</p>
+                        <span class="text-blue-600 font-bold text-[11px] cursor-pointer" onclick="alert('Downloading Assignment...')">Download</span>
                     </div>
                 </div>
             </div>
@@ -225,6 +223,28 @@
 
     </main>
 
+    <!-- BOTTOM NAVBAR -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg z-40">
+        <div class="max-w-md mx-auto flex justify-around py-2">
+            <button onclick="switchTab('home')" class="flex flex-col items-center text-slate-600 hover:text-blue-600 space-y-0.5">
+                <img src="images/student.png" class="w-5 h-5 object-contain" alt="Home">
+                <span class="text-[10px] font-semibold">Home</span>
+            </button>
+            <button onclick="switchTab('courses')" class="flex flex-col items-center text-slate-600 hover:text-blue-600 space-y-0.5">
+                <img src="images/courses.png" class="w-5 h-5 object-contain" alt="Courses">
+                <span class="text-[10px] font-semibold">Courses</span>
+            </button>
+            <button onclick="switchTab('notes')" class="flex flex-col items-center text-slate-600 hover:text-blue-600 space-y-0.5">
+                <img src="images/notes.png" class="w-5 h-5 object-contain" alt="Notes">
+                <span class="text-[10px] font-semibold">Notes</span>
+            </button>
+            <button onclick="switchTab('faculty')" class="flex flex-col items-center text-slate-600 hover:text-blue-600 space-y-0.5">
+                <img src="images/faculty.png" class="w-5 h-5 object-contain" alt="Faculty">
+                <span class="text-[10px] font-semibold">Faculty</span>
+            </button>
+        </div>
+    </nav>
+
     <!-- LOGIN MODAL POPUP -->
     <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative">
@@ -232,7 +252,7 @@
                 <h3 class="font-bold text-sm text-slate-800">Student Portal Login</h3>
                 <button onclick="toggleAuthModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
             </div>
-            <p class="text-xs text-slate-500">Enter your registered student name & class to access your personal notes and batches.</p>
+            <p class="text-xs text-slate-500">Enter student name & class to access your personal dashboard & study notes.</p>
             
             <div class="space-y-3">
                 <div>
@@ -250,38 +270,17 @@
         </div>
     </div>
 
-    <!-- BOTTOM NAVBAR -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg z-40">
-        <div class="max-w-md mx-auto flex justify-around py-2">
-            <button onclick="switchTab('home')" class="flex flex-col items-center text-blue-600 space-y-0.5">
-                <img src="images/student.png" class="w-5 h-5 object-contain" alt="Home">
-                <span class="text-[10px] font-bold">Home</span>
-            </button>
-            <button onclick="switchTab('courses')" class="flex flex-col items-center text-slate-400 hover:text-blue-600 space-y-0.5">
-                <img src="images/courses.png" class="w-5 h-5 object-contain" alt="Courses">
-                <span class="text-[10px] font-semibold">Courses</span>
-            </button>
-            <button onclick="switchTab('notes')" class="flex flex-col items-center text-slate-400 hover:text-blue-600 space-y-0.5">
-                <img src="images/notes.png" class="w-5 h-5 object-contain" alt="Notes">
-                <span class="text-[10px] font-semibold">Notes</span>
-            </button>
-            <button onclick="switchTab('faculty')" class="flex flex-col items-center text-slate-400 hover:text-blue-600 space-y-0.5">
-                <img src="images/faculty.png" class="w-5 h-5 object-contain" alt="Faculty">
-                <span class="text-[10px] font-semibold">Faculty</span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- JAVASCRIPT FOR DUAL-MODE LOGIC -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         function toggleAuthModal() {
-    const modal = document.getElementById('authModal');
-    if (modal.style.display === 'flex') {
-        modal.style.display = 'none';
-    } else {
-        modal.style.display = 'flex';
-    }
+            const modal = document.getElementById('authModal');
+            if (modal.style.display === 'flex') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'flex';
+            }
         }
+
         function handleLogin() {
             const name = document.getElementById('loginNameInput').value.trim();
             const className = document.getElementById('loginClassInput').value.trim();
@@ -291,7 +290,6 @@
                 return;
             }
 
-            // Save state in browser
             localStorage.setItem('studentName', name);
             localStorage.setItem('studentClass', className);
             localStorage.setItem('isLoggedIn', 'true');
@@ -326,14 +324,36 @@
         }
 
         function switchTab(tabName) {
-            if(tabName === 'home') {
-                window.scrollTo({top: 0, behavior: 'smooth'});
+            // Agar logged in nahi hai, toh visitor view ke specific sections par scroll karega
+            if (localStorage.getItem('isLoggedIn') !== 'true') {
+                if (tabName === 'home') {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                } else if (tabName === 'courses') {
+                    document.getElementById('coursesSection').scrollIntoView({behavior: 'smooth'});
+                } else if (tabName === 'notes') {
+                    alert('Please login as a student to access study notes!');
+                    toggleAuthModal();
+                } else if (tabName === 'faculty') {
+                    document.getElementById('facultySection').scrollIntoView({behavior: 'smooth'});
+                } else if (tabName === 'quiz') {
+                    alert('Quiz section will be live soon!');
+                } else if (tabName === 'batches') {
+                    alert('Please check admission section for batch details.');
+                }
             } else {
-                alert(tabName.toUpperCase() + ' section selected! Ready for display.');
+                // Agar student logged in hai, toh dashboard ke respective sections par scroll karega
+                if (tabName === 'home' || tabName === 'courses') {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                } else if (tabName === 'notes') {
+                    document.getElementById('notesSection').scrollIntoView({behavior: 'smooth'});
+                } else if (tabName === 'batches') {
+                    document.getElementById('batchesSection').scrollIntoView({behavior: 'smooth'});
+                } else if (tabName === 'faculty') {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                }
             }
         }
 
-        // Run on load to check existing session
         window.onload = function() {
             loadDashboardState();
         };
