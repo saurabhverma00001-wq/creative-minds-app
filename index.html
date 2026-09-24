@@ -226,7 +226,7 @@
     </main>
 
     <!-- LOGIN MODAL POPUP -->
-    <div id="authModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+    <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative">
             <div class="flex justify-between items-center">
                 <h3 class="font-bold text-sm text-slate-800">Student Portal Login</h3>
@@ -275,10 +275,13 @@
     <!-- JAVASCRIPT FOR DUAL-MODE LOGIC -->
     <script>
         function toggleAuthModal() {
-            const modal = document.getElementById('authModal');
-            modal.classList.toggle('hidden');
+    const modal = document.getElementById('authModal');
+    if (modal.style.display === 'flex') {
+        modal.style.display = 'none';
+    } else {
+        modal.style.display = 'flex';
+    }
         }
-
         function handleLogin() {
             const name = document.getElementById('loginNameInput').value.trim();
             const className = document.getElementById('loginClassInput').value.trim();
