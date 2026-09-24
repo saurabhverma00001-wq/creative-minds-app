@@ -3,513 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Creative Minds Coaching Institute</title>
+    <title>The Creative Minds Coaching Institute | Lucknow</title>
+    <!-- Google Fonts & Tailwind CSS for modern styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-        /* Reset & Base Styles */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #f4f6f8; overflow-x: hidden; color: #333; }
-
-        /* Top Header */
-        header { background: #ffffff; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: fixed; top: 0; width: 100%; z-index: 100; }
-        .header-left { display: flex; align-items: center; gap: 14px; }
-        .menu-btn { font-size: 26px; cursor: pointer; background: none; border: none; color: #115e59; font-weight: bold; }
-        .brand-title { font-size: 17px; font-weight: bold; color: #115e59; }
-
-        /* Slide-out Side Menu Drawer */
-        .side-drawer { position: fixed; top: 0; left: -300px; width: 300px; height: 100%; background: #ffffff; box-shadow: 4px 0 15px rgba(0,0,0,0.15); z-index: 200; transition: 0.3s ease-in-out; padding: 20px; overflow-y: auto; }
-        .side-drawer.open { left: 0; }
-        .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 12px; }
-        .drawer-header h3 { font-size: 17px; color: #115e59; }
-        .close-drawer { font-size: 22px; cursor: pointer; background: none; border: none; color: #666; }
-        
-        .drawer-item { display: flex; align-items: center; gap: 14px; padding: 12px 10px; font-size: 15px; color: #444; cursor: pointer; border-bottom: 1px solid #f9f9f9; text-decoration: none; border-radius: 8px; font-weight: 500; }
-        .drawer-item:hover { background: #f0fdf4; color: #115e59; }
-        .drawer-item img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; }
-
-        /* Overlay for Drawer */
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 150; display: none; }
-        .overlay.active { display: block; }
-
-        /* Main Content Scrollable Area */
-        .main-content { margin-top: 75px; padding: 15px; margin-bottom: 100px; }
-
-        /* Section Handling */
-        .section { display: none; animation: fadeIn 0.3s ease-in-out; }
-        .section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Cards Styling with Proper Sticker Sizes */
-        .card { background: #ffffff; border-radius: 14px; padding: 20px; margin-bottom: 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.05); border: 1px solid #eaeaea; }
-        .card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
-        .card-header img { width: 52px; height: 52px; object-fit: contain; flex-shrink: 0; }
-        .card h3 { color: #115e59; font-size: 19px; font-weight: 700; }
-        .card p { color: #555; font-size: 14px; margin-bottom: 12px; line-height: 1.6; }
-
-        /* Buttons & Forms */
-        .btn { display: block; width: 100%; background: #115e59; color: #fff; padding: 13px; border-radius: 9px; text-decoration: none; font-weight: bold; text-align: center; border: none; cursor: pointer; margin-top: 10px; font-size: 15px; box-shadow: 0 2px 6px rgba(17,94,89,0.2); }
-        .btn:hover { background: #0f4c48; }
-        
-        .form-group { margin-bottom: 14px; }
-        .form-group label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 600; color: #444; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; background: #fafafa; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #115e59; outline: none; background: #fff; }
-
-        /* Bottom Navigation Bar with Proper Large Icon Sizes */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; display: flex; justify-content: space-around; padding: 8px 4px; box-shadow: 0 -3px 12px rgba(0,0,0,0.06); z-index: 100; border-top: 1px solid #eaeaea; overflow-x: auto; }
-        .nav-item { text-align: center; color: #666; cursor: pointer; font-size: 11px; font-weight: 500; flex: 1; min-width: 55px; }
-        .nav-item.active { color: #115e59; font-weight: bold; }
-        .nav-icon { width: 30px; height: 30px; object-fit: contain; display: block; margin: 0 auto 3px auto; }
-
-        /* Reviews & Badges */
-        .review-card { background: #fdfdfd; border-left: 4px solid #115e59; padding: 14px; border-radius: 8px; margin-bottom: 12px; font-size: 14px; }
-        .badge { background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; display: inline-block; margin-bottom: 6px; }
-        .feature-list { padding-left: 20px; font-size: 14px; color: #444; line-height: 1.8; margin-top: 10px; }
-        .feature-list li { margin-bottom: 8px; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .blue-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(30, 58, 138, 0.08);
+        }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 min-h-screen flex flex-col">
 
-    <!-- Header -->
-    <header>
-        <div class="header-left">
-            <button class="menu-btn" onclick="toggleDrawer()">☰</button>
-            <div class="brand-title">The Creative Minds</div>
+    <!-- HEADER / NAVIGATION BAR -->
+    <header class="blue-gradient text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-md mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="images/logo.png" alt="Logo" class="w-10 h-10 rounded-full object-cover border-2 border-blue-400">
+                <div>
+                    <h1 class="font-bold text-sm leading-tight">Creative Minds</h1>
+                    <p class="text-[10px] text-blue-200">Rajajipuram, Lucknow</p>
+                </div>
+            </div>
+            <!-- Auth Toggle Button -->
+            <button onclick="toggleAuthModal()" class="bg-blue-600 hover:bg-blue-700 text-xs px-3 py-1.5 rounded-full font-semibold transition flex items-center space-x-1 shadow">
+                <img src="images/student.png" class="w-3.5 h-3.5 inline filter invert" alt="Login">
+                <span id="authBtnText">Student Login</span>
+            </button>
         </div>
     </header>
 
-    <!-- Side Menu Drawer with Full Detailed Items -->
-    <div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
-    <div class="side-drawer" id="sideDrawer">
-        <div class="drawer-header">
-            <h3>Menu Options</h3>
-            <button class="close-drawer" onclick="toggleDrawer()">✕</button>
-        </div>
-        <a class="drawer-item" onclick="toggleDrawer(); showSection('registeredStudents')">
-            <img src="images/directory.png" alt="Students"> Registered Students
-        </a>
-        <a class="drawer-item" onclick="toggleDrawer(); showSection('faculty')">
-            <img src="images/faculty.png" alt="Faculty"> Expert Faculty
-        </a>
-        <a class="drawer-item" onclick="toggleDrawer(); showSection('onlineClasses')">
-            <img src="images/online.png" alt="Online"> Online Classes
-        </a>
-        <a class="drawer-item" onclick="toggleDrawer(); showSection('specialCourses')">
-            <img src="images/courses.png" alt="Special Courses"> Special Tech Courses
-        </a>
-        <a class="drawer-item" onclick="toggleDrawer(); showSection('notes')">
-            <img src="images/notes.png" alt="Notes"> 4th to 8th Class Notes
-        </a>
-        <a class="drawer-item" onclick="toggleDrawer(); showSection('notes')">
-            <img src="images/notes.png" alt="Notes"> 9th & 10th Special Notes
-        </a>
-        <a class="drawer-item" onclick="toggleDrawer(); showSection('notes')">
-            <img src="images/notes.png" alt="Notes"> 11th & 12th Special Notes
-        </a>
-    </div>
+    <!-- MAIN APP CONTAINER -->
+    <main class="max-w-md mx-auto w-full p-4 flex-grow pb-24">
 
-    <!-- Main Content Area -->
-    <div class="main-content">
-
-        <!-- 1. HOME SECTION -->
-        <div id="home" class="section active">
-            <div class="card" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: none;">
-                <div class="card-header">
-                    <img src="images/student.png" alt="Student Sticker">
-                    <h3>Welcome to Creative Minds 🚀</h3>
-                </div>
-                <p>Empowering students with smart learning, conceptual clarity, individual attention, and academic excellence in Rajajipuram, Lucknow.</p>
-                <button class="btn" onclick="showSection('studentReg')">📝 New Student Registration</button>
-                <button class="btn" style="background: #0d9488; margin-top: 8px;" onclick="showSection('teacherReg')">👨‍🏫 New Teacher Application</button>
+        <!-- ================= VISITOR VIEW (Marketing & Admissions) ================= -->
+        <div id="visitorView" class="space-y-5">
+            
+            <!-- Promo Banner -->
+            <div class="rounded-2xl overflow-hidden card-shadow bg-blue-900 border border-blue-800">
+                <img src="images/banner_promo.png" alt="Promo Banner" class="w-full h-auto object-cover">
             </div>
 
-            <!-- Special Tech Courses Quick Banner -->
-            <div class="card" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #bfdbfe;">
-                <div class="card-header">
-                    <img src="images/courses.png" alt="Special Tech Courses">
-                    <h3>Special Tech & Creative Courses</h3>
+            <!-- Quick Action Grid -->
+            <div class="grid grid-cols-4 gap-3 text-center">
+                <div onclick="switchTab('courses')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:bg-blue-50 transition">
+                    <img src="images/courses.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Courses">
+                    <span class="text-[11px] font-semibold text-slate-700">Courses</span>
                 </div>
-                <p>Give your career a head start! Learn App Making, Website Development, Video Editing, Graphics Design, and YouTube Video Creation from experts.</p>
-                <button class="btn" style="background: #0284c7;" onclick="showSection('specialCourses')">Explore Special Courses</button>
-            </div>
-
-            <!-- Batches Access -->
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/batches.png" alt="Batches Sticker">
-                    <h3>Explore Academic Batches</h3>
+                <div onclick="switchTab('notes')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:bg-blue-50 transition">
+                    <img src="images/notes.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Notes">
+                    <span class="text-[11px] font-semibold text-slate-700">Notes</span>
                 </div>
-                <p>Select your class to access upload topics, previous year exam papers, and comprehensive revision notes.</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-                    <button class="btn" style="margin:0; background: #0f766e;" onclick="showSection('notes')">Class 9th</button>
-                    <button class="btn" style="margin:0; background: #0f766e;" onclick="showSection('notes')">Class 10th</button>
-                    <button class="btn" style="margin:0; background: #0f766e; margin-top:5px;" onclick="showSection('notes')">Class 11th</button>
-                    <button class="btn" style="margin:0; background: #0f766e; margin-top:5px;" onclick="showSection('notes')">Class 12th</button>
+                <div onclick="switchTab('batches')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:bg-blue-50 transition">
+                    <img src="images/batches.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Batches">
+                    <span class="text-[11px] font-semibold text-slate-700">Batches</span>
+                </div>
+                <div onclick="switchTab('quiz')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:bg-blue-50 transition">
+                    <img src="images/quiz.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Quiz">
+                    <span class="text-[11px] font-semibold text-slate-700">Quiz</span>
                 </div>
             </div>
 
-            <!-- Daily Quiz Short Access -->
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/quiz.png" alt="Quiz Sticker">
-                    <h3>Daily Practice Quiz</h3>
+            <!-- Academic Subjects Section -->
+            <section class="space-y-3">
+                <div class="flex justify-between items-center">
+                    <h2 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                        <span class="w-2 h-4 bg-blue-600 rounded-full inline-block"></span>
+                        <span>ICSE / CBSE Academic Courses</span>
+                    </h2>
                 </div>
-                <p>Test your knowledge with daily updated interactive questions and instant performance evaluations.</p>
-                <button class="btn" onclick="showSection('quiz')">Start Today's Quiz</button>
-            </div>
-
-            <!-- Reviews & Toppers Wall -->
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/reviews.png" alt="Reviews Sticker">
-                    <h3>Toppers & Student Reviews</h3>
-                </div>
-                <div class="review-card">
-                    <span class="badge">Class 10 ICSE - 96.4%</span>
-                    <p><strong>Aarav Sharma</strong> (CMS Alumnus): "The conceptual clarity in Math and Science helped me top my school and build solid confidence!"</p>
-                </div>
-                <div class="review-card">
-                    <span class="badge">Class 12 CBSE - 95.2%</span>
-                    <p><strong>Priya Singh</strong>: "One-on-one doubt clearing sessions, friendly environment, and regular tests made all the difference in my board exams."</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. STUDENT REGISTRATION FORM SECTION -->
-        <div id="studentReg" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/student.png" alt="Registration Sticker">
-                    <h3>New Student Registration</h3>
-                </div>
-                <p>Fill out this form to register for upcoming academic batches at our Rajajipuram centre.</p>
-                <form onsubmit="sendStudentWhatsApp(event)">
-                    <div class="form-group"><label>Student Name</label><input type="text" id="s_name" required placeholder="Enter full name"></div>
-                    <div class="form-group"><label>Class</label><input type="text" id="s_class" required placeholder="e.g. 10th"></div>
-                    <div class="form-group"><label>School</label><input type="text" id="s_school" required placeholder="e.g. City Montessori School"></div>
-                    <div class="form-group"><label>Board</label>
-                        <select id="s_board">
-                            <option value="ICSE">ICSE / ISC</option>
-                            <option value="CBSE">CBSE</option>
-                            <option value="Other">Other</option>
-                        </select>
+                <div class="grid grid-cols-2 gap-3">
+                    <!-- Math Card -->
+                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                        <img src="images/math.png" class="w-10 h-10 object-contain" alt="Math">
+                        <div>
+                            <h3 class="font-bold text-xs text-slate-800">Mathematics</h3>
+                            <p class="text-[10px] text-slate-500">Class 6 - 12 (ICSE/CBSE)</p>
+                        </div>
                     </div>
-                    <div class="form-group"><label>Subject Wanted</label><input type="text" id="s_subs" required placeholder="Math, Science, Computer, etc."></div>
-                    <div class="form-group"><label>Phone Number</label><input type="tel" id="s_phone" required placeholder="10-digit mobile number"></div>
-                    <button type="submit" class="btn">Submit via WhatsApp</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- 3. TEACHER APPLICATION FORM SECTION -->
-        <div id="teacherReg" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/teacher.png" alt="Teacher Sticker">
-                    <h3>New Teacher Application</h3>
-                </div>
-                <p>Join our prestigious expert faculty team at The Creative Minds.</p>
-                <form onsubmit="sendTeacherWhatsApp(event)">
-                    <div class="form-group"><label>Full Name</label><input type="text" id="t_name" required placeholder="Enter full name"></div>
-                    <div class="form-group"><label>Qualification</label><input type="text" id="t_quali" required placeholder="e.g. B.Tech / M.Sc / Ph.D"></div>
-                    <div class="form-group"><label>Subject Specialization</label><input type="text" id="t_spec" required placeholder="e.g. Mathematics / Physics"></div>
-                    <div class="form-group"><label>Experience (Years)</label><input type="text" id="t_exp" required placeholder="e.g. 5 Years"></div>
-                    <div class="form-group"><label>Phone Number</label><input type="tel" id="t_phone" required placeholder="Mobile number"></div>
-                    <button type="submit" class="btn">Apply via WhatsApp</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- 4. COURSES SECTION -->
-        <div id="courses" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/courses.png" alt="Courses Sticker">
-                    <h3>Comprehensive Academic Courses</h3>
-                </div>
-                <p>We provide deep concept-building and result-oriented coaching across various disciplines:</p>
-                <ul class="feature-list">
-                    <li><strong>Mathematics:</strong> Standard, Core, and Applied Math with shortcut tricks and rigorous problem-solving.</li>
-                    <li><strong>Science:</strong> Physics, Chemistry, and Biology with practical demonstrations and numerical practice.</li>
-                    <li><strong>Computer & Programming:</strong> Basic computers, MS Office, Java, Python, C++, HTML coding, and Artificial Intelligence modules.</li>
-                    <li><strong>HCG (History, Civics & Geography):</strong> Engaging story-based teaching methods for long-term memory retention.</li>
-                    <li><strong>English Language & Literature:</strong> Comprehensive grammar rules, creative writing, and spoken English fluency training.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- 5. SPECIAL TECH COURSES SECTION (NEWLY EXPANDED) -->
-        <div id="specialCourses" class="section">
-            <div class="card" style="background: linear-gradient(135deg, #f8fafc, #eff6ff);">
-                <div class="card-header">
-                    <img src="images/courses.png" alt="Special Courses">
-                    <h3>Special Tech & Creative Courses</h3>
-                </div>
-                <p>In today's digital era, academic excellence combined with digital skills creates unstoppable leaders. Explore our specialized industry-grade training modules:</p>
-                
-                <div class="review-card" style="border-left-color: #0284c7; background: #fff;">
-                    <span class="badge" style="background: #e0f2fe; color: #0369a1;">Module 1</span>
-                    <h4 style="color: #0369a1; margin-bottom: 5px;">📱 App Making (Android & iOS)</h4>
-                    <p>Learn how to design, build, and publish mobile applications from scratch using modern frameworks and intuitive block/text coding tools.</p>
-                </div>
-
-                <div class="review-card" style="border-left-color: #0d9488; background: #fff;">
-                    <span class="badge" style="background: #ccfbf1; color: #115e59;">Module 2</span>
-                    <h4 style="color: #115e59; margin-bottom: 5px;">🌐 Website Development</h4>
-                    <p>Master HTML, CSS, JavaScript, and responsive design principles to create professional business websites, portfolios, and e-commerce stores.</p>
-                </div>
-
-                <div class="review-card" style="border-left-color: #d97706; background: #fff;">
-                    <span class="badge" style="background: #fef3c7; color: #b45309;">Module 3</span>
-                    <h4 style="color: #b45309; margin-bottom: 5px;">🎬 Professional Video Editing</h4>
-                    <p>Learn cinematic transitions, color grading, sound design, and green-screen removal using industry-standard editing software.</p>
-                </div>
-
-                <div class="review-card" style="border-left-color: #7c3aed; background: #fff;">
-                    <span class="badge" style="background: #ede9fe; color: #6d28d9;">Module 4</span>
-                    <h4 style="color: #6d28d9; margin-bottom: 5px;">🎨 Graphics Design & Branding</h4>
-                    <p>Design eye-catching posters, social media banners, logos, and digital artwork using professional tools like Photoshop and Canva.</p>
-                </div>
-
-                <div class="review-card" style="border-left-color: #dc2626; background: #fff;">
-                    <span class="badge" style="background: #fee2e2; color: #991b1b;">Module 5</span>
-                    <h4 style="color: #991b1b; margin-bottom: 5px;">▶️ YouTube Video Creation & Optimization</h4>
-                    <p>Understand video scripting, thumbnail psychology, SEO ranking, audience retention techniques, and channel monetization strategies.</p>
-                </div>
-
-                <button class="btn" style="background: #0284c7; margin-top: 15px;" onclick="showSection('studentReg')">Enroll in Special Courses Now</button>
-            </div>
-        </div>
-
-        <!-- 6. HOME TUITION ENQUIRY SECTION -->
-        <div id="tuition" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/tuition.png" alt="Tuition Sticker">
-                    <h3>Home Tuition Services Enquiry</h3>
-                </div>
-                <p>We provide verified, expert home tutors across Lucknow for complete learning transparency, safety, and focused personal attention.</p>
-                <form onsubmit="sendTuitionWhatsApp(event)">
-                    <div class="form-group"><label>Student Name</label><input type="text" id="tu_name" required placeholder="Full Name"></div>
-                    <div class="form-group"><label>Class & Board</label><input type="text" id="tu_school" required placeholder="Class / Board"></div>
-                    <div class="form-group"><label>Subjects Required</label><input type="text" id="tu_subs" required placeholder="Subjects"></div>
-                    <div class="form-group"><label>Teacher Preference</label>
-                        <select id="tu_pref">
-                            <option value="Male Teacher">Male Teacher</option>
-                            <option value="Female Teacher">Female Teacher</option>
-                        </select>
+                    <!-- Science Card -->
+                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                        <img src="images/science.png" class="w-10 h-10 object-contain" alt="Science">
+                        <div>
+                            <h3 class="font-bold text-xs text-slate-800">Science / Physics</h3>
+                            <p class="text-[10px] text-slate-500">Physics, Chem, Bio</p>
+                        </div>
                     </div>
-                    <button type="submit" class="btn">Enquire via WhatsApp</button>
-                </form>
+                    <!-- Computer Card -->
+                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                        <img src="images/computer.png" class="w-10 h-10 object-contain" alt="Computer">
+                        <div>
+                            <h3 class="font-bold text-xs text-slate-800">Computer Apps</h3>
+                            <p class="text-[10px] text-slate-500">Java, Python, C++</p>
+                        </div>
+                    </div>
+                    <!-- HCG Card -->
+                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                        <img src="images/hcg.png" class="w-10 h-10 object-contain" alt="HCG">
+                        <div>
+                            <h3 class="font-bold text-xs text-slate-800">H.C.G</h3>
+                            <p class="text-[10px] text-slate-500">History & Civics</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Special Tech & Creative Courses -->
+            <section class="space-y-3">
+                <h2 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                    <span class="w-2 h-4 bg-blue-600 rounded-full inline-block"></span>
+                    <span>Special Professional Tech Courses</span>
+                </h2>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                        <img src="images/app_making.png" class="w-10 h-10 object-contain" alt="App Dev">
+                        <div>
+                            <h3 class="font-bold text-xs text-slate-800">App Making</h3>
+                            <p class="text-[10px] text-slate-500">Android & Web Apps</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                        <img src="images/web_dev.png" class="w-10 h-10 object-contain" alt="Web Dev">
+                        <div>
+                            <h3 class="font-bold text-xs text-slate-800">Web Dev</h3>
+                            <p class="text-[10px] text-slate-500">HTML, CSS, JS</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                        <img src="images/video_editing.png" class="w-10 h-10 object-contain" alt="Video Editing">
+                        <div>
+                            <h3 class="font-bold text-xs text-slate-800">Video Editing</h3>
+                            <p class="text-[10px] text-slate-500">Premiere & Reels</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                        <img src="images/graphics.png" class="w-10 h-10 object-contain" alt="Graphics">
+                        <div>
+                            <h3 class="font-bold text-xs text-slate-800">Graphics Design</h3>
+                            <p class="text-[10px] text-slate-500">Canva & Branding</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admission / Enquiry CTA Box -->
+            <div class="blue-gradient text-white p-5 rounded-2xl card-shadow text-center space-y-3">
+                <h3 class="font-bold text-sm">Want to Join Creative Minds?</h3>
+                <p class="text-xs text-blue-200">Register now for new batches in Rajajipuram, Lucknow.</p>
+                <a href="https://wa.me/91XXXXXXXXXX?text=Hello,%20I%20want%20to%20enquire%20about%20admissions%20at%20Creative%20Minds." target="_blank" class="inline-flex items-center justify-center space-x-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition w-full">
+                    <img src="images/whatsapp_icon.png" class="w-4 h-4 object-contain filter invert" alt="WhatsApp">
+                    <span>Chat on WhatsApp</span>
+                </a>
             </div>
         </div>
 
-        <!-- 7. DAILY QUIZ SECTION -->
-        <div id="quiz" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/quiz.png" alt="Quiz Sticker">
-                    <h3>Daily Practice Quiz</h3>
-                </div>
-                <p id="q-text" style="font-weight: 600; color:#333;">Q1. What is the standard value of acceleration due to gravity (g)?</p>
-                <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
-                    <button class="btn" style="background:#f0fdf4; color:#115e59; border: 1px solid #115e59;" onclick="checkQuizAnswer(1)">A) 9.8 m/s²</button>
-                    <button class="btn" style="background:#f0fdf4; color:#115e59; border: 1px solid #115e59;" onclick="checkQuizAnswer(2)">B) 8.9 m/s²</button>
-                    <button class="btn" style="background:#f0fdf4; color:#115e59; border: 1px solid #115e59;" onclick="checkQuizAnswer(3)">C) 10 m/s²</button>
-                </div>
-                <div id="q-result" style="margin-top: 15px; font-weight: bold; padding: 12px; border-radius: 8px; display: none;"></div>
-            </div>
-        </div>
-
-        <!-- 8. ABOUT US SECTION (EXPANDED & DETAILED WITH WHY CHOOSE US) -->
-        <div id="about" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/about.png" alt="About Sticker">
-                    <h3>About The Creative Minds</h3>
-                </div>
-                <p>Founded in 2014 in the heart of Rajajipuram, Lucknow, <strong>The Creative Minds Coaching Institute</strong> has successfully guided hundreds of students to achieve stellar academic brilliance, school ranks, and build robust professional careers.</p>
-                
-                <p style="margin-top: 12px;"><strong>Founder & Director: Saurabh Verma</strong><br>
-                An alumnus of the prestigious <em>City Montessori School (CMS)</em>, B.Tech in Electronics & Communication, bringing over 10+ years of passionate mentoring and teaching expertise to shape young minds.</p>
-
-                <h4 style="color: #115e59; margin-top: 18px; margin-bottom: 8px; font-size: 16px;">🌟 Why Choose Us? (Our Core Strengths)</h4>
-                <ul class="feature-list">
-                    <li><strong>Conceptual Clarity First:</strong> We focus on 'why' things happen rather than rote memorization.</li>
-                    <li><strong>Individual Attention:</strong> Small batch sizes ensure every single student gets personal mentorship from expert teachers.</li>
-                    <li><strong>Regular Test Series & Assessments:</strong> Weekly tests and continuous performance tracking keep students board-exam ready.</li>
-                    <li><strong>Doubt Clearing Sessions:</strong> Dedicated one-on-one doubt removal windows after every chapter.</li>
-                    <li><strong>Holistic Development:</strong> Along with regular school syllabus, we train students in modern tech skills like coding, video editing, and app development.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- 9. NOTES SECTION -->
-        <div id="notes" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/notes.png" alt="Notes Sticker">
-                    <h3>Study Material & Class Notes</h3>
-                </div>
-                <p>Select your category to access uploaded sheets, chapter-wise revision summaries, and solved numerical solution notes.</p>
-                <button class="btn" onclick="alert('Downloading 4th to 8th Notes PDF...')">Download 4th to 8th Notes</button>
-                <button class="btn" style="margin-top: 10px;" onclick="alert('Downloading 9th & 10th Notes PDF...')">Download 9th & 10th Notes</button>
-                <button class="btn" style="margin-top: 10px;" onclick="alert('Downloading 11th & 12th Notes PDF...')">Download 11th & 12th Notes</button>
-            </div>
-        </div>
-
-        <!-- 10. FACULTY SECTION (EXPANDED & DETAILED) -->
-        <div id="faculty" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/faculty.png" alt="Faculty Sticker">
-                    <h3>Our Expert Faculty Team</h3>
-                </div>
-                <p>At <strong>The Creative Minds</strong>, our faculty members are not just teachers; they are career mentors and passionate guides dedicated to transforming student potential.</p>
-                
-                <div class="review-card" style="margin-top: 15px;">
-                    <span class="badge">Director & Math/Science Expert</span>
-                    <p><strong>Er. Saurabh Verma (B.Tech, CMS Alumnus)</strong><br>10+ years of experience in simplifying complex concepts of Mathematics and Physics for ICSE/CBSE students with real-life practical examples.</p>
-                </div>
-
-                <div class="review-card">
-                    <span class="badge">Language & Literature Specialist</span>
-                    <p><strong>Senior Academic Mentors</strong><br>Experts with over 8+ years of experience in nurturing English grammar fluency, creative expression, and Social Studies concept mapping.</p>
-                </div>
-
-                <div class="review-card">
-                    <span class="badge">Tech & Computer Faculty</span>
-                    <p><strong>Coding & Digital Instructors</strong><br>Industry professionals teaching Java, Python, App Making, and Graphic Designing with hands-on project training.</p>
+        <!-- ================= STUDENT DASHBOARD (Logged-In View) ================= -->
+        <div id="studentDashboard" class="hidden space-y-4">
+            <!-- Welcome Header Card -->
+            <div class="blue-gradient text-white p-5 rounded-2xl card-shadow relative overflow-hidden">
+                <div class="relative z-10">
+                    <span class="bg-blue-600 text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full font-bold">Student Portal</span>
+                    <h2 class="text-lg font-bold mt-2" id="displayName">Welcome, Student!</h2>
+                    <p class="text-xs text-blue-200 mt-0.5">Class: <span id="displayClass" class="font-semibold text-white">ICSE Class 10</span></p>
                 </div>
             </div>
+
+            <!-- Enrolled Subjects / Batches -->
+            <div class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
+                <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
+                    <img src="images/batches.png" class="w-4 h-4 object-contain" alt="">
+                    <span>Your Enrolled Batches</span>
+                </h3>
+                <div class="space-y-2">
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-800">Mathematics & Computer Batch</h4>
+                            <p class="text-[10px] text-slate-500">Batch Timing: 4:00 PM - 5:30 PM</p>
+                        </div>
+                        <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-md">Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assigned Study Notes & PDFs -->
+            <div class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
+                <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
+                    <img src="images/notes.png" class="w-4 h-4 object-contain" alt="">
+                    <span>Latest Study Notes & Homework</span>
+                </h3>
+                <div class="space-y-2 text-xs">
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center hover:bg-blue-50 transition cursor-pointer">
+                        <div>
+                            <p class="font-bold text-slate-800">Java Programming - Chapter 1 Notes.pdf</p>
+                            <p class="text-[10px] text-slate-400">Uploaded Today</p>
+                        </div>
+                        <span class="text-blue-600 font-bold text-[11px]">Download</span>
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center hover:bg-blue-50 transition cursor-pointer">
+                        <div>
+                            <p class="font-bold text-slate-800">Quadratic Equations Assignment.pdf</p>
+                            <p class="text-[10px] text-slate-400">Uploaded 2 days ago</p>
+                        </div>
+                        <span class="text-blue-600 font-bold text-[11px]">Download</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logout Button -->
+            <button onclick="handleLogout()" class="w-full bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs py-3 rounded-xl border border-red-200 transition">
+                Log Out from Dashboard
+            </button>
         </div>
 
-        <!-- 11. REGISTERED STUDENTS SECTION -->
-        <div id="registeredStudents" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/directory.png" alt="Students Sticker">
-                    <h3>Registered Students Directory</h3>
+    </main>
+
+    <!-- LOGIN MODAL POPUP -->
+    <div id="authModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-sm text-slate-800">Student Portal Login</h3>
+                <button onclick="toggleAuthModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
+            </div>
+            <p class="text-xs text-slate-500">Enter your registered student name & class to access your personal notes and batches.</p>
+            
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-1">Student Name</label>
+                    <input type="text" id="loginNameInput" placeholder="e.g. Aarav Sharma" class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-600 bg-slate-50">
                 </div>
-                <p>List of previously enrolled toppers and currently active students achieving academic milestones:</p>
-                <ul class="feature-list">
-                    <li>Aarav Sharma (Class 10 ICSE - 96.4%)</li>
-                    <li>Priya Singh (Class 12 CBSE - 95.2%)</li>
-                    <li>Rohan Verma (Class 10 CBSE - 94.8%)</li>
-                    <li>Sneha Gupta (Class 9 - School Topper)</li>
-                    <li>Aditya Mishra (Class 11 Science)</li>
-                    <li>Ananya Pandey (Class 12 Commerce)</li>
-                </ul>
+                <div>
+                    <label class="block text-[11px] font-semibold text-slate-600 mb-1">Class / Board</label>
+                    <input type="text" id="loginClassInput" placeholder="e.g. ICSE Class 10" class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-600 bg-slate-50">
+                </div>
+                <button onclick="handleLogin()" class="w-full blue-gradient text-white font-bold text-xs py-3 rounded-xl shadow-md transition">
+                    Access My Dashboard
+                </button>
             </div>
         </div>
-
-        <!-- 12. ONLINE CLASSES SECTION -->
-        <div id="onlineClasses" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <img src="images/online.png" alt="Online Class Sticker">
-                    <h3>Online Interactive Classes</h3>
-                </div>
-                <p>Access live interactive lectures, HD recorded backup video sessions, digital whiteboard notes, and online assignment submissions securely from home.</p>
-                <button class="btn" onclick="alert('Redirecting to secure online live classroom...')">Join Live Class Portal</button>
-            </div>
-        </div>
-
     </div>
 
-    <!-- Bottom Navigation Bar with Prominent Large Icons -->
-    <div class="bottom-nav">
-        <div class="nav-item active" onclick="showSection('home', this)">
-            <img src="images/student.png" class="nav-icon" alt="Home">Home
+    <!-- BOTTOM NAVBAR -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg z-40">
+        <div class="max-w-md mx-auto flex justify-around py-2">
+            <button onclick="switchTab('home')" class="flex flex-col items-center text-blue-600 space-y-0.5">
+                <img src="images/student.png" class="w-5 h-5 object-contain" alt="Home">
+                <span class="text-[10px] font-bold">Home</span>
+            </button>
+            <button onclick="switchTab('courses')" class="flex flex-col items-center text-slate-400 hover:text-blue-600 space-y-0.5">
+                <img src="images/courses.png" class="w-5 h-5 object-contain" alt="Courses">
+                <span class="text-[10px] font-semibold">Courses</span>
+            </button>
+            <button onclick="switchTab('notes')" class="flex flex-col items-center text-slate-400 hover:text-blue-600 space-y-0.5">
+                <img src="images/notes.png" class="w-5 h-5 object-contain" alt="Notes">
+                <span class="text-[10px] font-semibold">Notes</span>
+            </button>
+            <button onclick="switchTab('faculty')" class="flex flex-col items-center text-slate-400 hover:text-blue-600 space-y-0.5">
+                <img src="images/faculty.png" class="w-5 h-5 object-contain" alt="Faculty">
+                <span class="text-[10px] font-semibold">Faculty</span>
+            </button>
         </div>
-        <div class="nav-item" onclick="showSection('courses', this)">
-            <img src="images/courses.png" class="nav-icon" alt="Courses">Courses
-        </div>
-        <div class="nav-item" onclick="showSection('specialCourses', this)">
-            <img src="images/batches.png" class="nav-icon" alt="Tech">Tech
-        </div>
-        <div class="nav-item" onclick="showSection('tuition', this)">
-            <img src="images/tuition.png" class="nav-icon" alt="Tuition">Tuition
-        </div>
-        <div class="nav-item" onclick="showSection('quiz', this)">
-            <img src="images/quiz.png" class="nav-icon" alt="Quiz">Quiz
-        </div>
-        <div class="nav-item" onclick="showSection('about', this)">
-            <img src="images/about.png" class="nav-icon" alt="About">About
-        </div>
-        <div class="nav-item" onclick="showSection('notes', this)">
-            <img src="images/notes.png" class="nav-icon" alt="Notes">Notes
-        </div>
-        <div class="nav-item" onclick="showSection('faculty', this)">
-            <img src="images/faculty.png" class="nav-icon" alt="Faculty">Faculty
-        </div>
-    </div>
+    </nav>
 
-    <!-- JavaScript Logic -->
+    <!-- JAVASCRIPT FOR DUAL-MODE LOGIC -->
     <script>
-        const myWhatsAppNumber = "918756866588"; 
-
-        function toggleDrawer() {
-            document.getElementById('sideDrawer').classList.toggle('open');
-            document.getElementById('overlay').classList.toggle('active');
+        function toggleAuthModal() {
+            const modal = document.getElementById('authModal');
+            modal.classList.toggle('hidden');
         }
 
-        function showSection(sectionId, element = null) {
-            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
+        function handleLogin() {
+            const name = document.getElementById('loginNameInput').value.trim();
+            const className = document.getElementById('loginClassInput').value.trim();
 
-            if(element) {
-                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-                element.classList.add('active');
+            if (!name || !className) {
+                alert('Please enter both your name and class!');
+                return;
             }
-            window.scrollTo({top: 0, behavior: 'smooth'});
+
+            // Save state in browser
+            localStorage.setItem('studentName', name);
+            localStorage.setItem('studentClass', className);
+            localStorage.setItem('isLoggedIn', 'true');
+
+            toggleAuthModal();
+            loadDashboardState();
         }
 
-        function sendStudentWhatsApp(e) {
-            e.preventDefault();
-            let name = document.getElementById('s_name').value;
-            let cls = document.getElementById('s_class').value;
-            let school = document.getElementById('s_school').value;
-            let board = document.getElementById('s_board').value;
-            let subs = document.getElementById('s_subs').value;
-            let phone = document.getElementById('s_phone').value;
-            let msg = `*New Student Registration*%0A• Name: ${name}%0A• Class: ${cls}%0A• School: ${school}%0A• Board: ${board}%0A• Subjects: ${subs}%0A• Phone: ${phone}`;
-            window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
+        function handleLogout() {
+            localStorage.clear();
+            loadDashboardState();
         }
 
-        function sendTeacherWhatsApp(e) {
-            e.preventDefault();
-            let name = document.getElementById('t_name').value;
-            let quali = document.getElementById('t_quali').value;
-            let spec = document.getElementById('t_spec').value;
-            let exp = document.getElementById('t_exp').value;
-            let phone = document.getElementById('t_phone').value;
-            let msg = `*Teacher Application*%0A• Name: ${name}%0A• Qualification: ${quali}%0A• Specialization: ${spec}%0A• Experience: ${exp}%0A• Phone: ${phone}`;
-            window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
-        }
+        function loadDashboardState() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const visitorView = document.getElementById('visitorView');
+            const studentDashboard = document.getElementById('studentDashboard');
+            const authBtnText = document.getElementById('authBtnText');
 
-        function sendTuitionWhatsApp(e) {
-            e.preventDefault();
-            let name = document.getElementById('tu_name').value;
-            let school = document.getElementById('tu_school').value;
-            let subs = document.getElementById('tu_subs').value;
-            let pref = document.getElementById('tu_pref').value;
-            let msg = `*Home Tuition Enquiry*%0A• Student Name: ${name}%0A• Class/Board: ${school}%0A• Subjects: ${subs}%0A• Preference: ${pref}`;
-            window.open(`https://wa.me/${myWhatsAppNumber}?text=${msg}`, '_blank');
-        }
+            if (isLoggedIn === 'true') {
+                visitorView.classList.add('hidden');
+                studentDashboard.classList.remove('hidden');
+                authBtnText.innerText = 'My Dashboard';
 
-        function checkQuizAnswer(opt) {
-            let res = document.getElementById('q-result');
-            res.style.display = 'block';
-            if(opt === 1) {
-                res.innerHTML = '✅ Correct! 9.8 m/s² is the standard value of acceleration due to gravity.';
-                res.style.backgroundColor = '#dcfce7';
-                res.style.color = '#166534';
+                document.getElementById('displayName').innerText = `Welcome, ${localStorage.getItem('studentName')}!`;
+                document.getElementById('displayClass').innerText = localStorage.getItem('studentClass');
             } else {
-                res.innerHTML = '❌ Incorrect. The correct standard answer is 9.8 m/s².';
-                res.style.backgroundColor = '#fee2e2';
-                res.style.color = '#991b1b';
+                visitorView.classList.remove('hidden');
+                studentDashboard.classList.add('hidden');
+                authBtnText.innerText = 'Student Login';
             }
         }
+
+        function switchTab(tabName) {
+            if(tabName === 'home') {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            } else {
+                alert(tabName.toUpperCase() + ' section selected! Ready for display.');
+            }
+        }
+
+        // Run on load to check existing session
+        window.onload = function() {
+            loadDashboardState();
+        };
     </script>
 </body>
 </html>
