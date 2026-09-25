@@ -1,8 +1,0 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "app.vercel.creative_minds_app_psi.twa",
-        "sha256_cert_fingerprints": ["C2:28:BF:0B:7D:FD:08:28:09:40:4F:6C:0E:83:8E:EF:E6:C1:27:AC:82:95:10:23:4C:CF:E0:76:28:81:EC:2D"]
-      }
-    }]
