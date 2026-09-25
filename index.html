@@ -38,7 +38,6 @@
             </div>
             <!-- Auth Toggle Button -->
             <button onclick="toggleAuthModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1.5 shadow-md transition">
-                <img src="images/student.png" class="w-3.5 h-3.5 filter invert" alt="Login">
                 <span id="authBtnText">Student Login</span>
             </button>
         </div>
@@ -53,6 +52,18 @@
             <!-- Promo Banner -->
             <div class="rounded-2xl overflow-hidden card-shadow bg-blue-900 border border-blue-800">
                 <img src="images/banner_promo.png" alt="Promo Banner" class="w-full h-auto object-cover">
+            </div>
+
+            <!-- Quick Registration & Apply Buttons -->
+            <div class="grid grid-cols-2 gap-3">
+                <button onclick="toggleStudentRegModal()" class="blue-gradient text-white p-3 rounded-xl card-shadow font-bold text-xs flex flex-col items-center justify-center space-y-1 border border-blue-700 transition hover:opacity-95">
+                    <span>📝 Register as Student</span>
+                    <span class="text-[10px] font-normal text-blue-200">New Admission Form</span>
+                </button>
+                <button onclick="toggleTeacherModal()" class="bg-white text-blue-900 p-3 rounded-xl card-shadow font-bold text-xs flex flex-col items-center justify-center space-y-1 border border-blue-200 transition hover:bg-slate-50">
+                    <span>👨‍🏫 Apply as Teacher</span>
+                    <span class="text-[10px] font-normal text-slate-500">Join Our Faculty</span>
+                </button>
             </div>
 
             <!-- Quick Action Grid -->
@@ -161,12 +172,13 @@
                 </p>
             </section>
 
-            <!-- Admission / Enquiry CTA Box -->
+            <!-- Admission / Enquiry CTA Box with Free Register Banner -->
             <div class="blue-gradient text-white p-5 rounded-2xl card-shadow text-center space-y-3">
+                <span class="bg-emerald-500 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider">🚀 Register For Free</span>
                 <h3 class="font-bold text-sm">Want to Join Creative Minds?</h3>
                 <p class="text-xs text-blue-200">Register now for new batches in Rajajipuram, Lucknow.</p>
-                <a href="https://wa.me/919000000000?text=Hello,%20I%20want%20to%20enquire%20about%20admissions%20at%20Creative%20Minds." target="_blank" class="inline-flex items-center justify-center space-x-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2.5 px-5 rounded-xl shadow-md w-full transition">
-                    <img src="images/whatsapp.png" class="w-4 h-4 object-contain filter invert" alt="WhatsApp">
+                <a href="https://wa.me/919876543210?text=Hello,%20I%20want%20to%20enquire%20about%20admissions%20at%20Creative%20Minds." target="_blank" class="inline-flex items-center justify-center space-x-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2.5 px-5 rounded-xl shadow-md w-full transition">
+                    <span class="text-base">💬</span>
                     <span>Chat on WhatsApp</span>
                 </a>
             </div>
@@ -248,6 +260,84 @@
         </div>
     </nav>
 
+    <!-- STUDENT REGISTRATION MODAL FORM -->
+    <div id="studentRegModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-sm text-slate-800">📝 New Student Registration</h3>
+                <button onclick="toggleStudentRegModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
+            </div>
+            <p class="text-[11px] text-slate-500">Fill out your details for free batch registration.</p>
+            
+            <div class="space-y-2.5 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Full Name</label>
+                    <input type="text" id="regName" placeholder="e.g. Aarav Sharma" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Phone Number</label>
+                    <input type="tel" id="regPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Class / Board</label>
+                    <input type="text" id="regClass" placeholder="e.g. ICSE Class 10" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">School Name</label>
+                    <input type="text" id="regSchool" placeholder="e.g. St. Joseph School" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Subjects Wanted to Study</label>
+                    <input type="text" id="regSubjects" placeholder="e.g. Mathematics, Computer Apps" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Special Courses (if any)</label>
+                    <input type="text" id="regSpecial" placeholder="e.g. App Making, Python" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <button onclick="submitStudentReg()" class="w-full blue-gradient text-white font-bold py-2.5 rounded-xl shadow-md transition mt-2">
+                    Submit Registration
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEACHER APPLICATION MODAL FORM -->
+    <div id="teacherModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-sm text-slate-800">👨‍🏫 Teacher Application</h3>
+                <button onclick="toggleTeacherModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
+            </div>
+            <p class="text-[11px] text-slate-500">Join our expert coaching faculty in Lucknow.</p>
+            
+            <div class="space-y-2.5 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Full Name</label>
+                    <input type="text" id="teachName" placeholder="e.g. Rajesh Kumar" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Phone Number</label>
+                    <input type="tel" id="teachPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Qualification</label>
+                    <input type="text" id="teachQual" placeholder="e.g. B.Tech / M.Sc / B.Ed" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Specialization / Subject</label>
+                    <input type="text" id="teachSpec" placeholder="e.g. Physics / Java Programming" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Teaching Experience</label>
+                    <input type="text" id="teachExp" placeholder="e.g. 5 Years" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <button onclick="submitTeacherApp()" class="w-full bg-blue-900 text-white font-bold py-2.5 rounded-xl shadow-md transition mt-2 hover:bg-blue-800">
+                    Submit Application
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- LOGIN MODAL POPUP -->
     <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative">
@@ -277,11 +367,50 @@
     <script>
         function toggleAuthModal() {
             const modal = document.getElementById('authModal');
-            if (modal.style.display === 'flex') {
-                modal.style.display = 'none';
-            } else {
-                modal.style.display = 'flex';
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleStudentRegModal() {
+            const modal = document.getElementById('studentRegModal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleTeacherModal() {
+            const modal = document.getElementById('teacherModal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function submitStudentReg() {
+            const name = document.getElementById('regName').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const className = document.getElementById('regClass').value.trim();
+
+            if (!name || !phone || !className) {
+                alert('Please fill in your Name, Phone, and Class!');
+                return;
             }
+
+            alert(`Thank you ${name}! Your student registration has been received successfully. We will contact you soon.`);
+            toggleStudentRegModal();
+            // Automatically log them in for a smooth experience
+            localStorage.setItem('studentName', name);
+            localStorage.setItem('studentClass', className);
+            localStorage.setItem('isLoggedIn', 'true');
+            loadDashboardState();
+        }
+
+        function submitTeacherApp() {
+            const name = document.getElementById('teachName').value.trim();
+            const phone = document.getElementById('teachPhone').value.trim();
+            const qual = document.getElementById('teachQual').value.trim();
+
+            if (!name || !phone || !qual) {
+                alert('Please fill in your Name, Phone, and Qualification!');
+                return;
+            }
+
+            alert(`Thank you ${name}! Your teacher application has been submitted successfully.`);
+            toggleTeacherModal();
         }
 
         function handleLogin() {
@@ -327,7 +456,6 @@
         }
 
         function switchTab(tabName) {
-            // Agar logged in nahi hai, toh visitor view ke specific sections par scroll karega
             if (localStorage.getItem('isLoggedIn') !== 'true') {
                 if (tabName === 'home') {
                     window.scrollTo({top: 0, behavior: 'smooth'});
@@ -336,15 +464,12 @@
                 } else if (tabName === 'notes') {
                     alert('Please login as a student to access study notes!');
                     toggleAuthModal();
-                } else if (tabName === 'faculty') {
-                    document.getElementById('facultySection').scrollIntoView({behavior: 'smooth'});
                 } else if (tabName === 'quiz') {
                     alert('Quiz section will be live soon!');
                 } else if (tabName === 'batches') {
                     alert('Please check admission section for batch details.');
                 }
             } else {
-                // Agar student logged in hai, toh dashboard ke respective sections par scroll karega
                 if (tabName === 'home' || tabName === 'courses') {
                     window.scrollTo({top: 0, behavior: 'smooth'});
                 } else if (tabName === 'notes') {
