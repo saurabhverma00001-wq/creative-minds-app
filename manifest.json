@@ -1,6 +1,7 @@
 {
   "name": "The Creative Minds Coaching Institute",
   "short_name": "Creative Minds",
+  "description": "The Creative Minds Coaching Institute app for students and parents",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0F172A",
