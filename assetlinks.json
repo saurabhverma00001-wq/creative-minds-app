@@ -3,6 +3,6 @@
       "target": {
         "namespace": "android_app",
         "package_name": "app.vercel.creative_minds_app_psi.twa",
-        "sha256_cert_fingerprints": ["31:76:41:09:56:3E:54:22:EF:99:D5:F8:5C:F3:40:99:AE:BB:47:6D:59:0B:F5:A7:DA:14:6E:81:CE:E2:15:DF"]
+        "sha256_cert_fingerprints": ["60:19:5E:6B:CC:D5:BE:67:71:75:5E:D8:C1:BB:73:2A:70:51:94:EA:4C:4B:3E:65:92:65:AE:64:A0:C8:E6:6D"]
       }
     }]
