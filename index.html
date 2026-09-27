@@ -275,38 +275,43 @@
         </div>
     </nav>
 
-    <div id="aboutModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center border-b pb-2">
-                <h3 class="font-bold text-sm text-slate-800">🏆 About Creative Minds</h3>
-                <button onclick="toggleAboutModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
-            </div>
-            
-            <div class="flex flex-col items-center space-y-2">
-                <img src="images/founder.png" alt="Founder" class="w-24 h-24 rounded-full object-cover border-4 border-blue-600 shadow-md bg-slate-200">
-                <div class="text-center">
-                    <h4 class="font-extrabold text-sm text-slate-900">Lead Instructor & Founder</h4>
-                    <p class="text-[10px] text-blue-600 font-semibold">Established Since 2016 | Rajajipuram, Lucknow</p>
-                </div>
-            </div>
-
-            <div class="space-y-2 text-xs text-slate-600 leading-relaxed">
-                <p>
-                    <strong>Creative Minds</strong> has been a premier institution in Rajajipuram, Lucknow since 2016, dedicated to shaping bright futures through exceptional academic mentorship and advanced technical skill-building.
-                </p>
-                <p>
-                    We offer comprehensive coaching in core school subjects including <strong>Mathematics, Science (Physics, Chemistry, Biology), History & Civics (H.C.G.), and English</strong> for ICSE and CBSE board students.
-                </p>
-                <p>
-                   In addition to academics, we empower students with cutting-edge professional technical courses such as <strong>App Making, Web Development, Video Editing, Graphics Design, and Creative 3D Model Crafting</strong> to prepare them for tomorrow's technology landscape.
-                </p>
-            </div>
-
-            <button onclick="toggleAboutModal()" class="w-full blue-gradient text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition">
-                Close About Section
-            </button>
+    <!-- DEDICATED ABOUT US & FOUNDER MODAL -->
+<div id="aboutModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+    <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center border-b pb-2">
+            <h3 class="font-bold text-sm text-slate-800">🏆 About Creative Minds</h3>
+            <button onclick="toggleAboutModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
         </div>
+        
+        <!-- Founder Image Placeholder -->
+        <div class="flex flex-col items-center space-y-2">
+            <img src="images/founder.png" alt="Founder" class="w-24 h-24 rounded-full object-cover border-4 border-blue-600 shadow-md bg-slate-200">
+            <div class="text-center">
+                <h4 class="font-extrabold text-sm text-slate-900">Saurabh Verma</h4>
+                <p class="text-[10px] text-blue-600 font-semibold">B.Tech (ECE) | CMS Lucknow Alumnus</p>
+                <p class="text-[9px] text-slate-500">Founder & Lead Instructor (Teaching Since 2016)</p>
+            </div>
+        </div>
+
+        <!-- Professional Institute Description based on your details -->
+        <div class="space-y-2 text-xs text-slate-600 leading-relaxed">
+            <p>
+                <strong>Creative Minds</strong> was established in 2016 in Rajajipuram, Lucknow by <strong>Saurabh Verma</strong> (CMS Lucknow alumnus and B.Tech in Electronics & Communication Engineering). With over 10 years of rich teaching experience, we specialize in mentoring students, especially from City Montessori School (CMS).
+            </p>
+            <p>
+                We offer comprehensive academic coaching in <strong>Mathematics, Applied Science (Physics, Chemistry, Biology), Computer Science, English Literature & Language, History, Civics, and Geography</strong> for ICSE and CBSE boards.
+            </p>
+            <p>
+                As a tech innovator who builds custom apps and websites, Saurabh Verma also trains students in modern programming and tech skills including <strong>Java, Python, C++, HTML Coding, AI, App Making, Web Development, Video Editing, and Graphics</strong>.
+            </p>
+        </div>
+
+        <button onclick="toggleAboutModal()" class="w-full blue-gradient text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition">
+            Close About Section
+        </button>
     </div>
+</div>
+    
 
     <div id="studentRegModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
