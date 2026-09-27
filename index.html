@@ -7,7 +7,6 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Google Fonts & Tailwind CSS for modern styling -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
@@ -25,8 +24,7 @@
     </style>
 </head>
 <body class="bg-slate-50 h-screen w-full m-0 p-0 flex flex-col justify-between overflow-x-hidden"> 
-    <!-- HEADER / NAVIGATION BAR -->
-    <header class="blue-gradient text-white sticky top-0 z-50 shadow-ec">
+    <header class="blue-gradient text-white sticky top-0 z-50 shadow-md">
         <div class="px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <img src="images/logo.png" alt="Logo" class="w-10 h-10 rounded-full object-cover border-2 border-blue-400">
@@ -35,24 +33,19 @@
                     <p class="text-[10px] text-blue-200">Rajajipuram, Lucknow</p>
                 </div>
             </div>
-            <!-- Auth Toggle Button -->
             <button onclick="toggleAuthModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1.5 shadow-md transition">
                 <span id="authBtnText">Student Login</span>
             </button>
         </div>
     </header>
 
-    <!-- MAIN APP CONTAINER -->
-<main class="w-full px-4 py-4 flex-1 flex flex-col space-y-4">
-     <!-- VISITOR VIEW (Marketing & Admissions) -->
+    <main class="w-full px-4 py-4 flex-1 flex flex-col space-y-4 overflow-y-auto pb-20">
         <div id="visitorView" class="space-y-5">
             
-            <!-- Promo Banner -->
             <div class="rounded-2xl overflow-hidden card-shadow bg-blue-900 border border-blue-800">
-                <img src="images/banner_promo.png" alt="Promo Banner" class="w-full h-auto object-cover">
+                <img src="images/banner_animated.gif" alt="Animated Promo Banner" class="w-full h-auto object-cover">
             </div>
 
-            <!-- Quick Registration & Apply Buttons -->
             <div class="grid grid-cols-2 gap-3">
                 <button onclick="toggleStudentRegModal()" class="blue-gradient text-white p-3 rounded-xl card-shadow font-bold text-xs flex flex-col items-center justify-center space-y-1 border border-blue-700 transition hover:opacity-95">
                     <span>📝 Register as Student</span>
@@ -64,7 +57,6 @@
                 </button>
             </div>
 
-            <!-- Quick Action Grid -->
             <div class="grid grid-cols-4 gap-3 text-center">
                 <div onclick="switchTab('courses')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:border-blue-300 transition">
                     <img src="images/courses.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Courses">
@@ -74,9 +66,9 @@
                     <img src="images/notes.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Notes">
                     <span class="text-[11px] font-semibold text-slate-700">Notes</span>
                 </div>
-                <div onclick="switchTab('batches')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:border-blue-300 transition">
-                    <img src="images/batches.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Batches">
-                    <span class="text-[11px] font-semibold text-slate-700">Batches</span>
+                <div onclick="toggleAboutModal()" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:border-blue-300 transition">
+                    <img src="images/faculty.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="About">
+                    <span class="text-[11px] font-semibold text-slate-700">About Us</span>
                 </div>
                 <div onclick="switchTab('quiz')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:border-blue-300 transition">
                     <img src="images/quiz.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Quiz">
@@ -84,7 +76,6 @@
                 </div>
             </div>
 
-            <!-- Academic Subjects Section -->
             <section id="coursesSection" class="space-y-3">
                 <div class="flex justify-between items-center">
                     <h2 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
@@ -117,25 +108,24 @@
                     <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
                         <img src="images/hcg.png" class="w-10 h-10 object-contain" alt="HCG">
                         <div>
-                            <h3 class="font-bold text-xs text-slate-800">H.C.G.</h3>
-                            <p class="text-[10px] text-slate-500">History & Civics</p>
+                            <h3 class="font-bold text-xs text-slate-800">H.C.G. & English</h3>
+                            <p class="text-[10px] text-slate-500">History, Civics, Grammar</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Special Tech & Creative Courses -->
             <section class="space-y-3">
                 <h2 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
                     <span class="w-2 h-4 bg-blue-600 rounded-full inline-block"></span>
-                    <span>Special Professional Tech Courses</span>
+                    <span>Special Professional Tech & Craft Courses</span>
                 </h2>
                 <div class="grid grid-cols-2 gap-3">
                     <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
                         <img src="images/app_making.png" class="w-10 h-10 object-contain" alt="App Dev">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">App Making</h3>
-                            <p class="text-[10px] text-slate-500">Android & Web Apps</p>
+                            <p class="text-[10px] text-slate-500">Android & PWA Apps</p>
                         </div>
                     </div>
                     <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
@@ -155,22 +145,55 @@
                     <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
                         <img src="images/graphics.png" class="w-10 h-10 object-contain" alt="Graphics">
                         <div>
-                            <h3 class="font-bold text-xs text-slate-800">Graphics Design</h3>
-                            <p class="text-[10px] text-slate-500">Canva & Branding</p>
+                            <h3 class="font-bold text-xs text-slate-800">Graphics & 3D Craft</h3>
+                            <p class="text-[10px] text-slate-500">Canva & 3D Models</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Faculty Info Section -->
-            <section id="facultySection" class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-2">
-                <h2 class="font-bold text-slate-800 text-sm">About The Instructor</h2>
-                <p class="text-xs text-slate-600 leading-relaxed">
-                    Operated by professional expert educators since 2016 in Rajajipuram, Lucknow. Specialized in ICSE/CBSE board mentorship, coding languages (Java, C++, Python, AI), and practical skill development.
-                </p>
+            <section class="space-y-3">
+                <div class="flex justify-between items-center">
+                    <h2 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                        <span class="w-2 h-4 bg-blue-600 rounded-full inline-block"></span>
+                        <span>Student Reviews & Ratings</span>
+                    </h2>
+                </div>
+                <div class="space-y-3">
+                    <div class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2.5">
+                                <img src="images/student_1.png" alt="Student" class="w-9 h-9 rounded-full object-cover border border-blue-200 bg-slate-200">
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-800">Ananya Verma</h4>
+                                    <p class="text-[9px] text-slate-500">ICSE Class 10 (Mathematics)</p>
+                                </div>
+                            </div>
+                            <div class="text-amber-400 text-xs font-bold">★★★★★</div>
+                        </div>
+                        <p class="text-[11px] text-slate-600 leading-relaxed">
+                            "Creative Minds is the best coaching institute in Rajajipuram! Sir explains difficult math concepts so easily. My marks improved tremendously."
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2.5">
+                                <img src="images/student_2.png" alt="Student" class="w-9 h-9 rounded-full object-cover border border-blue-200 bg-slate-200">
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-800">Rohan Singh</h4>
+                                    <p class="text-[9px] text-slate-500">Computer & App Dev Student</p>
+                                </div>
+                            </div>
+                            <div class="text-amber-400 text-xs font-bold">★★★★★</div>
+                        </div>
+                        <p class="text-[11px] text-slate-600 leading-relaxed">
+                            "Along with school academics, learning app making and coding here gave me real practical skills. Amazing mentoring!"
+                        </p>
+                    </div>
+                </div>
             </section>
 
-            <!-- Admission / Enquiry CTA Box with Free Register Banner -->
             <div class="blue-gradient text-white p-5 rounded-2xl card-shadow text-center space-y-3">
                 <span class="bg-emerald-500 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider">🚀 Register For Free</span>
                 <h3 class="font-bold text-sm">Want to Join Creative Minds?</h3>
@@ -182,9 +205,7 @@
             </div>
         </div>
 
-        <!-- STUDENT DASHBOARD (Logged-In View) -->
         <div id="studentDashboard" class="hidden space-y-4">
-            <!-- Welcome Header Card -->
             <div class="blue-gradient text-white p-5 rounded-2xl card-shadow relative overflow-hidden">
                 <div class="relative z-10 space-y-1">
                     <span class="bg-blue-600 text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full font-bold">Student Portal</span>
@@ -193,7 +214,6 @@
                 </div>
             </div>
 
-            <!-- Enrolled Subjects / Batches -->
             <div id="batchesSection" class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
                 <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
                     <img src="images/batches.png" class="w-4 h-4 object-contain" alt="">
@@ -210,7 +230,6 @@
                 </div>
             </div>
 
-            <!-- Assigned Study Notes & PDFs -->
             <div id="notesSection" class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
                 <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
                     <img src="images/notes.png" class="w-4 h-4 object-contain" alt="">
@@ -228,7 +247,6 @@
                 </div>
             </div>
 
-            <!-- Logout Button -->
             <button onclick="handleLogout()" class="w-full bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs py-3 rounded-xl border border-red-200 transition">
                 Log Out from Dashboard
             </button>
@@ -236,7 +254,6 @@
 
     </main>
 
-    <!-- BOTTOM NAVBAR -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg z-40">
         <div class="max-w-md mx-auto flex justify-around py-2">
             <button onclick="switchTab('home')" class="flex flex-col items-center text-slate-600 hover:text-blue-600 space-y-0.5">
@@ -251,14 +268,46 @@
                 <img src="images/notes.png" class="w-5 h-5 object-contain" alt="Notes">
                 <span class="text-[10px] font-semibold">Notes</span>
             </button>
-            <button onclick="switchTab('faculty')" class="flex flex-col items-center text-slate-600 hover:text-blue-600 space-y-0.5">
-                <img src="images/faculty.png" class="w-5 h-5 object-contain" alt="Faculty">
-                <span class="text-[10px] font-semibold">Faculty</span>
+            <button onclick="toggleAboutModal()" class="flex flex-col items-center text-slate-600 hover:text-blue-600 space-y-0.5">
+                <img src="images/faculty.png" class="w-5 h-5 object-contain" alt="About">
+                <span class="text-[10px] font-semibold">About</span>
             </button>
         </div>
     </nav>
 
-    <!-- STUDENT REGISTRATION MODAL FORM -->
+    <div id="aboutModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 class="font-bold text-sm text-slate-800">🏆 About Creative Minds</h3>
+                <button onclick="toggleAboutModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
+            </div>
+            
+            <div class="flex flex-col items-center space-y-2">
+                <img src="images/founder.png" alt="Founder" class="w-24 h-24 rounded-full object-cover border-4 border-blue-600 shadow-md bg-slate-200">
+                <div class="text-center">
+                    <h4 class="font-extrabold text-sm text-slate-900">Lead Instructor & Founder</h4>
+                    <p class="text-[10px] text-blue-600 font-semibold">Established Since 2016 | Rajajipuram, Lucknow</p>
+                </div>
+            </div>
+
+            <div class="space-y-2 text-xs text-slate-600 leading-relaxed">
+                <p>
+                    <strong>Creative Minds</strong> has been a premier institution in Rajajipuram, Lucknow since 2016, dedicated to shaping bright futures through exceptional academic mentorship and advanced technical skill-building.
+                </p>
+                <p>
+                    We offer comprehensive coaching in core school subjects including <strong>Mathematics, Science (Physics, Chemistry, Biology), History & Civics (H.C.G.), and English</strong> for ICSE and CBSE board students.
+                </p>
+                <p>
+                   In addition to academics, we empower students with cutting-edge professional technical courses such as <strong>App Making, Web Development, Video Editing, Graphics Design, and Creative 3D Model Crafting</strong> to prepare them for tomorrow's technology landscape.
+                </p>
+            </div>
+
+            <button onclick="toggleAboutModal()" class="w-full blue-gradient text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition">
+                Close About Section
+            </button>
+        </div>
+    </div>
+
     <div id="studentRegModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center">
@@ -290,7 +339,7 @@
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Special Courses (if any)</label>
-                    <input type="text" id="regSpecial" placeholder="e.g. App Making, Python" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <input type="text" id="regSpecial" placeholder="e.g. App Making, 3D Crafting" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
                 </div>
                 <button onclick="submitStudentReg()" class="w-full blue-gradient text-white font-bold py-2.5 rounded-xl shadow-md transition mt-2">
                     Submit Registration
@@ -299,7 +348,6 @@
         </div>
     </div>
 
-    <!-- TEACHER APPLICATION MODAL FORM -->
     <div id="teacherModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center">
@@ -336,7 +384,6 @@
         </div>
     </div>
 
-    <!-- LOGIN MODAL POPUP -->
     <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative">
             <div class="flex justify-between items-center">
@@ -361,10 +408,14 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
         function toggleAuthModal() {
             const modal = document.getElementById('authModal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleAboutModal() {
+            const modal = document.getElementById('aboutModal');
             modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
         }
 
@@ -390,7 +441,6 @@
 
             alert(`Thank you ${name}! Your student registration has been received successfully. We will contact you soon.`);
             toggleStudentRegModal();
-            // Automatically log them in for a smooth experience
             localStorage.setItem('studentName', name);
             localStorage.setItem('studentClass', className);
             localStorage.setItem('isLoggedIn', 'true');
@@ -464,8 +514,6 @@
                     toggleAuthModal();
                 } else if (tabName === 'quiz') {
                     alert('Quiz section will be live soon!');
-                } else if (tabName === 'batches') {
-                    alert('Please check admission section for batch details.');
                 }
             } else {
                 if (tabName === 'home' || tabName === 'courses') {
@@ -474,8 +522,6 @@
                     document.getElementById('notesSection').scrollIntoView({behavior: 'smooth'});
                 } else if (tabName === 'batches') {
                     document.getElementById('batchesSection').scrollIntoView({behavior: 'smooth'});
-                } else if (tabName === 'faculty') {
-                    window.scrollTo({top: 0, behavior: 'smooth'});
                 }
             }
         }
