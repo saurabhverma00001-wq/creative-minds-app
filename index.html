@@ -210,21 +210,17 @@
         <!-- DEDICATED COURSES & COMBO CATALOG VIEW (Initially Hidden) -->
         <div id="coursesSection" class="hidden space-y-4">
             
-            <!-- Top Clean Video Banner (Fixed Overlap & Layout Issue) -->
             <div class="rounded-2xl overflow-hidden card-shadow bg-blue-900 border border-blue-800">
                 <video src="images/course_banner_animated.mp4" autoplay loop muted playsinline class="w-full h-auto object-cover rounded-2xl"></video>
             </div>
 
-            <!-- Back to Home Button -->
             <button onclick="switchTab('home')" class="w-full bg-white border border-slate-200 text-slate-700 font-bold text-xs py-2.5 rounded-xl shadow-sm hover:bg-slate-50 transition flex items-center justify-center space-x-1">
                 <span>← Back to Home / Dashboard</span>
             </button>
 
-            <!-- Academic Courses Section (Fixed Font Size for Price Lists) -->
             <div class="space-y-3">
                 <h3 class="font-bold text-sm text-slate-800 px-1">📚 ICSE / CBSE Academic Courses</h3>
                 
-                <!-- Mathematics Card -->
                 <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-start space-x-3.5">
                     <img src="images/course_math.png" alt="Math" class="w-12 h-12 rounded-xl object-cover bg-blue-50 p-1 border mt-0.5">
                     <div class="flex-1">
@@ -240,7 +236,6 @@
                     </div>
                 </div>
 
-                <!-- Science Card -->
                 <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-start space-x-3.5">
                     <img src="images/course_science.png" alt="Science" class="w-12 h-12 rounded-xl object-cover bg-blue-50 p-1 border mt-0.5">
                     <div class="flex-1">
@@ -255,7 +250,6 @@
                     </div>
                 </div>
 
-                <!-- Computer & English Grid -->
                 <div class="grid grid-cols-2 gap-2.5">
                     <div class="bg-white p-3.5 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-3">
                         <img src="images/course_computer.png" alt="Computer" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
@@ -276,11 +270,9 @@
                 </div>
             </div>
 
-            <!-- Professional Tech Courses (Emojis Removed, Clean Image Icons Used) -->
             <div class="space-y-3 pt-2">
                 <h3 class="font-bold text-sm text-slate-800 px-1">⚡ Professional Tech & Craft Courses</h3>
                 
-                <!-- App Making -->
                 <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
                     <div class="flex items-center space-x-3">
                         <img src="images/course_app.png" alt="App Making" class="w-11 h-11 rounded-xl object-cover bg-blue-50 p-1 border">
@@ -295,7 +287,6 @@
                     </div>
                 </div>
 
-                   <!-- Web Development -->
                 <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
                     <div class="flex items-center space-x-3">
                         <img src="images/course_web.png" alt="Web Dev" class="w-11 h-11 rounded-xl object-cover bg-blue-50 p-1 border">
@@ -310,7 +301,6 @@
                     </div>
                 </div>
 
-                <!-- Video Editing -->
                 <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
                     <div class="flex items-center space-x-3">
                         <img src="images/course_video.png" alt="Video Editing" class="w-11 h-11 rounded-xl object-cover bg-blue-50 p-1 border">
@@ -326,7 +316,6 @@
                 </div>
             </div>
 
-            <!-- Mega Tech Combo Pack (Fixed Dark Blue Theme & Premium Styling) -->
             <div class="blue-gradient p-5 rounded-2xl text-white shadow-xl space-y-3 relative overflow-hidden border border-blue-700">
                 <div class="flex items-center space-x-3">
                     <img src="images/discount_badge.png" alt="Discount" class="w-11 h-11 rounded-xl object-cover bg-amber-400 p-1 shadow">
@@ -455,6 +444,7 @@
         </div>
     </div>
 
+    <!-- STUDENT REGISTRATION MODAL -->
     <div id="studentRegModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center">
@@ -481,86 +471,18 @@
                     <input type="text" id="regSchool" placeholder="e.g. St. Joseph School" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
                 </div>
                 <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Subjects Wanted to Study</label>
-                    <input type="text" id="regSubjects" placeholder="e.g. Mathematics, Computer Apps" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <label class="block font-semibold text-slate-600 mb-1">Subjects Wanted</label>
+                    <input type="text" id="regSubjects" placeholder="e.g. Math, Computer, Science" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
                 </div>
-                <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Special Courses (if any)</label>
-                    <input type="text" id="regSpecial" placeholder="e.g. App Making, 3D Crafting" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
-                </div>
-                <button onclick="submitStudentReg()" class="w-full blue-gradient text-white font-bold py-2.5 rounded-xl shadow-md transition mt-2">
-                    Submit Registration
+                <button onclick="submitStudentRegistration()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
+                    Submit Registration Form
                 </button>
             </div>
         </div>
     </div>
 
-    <div id="teacherModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center">
-                <h3 class="font-bold text-sm text-slate-800">👨‍🏫 Teacher Application</h3>
-                <button onclick="toggleTeacherModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
-            </div>
-            <p class="text-[11px] text-slate-500">Join our expert coaching faculty in Lucknow.</p>
-            
-            <div class="space-y-2.5 text-xs">
-                <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Full Name</label>
-                    <input type="text" id="teachName" placeholder="e.g. Rajesh Kumar" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
-                </div>
-                <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Phone Number</label>
-                    <input type="tel" id="teachPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
-                </div>
-                <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Qualification</label>
-                    <input type="text" id="teachQual" placeholder="e.g. B.Tech / M.Sc / B.Ed" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
-                </div>
-                <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Specialization / Subject</label>
-                    <input type="text" id="teachSpec" placeholder="e.g. Physics / Java Programming" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
-                </div>
-                <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Teaching Experience</label>
-                    <input type="text" id="teachExp" placeholder="e.g. 5 Years" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
-                </div>
-                <button onclick="submitTeacherApp()" class="w-full bg-blue-900 text-white font-bold py-2.5 rounded-xl shadow-md transition mt-2 hover:bg-blue-800">
-                    Submit Application
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative">
-            <div class="flex justify-between items-center">
-                <h3 class="font-bold text-sm text-slate-800">Student Portal Login</h3>
-                <button onclick="toggleAuthModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
-            </div>
-            <p class="text-xs text-slate-500">Enter student name & class to access your personal dashboard & study notes.</p>
-            
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-[11px] font-semibold text-slate-600 mb-1">Student Name</label>
-                    <input type="text" id="loginNameInput" placeholder="e.g. Aarav Sharma" class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-600 bg-slate-50">
-                </div>
-                <div>
-                    <label class="block text-[11px] font-semibold text-slate-600 mb-1">Class / Board</label>
-                    <input type="text" id="loginClassInput" placeholder="e.g. ICSE Class 10" class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-600 bg-slate-50">
-                </div>
-                <button onclick="handleLogin()" class="w-full blue-gradient text-white font-bold text-xs py-3 rounded-xl shadow-md transition">
-                    Access My Dashboard
-                </button>
-            </div>
-        </div>
-    </div>
-
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        function toggleAuthModal() {
-            const modal = document.getElementById('authModal');
-            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-        }
-
         function toggleAboutModal() {
             const modal = document.getElementById('aboutModal');
             modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
@@ -572,125 +494,54 @@
         }
 
         function toggleTeacherModal() {
-            const modal = document.getElementById('teacherModal');
-            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+            window.open('https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20apply%20as%20a%20Teacher%20at%20Creative%20Minds.', '_blank');
         }
 
-        function submitStudentReg() {
-            const name = document.getElementById('regName').value.trim();
-            const phone = document.getElementById('regPhone').value.trim();
-            const className = document.getElementById('regClass').value.trim();
-
-            if (!name || !phone || !className) {
-                alert('Please fill in your Name, Phone, and Class!');
-                return;
-            }
-
-            alert(`Thank you ${name}! Your student registration has been received successfully. We will contact you soon.`);
-            toggleStudentRegModal();
-            localStorage.setItem('studentName', name);
-            localStorage.setItem('studentClass', className);
-            localStorage.setItem('isLoggedIn', 'true');
-            loadDashboardState();
-        }
-
-        function submitTeacherApp() {
-            const name = document.getElementById('teachName').value.trim();
-            const phone = document.getElementById('teachPhone').value.trim();
-            const qual = document.getElementById('teachQual').value.trim();
-
-            if (!name || !phone || !qual) {
-                alert('Please fill in your Name, Phone, and Qualification!');
-                return;
-            }
-
-            alert(`Thank you ${name}! Your teacher application has been submitted successfully.`);
-            toggleTeacherModal();
-        }
-
-        function handleLogin() {
-            const name = document.getElementById('loginNameInput').value.trim();
-            const className = document.getElementById('loginClassInput').value.trim();
-
-            if (!name || !className) {
-                alert('Please enter both your name and class!');
-                return;
-            }
-
-            localStorage.setItem('studentName', name);
-            localStorage.setItem('studentClass', className);
-            localStorage.setItem('isLoggedIn', 'true');
-
-            toggleAuthModal();
-            loadDashboardState();
-        }
-
-        function handleLogout() {
-            localStorage.clear();
-            loadDashboardState();
-        }
-
-        function loadDashboardState() {
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-            const visitorView = document.getElementById('visitorView');
-            const studentDashboard = document.getElementById('studentDashboard');
-            const authBtnText = document.getElementById('authBtnText');
-
-            if (isLoggedIn === 'true') {
-                visitorView.classList.add('hidden');
-                document.getElementById('coursesSection').classList.add('hidden');
-                studentDashboard.classList.remove('hidden');
-                authBtnText.innerText = 'My Dashboard';
-
-                document.getElementById('displayName').innerText = `Welcome, ${localStorage.getItem('studentName')}!`;
-                document.getElementById('displayClass').innerText = localStorage.getItem('studentClass');
-            } else {
-                visitorView.classList.remove('hidden');
-                studentDashboard.classList.add('hidden');
-                authBtnText.innerText = 'Student Login';
-            }
+        function toggleAuthModal() {
+            alert('Student Login Portal coming soon! Please contact institute for credentials.');
         }
 
         function switchTab(tabName) {
             const visitorView = document.getElementById('visitorView');
             const coursesSection = document.getElementById('coursesSection');
             const studentDashboard = document.getElementById('studentDashboard');
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+            visitorView.classList.add('hidden');
+            coursesSection.classList.add('hidden');
+            studentDashboard.classList.add('hidden');
 
             if (tabName === 'home') {
-                if (isLoggedIn) {
-                    visitorView.classList.add('hidden');
-                    coursesSection.classList.add('hidden');
-                    studentDashboard.classList.remove('hidden');
-                } else {
-                    visitorView.classList.remove('hidden');
-                    coursesSection.classList.add('hidden');
-                    studentDashboard.classList.add('hidden');
-                }
-                window.scrollTo({top: 0, behavior: 'smooth'});
+                visitorView.classList.remove('hidden');
             } else if (tabName === 'courses') {
-                visitorView.classList.add('hidden');
-                studentDashboard.classList.add('hidden');
                 coursesSection.classList.remove('hidden');
-                window.scrollTo({top: 0, behavior: 'smooth'});
-            } else if (tabName === 'notes') {
-                if (!isLoggedIn) {
-                    alert('Please login as a student to access study notes!');
-                    toggleAuthModal();
-                } else {
-                    visitorView.classList.add('hidden');
-                    coursesSection.classList.add('hidden');
-                    studentDashboard.classList.remove('hidden');
-                    document.getElementById('notesSection').scrollIntoView({behavior: 'smooth'});
-                }
-            } else if (tabName === 'quiz') {
-                alert('Quiz section will be live soon!');
+            } else if (tabName === 'notes' || tabName === 'quiz') {
+                alert('Please login as a student to access study notes and quizzes.');
+                visitorView.classList.remove('hidden');
             }
         }
 
-        window.onload = function() {
-            loadDashboardState();
-        };
+        function submitStudentRegistration() {
+            const name = document.getElementById('regName').value;
+            const phone = document.getElementById('regPhone').value;
+            const studentClass = document.getElementById('regClass').value;
+            const school = document.getElementById('regSchool').value;
+            const subjects = document.getElementById('regSubjects').value;
+
+            if(!name || !phone) {
+                alert('Please enter your Name and Phone Number.');
+                return;
+            }
+
+            const whatsappUrl = `https://wa.me/918756866588?text=New%20Student%20Registration:%0A- Name: ${encodeURIComponent(name)}%0A- Phone: ${encodeURIComponent(phone)}%0A- Class: ${encodeURIComponent(studentClass)}%0A- School: ${encodeURIComponent(school)}%0A- Subjects: ${encodeURIComponent(subjects)}`;
+            window.open(whatsappUrl, '_blank');
+            toggleStudentRegModal();
+        }
+
+        function handleLogout() {
+            alert('Logged out successfully.');
+            switchTab('home');
+        }
     </script>
 </body>
 </html>
+    
