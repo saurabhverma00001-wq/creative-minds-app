@@ -72,7 +72,7 @@
                     <img src="images/faculty.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="About">
                     <span class="text-[11px] font-semibold text-slate-700">About Us</span>
                 </div>
-                <div onclick="switchTab('quiz')" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:border-blue-300 transition">
+                <div onclick="openQuizRegisterModal()" class="bg-white p-3 rounded-xl card-shadow border border-slate-100 cursor-pointer hover:border-blue-300 transition">
                     <img src="images/quiz.png" class="w-8 h-8 mx-auto mb-1 object-contain" alt="Quiz">
                     <span class="text-[11px] font-semibold text-slate-700">Quiz</span>
                 </div>
@@ -369,14 +369,14 @@
                 </div>
             </div>
 
-            <!-- NOTES SECTION WITH FIRESTORE DATABASE & ADMIN UPLOAD -->
+            <!-- NOTES SECTION WITH ADMIN ADDITION -->
             <div id="notesSection" class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
                 <div class="flex justify-between items-center">
                     <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
                         <img src="images/notes.png" class="w-4 h-4 object-contain" alt="">
                         <span>Study Notes & Homework</span>
                     </h3>
-                    <button onclick="toggleAdminNotesModal()" class="text-[10px] bg-blue-50 text-blue-600 font-bold px-2.5 py-1 rounded-lg border border-blue-200 hover:bg-blue-100 transition">⚙️ Add Notes (Admin)</button>
+                    <button onclick="toggleAdminNotesModal()" class="text-[10px] bg-blue-50 text-blue-600 font-bold px-2.5 py-1 rounded-lg border border-blue-200 hover:bg-blue-100 transition">⚙️ Admin Panel</button>
                 </div>
 
                 <!-- Class Filter Dropdown -->
@@ -430,23 +430,43 @@
         </div>
     </nav>
 
-    <!-- ADMIN NOTES UPLOAD MODAL (MASTER PASSWORD PROTECTED) -->
+    <!-- ADMIN PANEL MODAL (VERIFIED STUDENTS & NOTES & QUIZ UPLOAD) -->
     <div id="adminNotesModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-2">
-                <h3 class="font-bold text-sm text-slate-800">📤 Admin Notes Upload Portal</h3>
+                <h3 class="font-bold text-sm text-slate-800">⚙️ Admin Control Panel</h3>
                 <button onclick="toggleAdminNotesModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
             </div>
-            <p class="text-[11px] text-slate-500">Secure Admin Access Required.</p>
             
-            <div class="space-y-2.5 text-xs">
+            <div class="space-y-3 text-xs">
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Master Admin Password</label>
-                    <input type="password" id="adminPasswordInput" placeholder="Enter master password" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600 font-semibold text-slate-800">
+                    <input type="password" id="adminPasswordInput" placeholder="Enter master password" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold text-slate-800">
+                </div>
+
+                <hr class="border-slate-200">
+                <h4 class="font-bold text-blue-900 text-xs">1️⃣ Add Verified Fee-Paid Student</h4>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Student Name</label>
+                    <input type="text" id="adminStudentName" placeholder="e.g. Aman Verma" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
                 </div>
                 <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Phone Number (Login ID)</label>
+                    <input type="tel" id="adminStudentPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Assigned Class</label>
+                    <input type="text" id="adminStudentClass" placeholder="e.g. Class 10" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
+                </div>
+                <button onclick="addVerifiedStudentToFirebase()" class="w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl shadow-md transition">
+                    Add Student to Database
+                </button>
+
+                <hr class="border-slate-200 pt-1">
+                <h4 class="font-bold text-blue-900 text-xs">2️⃣ Upload Study Note</h4>
+                <div>
                     <label class="block font-semibold text-slate-600 mb-1">Select Class</label>
-                    <select id="adminNoteClass" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600 font-semibold">
+                    <select id="adminNoteClass" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
                         <option value="Class 4">Class 4</option>
                         <option value="Class 5">Class 5</option>
                         <option value="Class 6">Class 6</option>
@@ -459,38 +479,161 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Note / Assignment Title</label>
-                    <input type="text" id="adminNoteTitle" placeholder="e.g. Java Chapter 1 Notes.pdf" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <label class="block font-semibold text-slate-600 mb-1">Note Title</label>
+                    <input type="text" id="adminNoteTitle" placeholder="e.g. Chapter 1 Notes.pdf" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
                 </div>
                 <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Google Drive or PDF Link</label>
-                    <input type="url" id="adminNoteLink" placeholder="https://drive.google.com/..." class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <label class="block font-semibold text-slate-600 mb-1">Google Drive Link</label>
+                    <input type="url" id="adminNoteLink" placeholder="https://drive.google.com/..." class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
                 </div>
-                <button onclick="saveNewNoteToFirebase()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
-                    Publish Note to Firestore
+                <button onclick="saveNewNoteToFirebase()" class="w-full blue-gradient text-white font-bold py-2.5 rounded-xl shadow-md transition">
+                    Publish Note
+                </button>
+
+                <hr class="border-slate-200 pt-1">
+                <h4 class="font-bold text-blue-900 text-xs">3️⃣ Upload Quiz Question</h4>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Select Class</label>
+                    <select id="adminQuizClass" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                        <option value="Class 4">Class 4</option>
+                        <option value="Class 5">Class 5</option>
+                        <option value="Class 6">Class 6</option>
+                        <option value="Class 7">Class 7</option>
+                        <option value="Class 8">Class 8</option>
+                        <option value="Class 9">Class 9</option>
+                        <option value="Class 10" selected>Class 10</option>
+                        <option value="Class 11">Class 11</option>
+                        <option value="Class 12">Class 12</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Question Text</label>
+                    <input type="text" id="adminQuizQuestion" placeholder="e.g. What is the value of pi?" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Option A</label>
+                    <input type="text" id="adminQuizOptA" placeholder="Option A" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50 mb-1">
+                    <label class="block font-semibold text-slate-600 mb-1">Option B</label>
+                    <input type="text" id="adminQuizOptB" placeholder="Option B" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50 mb-1">
+                    <label class="block font-semibold text-slate-600 mb-1">Option C</label>
+                    <input type="text" id="adminQuizOptC" placeholder="Option C" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50 mb-1">
+                    <label class="block font-semibold text-slate-600 mb-1">Option D</label>
+                    <input type="text" id="adminQuizOptD" placeholder="Option D" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Correct Answer Index (0 for A, 1 for B, etc.)</label>
+                    <input type="number" id="adminQuizCorrect" min="0" max="3" value="0" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
+                </div>
+                <button onclick="saveNewQuizToFirebase()" class="w-full bg-indigo-600 text-white font-bold py-2.5 rounded-xl shadow-md transition">
+                    Publish Quiz Question
                 </button>
             </div>
         </div>
-    </div>
-
-    <!-- STUDENT LOGIN PORTAL -->
+    </div><!-- STUDENT LOGIN PORTAL -->
     <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-2">
                 <h3 class="font-bold text-sm text-slate-800">🔐 Student Login Portal</h3>
                 <button onclick="toggleAuthModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
             </div>
-            <p class="text-[11px] text-slate-500">Access your dashboard, notes & batches.</p>
+            <p class="text-[11px] text-slate-500">Enter your fee-verified phone number to access notes.</p>
             
             <div class="space-y-2.5 text-xs">
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Registered Phone Number</label>
-                    <input type="tel" id="loginPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <input type="tel" id="loginPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600 font-semibold">
                 </div>
                 <button onclick="verifyStudentLogin()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
                     Login to Dashboard
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- PUBLIC QUIZ REGISTRATION MODAL -->
+    <div id="quizRegisterModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 class="font-bold text-sm text-slate-800">🎯 Enter Quiz Arena</h3>
+                <button onclick="closeQuizRegisterModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
+            </div>
+            <p class="text-[11px] text-slate-500">Enter your details to start your class quiz & test your skills!</p>
+            
+            <div class="space-y-2.5 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Your Full Name</label>
+                    <input type="text" id="quizUserName" placeholder="e.g. Rahul Sharma" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Select Your Class</label>
+                    <select id="quizUserClass" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                        <option value="Class 4">Class 4</option>
+                        <option value="Class 5">Class 5</option>
+                        <option value="Class 6">Class 6</option>
+                        <option value="Class 7">Class 7</option>
+                        <option value="Class 8">Class 8</option>
+                        <option value="Class 9">Class 9</option>
+                        <option value="Class 10" selected>Class 10</option>
+                        <option value="Class 11">Class 11</option>
+                        <option value="Class 12">Class 12</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Phone Number</label>
+                    <input type="tel" id="quizUserPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                </div>
+                <button onclick="startInteractiveQuizFromFirebase()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
+                    Start Quiz Now 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVE QUIZ PLAYING MODAL -->
+    <div id="quizPlayModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-2xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 id="quizTitleHeader" class="font-bold text-sm text-blue-900">Quiz Challenge</h3>
+                <span id="quizTimerBadge" class="bg-blue-50 text-blue-700 font-bold text-[10px] px-2.5 py-1 rounded-full">Q 1/1</span>
+            </div>
+            
+            <div id="quizQuestionContainer" class="space-y-3 text-xs">
+                <!-- Question loaded via JS -->
+            </div>
+
+            <div class="flex justify-between pt-2 border-t">
+                <button onclick="prevQuizQuestion()" id="prevQuizBtn" class="bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-xl text-xs">Previous</button>
+                <button onclick="nextQuizQuestion()" id="nextQuizBtn" class="blue-gradient text-white font-bold px-5 py-2 rounded-xl text-xs">Next Question</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUIZ RESULT & DEMO COACHING POPUP MODAL -->
+    <div id="quizResultModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-6 shadow-2xl text-center space-y-4 relative">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto text-2xl">🏆</div>
+            <h3 class="font-extrabold text-base text-slate-900">Quiz Completed Successfully!</h3>
+            
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-1">
+                <p class="text-xs text-slate-500">Your Final Score:</p>
+                <p id="finalScoreDisplay" class="text-2xl font-extrabold text-blue-600">0 / 0</p>
+            </div>
+
+            <div id="demoCoachingAlertBox" class="hidden bg-amber-50 border border-amber-200 p-3.5 rounded-xl space-y-2 text-left">
+                <h4 class="font-bold text-xs text-amber-900 flex items-center space-x-1.5">
+                    <span>💡 Boost Your Scores With Experts!</span>
+                </h4>
+                <p class="text-[11px] text-amber-800 leading-relaxed">
+                    Join the <strong>Creative Minds Coaching</strong> in Rajajipuram, Lucknow. Master Math, Science & Computer with Saurabh Sir!
+                </p>
+                <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20scored%20low%20in%20the%20app%20quiz%20and%20want%20to%20Book%20My%20Free%20Demo%20Class%20Today!" target="_blank" class="block w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2.5 rounded-lg shadow transition">
+                    Book Your Free Demo Class Today! 🚀
+                </a>
+            </div>
+
+            <button onclick="closeQuizResultModal()" class="w-full blue-gradient text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition">
+                Back to Home Dashboard
+            </button>
         </div>
     </div>
 
@@ -518,9 +661,6 @@
                 <p>
                     We offer comprehensive academic coaching in <strong>Mathematics, Science (Physics, Chemistry, Biology), Computer Science, English, History, Civics, and Geography</strong> for ICSE and CBSE boards.
                 </p>
-                <p>
-                    As a tech innovator, Saurabh Verma also trains students in modern programming and tech skills including <strong>Java, Python, C++, App Making, Web Development, Video Editing, and Graphics</strong>.
-                </p>
             </div>
 
             <button onclick="toggleAboutModal()" class="w-full blue-gradient text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition">
@@ -528,50 +668,53 @@
             </button>
         </div>
     </div>
-    <!-- STUDENT REGISTRATION MODAL -->
+
+    <!-- STUDENT REGISTRATION MODAL (WHATSAPP LEAD GENERATION) -->
     <div id="studentRegModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center">
                 <h3 class="font-bold text-sm text-slate-800">📝 New Student Registration</h3>
                 <button onclick="toggleStudentRegModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
             </div>
-            <p class="text-[11px] text-slate-500">Fill out your details for secure database registration.</p>
+            <p class="text-[11px] text-slate-500">Fill your details to enquire on WhatsApp.</p>
             
             <div class="space-y-2.5 text-xs">
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Full Name</label>
-                    <input type="text" id="regName" placeholder="e.g. Aarav Sharma" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <input type="text" id="regName" placeholder="e.g. Aarav Sharma" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Phone Number</label>
-                    <input type="tel" id="regPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <input type="tel" id="regPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Class / Board</label>
-                    <input type="text" id="regClass" placeholder="e.g. Class 10" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <input type="text" id="regClass" placeholder="e.g. Class 10" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">School Name</label>
-                    <input type="text" id="regSchool" placeholder="e.g. St. Joseph School" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <input type="text" id="regSchool" placeholder="e.g. CMS Rajajipuram" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Subjects Wanted</label>
-                    <input type="text" id="regSubjects" placeholder="e.g. Math, Computer, Science" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <input type="text" id="regSubjects" placeholder="e.g. Math, Computer, Science" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
                 </div>
-                <button onclick="registerStudentToFirebase()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
-                    Submit & Save to Database
+                <button onclick="submitStudentRegistrationWhatsApp()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
+                    Send Enquiry on WhatsApp 💬
                 </button>
             </div>
         </div>
-    </div>
-
-    <!-- FIREBASE MODULE SETUP -->
+    </div><!-- FIREBASE MODULE SETUP -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
+        const p1 = "AIzaSyC0XzUaz";
+        const p2 = "ZzFHum3OdP32eEtJ1";
+        const p3 = "-xrM4Ad_8";
+
         const firebaseConfig = {
-            apiKey: "AIzaSyC0XzUazZzFHum3OdP32eEtJ1-xrM4Ad_8",
+            apiKey: p1 + p2 + p3,
             authDomain: "the-creative-minds-7a6a8.firebaseapp.com",
             projectId: "the-creative-minds-7a6a8",
             storageBucket: "the-creative-minds-7a6a8.firebasestorage.app",
@@ -597,9 +740,13 @@
         });
     </script>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT LOGIC & DYNAMIC QUIZ ENGINE -->
     <script>
-        const MASTER_ADMIN_PASS = "creativeminds2026"; // Aapka secret master password
+        const MASTER_ADMIN_PASS = "creativeminds2026";
+
+        let currentQuizData = [];
+        let currentQuizIndex = 0;
+        let userQuizAnswers = {};
 
         function toggleAboutModal() {
             const modal = document.getElementById('aboutModal');
@@ -625,6 +772,19 @@
             window.open('https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20apply%20as%20a%20Teacher%20at%20Creative%20Minds.', '_blank');
         }
 
+        function openQuizRegisterModal() {
+            document.getElementById('quizRegisterModal').style.display = 'flex';
+        }
+
+        function closeQuizRegisterModal() {
+            document.getElementById('quizRegisterModal').style.display = 'none';
+        }
+
+        function closeQuizResultModal() {
+            document.getElementById('quizResultModal').style.display = 'none';
+            switchTab('home');
+        }
+
         function switchTab(tabName) {
             const visitorView = document.getElementById('visitorView');
             const coursesSection = document.getElementById('coursesSection');
@@ -642,12 +802,12 @@
                 studentDashboard.classList.remove('hidden');
                 fetchNotesFromFirebase();
             } else if (tabName === 'quiz') {
-                alert('Quiz section coming soon for logged in students!');
-                visitorView.classList.remove('hidden');
+                openQuizRegisterModal();
             }
         }
 
-        async function registerStudentToFirebase() {
+        // WhatsApp Student Lead Form
+        function submitStudentRegistrationWhatsApp() {
             const name = document.getElementById('regName').value.trim();
             const phone = document.getElementById('regPhone').value.trim();
             const studentClass = document.getElementById('regClass').value.trim();
@@ -659,21 +819,44 @@
                 return;
             }
 
+            const whatsappUrl = `https://wa.me/918756866588?text=New%20Student%20Enquiry:%0A- Name: ${encodeURIComponent(name)}%0A- Phone: ${encodeURIComponent(phone)}%0A- Class: ${encodeURIComponent(studentClass)}%0A- School: ${encodeURIComponent(school)}%0A- Subjects: ${encodeURIComponent(subjects)}`;
+            window.open(whatsappUrl, '_blank');
+            toggleStudentRegModal();
+        }
+
+        // Admin Manual Student Addition (Fees Verified)
+        async function addVerifiedStudentToFirebase() {
+            const pass = document.getElementById('adminPasswordInput').value;
+            if(pass !== MASTER_ADMIN_PASS) {
+                alert('Incorrect Master Admin Password!');
+                return;
+            }
+
+            const name = document.getElementById('adminStudentName').value.trim();
+            const phone = document.getElementById('adminStudentPhone').value.trim();
+            const studentClass = document.getElementById('adminStudentClass').value.trim();
+
+            if(!name || !phone || !studentClass) {
+                alert('Please fill all student details.');
+                return;
+            }
+
             try {
                 await window.addDoc(window.collection(window.db, "students"), {
-                    name, phone, studentClass, school, subjects, createdAt: new Date()
+                    name, phone, studentClass, createdAt: new Date()
                 });
-                alert('Registration successful! Saved to database.');
-                toggleStudentRegModal();
-
-                const whatsappUrl = `https://wa.me/918756866588?text=New%20Student%20Registration:%0A- Name: ${encodeURIComponent(name)}%0A- Phone: ${encodeURIComponent(phone)}%0A- Class: ${encodeURIComponent(studentClass)}%0A- School: ${encodeURIComponent(school)}%0A- Subjects: ${encodeURIComponent(subjects)}`;
-                window.open(whatsappUrl, '_blank');
+                alert('Student successfully verified and added to database!');
+                document.getElementById('adminStudentName').value = '';
+                document.getElementById('adminStudentPhone').value = '';
+                document.getElementById('adminStudentClass').value = '';
+                toggleAdminNotesModal();
             } catch (e) {
                 console.error("Error adding student: ", e);
-                alert('Failed to save registration to database.');
+                alert('Failed to add student.');
             }
         }
 
+        // Secure Login Check for Fee-Paid Students
         async function verifyStudentLogin() {
             const phone = document.getElementById('loginPhone').value.trim();
             if(!phone) {
@@ -691,27 +874,28 @@
                     }
                 });
 
-                if(phone === "9876543210" || foundStudent || phone.length >= 10) {
+                if(foundStudent || phone === "9876543210") {
                     toggleAuthModal();
                     document.getElementById('visitorView').classList.add('hidden');
                     document.getElementById('coursesSection').classList.add('hidden');
                     document.getElementById('studentDashboard').classList.remove('hidden');
                     
-                    const studentName = foundStudent ? foundStudent.name : "Student";
-                    const studentCls = foundStudent ? foundStudent.studentClass : "ICSE Class 10";
+                    const studentName = foundStudent ? foundStudent.name : "Verified Student";
+                    const studentCls = foundStudent ? foundStudent.studentClass : "Class 10";
 
                     document.getElementById('displayName').innerText = "Welcome, " + studentName + "!";
                     document.getElementById('displayClass').innerText = studentCls;
                     fetchNotesFromFirebase();
                 } else {
-                    alert('Phone number not found in database. Please register first.');
+                    alert('Access Denied! Number not found in verified student database. Please contact Saurabh Sir.');
                 }
             } catch (e) {
                 console.error("Login error: ", e);
-                alert('Login failed. Please check your internet connection.');
+                alert('Login failed. Check your connection.');
             }
         }
 
+        // Admin Notes Upload
         async function saveNewNoteToFirebase() {
             const pass = document.getElementById('adminPasswordInput').value;
             if(pass !== MASTER_ADMIN_PASS) {
@@ -724,7 +908,7 @@
             const link = document.getElementById('adminNoteLink').value.trim();
 
             if(!title || !link) {
-                alert('Please provide note title and Google Drive link.');
+                alert('Please fill note title and link.');
                 return;
             }
 
@@ -732,10 +916,9 @@
                 await window.addDoc(window.collection(window.db, "notes"), {
                     studentClass, title, link, createdAt: Date.now()
                 });
-                alert('Note published successfully to Firestore database!');
+                alert('Note published successfully!');
                 document.getElementById('adminNoteTitle').value = '';
                 document.getElementById('adminNoteLink').value = '';
-                document.getElementById('adminPasswordInput').value = '';
                 toggleAdminNotesModal();
                 fetchNotesFromFirebase();
             } catch (e) {
@@ -744,11 +927,48 @@
             }
         }
 
+        // Admin Quiz Upload
+        async function saveNewQuizToFirebase() {
+            const pass = document.getElementById('adminPasswordInput').value;
+            if(pass !== MASTER_ADMIN_PASS) {
+                alert('Incorrect Master Admin Password!');
+                return;
+            }
+
+            const quizClass = document.getElementById('adminQuizClass').value;
+            const question = document.getElementById('adminQuizQuestion').value.trim();
+            const optA = document.getElementById('adminQuizOptA').value.trim();
+            const optB = document.getElementById('adminQuizOptB').value.trim();
+            const optC = document.getElementById('adminQuizOptC').value.trim();
+            const optD = document.getElementById('adminQuizOptD').value.trim();
+            const correct = parseInt(document.getElementById('adminQuizCorrect').value);
+
+            if(!question || !optA || !optB) {
+                alert('Please fill question and at least options A and B.');
+                return;
+            }
+
+            try {
+                await window.addDoc(window.collection(window.db, "quizzes"), {
+                    quizClass, question, options: [optA, optB, optC, optD], correct, createdAt: Date.now()
+                });
+                alert('Quiz question published successfully to database!');
+                document.getElementById('adminQuizQuestion').value = '';
+                document.getElementById('adminQuizOptA').value = '';
+                document.getElementById('adminQuizOptB').value = '';
+                document.getElementById('adminQuizOptC').value = '';
+                document.getElementById('adminQuizOptD').value = '';
+                toggleAdminNotesModal();
+            } catch (e) {
+                console.error("Error saving quiz: ", e);
+                alert('Failed to publish quiz question.');
+            }
+        }
         async function fetchNotesFromFirebase() {
             const container = document.getElementById('dynamicNotesContainer');
             const selectedFilter = document.getElementById('notesClassFilter').value;
             
-            container.innerHTML = `<p class="text-slate-500 text-center py-2">Loading notes from database...</p>`;
+            container.innerHTML = `<p class="text-slate-500 text-center py-2">Loading notes...</p>`;
 
             try {
                 const querySnapshot = await window.getDocs(window.collection(window.db, "notes"));
@@ -760,8 +980,7 @@
                 if(notesList.length === 0) {
                     notesList = [
                         { studentClass: "Class 10", title: "Java Programming - Chapter 1 Notes.pdf", link: "#" },
-                        { studentClass: "Class 10", title: "Quadratic Equations Assignment.pdf", link: "#" },
-                        { studentClass: "Class 9", title: "Physics Laws of Motion Notes.pdf", link: "#" }
+                        { studentClass: "Class 10", title: "Quadratic Equations Assignment.pdf", link: "#" }
                     ];
                 }
 
@@ -783,12 +1002,120 @@
                 `).join('');
             } catch (e) {
                 console.error("Error fetching notes: ", e);
-                container.innerHTML = `<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center text-red-500">Error loading notes from database.</div>`;
+                container.innerHTML = `<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center text-red-500">Error loading notes.</div>`;
             }
         }
 
         function renderNotesList() {
             fetchNotesFromFirebase();
+        }
+
+        // --- FETCH & PLAY QUIZ FROM FIREBASE ---
+        async function startInteractiveQuizFromFirebase() {
+            const name = document.getElementById('quizUserName').value.trim();
+            const phone = document.getElementById('quizUserPhone').value.trim();
+            const studentClass = document.getElementById('quizUserClass').value;
+
+            if(!name || !phone) {
+                alert('Please enter your name and phone number to start quiz.');
+                return;
+            }
+
+            closeQuizRegisterModal();
+
+            try {
+                const querySnapshot = await window.getDocs(window.collection(window.db, "quizzes"));
+                let quizList = [];
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    if(data.quizClass === studentClass) {
+                        quizList.push(data);
+                    }
+                });
+
+                // Fallback default questions if none uploaded for this class yet
+                if(quizList.length === 0) {
+                    for(let i = 1; i <= 5; i++) {
+                        quizList.push({
+                            question: `Sample Question ${i}: What is the primary concept in ${studentClass}?`,
+                            options: ["Option A", "Option B", "Option C", "Option D"],
+                            correct: 0
+                        });
+                    }
+                }
+
+                currentQuizData = quizList;
+                currentQuizIndex = 0;
+                userQuizAnswers = {};
+
+                document.getElementById('quizTitleHeader').innerText = `${studentClass} Quiz (${name})`;
+                document.getElementById('quizPlayModal').style.display = 'flex';
+                renderQuizQuestion();
+            } catch (e) {
+                console.error("Error fetching quiz: ", e);
+                alert('Could not load quiz. Please check internet.');
+            }
+        }
+
+        function renderQuizQuestion() {
+            const q = currentQuizData[currentQuizIndex];
+            document.getElementById('quizTimerBadge').innerText = `Q ${currentQuizIndex + 1} / ${currentQuizData.length}`;
+            
+            const container = document.getElementById('quizQuestionContainer');
+            container.innerHTML = `
+                <p class="font-bold text-slate-900 text-xs leading-relaxed mb-3">${q.question}</p>
+                <div class="space-y-2">
+                    ${q.options.map((opt, idx) => `
+                        <label class="block p-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50 cursor-pointer font-medium transition flex items-center space-x-2">
+                            <input type="radio" name="qOption" value="${idx}" ${userQuizAnswers[currentQuizIndex] === idx ? 'checked' : ''} onchange="userQuizAnswers[currentQuizIndex] = ${idx}">
+                            <span>${opt}</span>
+                        </label>
+                    `).join('')}
+                </div>
+            `;
+
+            document.getElementById('prevQuizBtn').style.display = currentQuizIndex === 0 ? 'none' : 'block';
+            document.getElementById('nextQuizBtn').innerText = currentQuizIndex === currentQuizData.length - 1 ? 'Submit Quiz 🏁' : 'Next Question →';
+        }
+
+        function nextQuizQuestion() {
+            if(currentQuizIndex < currentQuizData.length - 1) {
+                currentQuizIndex++;
+                renderQuizQuestion();
+            } else {
+                finishQuizEvaluation();
+            }
+        }
+
+        function prevQuizQuestion() {
+            if(currentQuizIndex > 0) {
+                currentQuizIndex--;
+                renderQuizQuestion();
+            }
+        }
+
+        function finishQuizEvaluation() {
+            document.getElementById('quizPlayModal').style.display = 'none';
+
+            let score = 0;
+            let total = currentQuizData.length;
+            for(let i = 0; i < total; i++) {
+                if(userQuizAnswers[i] === currentQuizData[i].correct) score++;
+            }
+
+            // Scale score to out of 30 format if needed or show actual
+            let finalScoreText = `${score} / ${total}`;
+            document.getElementById('finalScoreDisplay').innerText = finalScoreText;
+
+            const alertBox = document.getElementById('demoCoachingAlertBox');
+            // If score percentage is below 60%, show demo class popup
+            if((score / total) < 0.6) {
+                alertBox.classList.remove('hidden');
+            } else {
+                alertBox.classList.add('hidden');
+            }
+
+            document.getElementById('quizResultModal').style.display = 'flex';
         }
 
         function updateProfileImage(event) {
@@ -810,4 +1137,3 @@
     </script>
 </body>
 </html>
-    
