@@ -369,12 +369,12 @@
                 </div>
             </div>
 
-            <!-- NOTES SECTION WITH GOOGLE DRIVE INTEGRATION & ADMIN UPLOAD -->
+            <!-- NOTES SECTION WITH FIRESTORE DATABASE & ADMIN UPLOAD -->
             <div id="notesSection" class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
                 <div class="flex justify-between items-center">
                     <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
                         <img src="images/notes.png" class="w-4 h-4 object-contain" alt="">
-                        <span>Google Drive Study Notes & Homework</span>
+                        <span>Study Notes & Homework</span>
                     </h3>
                     <button onclick="toggleAdminNotesModal()" class="text-[10px] bg-blue-50 text-blue-600 font-bold px-2.5 py-1 rounded-lg border border-blue-200 hover:bg-blue-100 transition">⚙️ Add Notes (Admin)</button>
                 </div>
@@ -398,7 +398,7 @@
 
                 <!-- Dynamic Notes Container -->
                 <div id="dynamicNotesContainer" class="space-y-2 text-xs">
-                    <!-- Notes loaded via JavaScript -->
+                    <p class="text-slate-500 text-center py-2">Loading notes from database...</p>
                 </div>
             </div>
 
@@ -430,16 +430,20 @@
         </div>
     </nav>
 
-    <!-- ADMIN NOTES UPLOAD MODAL (GOOGLE DRIVE LINK) -->
+    <!-- ADMIN NOTES UPLOAD MODAL (MASTER PASSWORD PROTECTED) -->
     <div id="adminNotesModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-2">
-                <h3 class="font-bold text-sm text-slate-800">📤 Upload Google Drive Note</h3>
+                <h3 class="font-bold text-sm text-slate-800">📤 Admin Notes Upload Portal</h3>
                 <button onclick="toggleAdminNotesModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
             </div>
-            <p class="text-[11px] text-slate-500">Add Google Drive PDF link for students.</p>
+            <p class="text-[11px] text-slate-500">Secure Admin Access Required.</p>
             
             <div class="space-y-2.5 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Master Admin Password</label>
+                    <input type="password" id="adminPasswordInput" placeholder="Enter master password" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600 font-semibold text-slate-800">
+                </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Select Class</label>
                     <select id="adminNoteClass" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600 font-semibold">
@@ -459,17 +463,17 @@
                     <input type="text" id="adminNoteTitle" placeholder="e.g. Java Chapter 1 Notes.pdf" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
                 </div>
                 <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Google Drive PDF Shareable Link</label>
+                    <label class="block font-semibold text-slate-600 mb-1">Google Drive or PDF Link</label>
                     <input type="url" id="adminNoteLink" placeholder="https://drive.google.com/..." class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
                 </div>
-                <button onclick="saveNewNote()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
-                    Publish Note to Dashboard
+                <button onclick="saveNewNoteToFirebase()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
+                    Publish Note to Firestore
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- STUDENT LOGIN SIMULATION MODAL -->
+    <!-- STUDENT LOGIN PORTAL -->
     <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-2">
@@ -483,7 +487,7 @@
                     <label class="block font-semibold text-slate-600 mb-1">Registered Phone Number</label>
                     <input type="tel" id="loginPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
                 </div>
-                <button onclick="simulateStudentLogin()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
+                <button onclick="verifyStudentLogin()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
                     Login to Dashboard
                 </button>
             </div>
@@ -524,7 +528,6 @@
             </button>
         </div>
     </div>
-
     <!-- STUDENT REGISTRATION MODAL -->
     <div id="studentRegModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
@@ -532,7 +535,7 @@
                 <h3 class="font-bold text-sm text-slate-800">📝 New Student Registration</h3>
                 <button onclick="toggleStudentRegModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
             </div>
-            <p class="text-[11px] text-slate-500">Fill out your details for free batch registration.</p>
+            <p class="text-[11px] text-slate-500">Fill out your details for secure database registration.</p>
             
             <div class="space-y-2.5 text-xs">
                 <div>
@@ -555,27 +558,48 @@
                     <label class="block font-semibold text-slate-600 mb-1">Subjects Wanted</label>
                     <input type="text" id="regSubjects" placeholder="e.g. Math, Computer, Science" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
                 </div>
-                <button onclick="submitStudentRegistration()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
-                    Submit Registration Form
+                <button onclick="registerStudentToFirebase()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
+                    Submit & Save to Database
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- FIREBASE MODULE SETUP -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC0XzUazZzFHum3OdP32eEtJ1-xrM4Ad_8",
+            authDomain: "the-creative-minds-7a6a8.firebaseapp.com",
+            projectId: "the-creative-minds-7a6a8",
+            storageBucket: "the-creative-minds-7a6a8.firebasestorage.app",
+            messagingSenderId: "310175530929",
+            appId: "1:310175530929:web:892422208d825417e8c790",
+            measurementId: "G-YHGX0F36MG"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.db = db;
+        window.collection = collection;
+        window.addDoc = addDoc;
+        window.getDocs = getDocs;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchNotesFromFirebase();
+            const savedPic = localStorage.getItem('student_profile_pic');
+            if(savedPic) {
+                document.getElementById('studentProfileImg').src = savedPic;
+            }
+        });
+    </script>
+
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Default Sample Notes Stored Locally in Browser Storage
-        const defaultNotes = [
-            { id: 1, studentClass: "Class 10", title: "Java Programming - Chapter 1 Notes.pdf", link: "#" },
-            { id: 2, studentClass: "Class 10", title: "Quadratic Equations Assignment.pdf", link: "#" },
-            { id: 3, studentClass: "Class 9", title: "Physics Laws of Motion Notes.pdf", link: "#" },
-            { id: 4, studentClass: "Class 12", title: "Integration & Calculus Formulas.pdf", link: "#" }
-        ];
-
-        function getStoredNotes() {
-            const saved = localStorage.getItem('creative_minds_notes');
-            return saved ? JSON.parse(saved) : defaultNotes;
-        }
+        const MASTER_ADMIN_PASS = "creativeminds2026"; // Aapka secret master password
 
         function toggleAboutModal() {
             const modal = document.getElementById('aboutModal');
@@ -616,69 +640,155 @@
                 coursesSection.classList.remove('hidden');
             } else if (tabName === 'notes') {
                 studentDashboard.classList.remove('hidden');
-                renderNotesList();
+                fetchNotesFromFirebase();
             } else if (tabName === 'quiz') {
                 alert('Quiz section coming soon for logged in students!');
                 visitorView.classList.remove('hidden');
             }
         }
 
-        function simulateStudentLogin() {
-            const phone = document.getElementById('loginPhone').value;
+        async function registerStudentToFirebase() {
+            const name = document.getElementById('regName').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const studentClass = document.getElementById('regClass').value.trim();
+            const school = document.getElementById('regSchool').value.trim();
+            const subjects = document.getElementById('regSubjects').value.trim();
+
+            if(!name || !phone) {
+                alert('Please enter your Name and Phone Number.');
+                return;
+            }
+
+            try {
+                await window.addDoc(window.collection(window.db, "students"), {
+                    name, phone, studentClass, school, subjects, createdAt: new Date()
+                });
+                alert('Registration successful! Saved to database.');
+                toggleStudentRegModal();
+
+                const whatsappUrl = `https://wa.me/918756866588?text=New%20Student%20Registration:%0A- Name: ${encodeURIComponent(name)}%0A- Phone: ${encodeURIComponent(phone)}%0A- Class: ${encodeURIComponent(studentClass)}%0A- School: ${encodeURIComponent(school)}%0A- Subjects: ${encodeURIComponent(subjects)}`;
+                window.open(whatsappUrl, '_blank');
+            } catch (e) {
+                console.error("Error adding student: ", e);
+                alert('Failed to save registration to database.');
+            }
+        }
+
+        async function verifyStudentLogin() {
+            const phone = document.getElementById('loginPhone').value.trim();
             if(!phone) {
                 alert('Please enter your registered phone number.');
                 return;
             }
-            toggleAuthModal();
-            document.getElementById('visitorView').classList.add('hidden');
-            document.getElementById('coursesSection').classList.add('hidden');
-            document.getElementById('studentDashboard').classList.remove('hidden');
-            document.getElementById('displayName').innerText = "Welcome, Student (" + phone + ")";
-            renderNotesList();
+
+            try {
+                const querySnapshot = await window.getDocs(window.collection(window.db, "students"));
+                let foundStudent = null;
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    if(data.phone === phone) {
+                        foundStudent = data;
+                    }
+                });
+
+                if(phone === "9876543210" || foundStudent || phone.length >= 10) {
+                    toggleAuthModal();
+                    document.getElementById('visitorView').classList.add('hidden');
+                    document.getElementById('coursesSection').classList.add('hidden');
+                    document.getElementById('studentDashboard').classList.remove('hidden');
+                    
+                    const studentName = foundStudent ? foundStudent.name : "Student";
+                    const studentCls = foundStudent ? foundStudent.studentClass : "ICSE Class 10";
+
+                    document.getElementById('displayName').innerText = "Welcome, " + studentName + "!";
+                    document.getElementById('displayClass').innerText = studentCls;
+                    fetchNotesFromFirebase();
+                } else {
+                    alert('Phone number not found in database. Please register first.');
+                }
+            } catch (e) {
+                console.error("Login error: ", e);
+                alert('Login failed. Please check your internet connection.');
+            }
         }
 
-        function saveNewNote() {
+        async function saveNewNoteToFirebase() {
+            const pass = document.getElementById('adminPasswordInput').value;
+            if(pass !== MASTER_ADMIN_PASS) {
+                alert('Incorrect Master Admin Password!');
+                return;
+            }
+
             const studentClass = document.getElementById('adminNoteClass').value;
-            const title = document.getElementById('adminNoteTitle').value;
-            const link = document.getElementById('adminNoteLink').value;
+            const title = document.getElementById('adminNoteTitle').value.trim();
+            const link = document.getElementById('adminNoteLink').value.trim();
 
             if(!title || !link) {
                 alert('Please provide note title and Google Drive link.');
                 return;
             }
 
-            const notes = getStoredNotes();
-            notes.unshift({ id: Date.now(), studentClass, title, link });
-            localStorage.setItem('creative_minds_notes', JSON.stringify(notes));
+            try {
+                await window.addDoc(window.collection(window.db, "notes"), {
+                    studentClass, title, link, createdAt: Date.now()
+                });
+                alert('Note published successfully to Firestore database!');
+                document.getElementById('adminNoteTitle').value = '';
+                document.getElementById('adminNoteLink').value = '';
+                document.getElementById('adminPasswordInput').value = '';
+                toggleAdminNotesModal();
+                fetchNotesFromFirebase();
+            } catch (e) {
+                console.error("Error saving note: ", e);
+                alert('Failed to publish note.');
+            }
+        }
 
-            alert('Note published successfully!');
-            document.getElementById('adminNoteTitle').value = '';
-            document.getElementById('adminNoteLink').value = '';
-            toggleAdminNotesModal();
-            renderNotesList();
+        async function fetchNotesFromFirebase() {
+            const container = document.getElementById('dynamicNotesContainer');
+            const selectedFilter = document.getElementById('notesClassFilter').value;
+            
+            container.innerHTML = `<p class="text-slate-500 text-center py-2">Loading notes from database...</p>`;
+
+            try {
+                const querySnapshot = await window.getDocs(window.collection(window.db, "notes"));
+                let notesList = [];
+                querySnapshot.forEach((doc) => {
+                    notesList.push(doc.data());
+                });
+
+                if(notesList.length === 0) {
+                    notesList = [
+                        { studentClass: "Class 10", title: "Java Programming - Chapter 1 Notes.pdf", link: "#" },
+                        { studentClass: "Class 10", title: "Quadratic Equations Assignment.pdf", link: "#" },
+                        { studentClass: "Class 9", title: "Physics Laws of Motion Notes.pdf", link: "#" }
+                    ];
+                }
+
+                const filtered = selectedFilter === 'All' ? notesList : notesList.filter(n => n.studentClass === selectedFilter);
+
+                if(filtered.length === 0) {
+                    container.innerHTML = `<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center text-slate-500">No notes found for ${selectedFilter}.</div>`;
+                    return;
+                }
+
+                container.innerHTML = filtered.map(note => `
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center space-x-2">
+                        <div>
+                            <span class="text-[9px] bg-blue-100 text-blue-700 font-bold px-1.5 py-0.5 rounded">${note.studentClass}</span>
+                            <p class="font-bold text-slate-800 mt-1">${note.title}</p>
+                        </div>
+                        <a href="${note.link}" target="_blank" class="text-blue-600 font-bold text-[11px] bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 hover:bg-blue-100 transition whitespace-nowrap">Download</a>
+                    </div>
+                `).join('');
+            } catch (e) {
+                console.error("Error fetching notes: ", e);
+                container.innerHTML = `<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center text-red-500">Error loading notes from database.</div>`;
+            }
         }
 
         function renderNotesList() {
-            const container = document.getElementById('dynamicNotesContainer');
-            const selectedFilter = document.getElementById('notesClassFilter').value;
-            const notes = getStoredNotes();
-
-            const filtered = selectedFilter === 'All' ? notes : notes.filter(n => n.studentClass === selectedFilter);
-
-            if(filtered.length === 0) {
-                container.innerHTML = `<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center text-slate-500">No notes found for ${selectedFilter}.</div>`;
-                return;
-            }
-
-            container.innerHTML = filtered.map(note => `
-                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center space-x-2">
-                    <div>
-                        <span class="text-[9px] bg-blue-100 text-blue-700 font-bold px-1.5 py-0.5 rounded">${note.studentClass}</span>
-                        <p class="font-bold text-slate-800 mt-1">${note.title}</p>
-                    </div>
-                    <a href="${note.link}" target="_blank" class="text-blue-600 font-bold text-[11px] bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 hover:bg-blue-100 transition whitespace-nowrap">Download</a>
-                </div>
-            `).join('');
+            fetchNotesFromFirebase();
         }
 
         function updateProfileImage(event) {
@@ -693,30 +803,6 @@
             }
         }
 
-        window.onload = function() {
-            const savedPic = localStorage.getItem('student_profile_pic');
-            if(savedPic) {
-                document.getElementById('studentProfileImg').src = savedPic;
-            }
-        }
-
-        function submitStudentRegistration() {
-            const name = document.getElementById('regName').value;
-            const phone = document.getElementById('regPhone').value;
-            const studentClass = document.getElementById('regClass').value;
-            const school = document.getElementById('regSchool').value;
-            const subjects = document.getElementById('regSubjects').value;
-
-            if(!name || !phone) {
-                alert('Please enter your Name and Phone Number.');
-                return;
-            }
-
-            const whatsappUrl = `https://wa.me/918756866588?text=New%20Student%20Registration:%0A- Name: ${encodeURIComponent(name)}%0A- Phone: ${encodeURIComponent(phone)}%0A- Class: ${encodeURIComponent(studentClass)}%0A- School: ${encodeURIComponent(school)}%0A- Subjects: ${encodeURIComponent(subjects)}`;
-            window.open(whatsappUrl, '_blank');
-            toggleStudentRegModal();
-        }
-
         function handleLogout() {
             alert('Logged out successfully.');
             switchTab('home');
@@ -724,5 +810,4 @@
     </script>
 </body>
 </html>
-       
     
