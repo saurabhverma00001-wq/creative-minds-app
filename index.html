@@ -210,19 +210,9 @@
         <!-- DEDICATED COURSES & COMBO CATALOG VIEW (Initially Hidden) -->
         <div id="coursesSection" class="hidden space-y-4">
             
-            <!-- Top MP4 Video Banner -->
-            <div class="w-full rounded-2xl overflow-hidden shadow-xl relative bg-slate-900 border border-slate-200">
-                <video autoplay muted loop playsinline class="w-full h-36 object-cover opacity-90">
-                    <source src="images/course_banner_animated.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-4 text-white">
-                    <span class="bg-blue-600 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full w-max mb-1">
-                        🚀 Creative Minds Hub
-                    </span>
-                    <h2 class="text-sm font-extrabold">Course Catalog & Fee Structure</h2>
-                    <p class="text-[10px] text-slate-200">Master ICSE/CBSE Academics & Tech Skills with Saurabh Sir</p>
-                </div>
+            <!-- Top Clean Video Banner (Fixed Overlap & Layout Issue) -->
+            <div class="rounded-2xl overflow-hidden card-shadow bg-blue-900 border border-blue-800">
+                <video src="images/course_banner_animated.mp4" autoplay loop muted playsinline class="w-full h-auto object-cover rounded-2xl"></video>
             </div>
 
             <!-- Back to Home Button -->
@@ -230,44 +220,44 @@
                 <span>← Back to Home / Dashboard</span>
             </button>
 
-            <!-- Academic Courses Section -->
-            <div class="space-y-2.5">
+            <!-- Academic Courses Section (Fixed Font Size for Price Lists) -->
+            <div class="space-y-3">
                 <h3 class="font-bold text-sm text-slate-800 px-1">📚 ICSE / CBSE Academic Courses</h3>
                 
                 <!-- Mathematics Card -->
-                <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-3">
-                    <img src="images/course_math.png" alt="Math" class="w-12 h-12 rounded-xl object-cover bg-blue-50 p-1 border">
+                <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-start space-x-3.5">
+                    <img src="images/course_math.png" alt="Math" class="w-12 h-12 rounded-xl object-cover bg-blue-50 p-1 border mt-0.5">
                     <div class="flex-1">
-                        <div class="flex justify-between items-center">
+                        <div class="flex justify-between items-center mb-1.5">
                             <h4 class="font-bold text-xs text-slate-900">Mathematics (Class 4 - 12)</h4>
                             <span class="text-[9px] bg-blue-50 text-blue-600 font-bold px-2 py-0.5 rounded-full">Core</span>
                         </div>
-                        <div class="text-[10px] text-slate-600 mt-1 space-y-0.5">
-                            <p>• Class 4th to 8th: <strong class="text-slate-900">₹499 /mo</strong></p>
-                            <p>• Class 9th & 10th: <strong class="text-slate-900">₹999 /mo</strong></p>
-                            <p>• Class 11th & 12th: <strong class="text-slate-900">₹1,299 /mo</strong></p>
+                        <div class="text-xs text-slate-700 space-y-1 font-medium bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                            <div class="flex justify-between"><span>• Class 4th to 8th:</span> <strong class="text-slate-900">₹499 /mo</strong></div>
+                            <div class="flex justify-between"><span>• Class 9th & 10th:</span> <strong class="text-slate-900">₹999 /mo</strong></div>
+                            <div class="flex justify-between"><span>• Class 11th & 12th:</span> <strong class="text-slate-900">₹1,299 /mo</strong></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Science Card -->
-                <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-3">
-                    <img src="images/course_science.png" alt="Science" class="w-12 h-12 rounded-xl object-cover bg-blue-50 p-1 border">
+                <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-start space-x-3.5">
+                    <img src="images/course_science.png" alt="Science" class="w-12 h-12 rounded-xl object-cover bg-blue-50 p-1 border mt-0.5">
                     <div class="flex-1">
-                        <div class="flex justify-between items-center">
+                        <div class="flex justify-between items-center mb-1.5">
                             <h4 class="font-bold text-xs text-slate-900">Science (Physics, Chem, Bio)</h4>
                         </div>
-                        <div class="text-[10px] text-slate-600 mt-1 space-y-0.5">
-                            <p>• Class 4th to 8th: <strong class="text-slate-900">₹499 /mo</strong></p>
-                            <p>• Class 9th & 10th: <strong class="text-slate-900">₹999 /mo</strong></p>
-                            <p>• Class 11th & 12th: <strong class="text-slate-900">₹1,299 /mo</strong></p>
+                        <div class="text-xs text-slate-700 space-y-1 font-medium bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                            <div class="flex justify-between"><span>• Class 4th to 8th:</span> <strong class="text-slate-900">₹499 /mo</strong></div>
+                            <div class="flex justify-between"><span>• Class 9th & 10th:</span> <strong class="text-slate-900">₹999 /mo</strong></div>
+                            <div class="flex justify-between"><span>• Class 11th & 12th:</span> <strong class="text-slate-900">₹1,299 /mo</strong></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Computer & English Grid -->
-                <div class="grid grid-cols-2 gap-2">
-                    <div class="bg-white p-3 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-2.5">
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div class="bg-white p-3.5 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-3">
                         <img src="images/course_computer.png" alt="Computer" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
                         <div>
                             <h4 class="font-bold text-xs text-slate-900">Computer</h4>
@@ -275,7 +265,7 @@
                             <p class="text-xs font-bold text-blue-600 mt-0.5">₹1,299 <span class="text-[8px] text-slate-400">/mo</span></p>
                         </div>
                     </div>
-                    <div class="bg-white p-3 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-2.5">
+                    <div class="bg-white p-3.5 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-3">
                         <img src="images/course_english.png" alt="English" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
                         <div>
                             <h4 class="font-bold text-xs text-slate-900">English</h4>
@@ -286,72 +276,73 @@
                 </div>
             </div>
 
-            <!-- Professional Tech Courses -->
-            <div class="space-y-2.5 pt-2">
+            <!-- Professional Tech Courses (Emojis Removed, Clean Image Icons Used) -->
+            <div class="space-y-3 pt-2">
                 <h3 class="font-bold text-sm text-slate-800 px-1">⚡ Professional Tech & Craft Courses</h3>
                 
                 <!-- App Making -->
-                <div class="bg-white p-3.5 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
+                <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
                     <div class="flex items-center space-x-3">
-                        <img src="images/course_app.png" alt="App Making" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
+                        <img src="images/course_app.png" alt="App Making" class="w-11 h-11 rounded-xl object-cover bg-blue-50 p-1 border">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-900">📱 App Making</h4>
+                            <h4 class="font-bold text-xs text-slate-900">App Making</h4>
                             <p class="text-[10px] text-slate-500">Android & PWA Live Projects</p>
                         </div>
                     </div>
                     <div class="text-right">
-                        <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-xl block mb-1">₹1,999</span>
-                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20App%20Making%20Course." target="_blank" class="text-[9px] bg-slate-900 text-white px-2.5 py-1 rounded-lg font-semibold">Join</a>
+                        <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-xl block mb-1.5">₹1,999</span>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20App%20Making%20Course." target="_blank" class="text-[10px] bg-slate-900 text-white px-3 py-1 rounded-lg font-semibold shadow">Join</a>
                     </div>
                 </div>
 
-                <!-- Web Development -->
-                <div class="bg-white p-3.5 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
+                   <!-- Web Development -->
+                <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
                     <div class="flex items-center space-x-3">
-                        <img src="images/course_web.png" alt="Web Dev" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
+                        <img src="images/course_web.png" alt="Web Dev" class="w-11 h-11 rounded-xl object-cover bg-blue-50 p-1 border">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-900">🌐 Web Development</h4>
+                            <h4 class="font-bold text-xs text-slate-900">Web Development</h4>
                             <p class="text-[10px] text-slate-500">HTML, CSS, JavaScript</p>
                         </div>
                     </div>
                     <div class="text-right">
-                        <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-xl block mb-1">₹1,499</span>
-                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Web%20Development%20Course." target="_blank" class="text-[9px] bg-slate-900 text-white px-2.5 py-1 rounded-lg font-semibold">Join</a>
+                        <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-xl block mb-1.5">₹1,499</span>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Web%20Development%20Course." target="_blank" class="text-[10px] bg-slate-900 text-white px-3 py-1 rounded-lg font-semibold shadow">Join</a>
                     </div>
                 </div>
 
                 <!-- Video Editing -->
-                <div class="bg-white p-3.5 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
+                <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
                     <div class="flex items-center space-x-3">
-                        <img src="images/course_video.png" alt="Video Editing" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
+                        <img src="images/course_video.png" alt="Video Editing" class="w-11 h-11 rounded-xl object-cover bg-blue-50 p-1 border">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-900">🎬 Video Editing & Graphics</h4>
+                            <h4 class="font-bold text-xs text-slate-900">Video Editing & Graphics</h4>
                             <p class="text-[10px] text-slate-500">Premiere Pro, Canva & Reels</p>
                         </div>
                     </div>
                     <div class="text-right">
-                        <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-xl block mb-1">₹1,299</span>
-                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Video%20Editing%20Course." target="_blank" class="text-[9px] bg-slate-900 text-white px-2.5 py-1 rounded-lg font-semibold">Join</a>
+                        <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-xl block mb-1.5">₹1,299</span>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Video%20Editing%20Course." target="_blank" class="text-[10px] bg-slate-900 text-white px-3 py-1 rounded-lg font-semibold shadow">Join</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Special 30% Off Mega Tech Combo Section -->
-            <div class="bg-gradient-to-br from-indigo-900 to-blue-900 p-4 rounded-2xl text-white shadow-xl space-y-3 relative overflow-hidden">
+            <!-- Mega Tech Combo Pack (Fixed Dark Blue Theme & Premium Styling) -->
+            <div class="blue-gradient p-5 rounded-2xl text-white shadow-xl space-y-3 relative overflow-hidden border border-blue-700">
                 <div class="flex items-center space-x-3">
-                    <img src="images/discount_badge.png" alt="Discount" class="w-10 h-10 rounded-xl object-cover bg-amber-400 p-1 shadow">
+                    <img src="images/discount_badge.png" alt="Discount" class="w-11 h-11 rounded-xl object-cover bg-amber-400 p-1 shadow">
                     <div>
-                        <h4 class="font-bold text-xs text-amber-300">🔥 Mega Tech Combo Pack (30% OFF)</h4>
+                        <span class="bg-amber-400 text-slate-900 text-[9px] font-extrabold px-2 py-0.5 rounded uppercase tracking-wider">30% OFF</span>
+                        <h4 class="font-bold text-xs text-amber-300 mt-1">Mega Tech Combo Pack</h4>
                         <p class="text-[10px] text-slate-200">App Making + Web Dev + Video Editing Bundle</p>
                     </div>
                 </div>
-                <div class="flex justify-between items-center pt-2 border-t border-blue-800">
+                <div class="flex justify-between items-center pt-2.5 border-t border-blue-800/80">
                     <div>
                         <span class="text-[10px] line-through text-slate-400">₹4,797</span>
                         <p class="text-sm font-extrabold text-white">₹3,350 <span class="text-[9px] font-normal text-amber-300">(Save 30%)</span></p>
                     </div>
-                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20claim%20the%20Mega%20Tech%20Combo%20Pack%20with%2030%20percent%20discount%20at%20Rs.%203350." target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center space-x-1">
-                        <span>💬 Claim 30% Off via WhatsApp</span>
+                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20claim%20the%20Mega%20Tech%20Combo%20Pack%20with%2030%20percent%20discount%20at%20Rs.%203350." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-[11px] px-3.5 py-2.5 rounded-xl shadow-md transition flex items-center space-x-1">
+                        <span>💬 Claim 30% Off</span>
                     </a>
                 </div>
             </div>
