@@ -40,6 +40,8 @@
     </header>
 
     <main class="w-full px-4 py-4 flex-1 flex flex-col space-y-4 overflow-y-auto pb-20">
+        
+        <!-- VISITOR HOME VIEW -->
         <div id="visitorView" class="space-y-5">
             
             <div class="rounded-2xl overflow-hidden card-shadow bg-blue-900 border border-blue-800">
@@ -76,7 +78,7 @@
                 </div>
             </div>
 
-            <section id="coursesSection" class="space-y-3">
+            <section class="space-y-3">
                 <div class="flex justify-between items-center">
                     <h2 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
                         <span class="w-2 h-4 bg-blue-600 rounded-full inline-block"></span>
@@ -197,7 +199,7 @@
             <div class="blue-gradient text-white p-5 rounded-2xl card-shadow text-center space-y-3">
                 <span class="bg-emerald-500 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider">🚀 Register For Free</span>
                 <h3 class="font-bold text-sm">Want to Join Creative Minds?</h3>
-                <p class="text-xs text-blue-200">Register now for new batches in Rajajipuram, Lucknow.</p>
+                <p class="text-[10px] text-blue-200">Register now for new batches in Rajajipuram, Lucknow.</p>
                 <a href="https://wa.me/918756866588?text=Hello,%20I%20want%20to%20enquire%20about%20admissions%20at%20Creative%20Minds." target="_blank" class="inline-flex items-center justify-center space-x-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2.5 px-5 rounded-xl shadow-md w-full transition">
                     <span class="text-base">💬</span>
                     <span>Chat on WhatsApp</span>
@@ -205,6 +207,158 @@
             </div>
         </div>
 
+        <!-- DEDICATED COURSES & COMBO CATALOG VIEW (Initially Hidden) -->
+        <div id="coursesSection" class="hidden space-y-4">
+            
+            <!-- Top MP4 Video Banner -->
+            <div class="w-full rounded-2xl overflow-hidden shadow-xl relative bg-slate-900 border border-slate-200">
+                <video autoplay muted loop playsinline class="w-full h-36 object-cover opacity-90">
+                    <source src="images/course_banner_animated.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-4 text-white">
+                    <span class="bg-blue-600 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full w-max mb-1">
+                        🚀 Creative Minds Hub
+                    </span>
+                    <h2 class="text-sm font-extrabold">Course Catalog & Fee Structure</h2>
+                    <p class="text-[10px] text-slate-200">Master ICSE/CBSE Academics & Tech Skills with Saurabh Sir</p>
+                </div>
+            </div>
+
+            <!-- Back to Home Button -->
+            <button onclick="switchTab('home')" class="w-full bg-white border border-slate-200 text-slate-700 font-bold text-xs py-2.5 rounded-xl shadow-sm hover:bg-slate-50 transition flex items-center justify-center space-x-1">
+                <span>← Back to Home / Dashboard</span>
+            </button>
+
+            <!-- Academic Courses Section -->
+            <div class="space-y-2.5">
+                <h3 class="font-bold text-sm text-slate-800 px-1">📚 ICSE / CBSE Academic Courses</h3>
+                
+                <!-- Mathematics Card -->
+                <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-3">
+                    <img src="images/course_math.png" alt="Math" class="w-12 h-12 rounded-xl object-cover bg-blue-50 p-1 border">
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-xs text-slate-900">Mathematics (Class 4 - 12)</h4>
+                            <span class="text-[9px] bg-blue-50 text-blue-600 font-bold px-2 py-0.5 rounded-full">Core</span>
+                        </div>
+                        <div class="text-[10px] text-slate-600 mt-1 space-y-0.5">
+                            <p>• Class 4th to 8th: <strong class="text-slate-900">₹499 /mo</strong></p>
+                            <p>• Class 9th & 10th: <strong class="text-slate-900">₹999 /mo</strong></p>
+                            <p>• Class 11th & 12th: <strong class="text-slate-900">₹1,299 /mo</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Science Card -->
+                <div class="bg-white p-4 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-3">
+                    <img src="images/course_science.png" alt="Science" class="w-12 h-12 rounded-xl object-cover bg-blue-50 p-1 border">
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <h4 class="font-bold text-xs text-slate-900">Science (Physics, Chem, Bio)</h4>
+                        </div>
+                        <div class="text-[10px] text-slate-600 mt-1 space-y-0.5">
+                            <p>• Class 4th to 8th: <strong class="text-slate-900">₹499 /mo</strong></p>
+                            <p>• Class 9th & 10th: <strong class="text-slate-900">₹999 /mo</strong></p>
+                            <p>• Class 11th & 12th: <strong class="text-slate-900">₹1,299 /mo</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Computer & English Grid -->
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="bg-white p-3 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-2.5">
+                        <img src="images/course_computer.png" alt="Computer" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-900">Computer</h4>
+                            <p class="text-[9px] text-slate-500">Java, Python</p>
+                            <p class="text-xs font-bold text-blue-600 mt-0.5">₹1,299 <span class="text-[8px] text-slate-400">/mo</span></p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl shadow-md border border-slate-100 flex items-center space-x-2.5">
+                        <img src="images/course_english.png" alt="English" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-900">English</h4>
+                            <p class="text-[9px] text-slate-500">Lit & Lang</p>
+                            <p class="text-xs font-bold text-blue-600 mt-0.5">₹799 <span class="text-[8px] text-slate-400">/mo</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Tech Courses -->
+            <div class="space-y-2.5 pt-2">
+                <h3 class="font-bold text-sm text-slate-800 px-1">⚡ Professional Tech & Craft Courses</h3>
+                
+                <!-- App Making -->
+                <div class="bg-white p-3.5 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <img src="images/course_app.png" alt="App Making" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-900">📱 App Making</h4>
+                            <p class="text-[10px] text-slate-500">Android & PWA Live Projects</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-xl block mb-1">₹1,999</span>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20App%20Making%20Course." target="_blank" class="text-[9px] bg-slate-900 text-white px-2.5 py-1 rounded-lg font-semibold">Join</a>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="bg-white p-3.5 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <img src="images/course_web.png" alt="Web Dev" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-900">🌐 Web Development</h4>
+                            <p class="text-[10px] text-slate-500">HTML, CSS, JavaScript</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-xl block mb-1">₹1,499</span>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Web%20Development%20Course." target="_blank" class="text-[9px] bg-slate-900 text-white px-2.5 py-1 rounded-lg font-semibold">Join</a>
+                    </div>
+                </div>
+
+                <!-- Video Editing -->
+                <div class="bg-white p-3.5 rounded-2xl shadow-md border border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <img src="images/course_video.png" alt="Video Editing" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-900">🎬 Video Editing & Graphics</h4>
+                            <p class="text-[10px] text-slate-500">Premiere Pro, Canva & Reels</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-xl block mb-1">₹1,299</span>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Video%20Editing%20Course." target="_blank" class="text-[9px] bg-slate-900 text-white px-2.5 py-1 rounded-lg font-semibold">Join</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special 30% Off Mega Tech Combo Section -->
+            <div class="bg-gradient-to-br from-indigo-900 to-blue-900 p-4 rounded-2xl text-white shadow-xl space-y-3 relative overflow-hidden">
+                <div class="flex items-center space-x-3">
+                    <img src="images/discount_badge.png" alt="Discount" class="w-10 h-10 rounded-xl object-cover bg-amber-400 p-1 shadow">
+                    <div>
+                        <h4 class="font-bold text-xs text-amber-300">🔥 Mega Tech Combo Pack (30% OFF)</h4>
+                        <p class="text-[10px] text-slate-200">App Making + Web Dev + Video Editing Bundle</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-2 border-t border-blue-800">
+                    <div>
+                        <span class="text-[10px] line-through text-slate-400">₹4,797</span>
+                        <p class="text-sm font-extrabold text-white">₹3,350 <span class="text-[9px] font-normal text-amber-300">(Save 30%)</span></p>
+                    </div>
+                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20claim%20the%20Mega%20Tech%20Combo%20Pack%20with%2030%20percent%20discount%20at%20Rs.%203350." target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center space-x-1">
+                        <span>💬 Claim 30% Off via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- STUDENT DASHBOARD VIEW -->
         <div id="studentDashboard" class="hidden space-y-4">
             <div class="blue-gradient text-white p-5 rounded-2xl card-shadow relative overflow-hidden">
                 <div class="relative z-10 space-y-1">
@@ -276,42 +430,39 @@
     </nav>
 
     <!-- DEDICATED ABOUT US & FOUNDER MODAL -->
-<div id="aboutModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
-    <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
-        <div class="flex justify-between items-center border-b pb-2">
-            <h3 class="font-bold text-sm text-slate-800">🏆 About Creative Minds</h3>
-            <button onclick="toggleAboutModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
-        </div>
-        
-        <!-- Founder Image Placeholder -->
-        <div class="flex flex-col items-center space-y-2">
-            <img src="images/founder.png" alt="Founder" class="w-24 h-24 rounded-full object-cover border-4 border-blue-600 shadow-md bg-slate-200">
-            <div class="text-center">
-                <h4 class="font-extrabold text-sm text-slate-900">Saurabh Verma</h4>
-                <p class="text-[10px] text-blue-600 font-semibold">B.Tech (ECE) | CMS Lucknow Alumnus</p>
-                <p class="text-[9px] text-slate-500">Founder & Lead Instructor (Teaching Since 2016)</p>
+    <div id="aboutModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 class="font-bold text-sm text-slate-800">🏆 About Creative Minds</h3>
+                <button onclick="toggleAboutModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
             </div>
-        </div>
+            
+            <div class="flex flex-col items-center space-y-2">
+                <img src="images/founder.png" alt="Founder" class="w-24 h-24 rounded-full object-cover border-4 border-blue-600 shadow-md bg-slate-200">
+                <div class="text-center">
+                    <h4 class="font-extrabold text-sm text-slate-900">Saurabh Verma</h4>
+                    <p class="text-[10px] text-blue-600 font-semibold">B.Tech (ECE) | CMS Lucknow Alumnus</p>
+                    <p class="text-[9px] text-slate-500">Founder & Lead Instructor (Teaching Since 2016)</p>
+                </div>
+            </div>
 
-        <!-- Professional Institute Description based on your details -->
-        <div class="space-y-2 text-xs text-slate-600 leading-relaxed">
-            <p>
-                <strong>Creative Minds</strong> was established in 2016 in Rajajipuram, Lucknow by <strong>Saurabh Verma</strong> (CMS Lucknow alumnus and B.Tech in Electronics & Communication Engineering). With over 10 years of rich teaching experience, we specialize in mentoring students, especially from City Montessori School (CMS).
-            </p>
-            <p>
-                We offer comprehensive academic coaching in <strong>Mathematics (Applied,Core & Standard), Science (Physics, Chemistry, Biology), Computer Science, English Literature, language & Speaking, History, Civics, and Geography</strong> for ICSE and CBSE boards.
-            </p>
-            <p>
-                As a tech innovator who builds custom apps and websites, Saurabh Verma also trains students in modern programming and tech skills including <strong>Java, Python, C++, HTML Coding, AI, App Making, Web Development, Video Editing, and Graphics</strong>.
-            </p>
-        </div>
+            <div class="space-y-2 text-xs text-slate-600 leading-relaxed">
+                <p>
+                    <strong>Creative Minds</strong> was established in 2016 in Rajajipuram, Lucknow by <strong>Saurabh Verma</strong> (CMS Lucknow alumnus and B.Tech in Electronics & Communication Engineering). With over 10 years of rich teaching experience, we specialize in mentoring students, especially from City Montessori School (CMS).
+                </p>
+                <p>
+                    We offer comprehensive academic coaching in <strong>Mathematics, Science (Physics, Chemistry, Biology), Computer Science, English, History, Civics, and Geography</strong> for ICSE and CBSE boards.
+                </p>
+                <p>
+                    As a tech innovator, Saurabh Verma also trains students in modern programming and tech skills including <strong>Java, Python, C++, App Making, Web Development, Video Editing, and Graphics</strong>.
+                </p>
+            </div>
 
-        <button onclick="toggleAboutModal()" class="w-full blue-gradient text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition">
-            Close About Section
-        </button>
+            <button onclick="toggleAboutModal()" class="w-full blue-gradient text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition">
+                Close About Section
+            </button>
+        </div>
     </div>
-</div>
-    
 
     <div id="studentRegModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
@@ -496,6 +647,7 @@
 
             if (isLoggedIn === 'true') {
                 visitorView.classList.add('hidden');
+                document.getElementById('coursesSection').classList.add('hidden');
                 studentDashboard.classList.remove('hidden');
                 authBtnText.innerText = 'My Dashboard';
 
@@ -509,25 +661,39 @@
         }
 
         function switchTab(tabName) {
-            if (localStorage.getItem('isLoggedIn') !== 'true') {
-                if (tabName === 'home') {
-                    window.scrollTo({top: 0, behavior: 'smooth'});
-                } else if (tabName === 'courses') {
-                    document.getElementById('coursesSection').scrollIntoView({behavior: 'smooth'});
-                } else if (tabName === 'notes') {
+            const visitorView = document.getElementById('visitorView');
+            const coursesSection = document.getElementById('coursesSection');
+            const studentDashboard = document.getElementById('studentDashboard');
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+            if (tabName === 'home') {
+                if (isLoggedIn) {
+                    visitorView.classList.add('hidden');
+                    coursesSection.classList.add('hidden');
+                    studentDashboard.classList.remove('hidden');
+                } else {
+                    visitorView.classList.remove('hidden');
+                    coursesSection.classList.add('hidden');
+                    studentDashboard.classList.add('hidden');
+                }
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            } else if (tabName === 'courses') {
+                visitorView.classList.add('hidden');
+                studentDashboard.classList.add('hidden');
+                coursesSection.classList.remove('hidden');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            } else if (tabName === 'notes') {
+                if (!isLoggedIn) {
                     alert('Please login as a student to access study notes!');
                     toggleAuthModal();
-                } else if (tabName === 'quiz') {
-                    alert('Quiz section will be live soon!');
-                }
-            } else {
-                if (tabName === 'home' || tabName === 'courses') {
-                    window.scrollTo({top: 0, behavior: 'smooth'});
-                } else if (tabName === 'notes') {
+                } else {
+                    visitorView.classList.add('hidden');
+                    coursesSection.classList.add('hidden');
+                    studentDashboard.classList.remove('hidden');
                     document.getElementById('notesSection').scrollIntoView({behavior: 'smooth'});
-                } else if (tabName === 'batches') {
-                    document.getElementById('batchesSection').scrollIntoView({behavior: 'smooth'});
                 }
+            } else if (tabName === 'quiz') {
+                alert('Quiz section will be live soon!');
             }
         }
 
