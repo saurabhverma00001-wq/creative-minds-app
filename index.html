@@ -340,10 +340,15 @@
 
         <!-- STUDENT DASHBOARD VIEW -->
         <div id="studentDashboard" class="hidden space-y-4">
-            <div class="blue-gradient text-white p-5 rounded-2xl card-shadow relative overflow-hidden">
-                <div class="relative z-10 space-y-1">
+            <div class="blue-gradient text-white p-5 rounded-2xl card-shadow relative overflow-hidden flex items-center space-x-4">
+                <div class="relative">
+                    <img id="studentProfileImg" src="images/student_1.png" alt="Profile" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md bg-slate-700">
+                    <label for="profileImgInput" class="absolute bottom-0 right-0 bg-blue-600 text-white p-1 rounded-full cursor-pointer text-[10px] shadow" title="Change Photo">📷</label>
+                    <input type="file" id="profileImgInput" accept="image/*" class="hidden" onchange="updateProfileImage(event)">
+                </div>
+                <div class="relative z-10 space-y-1 flex-1">
                     <span class="bg-blue-600 text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full font-bold">Student Portal</span>
-                    <h2 id="displayName" class="font-extrabold text-base pt-2">Welcome, Student!</h2>
+                    <h2 id="displayName" class="font-extrabold text-base pt-1">Welcome, Student!</h2>
                     <p class="text-xs text-blue-200">Class: <span id="displayClass" class="font-semibold text-white">ICSE Class 10</span></p>
                 </div>
             </div>
@@ -364,20 +369,36 @@
                 </div>
             </div>
 
+            <!-- NOTES SECTION WITH GOOGLE DRIVE INTEGRATION & ADMIN UPLOAD -->
             <div id="notesSection" class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
-                <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
-                    <img src="images/notes.png" class="w-4 h-4 object-contain" alt="">
-                    <span>Latest Study Notes & Homework</span>
-                </h3>
-                <div class="space-y-2 text-xs">
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center">
-                        <p class="font-bold text-slate-800">Java Programming - Chapter 1 Notes.pdf</p>
-                        <span class="text-blue-600 font-bold text-[11px] cursor-pointer" onclick="alert('Downloading Java Notes...')">Download</span>
-                    </div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center">
-                        <p class="font-bold text-slate-800">Quadratic Equations Assignment.pdf</p>
-                        <span class="text-blue-600 font-bold text-[11px] cursor-pointer" onclick="alert('Downloading Assignment...')">Download</span>
-                    </div>
+                <div class="flex justify-between items-center">
+                    <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
+                        <img src="images/notes.png" class="w-4 h-4 object-contain" alt="">
+                        <span>Google Drive Study Notes & Homework</span>
+                    </h3>
+                    <button onclick="toggleAdminNotesModal()" class="text-[10px] bg-blue-50 text-blue-600 font-bold px-2.5 py-1 rounded-lg border border-blue-200 hover:bg-blue-100 transition">⚙️ Add Notes (Admin)</button>
+                </div>
+
+                <!-- Class Filter Dropdown -->
+                <div class="flex items-center space-x-2 bg-slate-50 p-2 rounded-xl border border-slate-200 text-xs">
+                    <span class="font-bold text-slate-700">Filter Class:</span>
+                    <select id="notesClassFilter" onchange="renderNotesList()" class="bg-white border border-slate-300 rounded-lg p-1 text-xs font-semibold text-slate-800 focus:outline-none flex-1">
+                        <option value="All">All Classes</option>
+                        <option value="Class 4">Class 4</option>
+                        <option value="Class 5">Class 5</option>
+                        <option value="Class 6">Class 6</option>
+                        <option value="Class 7">Class 7</option>
+                        <option value="Class 8">Class 8</option>
+                        <option value="Class 9">Class 9</option>
+                        <option value="Class 10" selected>Class 10</option>
+                        <option value="Class 11">Class 11</option>
+                        <option value="Class 12">Class 12</option>
+                    </select>
+                </div>
+
+                <!-- Dynamic Notes Container -->
+                <div id="dynamicNotesContainer" class="space-y-2 text-xs">
+                    <!-- Notes loaded via JavaScript -->
                 </div>
             </div>
 
@@ -408,6 +429,66 @@
             </button>
         </div>
     </nav>
+
+    <!-- ADMIN NOTES UPLOAD MODAL (GOOGLE DRIVE LINK) -->
+    <div id="adminNotesModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 class="font-bold text-sm text-slate-800">📤 Upload Google Drive Note</h3>
+                <button onclick="toggleAdminNotesModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
+            </div>
+            <p class="text-[11px] text-slate-500">Add Google Drive PDF link for students.</p>
+            
+            <div class="space-y-2.5 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Select Class</label>
+                    <select id="adminNoteClass" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600 font-semibold">
+                        <option value="Class 4">Class 4</option>
+                        <option value="Class 5">Class 5</option>
+                        <option value="Class 6">Class 6</option>
+                        <option value="Class 7">Class 7</option>
+                        <option value="Class 8">Class 8</option>
+                        <option value="Class 9">Class 9</option>
+                        <option value="Class 10" selected>Class 10</option>
+                        <option value="Class 11">Class 11</option>
+                        <option value="Class 12">Class 12</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Note / Assignment Title</label>
+                    <input type="text" id="adminNoteTitle" placeholder="e.g. Java Chapter 1 Notes.pdf" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Google Drive PDF Shareable Link</label>
+                    <input type="url" id="adminNoteLink" placeholder="https://drive.google.com/..." class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <button onclick="saveNewNote()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
+                    Publish Note to Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STUDENT LOGIN SIMULATION MODAL -->
+    <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 class="font-bold text-sm text-slate-800">🔐 Student Login Portal</h3>
+                <button onclick="toggleAuthModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
+            </div>
+            <p class="text-[11px] text-slate-500">Access your dashboard, notes & batches.</p>
+            
+            <div class="space-y-2.5 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Registered Phone Number</label>
+                    <input type="tel" id="loginPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                </div>
+                <button onclick="simulateStudentLogin()" class="w-full blue-gradient text-white font-bold py-3 rounded-xl shadow-md transition mt-2">
+                    Login to Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- DEDICATED ABOUT US & FOUNDER MODAL -->
     <div id="aboutModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
@@ -464,7 +545,7 @@
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Class / Board</label>
-                    <input type="text" id="regClass" placeholder="e.g. ICSE Class 10" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
+                    <input type="text" id="regClass" placeholder="e.g. Class 10" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600">
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">School Name</label>
@@ -483,6 +564,19 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        // Default Sample Notes Stored Locally in Browser Storage
+        const defaultNotes = [
+            { id: 1, studentClass: "Class 10", title: "Java Programming - Chapter 1 Notes.pdf", link: "#" },
+            { id: 2, studentClass: "Class 10", title: "Quadratic Equations Assignment.pdf", link: "#" },
+            { id: 3, studentClass: "Class 9", title: "Physics Laws of Motion Notes.pdf", link: "#" },
+            { id: 4, studentClass: "Class 12", title: "Integration & Calculus Formulas.pdf", link: "#" }
+        ];
+
+        function getStoredNotes() {
+            const saved = localStorage.getItem('creative_minds_notes');
+            return saved ? JSON.parse(saved) : defaultNotes;
+        }
+
         function toggleAboutModal() {
             const modal = document.getElementById('aboutModal');
             modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
@@ -493,12 +587,18 @@
             modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        function toggleTeacherModal() {
-            window.open('https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20apply%20as%20a%20Teacher%20at%20Creative%20Minds.', '_blank');
+        function toggleAuthModal() {
+            const modal = document.getElementById('authModal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        function toggleAuthModal() {
-            alert('Student Login Portal coming soon! Please contact institute for credentials.');
+        function toggleAdminNotesModal() {
+            const modal = document.getElementById('adminNotesModal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleTeacherModal() {
+            window.open('https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20apply%20as%20a%20Teacher%20at%20Creative%20Minds.', '_blank');
         }
 
         function switchTab(tabName) {
@@ -514,9 +614,89 @@
                 visitorView.classList.remove('hidden');
             } else if (tabName === 'courses') {
                 coursesSection.classList.remove('hidden');
-            } else if (tabName === 'notes' || tabName === 'quiz') {
-                alert('Please login as a student to access study notes and quizzes.');
+            } else if (tabName === 'notes') {
+                studentDashboard.classList.remove('hidden');
+                renderNotesList();
+            } else if (tabName === 'quiz') {
+                alert('Quiz section coming soon for logged in students!');
                 visitorView.classList.remove('hidden');
+            }
+        }
+
+        function simulateStudentLogin() {
+            const phone = document.getElementById('loginPhone').value;
+            if(!phone) {
+                alert('Please enter your registered phone number.');
+                return;
+            }
+            toggleAuthModal();
+            document.getElementById('visitorView').classList.add('hidden');
+            document.getElementById('coursesSection').classList.add('hidden');
+            document.getElementById('studentDashboard').classList.remove('hidden');
+            document.getElementById('displayName').innerText = "Welcome, Student (" + phone + ")";
+            renderNotesList();
+        }
+
+        function saveNewNote() {
+            const studentClass = document.getElementById('adminNoteClass').value;
+            const title = document.getElementById('adminNoteTitle').value;
+            const link = document.getElementById('adminNoteLink').value;
+
+            if(!title || !link) {
+                alert('Please provide note title and Google Drive link.');
+                return;
+            }
+
+            const notes = getStoredNotes();
+            notes.unshift({ id: Date.now(), studentClass, title, link });
+            localStorage.setItem('creative_minds_notes', JSON.stringify(notes));
+
+            alert('Note published successfully!');
+            document.getElementById('adminNoteTitle').value = '';
+            document.getElementById('adminNoteLink').value = '';
+            toggleAdminNotesModal();
+            renderNotesList();
+        }
+
+        function renderNotesList() {
+            const container = document.getElementById('dynamicNotesContainer');
+            const selectedFilter = document.getElementById('notesClassFilter').value;
+            const notes = getStoredNotes();
+
+            const filtered = selectedFilter === 'All' ? notes : notes.filter(n => n.studentClass === selectedFilter);
+
+            if(filtered.length === 0) {
+                container.innerHTML = `<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center text-slate-500">No notes found for ${selectedFilter}.</div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(note => `
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center space-x-2">
+                    <div>
+                        <span class="text-[9px] bg-blue-100 text-blue-700 font-bold px-1.5 py-0.5 rounded">${note.studentClass}</span>
+                        <p class="font-bold text-slate-800 mt-1">${note.title}</p>
+                    </div>
+                    <a href="${note.link}" target="_blank" class="text-blue-600 font-bold text-[11px] bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 hover:bg-blue-100 transition whitespace-nowrap">Download</a>
+                </div>
+            `).join('');
+        }
+
+        function updateProfileImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('studentProfileImg').src = e.target.result;
+                    localStorage.setItem('student_profile_pic', e.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        window.onload = function() {
+            const savedPic = localStorage.getItem('student_profile_pic');
+            if(savedPic) {
+                document.getElementById('studentProfileImg').src = savedPic;
             }
         }
 
@@ -544,4 +724,5 @@
     </script>
 </body>
 </html>
+       
     
