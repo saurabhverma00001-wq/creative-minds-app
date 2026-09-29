@@ -26,7 +26,7 @@
 <body class="bg-slate-50 h-screen w-full m-0 p-0 flex flex-col justify-between overflow-x-hidden"> 
     <header class="blue-gradient text-white sticky top-0 z-50 shadow-md">
         <div class="px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="handleSecretAdminTrigger()">
                 <img src="images/logo.png" alt="Logo" class="w-10 h-10 rounded-full object-cover border-2 border-blue-400">
                 <div>
                     <h1 class="font-bold text-sm leading-tight">Creative Minds</h1>
@@ -291,7 +291,7 @@
                     <div class="flex items-center space-x-3">
                         <img src="images/course_web.png" alt="Web Dev" class="w-11 h-11 rounded-xl object-cover bg-blue-50 p-1 border">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-900">Web Development</h4>
+                              <h4 class="font-bold text-xs text-slate-900">Web Development</h4>
                             <p class="text-[10px] text-slate-500">HTML, CSS, JavaScript</p>
                         </div>
                     </div>
@@ -361,7 +361,7 @@
                 <div class="space-y-2">
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-800">Mathematics & Computer Batches</h4>
+                            <h4 id="displayEnrolledBatch" class="font-bold text-xs text-slate-800">Mathematics & Computer Batches</h4>
                             <p class="text-[10px] text-slate-500">Batch Timing: 4:00 PM - 5:30 PM</p>
                         </div>
                         <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-md">Active</span>
@@ -369,14 +369,13 @@
                 </div>
             </div>
 
-            <!-- NOTES SECTION WITH ADMIN ADDITION -->
+            <!-- NOTES SECTION -->
             <div id="notesSection" class="bg-white p-4 rounded-2xl card-shadow border border-slate-100 space-y-3">
                 <div class="flex justify-between items-center">
                     <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-2">
                         <img src="images/notes.png" class="w-4 h-4 object-contain" alt="">
                         <span>Study Notes & Homework</span>
                     </h3>
-                    <button onclick="toggleAdminNotesModal()" class="text-[10px] bg-blue-50 text-blue-600 font-bold px-2.5 py-1 rounded-lg border border-blue-200 hover:bg-blue-100 transition">⚙️ Admin Panel</button>
                 </div>
 
                 <!-- Class Filter Dropdown -->
@@ -390,7 +389,7 @@
                         <option value="Class 7">Class 7</option>
                         <option value="Class 8">Class 8</option>
                         <option value="Class 9">Class 9</option>
-                        <option value="Class 10" selected>Class 10</option>
+                        <option value="Class 10">Class 10</option>
                         <option value="Class 11">Class 11</option>
                         <option value="Class 12">Class 12</option>
                     </select>
@@ -430,7 +429,7 @@
         </div>
     </nav>
 
-    <!-- ADMIN PANEL MODAL (VERIFIED STUDENTS & NOTES & QUIZ UPLOAD) -->
+    <!-- HIDDEN ADMIN PANEL MODAL (SECRET TRIPLE CLICK ON HEADER LOGO) -->
     <div id="adminNotesModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-2">
@@ -448,15 +447,19 @@
                 <h4 class="font-bold text-blue-900 text-xs">1️⃣ Add Verified Fee-Paid Student</h4>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Student Name</label>
-                    <input type="text" id="adminStudentName" placeholder="e.g. Aman Verma" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
+                    <input type="text" id="adminStudentName" placeholder="e.g. Ayaan Sharma" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Phone Number (Login ID)</label>
                     <input type="tel" id="adminStudentPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
                 </div>
                 <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Assigned Class</label>
-                    <input type="text" id="adminStudentClass" placeholder="e.g. Class 10" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
+                    <label class="block font-semibold text-slate-600 mb-1">Assigned Class / Board</label>
+                    <input type="text" id="adminStudentClass" placeholder="e.g. Class 6" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Enrolled Course</label>
+                    <input type="text" id="adminStudentCourse" placeholder="e.g. Mathematics & Computer Batches" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
                 </div>
                 <button onclick="addVerifiedStudentToFirebase()" class="w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl shadow-md transition">
                     Add Student to Database
@@ -480,7 +483,7 @@
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Note Title</label>
-                    <input type="text" id="adminNoteTitle" placeholder="e.g. Chapter 1 Notes.pdf" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
+                    <input type="text" id="adminNoteTitle" placeholder="e.g. Russian revolution" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50">
                 </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Google Drive Link</label>
@@ -529,16 +532,26 @@
                 </button>
             </div>
         </div>
-    </div><!-- STUDENT LOGIN PORTAL -->
+    </div>
+
+    <!-- STUDENT LOGIN PORTAL (NAME, CLASS, BOARD & PHONE VERIFICATION) -->
     <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-2">
                 <h3 class="font-bold text-sm text-slate-800">🔐 Student Login Portal</h3>
                 <button onclick="toggleAuthModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm">✕</button>
             </div>
-            <p class="text-[11px] text-slate-500">Enter your fee-verified phone number to access notes.</p>
+            <p class="text-[11px] text-slate-500">Enter your exact registered details to access your dashboard & notes.</p>
             
             <div class="space-y-2.5 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Student Name</label>
+                    <input type="text" id="loginName" placeholder="e.g. Ayaan sharma" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Class / Board</label>
+                    <input type="text" id="loginClass" placeholder="e.g. Class 6" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                </div>
                 <div>
                     <label class="block font-semibold text-slate-600 mb-1">Registered Phone Number</label>
                     <input type="tel" id="loginPhone" placeholder="e.g. 9876543210" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-blue-600 font-semibold">
@@ -550,7 +563,7 @@
         </div>
     </div>
 
-    <!-- PUBLIC QUIZ REGISTRATION MODAL -->
+        <!-- PUBLIC QUIZ REGISTRATION MODAL -->
     <div id="quizRegisterModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative">
             <div class="flex justify-between items-center border-b pb-2">
@@ -668,8 +681,7 @@
             </button>
         </div>
     </div>
-
-    <!-- STUDENT REGISTRATION MODAL (WHATSAPP LEAD GENERATION) -->
+      <!-- STUDENT REGISTRATION MODAL -->
     <div id="studentRegModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center">
@@ -704,7 +716,9 @@
                 </button>
             </div>
         </div>
-    </div><!-- FIREBASE MODULE SETUP -->
+    </div>
+
+    <!-- FIREBASE MODULE SETUP -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
@@ -740,13 +754,29 @@
         });
     </script>
 
-    <!-- JAVASCRIPT LOGIC & DYNAMIC QUIZ ENGINE -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         const MASTER_ADMIN_PASS = "creativeminds2026";
 
         let currentQuizData = [];
         let currentQuizIndex = 0;
         let userQuizAnswers = {};
+        let adminClickCount = 0;
+        let adminClickTimer = null;
+
+        // Secret Admin Panel Trigger (Triple click on Header Logo)
+        function handleSecretAdminTrigger() {
+            adminClickCount++;
+            if(adminClickCount === 1) {
+                adminClickTimer = setTimeout(() => {
+                    adminClickCount = 0;
+                }, 600);
+            } else if(adminClickCount === 3) {
+                clearTimeout(adminClickTimer);
+                adminClickCount = 0;
+                toggleAdminNotesModal();
+            }
+        }
 
         function toggleAboutModal() {
             const modal = document.getElementById('aboutModal');
@@ -806,7 +836,6 @@
             }
         }
 
-        // WhatsApp Student Lead Form
         function submitStudentRegistrationWhatsApp() {
             const name = document.getElementById('regName').value.trim();
             const phone = document.getElementById('regPhone').value.trim();
@@ -824,7 +853,7 @@
             toggleStudentRegModal();
         }
 
-        // Admin Manual Student Addition (Fees Verified)
+        // Admin Manual Student Addition with Course and Class Mapping
         async function addVerifiedStudentToFirebase() {
             const pass = document.getElementById('adminPasswordInput').value;
             if(pass !== MASTER_ADMIN_PASS) {
@@ -835,32 +864,36 @@
             const name = document.getElementById('adminStudentName').value.trim();
             const phone = document.getElementById('adminStudentPhone').value.trim();
             const studentClass = document.getElementById('adminStudentClass').value.trim();
+            const enrolledCourse = document.getElementById('adminStudentCourse').value.trim();
 
-            if(!name || !phone || !studentClass) {
-                alert('Please fill all student details.');
+            if(!name || !phone || !studentClass || !enrolledCourse) {
+                alert('Please fill all student details including class and enrolled course.');
                 return;
             }
 
             try {
                 await window.addDoc(window.collection(window.db, "students"), {
-                    name, phone, studentClass, createdAt: new Date()
+                    name, phone, studentClass, enrolledCourse, createdAt: new Date()
                 });
                 alert('Student successfully verified and added to database!');
                 document.getElementById('adminStudentName').value = '';
                 document.getElementById('adminStudentPhone').value = '';
                 document.getElementById('adminStudentClass').value = '';
+                document.getElementById('adminStudentCourse').value = '';
                 toggleAdminNotesModal();
             } catch (e) {
                 console.error("Error adding student: ", e);
                 alert('Failed to add student.');
             }
         }
-
-        // Secure Login Check for Fee-Paid Students
+        // Secure Login Verification for Name, Class, Board & Phone
         async function verifyStudentLogin() {
+            const name = document.getElementById('loginName').value.trim();
+            const studentClass = document.getElementById('loginClass').value.trim();
             const phone = document.getElementById('loginPhone').value.trim();
-            if(!phone) {
-                alert('Please enter your registered phone number.');
+
+            if(!name || !studentClass || !phone) {
+                alert('Please enter Name, Class, and Phone Number.');
                 return;
             }
 
@@ -869,25 +902,37 @@
                 let foundStudent = null;
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
-                    if(data.phone === phone) {
+                    if(data.phone === phone && data.name.toLowerCase() === name.toLowerCase()) {
                         foundStudent = data;
                     }
                 });
 
-                if(foundStudent || phone === "9876543210") {
+                if(foundStudent || (phone === "9876543210" && name.toLowerCase() === "ayaan sharma")) {
                     toggleAuthModal();
                     document.getElementById('visitorView').classList.add('hidden');
                     document.getElementById('coursesSection').classList.add('hidden');
                     document.getElementById('studentDashboard').classList.remove('hidden');
                     
-                    const studentName = foundStudent ? foundStudent.name : "Verified Student";
-                    const studentCls = foundStudent ? foundStudent.studentClass : "Class 10";
+                    const studentName = foundStudent ? foundStudent.name : name;
+                    const studentCls = foundStudent ? foundStudent.studentClass : studentClass;
+                    const studentBatch = foundStudent ? foundStudent.enrolledCourse : "Mathematics & Computer Batches";
 
                     document.getElementById('displayName').innerText = "Welcome, " + studentName + "!";
                     document.getElementById('displayClass').innerText = studentCls;
+                    document.getElementById('displayEnrolledBatch').innerText = studentBatch;
+
+                    // Automatically select student class in Notes filter
+                    const filterDropdown = document.getElementById('notesClassFilter');
+                    for(let i = 0; i < filterDropdown.options.length; i++) {
+                        if(filterDropdown.options[i].value.toLowerCase() === studentCls.toLowerCase()) {
+                            filterDropdown.selectedIndex = i;
+                            break;
+                        }
+                    }
+
                     fetchNotesFromFirebase();
                 } else {
-                    alert('Access Denied! Number not found in verified student database. Please contact Saurabh Sir.');
+                    alert('Access Denied! Details do not match verified student database. Please check Name, Class and Phone number.');
                 }
             } catch (e) {
                 console.error("Login error: ", e);
@@ -895,7 +940,6 @@
             }
         }
 
-        // Admin Notes Upload
         async function saveNewNoteToFirebase() {
             const pass = document.getElementById('adminPasswordInput').value;
             if(pass !== MASTER_ADMIN_PASS) {
@@ -927,7 +971,6 @@
             }
         }
 
-        // Admin Quiz Upload
         async function saveNewQuizToFirebase() {
             const pass = document.getElementById('adminPasswordInput').value;
             if(pass !== MASTER_ADMIN_PASS) {
@@ -944,7 +987,7 @@
             const correct = parseInt(document.getElementById('adminQuizCorrect').value);
 
             if(!question || !optA || !optB) {
-                alert('Please fill question and at least options A and B.');
+                alert('Please fill question and options.');
                 return;
             }
 
@@ -952,7 +995,7 @@
                 await window.addDoc(window.collection(window.db, "quizzes"), {
                     quizClass, question, options: [optA, optB, optC, optD], correct, createdAt: Date.now()
                 });
-                alert('Quiz question published successfully to database!');
+                alert('Quiz question published successfully!');
                 document.getElementById('adminQuizQuestion').value = '';
                 document.getElementById('adminQuizOptA').value = '';
                 document.getElementById('adminQuizOptB').value = '';
@@ -964,6 +1007,7 @@
                 alert('Failed to publish quiz question.');
             }
         }
+
         async function fetchNotesFromFirebase() {
             const container = document.getElementById('dynamicNotesContainer');
             const selectedFilter = document.getElementById('notesClassFilter').value;
@@ -980,7 +1024,7 @@
                 if(notesList.length === 0) {
                     notesList = [
                         { studentClass: "Class 10", title: "Java Programming - Chapter 1 Notes.pdf", link: "#" },
-                        { studentClass: "Class 10", title: "Quadratic Equations Assignment.pdf", link: "#" }
+                        { studentClass: "Class 6", title: "Russian revolution", link: "#" }
                     ];
                 }
 
@@ -1010,7 +1054,6 @@
             fetchNotesFromFirebase();
         }
 
-        // --- FETCH & PLAY QUIZ FROM FIREBASE ---
         async function startInteractiveQuizFromFirebase() {
             const name = document.getElementById('quizUserName').value.trim();
             const phone = document.getElementById('quizUserPhone').value.trim();
@@ -1020,7 +1063,6 @@
                 alert('Please enter your name and phone number to start quiz.');
                 return;
             }
-
             closeQuizRegisterModal();
 
             try {
@@ -1033,7 +1075,6 @@
                     }
                 });
 
-                // Fallback default questions if none uploaded for this class yet
                 if(quizList.length === 0) {
                     for(let i = 1; i <= 5; i++) {
                         quizList.push({
@@ -1053,7 +1094,7 @@
                 renderQuizQuestion();
             } catch (e) {
                 console.error("Error fetching quiz: ", e);
-                alert('Could not load quiz. Please check internet.');
+                alert('Could not load quiz.');
             }
         }
 
@@ -1103,12 +1144,9 @@
                 if(userQuizAnswers[i] === currentQuizData[i].correct) score++;
             }
 
-            // Scale score to out of 30 format if needed or show actual
-            let finalScoreText = `${score} / ${total}`;
-            document.getElementById('finalScoreDisplay').innerText = finalScoreText;
+            document.getElementById('finalScoreDisplay').innerText = `${score} / ${total}`;
 
             const alertBox = document.getElementById('demoCoachingAlertBox');
-            // If score percentage is below 60%, show demo class popup
             if((score / total) < 0.6) {
                 alertBox.classList.remove('hidden');
             } else {
