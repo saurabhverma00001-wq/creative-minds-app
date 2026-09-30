@@ -545,7 +545,6 @@
             </div>
         </div>
     </div>
-
     <!-- PUBLIC QUIZ REGISTRATION MODAL -->
     <div id="quizRegisterModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative">
@@ -731,9 +730,32 @@
             if(savedPic) {
                 document.getElementById('studentProfileImg').src = savedPic;
             }
+
+            // Check persistent login session on page load
+            const savedSession = localStorage.getItem('cm_logged_in_student');
+            if (savedSession) {
+                try {
+                    const studentData = JSON.parse(savedSession);
+                    loggedInStudentClass = studentData.studentClass;
+                    
+                    document.getElementById('visitorView').classList.add('hidden');
+                    document.getElementById('coursesSection').classList.add('hidden');
+                    document.getElementById('studentDashboard').classList.remove('hidden');
+                    document.getElementById('topLoginBtn').classList.add('hidden');
+
+                    document.getElementById('displayName').innerText = "Welcome, " + studentData.name + "!";
+                    document.getElementById('displayClass').innerText = studentData.studentClass;
+                    document.getElementById('displayEnrolledBatch').innerText = studentData.enrolledCourse;
+                    document.getElementById('notesSectionTitle').innerText = `Study Notes & Homework (${studentData.studentClass})`;
+
+                    fetchNotesFromFirebase(studentData.studentClass);
+                } catch (e) {
+                    console.error("Session restore error", e);
+                    localStorage.removeItem('cm_logged_in_student');
+                }
+            }
         });
     </script>
-
     <!-- JAVASCRIPT LOGIC -->
     <script>
         const MASTER_ADMIN_PASS = "creativeminds2026";
@@ -817,15 +839,19 @@
             studentDashboard.classList.add('hidden');
 
             if (tabName === 'home') {
-                visitorView.classList.remove('hidden');
-                // Show top login button only if not logged in
-                if (!loggedInStudentClass) {
+                if (loggedInStudentClass) {
+                    studentDashboard.classList.remove('hidden');
+                    topLoginBtn.classList.add('hidden');
+                } else {
+                    visitorView.classList.remove('hidden');
                     topLoginBtn.classList.remove('hidden');
                 }
             } else if (tabName === 'courses') {
                 coursesSection.classList.remove('hidden');
                 if (!loggedInStudentClass) {
                     topLoginBtn.classList.remove('hidden');
+                } else {
+                    topLoginBtn.classList.add('hidden');
                 }
             } else if (tabName === 'notes') {
                 if (!loggedInStudentClass) {
@@ -913,7 +939,6 @@
                         foundStudent = data;
                     }
                 });
-
                 if(foundStudent || (phone === "9876543210" && name.toLowerCase() === "ayaan sharma")) {
                     toggleAuthModal();
                     document.getElementById('visitorView').classList.add('hidden');
@@ -928,6 +953,15 @@
                     const studentBatch = foundStudent ? foundStudent.enrolledCourse : "Mathematics & Computer Batches";
 
                     loggedInStudentClass = studentCls;
+
+                    // Save session data to localStorage so refresh doesn't log out
+                    const sessionPayload = {
+                        name: studentName,
+                        studentClass: studentCls,
+                        enrolledCourse: studentBatch,
+                        phone: phone
+                    };
+                    localStorage.setItem('cm_logged_in_student', JSON.stringify(sessionPayload));
 
                     document.getElementById('displayName').innerText = "Welcome, " + studentName + "!";
                     document.getElementById('displayClass').innerText = studentCls;
@@ -1013,8 +1047,7 @@
                 alert('Failed to publish quiz question.');
             }
         }
-
-        // Fetch notes automatically based only on student's specific class
+        // Fetch notes automatically based only on student's specific class (Robust Case-Insensitive Matching)
         async function fetchNotesFromFirebase(targetClass) {
             const container = document.getElementById('dynamicNotesContainer');
             container.innerHTML = `<p class="text-slate-500 text-center py-2">Loading notes...</p>`;
@@ -1033,8 +1066,12 @@
                     ];
                 }
 
-                // Filter matching strictly with target student class
-                const filtered = notesList.filter(n => n.studentClass.toLowerCase() === targetClass.toLowerCase());
+                // Robust clean comparison removing extra spaces and checking lowercase
+                const cleanTarget = targetClass.toLowerCase().replace(/\s+/g, '');
+                const filtered = notesList.filter(n => {
+                    const nClass = (n.studentClass || "").toLowerCase().replace(/\s+/g, '');
+                    return nClass === cleanTarget || nClass.includes(cleanTarget) || cleanTarget.includes(nClass);
+                });
 
                 if(filtered.length === 0) {
                     container.innerHTML = `<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center text-slate-500">No notes found for ${targetClass}.</div>`;
@@ -1170,6 +1207,8 @@
 
         function handleLogout() {
             loggedInStudentClass = null;
+            // Clear persistent session storage on logout
+            localStorage.removeItem('cm_logged_in_student');
             // Show top login button again when logged out
             document.getElementById('topLoginBtn').classList.remove('hidden');
             alert('Logged out successfully.');
