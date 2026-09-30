@@ -33,7 +33,8 @@
                     <p class="text-[10px] text-blue-200">Rajajipuram, Lucknow</p>
                 </div>
             </div>
-            <button onclick="toggleAuthModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1.5 shadow-md transition">
+            <!-- Top Login Button (Only visible on Home / Visitor View) -->
+            <button id="topLoginBtn" onclick="toggleAuthModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1.5 shadow-md transition">
                 <span id="authBtnText">Student Login</span>
             </button>
         </div>
@@ -516,7 +517,7 @@
             </div>
         </div>
     </div>
-    <!-- STUDENT LOGIN PORTAL -->
+     <!-- STUDENT LOGIN PORTAL -->
     <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b pb-2">
@@ -809,6 +810,7 @@
             const visitorView = document.getElementById('visitorView');
             const coursesSection = document.getElementById('coursesSection');
             const studentDashboard = document.getElementById('studentDashboard');
+            const topLoginBtn = document.getElementById('topLoginBtn');
 
             visitorView.classList.add('hidden');
             coursesSection.classList.add('hidden');
@@ -816,16 +818,25 @@
 
             if (tabName === 'home') {
                 visitorView.classList.remove('hidden');
+                // Show top login button only if not logged in
+                if (!loggedInStudentClass) {
+                    topLoginBtn.classList.remove('hidden');
+                }
             } else if (tabName === 'courses') {
                 coursesSection.classList.remove('hidden');
+                if (!loggedInStudentClass) {
+                    topLoginBtn.classList.remove('hidden');
+                }
             } else if (tabName === 'notes') {
                 if (!loggedInStudentClass) {
                     alert("Log in for download notes. Only authorised students can log in whom we have added.");
                     toggleAuthModal();
                     visitorView.classList.remove('hidden');
+                    topLoginBtn.classList.remove('hidden');
                     return;
                 }
                 studentDashboard.classList.remove('hidden');
+                topLoginBtn.classList.add('hidden'); // Hide login button on dashboard
                 fetchNotesFromFirebase(loggedInStudentClass);
             } else if (tabName === 'quiz') {
                 openQuizRegisterModal();
@@ -908,6 +919,9 @@
                     document.getElementById('visitorView').classList.add('hidden');
                     document.getElementById('coursesSection').classList.add('hidden');
                     document.getElementById('studentDashboard').classList.remove('hidden');
+                    
+                    // Hide Top Login Button completely once logged in
+                    document.getElementById('topLoginBtn').classList.add('hidden');
                     
                     const studentName = foundStudent ? foundStudent.name : name;
                     const studentCls = foundStudent ? foundStudent.studentClass : studentClass;
@@ -1061,7 +1075,6 @@
                         quizList.push(data);
                     }
                 });
-
                 if(quizList.length === 0) {
                     for(let i = 1; i <= 5; i++) {
                         quizList.push({
@@ -1157,6 +1170,8 @@
 
         function handleLogout() {
             loggedInStudentClass = null;
+            // Show top login button again when logged out
+            document.getElementById('topLoginBtn').classList.remove('hidden');
             alert('Logged out successfully.');
             switchTab('home');
         }
