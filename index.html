@@ -545,7 +545,7 @@
             </div>
         </div>
     </div>
-    <!-- PUBLIC QUIZ REGISTRATION MODAL -->
+       <!-- PUBLIC QUIZ REGISTRATION MODAL -->
     <div id="quizRegisterModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative">
             <div class="flex justify-between items-center border-b pb-2">
@@ -1010,7 +1010,6 @@
                 alert('Failed to publish note.');
             }
         }
-
         async function saveNewQuizToFirebase() {
             const pass = document.getElementById('adminPasswordInput').value;
             if(pass !== MASTER_ADMIN_PASS) {
@@ -1047,7 +1046,20 @@
                 alert('Failed to publish quiz question.');
             }
         }
-        // Fetch notes automatically based only on student's specific class (Robust Case-Insensitive Matching)
+
+        // Smart Normalization Function to match classes automatically (e.g., "Class 9", "9th", "9")
+        function cleanClassName(className) {
+            if (!className) return "";
+            return className.toLowerCase()
+                            .replace(/class/g, '')
+                            .replace(/th/g, '')
+                            .replace(/rd/g, '')
+                            .replace(/st/g, '')
+                            .replace(/nd/g, '')
+                            .trim();
+        }
+
+        // Fetch notes using Smart Normalization Matching
         async function fetchNotesFromFirebase(targetClass) {
             const container = document.getElementById('dynamicNotesContainer');
             container.innerHTML = `<p class="text-slate-500 text-center py-2">Loading notes...</p>`;
@@ -1066,11 +1078,12 @@
                     ];
                 }
 
-                // Robust clean comparison removing extra spaces and checking lowercase
-                const cleanTarget = targetClass.toLowerCase().replace(/\s+/g, '');
+                // Clean target class number
+                const targetClean = cleanClassName(targetClass);
+
                 const filtered = notesList.filter(n => {
-                    const nClass = (n.studentClass || "").toLowerCase().replace(/\s+/g, '');
-                    return nClass === cleanTarget || nClass.includes(cleanTarget) || cleanTarget.includes(nClass);
+                    const noteClean = cleanClassName(n.studentClass);
+                    return noteClean === targetClean || noteClean.includes(targetClean) || targetClean.includes(noteClean);
                 });
 
                 if(filtered.length === 0) {
@@ -1092,6 +1105,7 @@
                 container.innerHTML = `<div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-center text-red-500">Error loading notes.</div>`;
             }
         }
+
         async function startInteractiveQuizFromFirebase() {
             const name = document.getElementById('quizUserName').value.trim();
             const phone = document.getElementById('quizUserPhone').value.trim();
