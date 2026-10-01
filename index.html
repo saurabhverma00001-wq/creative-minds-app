@@ -79,6 +79,7 @@
                 </div>
             </div>
 
+            <!-- ACADEMIC COURSES CARDS (NOW CLICKABLE TO OPEN DEDICATED SUBJECT PAGE WITH math-card.png, science-card.png, etc.) -->
             <section class="space-y-3">
                 <div class="flex justify-between items-center">
                     <h2 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
@@ -87,28 +88,32 @@
                     </h2>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                    <!-- Mathematics Card -->
+                    <div onclick="openSubjectDetail('Mathematics (ICSE / CBSE)', 'images/math-card.png', 'Class 4th to 12th (Standard, Core, & Applied Math)', '• Practice with problem-solving questions (step-by-step logic building).<br>• Essential notes, chapter-wise formulas, and detailed solutions.<br>• Question papers and sample papers for preparation.<br>• Tricks, easy and fun way conceptual solutions.', 'Pricing: Class 4th to 8th: ₹499/mo | Class 9th-10th: ₹999/mo | Class 11th-12th: ₹1,299/mo', 'Mathematics')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 cursor-pointer hover:border-blue-400 transition">
                         <img src="images/math.png" class="w-10 h-10 object-contain" alt="Math">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Mathematics</h3>
                             <p class="text-[10px] text-slate-500">Class 6 - 12 (ICSE/CBSE)</p>
                         </div>
                     </div>
-                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                    <!-- Science Card -->
+                    <div onclick="openSubjectDetail('Science / Physics (ICSE / CBSE)', 'images/science-card.png', 'Physics, Chemistry, Biology (Class 4th to 12th)', '• Concept clarity through real-life examples and practical problem-solving.<br>• Comprehensive notes, diagrams, and numerical problem practice.<br>• Regular practice tests and board exam preparation.', 'Pricing: Class 4th to 8th: ₹499/mo | Class 9th-10th: ₹999/mo | Class 11th-12th: ₹1,299/mo', 'Science')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 cursor-pointer hover:border-blue-400 transition">
                         <img src="images/science.png" class="w-10 h-10 object-contain" alt="Science">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Science / Physics</h3>
                             <p class="text-[10px] text-slate-500">Physics, Chem, Bio</p>
                         </div>
                     </div>
-                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                    <!-- Computer Apps Card -->
+                    <div onclick="openSubjectDetail('Computer Apps (ICSE / CBSE)', 'images/computer-card.png', 'Java, Python, C++ (Class 6 - 12)', '• Hands-on coding sessions, syntax mastery, and logical program building.<br>• School practical lab guidance and ICSE/CBSE board project assistance.', 'Pricing: ₹1,299 /mo', 'Computer Apps')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 cursor-pointer hover:border-blue-400 transition">
                         <img src="images/computer.png" class="w-10 h-10 object-contain" alt="Computer">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Computer Apps</h3>
                             <p class="text-[10px] text-slate-500">Java, Python, C++</p>
                         </div>
                     </div>
-                    <div class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3">
+                    <!-- H.C.G. & English Card -->
+                    <div onclick="openSubjectDetail('H.C.G. & English (ICSE / CBSE)', 'images/hcg-english-card.png', 'History, Civics, Geography & English Literature/Language', '• In-depth chapter explanations, story mapping, and grammar rule mastery.<br>• Answer writing techniques to score highest marks in board exams.', 'Pricing: English: ₹799/mo | HCG: ₹999/mo', 'HCG and English')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 cursor-pointer hover:border-blue-400 transition">
                         <img src="images/hcg.png" class="w-10 h-10 object-contain" alt="HCG">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">H.C.G. & English</h3>
@@ -117,49 +122,50 @@
                     </div>
                 </div>
             </section>
-             <!-- SPECIAL PROFESSIONAL TECH & CRAFT COURSES CONVERTED TO CLICKABLE BUTTONS FOR DETAILS -->
+
+            <!-- SPECIAL PROFESSIONAL TECH & CRAFT COURSES CARDS (DIRECTLY OPENS DEDICATED SUBJECT PAGE WITHOUT POPUP) -->
             <section class="space-y-3">
                 <h2 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
                     <span class="w-2 h-4 bg-blue-600 rounded-full inline-block"></span>
                     <span>Special Professional Tech & Craft Courses</span>
                 </h2>
                 <div class="grid grid-cols-2 gap-3">
-                    <!-- App Making Button -->
-                    <button onclick="openCourseModal('App Making', 'images/app_making.png', '₹1,999', 'Learn to build fully functional Android & Progressive Web Apps (PWA) with live projects, UI design, and database integration.', 'Android & PWA Apps')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
+                    <!-- App Making Card -->
+                    <div onclick="openSubjectDetail('App Making', 'images/app-making-card.png', 'Android & PWA Apps', 'Learn to build fully functional Android & Progressive Web Apps (PWA) with live projects, UI design, and database integration.', 'Fee: ₹1,999', 'App Making')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
                         <img src="images/app_making.png" class="w-10 h-10 object-contain" alt="App Dev">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">App Making</h3>
                             <p class="text-[10px] text-slate-500">Android & PWA Apps</p>
                             <p class="text-xs font-bold text-blue-600 mt-0.5">₹1,999</p>
                         </div>
-                    </button>
-                    <!-- Web Dev Button -->
-                    <button onclick="openCourseModal('Web Development', 'images/web_dev.png', '₹1,499', 'Master modern web development from scratch using HTML5, CSS3, JavaScript, and Firebase backend connectivity.', 'HTML, CSS, JS, Firebase')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
+                    </div>
+                    <!-- Web Dev Card -->
+                    <div onclick="openSubjectDetail('Web Development', 'images/web-dev-card.png', 'HTML, CSS, JS, Firebase', 'Master modern web development from scratch using HTML5, CSS3, JavaScript, and Firebase backend connectivity with live portfolio deployment.', 'Fee: ₹1,499', 'Web Development')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
                         <img src="images/web_dev.png" class="w-10 h-10 object-contain" alt="Web">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Web Dev</h3>
                             <p class="text-[10px] text-slate-500">HTML, CSS, JS, Firebase</p>
                             <p class="text-xs font-bold text-blue-600 mt-0.5">₹1,499</p>
                         </div>
-                    </button>
-                    <!-- Video Editing Button -->
-                    <button onclick="openCourseModal('Video Editing & Reels', 'images/video_editing.png', '₹1,299', 'Learn professional video editing techniques, cinematic transitions, color grading using Premiere Pro and editing short reels.', 'Premiere & Reels')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
+                    </div>
+                    <!-- Video Editing Card -->
+                    <div onclick="openSubjectDetail('Video Editing & Reels', 'images/video-editing-card.png', 'Premiere & Reels', 'Learn professional video editing techniques, cinematic transitions, color grading using Premiere Pro and editing viral short reels.', 'Fee: ₹1,299', 'Video Editing')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
                         <img src="images/video_editing.png" class="w-10 h-10 object-contain" alt="Video Editing">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Video Editing</h3>
                             <p class="text-[10px] text-slate-500">Premiere & Reels</p>
                             <p class="text-xs font-bold text-blue-600 mt-0.5">₹1,299</p>
                         </div>
-                    </button>
-                    <!-- Graphics & 3D Craft Button -->
-                    <button onclick="openCourseModal('Graphics & 3D Craft', 'images/graphics.png', '₹1,299', 'Explore creative graphic designing using Canva and construct physical 3D papercraft models and props using Blender and Pepakura.', 'Canva & Blender 3D')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
+                    </div>
+                    <!-- Graphics & 3D Craft Card -->
+                    <div onclick="openSubjectDetail('Graphics & 3D Craft', 'images/graphics-craft-card.png', 'Canva & Blender 3D', 'Explore creative graphic designing using Canva and construct physical 3D papercraft models and props using Blender and Pepakura.', 'Fee: ₹1,299', 'Graphics & 3D Craft')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
                         <img src="images/graphics.png" class="w-10 h-10 object-contain" alt="Graphics">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Graphics & 3D Craft</h3>
                             <p class="text-[10px] text-slate-500">Canva & Blender 3D</p>
                             <p class="text-xs font-bold text-blue-600 mt-0.5">₹1,299</p>
                         </div>
-                    </button>
+                    </div>
                 </div>
             </section>
 
@@ -215,6 +221,37 @@
                 </a>
             </div>
         </div>
+
+        <!-- DEDICATED SUBJECT DETAIL VIEW (NEW PAGE WHEN CLICKING ANY SUBJECT CARD) -->
+        <div id="subjectDetailView" class="hidden space-y-4">
+            <button onclick="switchTab('home')" class="w-full bg-white border border-slate-200 text-slate-700 font-bold text-xs py-2.5 rounded-xl shadow-sm hover:bg-slate-50 transition flex items-center justify-center space-x-1 cursor-pointer">
+                <span>← Back to Home / Dashboard</span>
+            </button>
+
+            <div class="bg-white p-5 rounded-2xl card-shadow border border-slate-100 space-y-4">
+                <div class="flex flex-col items-center space-y-3 text-center border-b pb-4">
+                    <img id="detailSubjectImg" src="" alt="Subject Card Image" class="w-28 h-28 rounded-2xl object-cover bg-blue-50 p-2 border border-slate-200 shadow-sm">
+                    <div>
+                        <h2 id="detailSubjectTitle" class="font-extrabold text-base text-slate-900">Subject Title</h2>
+                        <p id="detailSubjectSubtitle" class="text-xs text-blue-600 font-bold mt-1"></p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                    <h3 class="font-bold text-xs text-slate-900">📖 Course Details & Overview:</h3>
+                    <div id="detailSubjectDesc" class="text-[11px] text-slate-700 leading-relaxed space-y-1.5"></div>
+                </div>
+
+                <div class="bg-blue-50 p-3.5 rounded-xl border border-blue-100 text-center">
+                    <p id="detailSubjectPricing" class="text-xs font-extrabold text-blue-900"></p>
+                </div>
+
+                <a id="detailSubjectWhatsAppBtn" href="#" target="_blank" class="block w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl shadow-md transition">
+                    Enroll via WhatsApp 💬
+                </a>
+            </div>
+        </div>
+
         <!-- DEDICATED COURSES & COMBO CATALOG VIEW (Initially Hidden) -->
         <div id="coursesSection" class="hidden space-y-4">
             
@@ -292,8 +329,7 @@
                     </div>
                     <div class="text-right">
                         <span class="text-xs font-extrabold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-xl block mb-1.5">₹1,999</span>
-                        <a
-                            href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20App%20Making%20Course." target="_blank" class="text-[10px] bg-slate-900 text-white px-3 py-1 rounded-lg font-semibold shadow">Join</a>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20App%20Making%20Course." target="_blank" class="text-[10px] bg-slate-900 text-white px-3 py-1 rounded-lg font-semibold shadow">Join</a>
                     </div>
                 </div>
 
@@ -340,6 +376,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="blue-gradient p-5 rounded-2xl text-white shadow-xl space-y-3 relative overflow-hidden border border-blue-700">
                 <div class="flex items-center space-x-3">
                     <img src="images/discount_badge.png" alt="Discount" class="w-11 h-11 rounded-xl object-cover bg-amber-400 p-1 shadow">
@@ -414,7 +451,6 @@
         </div>
 
     </main>
-
     <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg z-40">
         <div class="max-w-md mx-auto flex justify-around py-2">
             <button onclick="switchTab('home')" class="flex flex-col items-center text-slate-600 hover:text-blue-600 space-y-0.5">
@@ -436,32 +472,6 @@
         </div>
     </nav>
 
-    <!-- NEW: DEDICATED COURSE DETAILS POPUP MODAL -->
-    <div id="courseDetailsModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center border-b pb-2">
-                <h3 id="modalCourseTitle" class="font-bold text-sm text-slate-900">Course Details</h3>
-                <button onclick="closeCourseModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
-            </div>
-            
-            <div class="flex flex-col items-center space-y-3">
-                <img id="modalCourseImg" src="" alt="Course Image" class="w-20 h-20 rounded-2xl object-contain bg-blue-50 p-2 border border-slate-100 shadow-sm">
-                <div class="text-center">
-                    <span id="modalCourseFee" class="inline-block bg-blue-100 text-blue-700 font-extrabold text-xs px-3 py-1 rounded-full mb-1"></span>
-                    <p id="modalCourseSubtitle" class="text-[11px] text-slate-500 font-medium"></p>
-                </div>
-            </div>
-
-            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 text-xs text-slate-700 space-y-2">
-                <h4 class="font-bold text-slate-900">📖 Course Overview:</h4>
-                <p id="modalCourseDesc" class="leading-relaxed text-[11px]"></p>
-            </div>
-
-            <a id="modalCourseWhatsAppBtn" href="#" target="_blank" class="block w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl shadow-md transition">
-                Enroll via WhatsApp 💬
-            </a>
-        </div>
-    </div>
     <!-- HIDDEN ADMIN PANEL MODAL (SECRET TRIPLE CLICK ON HEADER LOGO) -->
     <div id="adminNotesModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
@@ -565,7 +575,7 @@
                 </button>
             </div>
         </div>
-        </div>
+    </div>
      <!-- STUDENT LOGIN PORTAL -->
     <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
@@ -632,7 +642,6 @@
             </div>
         </div>
     </div>
-
     <!-- LIVE QUIZ PLAYING MODAL -->
     <div id="quizPlayModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-md rounded-2xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
@@ -649,7 +658,7 @@
             </div>
         </div>
     </div>
-    <!-- QUIZ RESULT & DEMO COACHING POPUP MODAL -->
+      <!-- QUIZ RESULT & DEMO COACHING POPUP MODAL -->
     <div id="quizResultModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-6 shadow-2xl text-center space-y-4 relative">
             <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto text-2xl">🏆</div>
@@ -787,6 +796,7 @@
                     
                     document.getElementById('visitorView').classList.add('hidden');
                     document.getElementById('coursesSection').classList.add('hidden');
+                    document.getElementById('subjectDetailView').classList.add('hidden');
                     document.getElementById('studentDashboard').classList.remove('hidden');
                     document.getElementById('topLoginBtn').classList.add('hidden');
 
@@ -827,22 +837,24 @@
             }
         }
 
-        // NEW FUNCTIONS FOR COURSE DETAILS POPUP MODAL
-        function openCourseModal(title, imgSrc, fee, desc, subtitle) {
-            document.getElementById('modalCourseTitle').innerText = title;
-            document.getElementById('modalCourseImg').src = imgSrc;
-            document.getElementById('modalCourseFee').innerText = "Fee: " + fee;
-            document.getElementById('modalCourseSubtitle').innerText = subtitle;
-            document.getElementById('modalCourseDesc').innerText = desc;
+        // NEW FUNCTION TO OPEN DEDICATED SUBJECT DETAIL VIEW PAGE INSTEAD OF POPUP MODAL
+        function openSubjectDetail(title, imgSrc, subtitle, desc, pricing, courseKey) {
+            document.getElementById('detailSubjectTitle').innerText = title;
+            document.getElementById('detailSubjectImg').src = imgSrc;
+            document.getElementById('detailSubjectSubtitle').innerText = subtitle;
+            document.getElementById('detailSubjectDesc').innerHTML = desc;
+            document.getElementById('detailSubjectPricing').innerText = pricing;
             
-            const waUrl = `https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enquire%20and%20enroll%20in%20the%20${encodeURIComponent(title)}%20course.`;
-            document.getElementById('modalCourseWhatsAppBtn').href = waUrl;
+            const waUrl = `https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enquire%20and%20enroll%20in%20the%20${encodeURIComponent(courseKey)}%20course.`;
+            document.getElementById('detailSubjectWhatsAppBtn').href = waUrl;
 
-            document.getElementById('courseDetailsModal').style.display = 'flex';
-        }
+            // Hide visitor view & other views, show subject detail view
+            document.getElementById('visitorView').classList.add('hidden');
+            document.getElementById('coursesSection').classList.add('hidden');
+            document.getElementById('studentDashboard').classList.add('hidden');
+            document.getElementById('subjectDetailView').classList.remove('hidden');
 
-        function closeCourseModal() {
-            document.getElementById('courseDetailsModal').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleAboutModal() {
@@ -881,8 +893,7 @@
             document.getElementById('quizResultModal').style.display = 'none';
             switchTab('home');
         }
-
-        // Restrict Notes Access for unauthorized/new visitors
+            // Restrict Notes Access for unauthorized/new visitors
         function checkNotesAccess() {
             if (!loggedInStudentClass) {
                 alert("Log in for download notes. Only authorised students can log in whom we have added.");
@@ -895,11 +906,13 @@
         function switchTab(tabName) {
             const visitorView = document.getElementById('visitorView');
             const coursesSection = document.getElementById('coursesSection');
+            const subjectDetailView = document.getElementById('subjectDetailView');
             const studentDashboard = document.getElementById('studentDashboard');
             const topLoginBtn = document.getElementById('topLoginBtn');
 
             visitorView.classList.add('hidden');
             coursesSection.classList.add('hidden');
+            subjectDetailView.classList.add('hidden');
             studentDashboard.classList.add('hidden');
 
             if (tabName === 'home') {
@@ -957,6 +970,7 @@
                 alert('Incorrect Master Admin Password!');
                 return;
             }
+
             const name = document.getElementById('adminStudentName').value.trim();
             const phone = document.getElementById('adminStudentPhone').value.trim();
             const studentClass = document.getElementById('adminStudentClass').value.trim();
@@ -1005,6 +1019,7 @@
                     toggleAuthModal();
                     document.getElementById('visitorView').classList.add('hidden');
                     document.getElementById('coursesSection').classList.add('hidden');
+                    document.getElementById('subjectDetailView').classList.add('hidden');
                     document.getElementById('studentDashboard').classList.remove('hidden');
                     
                     // Hide Top Login Button completely once logged in
@@ -1089,8 +1104,8 @@
             if(!question || !optA || !optB) {
                 alert('Please fill question and options.');
                 return;
-        }
-        try {
+            }
+            try {
                 await window.addDoc(window.collection(window.db, "quizzes"), {
                     quizClass, question, options: [optA, optB, optC, optD], correct, createdAt: Date.now()
                 });
@@ -1248,6 +1263,7 @@
 
         function finishQuizEvaluation() {
             document.getElementById('quizPlayModal').style.display = 'none';
+
             let score = 0;
             let total = currentQuizData.length;
             for(let i = 0; i < total; i++) {
@@ -1277,7 +1293,6 @@
                 reader.readAsDataURL(file);
             }
         }
-
         function handleLogout() {
             loggedInStudentClass = null;
             // Clear persistent session storage on logout
