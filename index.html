@@ -93,22 +93,22 @@
                         <img src="images/math.png" class="w-10 h-10 object-contain" alt="Math">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Mathematics</h3>
-                            <p class="text-[10px] text-slate-500">Class 6 - 12 (ICSE/CBSE)</p>
+                            <p class="text-[10px] text-slate-500">Class 4 - 12 (ICSE/ISC & CBSE)</p>
                         </div>
                     </div>
                     <!-- Science Card -->
                     <div onclick="openSubjectDetail('Science / Physics (ICSE / CBSE)', 'images/science-card.png', 'Physics, Chemistry, Biology (Class 4th to 12th)', '• Concept clarity through real-life examples and practical problem-solving.<br>• Comprehensive notes, diagrams, and numerical problem practice.<br>• Regular practice tests and board exam preparation.', 'Pricing: Class 4th to 8th: ₹499/mo | Class 9th-10th: ₹999/mo | Class 11th-12th: ₹1,299/mo', 'Science')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 cursor-pointer hover:border-blue-400 transition">
                         <img src="images/science.png" class="w-10 h-10 object-contain" alt="Science">
                         <div>
-                            <h3 class="font-bold text-xs text-slate-800">Science / Physics</h3>
-                            <p class="text-[10px] text-slate-500">Physics, Chem, Bio</p>
+                            <h3 class="font-bold text-xs text-slate-800">Science</h3>
+                            <p class="text-[10px] text-slate-500">Physics, Chemistry, Biology</p>
                         </div>
                     </div>
                     <!-- Computer Apps Card -->
                     <div onclick="openSubjectDetail('Computer Apps (ICSE / CBSE)', 'images/computer-card.png', 'Java, Python, C++ (Class 6 - 12)', '• Hands-on coding sessions, syntax mastery, and logical program building.<br>• School practical lab guidance and ICSE/CBSE board project assistance.', 'Pricing: ₹1,299 /mo', 'Computer Apps')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 cursor-pointer hover:border-blue-400 transition">
                         <img src="images/computer.png" class="w-10 h-10 object-contain" alt="Computer">
                         <div>
-                            <h3 class="font-bold text-xs text-slate-800">Computer Apps</h3>
+                            <h3 class="font-bold text-xs text-slate-800">Computer Science</h3>
                             <p class="text-[10px] text-slate-500">Java, Python, C++</p>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                         <img src="images/hcg.png" class="w-10 h-10 object-contain" alt="HCG">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">H.C.G. & English</h3>
-                            <p class="text-[10px] text-slate-500">History, Civics, Grammar</p>
+                            <p class="text-[10px] text-slate-500">History, Civics, Geography</p>
                         </div>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                     <div onclick="openSubjectDetail('Web Development', 'images/web-dev-card.png', 'HTML, CSS, JS, Firebase', 'Master modern web development from scratch using HTML5, CSS3, JavaScript, and Firebase backend connectivity with live portfolio deployment.', 'Fee: ₹1,499', 'Web Development')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
                         <img src="images/web_dev.png" class="w-10 h-10 object-contain" alt="Web">
                         <div>
-                            <h3 class="font-bold text-xs text-slate-800">Web Dev</h3>
+                            <h3 class="font-bold text-xs text-slate-800">Website Development</h3>
                             <p class="text-[10px] text-slate-500">HTML, CSS, JS, Firebase</p>
                             <p class="text-xs font-bold text-blue-600 mt-0.5">₹1,499</p>
                         </div>
@@ -225,12 +225,12 @@
         <!-- DEDICATED SUBJECT DETAIL VIEW (NEW PAGE WHEN CLICKING ANY SUBJECT CARD) -->
         <div id="subjectDetailView" class="hidden space-y-4">
             <button onclick="switchTab('home')" class="w-full bg-white border border-slate-200 text-slate-700 font-bold text-xs py-2.5 rounded-xl shadow-sm hover:bg-slate-50 transition flex items-center justify-center space-x-1 cursor-pointer">
-                <span>← Back to Home / Dashboard</span>
+                <span>← Back to Home </span>
             </button>
 
             <div class="bg-white p-5 rounded-2xl card-shadow border border-slate-100 space-y-4">
                 <div class="flex flex-col items-center space-y-3 text-center border-b pb-4">
-                    <img id="detailSubjectImg" src="" alt="Subject Card Image" class="w-28 h-28 rounded-2xl object-cover bg-blue-50 p-2 border border-slate-200 shadow-sm">
+                    <img id="detailSubjectImg" src="" alt="Subject Card Image" class="w-full h-auto max-h-[320px] rounded-2xl object-contain mx-auto bg-slate-50 p-2 border border-slate-200 shadow-sm">
                     <div>
                         <h2 id="detailSubjectTitle" class="font-extrabold text-base text-slate-900">Subject Title</h2>
                         <p id="detailSubjectSubtitle" class="text-xs text-blue-600 font-bold mt-1"></p>
