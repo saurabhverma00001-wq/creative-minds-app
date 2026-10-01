@@ -118,7 +118,7 @@
                 </div>
             </section>
 
-            <!-- SPECIAL PROFESSIONAL TECH & CRAFT COURSES CONVERTED TO BUTTONS WITH DETAILS & FEES -->
+            <!-- SPECIAL PROFESSIONAL TECH & CRAFT COURSES CONVERTED TO CLICKABLE BUTTONS FOR DETAILS -->
             <section class="space-y-3">
                 <h2 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
                     <span class="w-2 h-4 bg-blue-600 rounded-full inline-block"></span>
@@ -126,7 +126,7 @@
                 </h2>
                 <div class="grid grid-cols-2 gap-3">
                     <!-- App Making Button -->
-                    <button onclick="switchTab('courses')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400">
+                    <button onclick="openCourseModal('App Making', 'images/app_making.png', '₹1,999', 'Learn to build fully functional Android & Progressive Web Apps (PWA) with live projects, UI design, and database integration.', 'Android & PWA Apps')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
                         <img src="images/app_making.png" class="w-10 h-10 object-contain" alt="App Dev">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">App Making</h3>
@@ -135,7 +135,7 @@
                         </div>
                     </button>
                     <!-- Web Dev Button -->
-                    <button onclick="switchTab('courses')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400">
+                    <button onclick="openCourseModal('Web Development', 'images/web_dev.png', '₹1,499', 'Master modern web development from scratch using HTML5, CSS3, JavaScript, and Firebase backend connectivity.', 'HTML, CSS, JS, Firebase')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
                         <img src="images/web_dev.png" class="w-10 h-10 object-contain" alt="Web">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Web Dev</h3>
@@ -144,7 +144,7 @@
                         </div>
                     </button>
                     <!-- Video Editing Button -->
-                    <button onclick="switchTab('courses')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400">
+                    <button onclick="openCourseModal('Video Editing & Reels', 'images/video_editing.png', '₹1,299', 'Learn professional video editing techniques, cinematic transitions, color grading using Premiere Pro and editing short reels.', 'Premiere & Reels')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
                         <img src="images/video_editing.png" class="w-10 h-10 object-contain" alt="Video Editing">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Video Editing</h3>
@@ -153,7 +153,7 @@
                         </div>
                     </button>
                     <!-- Graphics & 3D Craft Button -->
-                    <button onclick="switchTab('courses')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400">
+                    <button onclick="openCourseModal('Graphics & 3D Craft', 'images/graphics.png', '₹1,299', 'Explore creative graphic designing using Canva and construct physical 3D papercraft models and props using Blender and Pepakura.', 'Canva & Blender 3D')" class="bg-white p-3.5 rounded-xl card-shadow border border-slate-100 flex items-center space-x-3 text-left transition hover:border-blue-400 cursor-pointer">
                         <img src="images/graphics.png" class="w-10 h-10 object-contain" alt="Graphics">
                         <div>
                             <h3 class="font-bold text-xs text-slate-800">Graphics & 3D Craft</h3>
@@ -273,7 +273,7 @@
                         <img src="images/course_english.png" alt="English" class="w-10 h-10 rounded-xl object-cover bg-blue-50 p-1">
                         <div>
                             <h4 class="font-bold text-xs text-slate-900">English</h4>
-                            <p class="text-[9px] text-slate-500">Lit & Lang</p>
+                          <p class="text-[9px] text-slate-500">Lit & Lang</p>
                             <p class="text-xs font-bold text-blue-600 mt-0.5">₹799 <span class="text-[8px] text-slate-400">/mo</span></p>
                         </div>
                     </div>
@@ -437,6 +437,33 @@
             </button>
         </div>
     </nav>
+
+    <!-- NEW: DEDICATED COURSE DETAILS POPUP MODAL -->
+    <div id="courseDetailsModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 id="modalCourseTitle" class="font-bold text-sm text-slate-900">Course Details</h3>
+                <button onclick="closeCourseModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
+            </div>
+            
+            <div class="flex flex-col items-center space-y-3">
+                <img id="modalCourseImg" src="" alt="Course Image" class="w-20 h-20 rounded-2xl object-contain bg-blue-50 p-2 border border-slate-100 shadow-sm">
+                <div class="text-center">
+                    <span id="modalCourseFee" class="inline-block bg-blue-100 text-blue-700 font-extrabold text-xs px-3 py-1 rounded-full mb-1"></span>
+                    <p id="modalCourseSubtitle" class="text-[11px] text-slate-500 font-medium"></p>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 text-xs text-slate-700 space-y-2">
+                <h4 class="font-bold text-slate-900">📖 Course Overview:</h4>
+                <p id="modalCourseDesc" class="leading-relaxed text-[11px]"></p>
+            </div>
+
+            <a id="modalCourseWhatsAppBtn" href="#" target="_blank" class="block w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl shadow-md transition">
+                Enroll via WhatsApp 💬
+            </a>
+        </div>
+    </div>
 
     <!-- HIDDEN ADMIN PANEL MODAL (SECRET TRIPLE CLICK ON HEADER LOGO) -->
     <div id="adminNotesModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
@@ -625,8 +652,7 @@
             </div>
         </div>
     </div>
-
-    <!-- QUIZ RESULT & DEMO COACHING POPUP MODAL -->
+      <!-- QUIZ RESULT & DEMO COACHING POPUP MODAL -->
     <div id="quizResultModal" style="display: none;" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-6 shadow-2xl text-center space-y-4 relative">
             <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto text-2xl">🏆</div>
@@ -790,8 +816,7 @@
         let adminClickCount = 0;
         let adminClickTimer = null;
         let loggedInStudentClass = null;
-
-        // Secret Admin Panel Trigger (Triple click on Header Logo)
+          // Secret Admin Panel Trigger (Triple click on Header Logo)
         function handleSecretAdminTrigger() {
             adminClickCount++;
             if(adminClickCount === 1) {
@@ -803,6 +828,24 @@
                 adminClickCount = 0;
                 toggleAdminNotesModal();
             }
+        }
+
+        // NEW FUNCTIONS FOR COURSE DETAILS POPUP MODAL
+        function openCourseModal(title, imgSrc, fee, desc, subtitle) {
+            document.getElementById('modalCourseTitle').innerText = title;
+            document.getElementById('modalCourseImg').src = imgSrc;
+            document.getElementById('modalCourseFee').innerText = "Fee: " + fee;
+            document.getElementById('modalCourseSubtitle').innerText = subtitle;
+            document.getElementById('modalCourseDesc').innerText = desc;
+            
+            const waUrl = `https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enquire%20and%20enroll%20in%20the%20${encodeURIComponent(title)}%20course.`;
+            document.getElementById('modalCourseWhatsAppBtn').href = waUrl;
+
+            document.getElementById('courseDetailsModal').style.display = 'flex';
+        }
+
+        function closeCourseModal() {
+            document.getElementById('courseDetailsModal').style.display = 'none';
         }
 
         function toggleAboutModal() {
@@ -942,7 +985,6 @@
                 alert('Failed to add student.');
             }
         }
-
         // Secure Login Verification for Name, Class, Board & Phone
         async function verifyStudentLogin() {
             const name = document.getElementById('loginName').value.trim();
