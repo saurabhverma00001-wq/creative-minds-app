@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://creative-minds-app-pal.vercel.app/sitemap.xml
