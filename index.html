@@ -26,10 +26,10 @@
             box-shadow: 0 10px 22px -8px rgba(255, 97, 0, 0.55);
         }
         .cm-glass-card {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            box-shadow: 0 12px 28px -10px rgba(15, 23, 42, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.88);
+            box-shadow: 0 12px 28px -10px rgba(15, 23, 42, 0.11);
             transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
         .cm-glass-card:hover {
@@ -48,18 +48,40 @@
 </head>
 <body class="min-h-screen w-full m-0 p-0 flex flex-col justify-between overflow-x-hidden">
 
+    <!-- TOP SOCIAL & CONTACT UTILITY BAR -->
+    <div class="bg-slate-950 text-white text-[11px]">
+        <div class="max-w-xl mx-auto px-4 py-1.5 flex items-center justify-between gap-2">
+            <div class="flex items-center space-x-3 font-semibold">
+                <a href="tel:+918756866588" class="text-amber-300 hover:underline flex items-center space-x-1">
+                    <span>📞</span>
+                    <span>+91 8756866588</span>
+                </a>
+                <span class="text-slate-600">|</span>
+                <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enquire%20about%20Creative%20Minds." target="_blank" class="text-emerald-300 hover:underline flex items-center space-x-1">
+                    <span>💬</span>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-2.5 font-bold text-[11px]">
+                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" class="w-6 h-6 rounded-full bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-white transition">f</a>
+                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="w-6 h-6 rounded-full bg-pink-600 hover:bg-pink-500 flex items-center justify-center text-white transition">📸</a>
+                <a href="https://www.youtube.com/@CraftraxStudio" target="_blank" aria-label="YouTube" class="w-6 h-6 rounded-full bg-red-600 hover:bg-red-500 flex items-center justify-center text-white transition">▶</a>
+            </div>
+        </div>
+    </div>
+
     <!-- STICKY TOP HEADER -->
     <header class="cm-hero-grad text-white sticky top-0 z-50 shadow-lg">
         <div class="max-w-xl mx-auto px-4 py-2.5 flex justify-between items-center">
             <div class="flex items-center space-x-2.5 cursor-pointer" onclick="handleSecretAdminTrigger()">
                 <img src="images/logo.png" alt="The Creative Minds Logo" class="w-9 h-9 rounded-full object-cover border-2 border-amber-300 shadow">
                 <div>
-                    <h1 class="font-extrabold text-sm leading-tight tracking-tight">Creative Minds</h1>
-                    <p class="text-[10px] text-amber-200 font-semibold">Think Smart, Learn Fast</p>
+                    <h1 class="font-extrabold text-sm sm:text-base leading-tight tracking-tight">Creative Minds</h1>
+                    <p class="text-[10px] sm:text-[11px] text-amber-200 font-semibold">Think Smart, Learn Fast</p>
                 </div>
             </div>
             <div class="flex items-center space-x-2">
-                <button id="pwaInstallBtn" onclick="installPWAApp()" class="hidden bg-amber-400 hover:bg-amber-300 text-slate-950 px-2.5 py-1.5 rounded-full text-[11px] font-extrabold transition cursor-pointer">
+                <button id="pwaInstallBtn" onclick="installPWAApp()" class="hidden bg-amber-400 hover:bg-amber-300 text-slate-950 px-2.5 py-1.5 rounded-full text-xs font-extrabold transition cursor-pointer">
                     📲 Install
                 </button>
                 <button id="topLoginBtn" onclick="toggleAuthModal()" class="bg-white/15 hover:bg-white/25 text-white px-3.5 py-1.5 rounded-full text-xs font-bold border border-white/30 transition cursor-pointer">
@@ -69,23 +91,23 @@
         </div>
     </header>
 
-    <main class="max-w-xl mx-auto w-full px-4 py-4 flex-1 flex flex-col space-y-4 pb-24">
+    <main class="max-w-xl mx-auto w-full px-4 py-4 flex-1 flex flex-col space-y-4 pb-28">
 
-        <!-- BEST-OF-THE-BEST COMPACT HOME PAGE (1-2 SCROLLS MAX) -->
+        <!-- BEST-OF-THE-BEST HOME PAGE WITH ALL COURSE CARDS & RICH TYPOGRAPHY -->
         <div id="visitorView" class="space-y-4">
 
-            <!-- TOP ATTRACTIVE SHOWCASE CARD -->
-            <section class="cm-hero-grad text-white rounded-3xl p-4 shadow-xl space-y-3">
-                <div class="flex items-center justify-between gap-2 text-[10px] font-extrabold">
+            <!-- HERO SHOWCASE CARD -->
+            <section class="cm-hero-grad text-white rounded-3xl p-4 sm:p-5 shadow-xl space-y-3">
+                <div class="flex items-center justify-between gap-2 text-[11px] font-extrabold">
                     <span class="bg-white/15 border border-white/25 px-2.5 py-1 rounded-full">🚀 Rajajipuram, Lucknow</span>
                     <span class="bg-amber-400 text-slate-950 px-2.5 py-1 rounded-full">ICSE • ISC • CBSE • UP Board</span>
                 </div>
 
                 <div class="space-y-1">
-                    <h2 class="font-extrabold text-base sm:text-lg leading-snug">
+                    <h2 class="font-extrabold text-lg sm:text-xl leading-snug">
                         Smart Coaching & Verified Home Tuitions in Lucknow
                     </h2>
-                    <p class="text-[11px] text-teal-100 leading-relaxed">
+                    <p class="text-xs sm:text-sm text-teal-100 leading-relaxed">
                         Free nearby demo • ₹99 tracking app (attendance, notes & progress) • 91% tutor share (15th & 30th payout).
                     </p>
                 </div>
@@ -95,13 +117,13 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-2.5 pt-0.5">
-                    <button onclick="toggleStudentRegModal()" class="bg-white text-indigo-950 hover:bg-teal-50 p-2.5 rounded-2xl font-extrabold text-xs flex flex-col items-center justify-center shadow transition cursor-pointer">
+                    <button onclick="toggleStudentRegModal()" class="bg-white text-indigo-950 hover:bg-teal-50 p-3 rounded-2xl font-extrabold text-xs sm:text-sm flex flex-col items-center justify-center shadow transition cursor-pointer">
                         <span>📝 Coaching Admission</span>
-                        <span class="text-[10px] font-semibold text-indigo-700">Classroom Batch Form</span>
+                        <span class="text-[11px] font-semibold text-indigo-700">Classroom Batch Form</span>
                     </button>
-                    <button onclick="toggleHomeTuitionDemoModal()" class="cm-orange-btn text-white p-2.5 rounded-2xl font-extrabold text-xs flex flex-col items-center justify-center transition hover:brightness-105 cursor-pointer">
+                    <button onclick="toggleHomeTuitionDemoModal()" class="cm-orange-btn text-white p-3 rounded-2xl font-extrabold text-xs sm:text-sm flex flex-col items-center justify-center transition hover:brightness-105 cursor-pointer">
                         <span>🏠 Book Home Tutor</span>
-                        <span class="text-[10px] font-semibold text-amber-100">Free Nearby Demo</span>
+                        <span class="text-[11px] font-semibold text-amber-100">Free Nearby Demo</span>
                     </button>
                 </div>
             </section>
@@ -110,85 +132,155 @@
             <section class="grid grid-cols-4 gap-2 text-center">
                 <div onclick="switchTab('courses')" class="cm-glass-card p-2.5 rounded-2xl cursor-pointer">
                     <img src="images/courses.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="Courses">
-                    <span class="text-[11px] font-bold text-slate-800">Courses</span>
+                    <span class="text-xs font-bold text-slate-800">Courses</span>
                 </div>
                 <div onclick="checkNotesAccess()" class="cm-glass-card p-2.5 rounded-2xl cursor-pointer">
                     <img src="images/notes.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="Notes">
-                    <span class="text-[11px] font-bold text-slate-800">Notes</span>
+                    <span class="text-xs font-bold text-slate-800">Notes</span>
                 </div>
                 <div onclick="toggleAboutModal()" class="cm-glass-card p-2.5 rounded-2xl cursor-pointer">
                     <img src="images/faculty.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="About">
-                    <span class="text-[11px] font-bold text-slate-800">About</span>
+                    <span class="text-xs font-bold text-slate-800">About</span>
                 </div>
                 <div onclick="openQuizRegisterModal()" class="cm-glass-card p-2.5 rounded-2xl cursor-pointer">
                     <img src="images/quiz.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="Quiz">
-                    <span class="text-[11px] font-bold text-slate-800">Quiz</span>
+                    <span class="text-xs font-bold text-slate-800">Quiz</span>
+                </div>
+            </section>
+
+            <!-- HOME PAGE SUBJECT & COURSE CARDS SHOWCASE -->
+            <section class="space-y-2.5">
+                <div class="flex items-center justify-between px-1">
+                    <h3 class="font-extrabold text-sm text-slate-900">Popular Subjects & Skill Courses</h3>
+                    <button onclick="switchTab('courses')" class="text-xs font-bold text-indigo-700 hover:underline cursor-pointer">View All →</button>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                    <!-- Mathematics Card -->
+                    <div onclick="openSubjectDetail('Mathematics (Class 4 - 12)', 'images/course_math.png', 'ICSE • ISC • CBSE • UP Board', '<p>• Concept clarity, board exam practice & weekly tests.</p><p>• Classroom & verified home tuition available.</p>', 'Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12: ₹1,299/mo', 'Mathematics (Class 4 - 12)')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_math.png" alt="Mathematics" class="w-11 h-11 rounded-xl object-cover bg-teal-50 p-1">
+                        <div>
+                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">Mathematics</h4>
+                            <p class="text-[11px] text-slate-600">Class 4th to 12th</p>
+                        </div>
+                        <p class="text-xs font-extrabold text-teal-800">From ₹499 <span class="text-[11px] font-medium text-slate-500">/mo</span></p>
+                    </div>
+
+                    <!-- Science Card -->
+                    <div onclick="openSubjectDetail('Science (Physics, Chem, Bio)', 'images/course_science.png', 'ICSE • ISC • CBSE • UP Board', '<p>• Practical experiments, numericals & NCERT/ICSE board prep.</p><p>• Individual attention & regular doubt sessions.</p>', 'Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12: ₹1,299/mo', 'Science (Physics, Chem, Bio)')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_science.png" alt="Science" class="w-11 h-11 rounded-xl object-cover bg-indigo-50 p-1">
+                        <div>
+                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">Science</h4>
+                            <p class="text-[11px] text-slate-600">Phy • Chem • Bio</p>
+                        </div>
+                        <p class="text-xs font-extrabold text-indigo-800">From ₹499 <span class="text-[11px] font-medium text-slate-500">/mo</span></p>
+                    </div>
+
+                    <!-- Computer Card -->
+                    <div onclick="openSubjectDetail('Computer Programming', 'images/course_computer.png', 'Java • Python • C++ • Coding', '<p>• Hands-on coding logic, board syllabus & real mini-projects.</p><p>• Beginner-friendly step-by-step mentorship.</p>', '₹1,299 / month', 'Computer Programming')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_computer.png" alt="Computer" class="w-11 h-11 rounded-xl object-cover bg-purple-50 p-1">
+                        <div>
+                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">Computer</h4>
+                            <p class="text-[11px] text-slate-600">Java & Python</p>
+                        </div>
+                        <p class="text-xs font-extrabold text-purple-800">₹1,299 <span class="text-[11px] font-medium text-slate-500">/mo</span></p>
+                    </div>
+
+                    <!-- English Card -->
+                    <div onclick="openSubjectDetail('English Literature & Language', 'images/course_english.png', 'Grammar • Writing • Fluency', '<p>• Strong grammar, answer writing practice & spoken confidence.</p><p>• Suitable for school exams & communication.</p>', '₹799 / month', 'English Course')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_english.png" alt="English" class="w-11 h-11 rounded-xl object-cover bg-amber-50 p-1">
+                        <div>
+                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">English</h4>
+                            <p class="text-[11px] text-slate-600">Lit, Lang & Speaking</p>
+                        </div>
+                        <p class="text-xs font-extrabold text-amber-800">₹799 <span class="text-[11px] font-medium text-slate-500">/mo</span></p>
+                    </div>
+
+                    <!-- App Making Card -->
+                    <div onclick="openSubjectDetail('App Making & PWA', 'images/course_app.png', 'Android • PWA • Live Projects', '<p>• Build and publish real mobile & web apps from scratch.</p><p>• Includes UI layout, database & deployment basics.</p>', '₹1,999 Course Fee', 'App Making Course')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_app.png" alt="App Making" class="w-11 h-11 rounded-xl object-cover bg-indigo-50 p-1">
+                        <div>
+                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">App Making</h4>
+                            <p class="text-[11px] text-slate-600">Android & PWA</p>
+                        </div>
+                        <p class="text-xs font-extrabold text-slate-900">₹1,999 <span class="text-[11px] font-medium text-slate-500">course</span></p>
+                    </div>
+
+                    <!-- Web Development Card -->
+                    <div onclick="openSubjectDetail('Web Development', 'images/course_web.png', 'HTML • CSS • JS • Firebase', '<p>• Create responsive websites, portfolios & interactive apps.</p><p>• Practical workflow with live hosting guidance.</p>', '₹1,499 Course Fee', 'Web Development Course')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_web.png" alt="Web Development" class="w-11 h-11 rounded-xl object-cover bg-teal-50 p-1">
+                        <div>
+                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">Web Dev</h4>
+                            <p class="text-[11px] text-slate-600">HTML, CSS, JS</p>
+                        </div>
+                        <p class="text-xs font-extrabold text-slate-900">₹1,499 <span class="text-[11px] font-medium text-slate-500">course</span></p>
+                    </div>
                 </div>
             </section>
 
             <!-- TUTOR HIRING & SLOGAN BANNER -->
             <section class="cm-glass-card rounded-3xl p-4 space-y-3">
                 <div class="flex items-center justify-between gap-2">
-                    <div>
-                        <span class="text-[9px] font-extrabold uppercase tracking-wider text-teal-700 bg-teal-50 border border-teal-200 px-2 py-0.5 rounded-full">For Educators</span>
-                        <h3 class="font-extrabold text-xs text-slate-900 mt-1">Earn 91% Share • Payout on 15th & 30th</h3>
-                        <p class="text-[10px] text-slate-600">No 50% agency cut • Verified home tuition placements across Lucknow</p>
+                    <div class="space-y-0.5">
+                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-teal-800 bg-teal-50 border border-teal-200 px-2 py-0.5 rounded-full">For Educators</span>
+                        <h3 class="font-extrabold text-xs sm:text-sm text-slate-900 pt-1">Earn 91% Share • Payout on 15th & 30th</h3>
+                        <p class="text-xs text-slate-600">No 50% agency cut • Verified home tuition placements across Lucknow</p>
                     </div>
-                    <button onclick="toggleTutorRegModal()" class="cm-hero-grad text-white font-bold text-[10px] px-3 py-2 rounded-xl shadow whitespace-nowrap cursor-pointer">
+                    <button onclick="toggleTutorRegModal()" class="cm-hero-grad text-white font-bold text-xs px-3 py-2 rounded-xl shadow whitespace-nowrap cursor-pointer">
                         👨‍🏫 Apply Tutor
                     </button>
                 </div>
 
                 <div class="bg-gradient-to-r from-teal-50 via-indigo-50 to-purple-50 border border-indigo-100 rounded-2xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <p class="font-extrabold text-[11px] text-slate-900">
+                    <p class="font-extrabold text-xs text-slate-900 leading-snug">
                         "Number lana ya top par ana, Creative Minds ke sath ab asan hai pana!"
                     </p>
-                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enquire%20about%20Creative%20Minds." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-[11px] px-3.5 py-2 rounded-xl shadow text-center whitespace-nowrap transition">
+                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enquire%20about%20Creative%20Minds." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow text-center whitespace-nowrap transition">
                         💬 WhatsApp Enquiry
                     </a>
                 </div>
             </section>
 
-            <!-- COMPACT STUDENT REVIEWS -->
+            <!-- STUDENT REVIEWS -->
             <section class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                <div class="cm-glass-card p-3 rounded-2xl space-y-1.5">
+                <div class="cm-glass-card p-3.5 rounded-2xl space-y-1.5">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
                             <img src="images/student_1.png" alt="Student" class="w-8 h-8 rounded-full object-cover border border-teal-300 bg-white">
                             <div>
                                 <h4 class="font-bold text-xs text-slate-900">Ananya Verma</h4>
-                                <p class="text-[9px] text-slate-500">ICSE Class 10</p>
+                                <p class="text-[11px] text-slate-500">ICSE Class 10</p>
                             </div>
                         </div>
-                        <span class="text-amber-500 text-[11px] font-bold">★★★★★</span>
+                        <span class="text-amber-500 text-xs font-bold">★★★★★</span>
                     </div>
-                    <p class="text-[10px] text-slate-600 leading-snug">
+                    <p class="text-xs text-slate-600 leading-relaxed">
                         "Sir explains difficult math concepts so easily. My marks improved tremendously."
                     </p>
                 </div>
 
-                <div class="cm-glass-card p-3 rounded-2xl space-y-1.5">
+                <div class="cm-glass-card p-3.5 rounded-2xl space-y-1.5">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
                             <img src="images/student_2.png" alt="Student" class="w-8 h-8 rounded-full object-cover border border-teal-300 bg-white">
                             <div>
                                 <h4 class="font-bold text-xs text-slate-900">Rohan Singh</h4>
-                                <p class="text-[9px] text-slate-500">Computer & App Dev</p>
+                                <p class="text-[11px] text-slate-500">Computer & App Dev</p>
                             </div>
                         </div>
-                        <span class="text-amber-500 text-[11px] font-bold">★★★★★</span>
+                        <span class="text-amber-500 text-xs font-bold">★★★★★</span>
                     </div>
-                    <p class="text-[10px] text-slate-600 leading-snug">
+                    <p class="text-xs text-slate-600 leading-relaxed">
                         "Learning app making and coding here gave me real practical skills. Great mentoring!"
                     </p>
                 </div>
             </section>
 
-            <!-- BOTTOM CONTACT FOOTER: LOCATION, PHONE, WEBSITE & FACEBOOK -->
-            <footer class="cm-glass-card rounded-3xl p-4 text-[11px] text-slate-700 space-y-2">
+            <!-- BOTTOM CONTACT FOOTER -->
+            <footer class="cm-glass-card rounded-3xl p-4 text-xs text-slate-700 space-y-2">
                 <div class="flex items-center justify-between border-b border-slate-200/70 pb-2">
                     <span class="font-extrabold text-slate-900">The Creative Minds Coaching Institute</span>
-                    <span class="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full">Since 2016</span>
+                    <span class="text-[11px] font-bold text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded-full">Since 2016</span>
                 </div>
                 <p class="text-slate-600">📍 <strong>Location:</strong> Rajajipuram, Lucknow, Uttar Pradesh</p>
                 <p class="text-slate-600">📞 <strong>Phone:</strong> <a href="tel:+918756866588" class="font-extrabold text-indigo-700 hover:underline">+91 8756866588</a></p>
@@ -217,7 +309,7 @@
 
                 <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 space-y-1.5">
                     <h3 class="font-bold text-xs text-slate-800">📖 Course Overview:</h3>
-                    <div id="detailSubjectDesc" class="text-[11px] text-slate-600 leading-relaxed space-y-1"></div>
+                    <div id="detailSubjectDesc" class="text-xs text-slate-600 leading-relaxed space-y-1"></div>
                 </div>
 
                 <div class="bg-teal-50 p-3 rounded-xl border border-teal-200 text-center">
@@ -252,10 +344,10 @@
                     <img src="images/course_math.png" alt="Math" class="w-11 h-11 rounded-xl object-cover bg-teal-50 p-1 mt-0.5">
                     <div class="flex-1">
                         <div class="flex justify-between items-center mb-1">
-                            <h4 class="font-bold text-xs text-slate-900">Mathematics (Class 4 - 12)</h4>
-                            <span class="text-[9px] bg-teal-100 text-teal-800 font-bold px-2 py-0.5 rounded-full">Core</span>
+                            <h4 class="font-bold text-xs sm:text-sm text-slate-900">Mathematics (Class 4 - 12)</h4>
+                            <span class="text-[10px] bg-teal-100 text-teal-800 font-bold px-2 py-0.5 rounded-full">Core</span>
                         </div>
-                        <div class="text-[11px] text-slate-700 space-y-0.5 bg-slate-50 p-2 rounded-lg">
+                        <div class="text-xs text-slate-700 space-y-0.5 bg-slate-50 p-2 rounded-lg">
                             <div class="flex justify-between"><span>• Class 4th to 8th:</span> <strong>₹499 /mo</strong></div>
                             <div class="flex justify-between"><span>• Class 9th & 10th:</span> <strong>₹999 /mo</strong></div>
                             <div class="flex justify-between"><span>• Class 11th & 12th:</span> <strong>₹1,299 /mo</strong></div>
@@ -266,8 +358,8 @@
                 <div class="cm-glass-card p-3.5 rounded-2xl flex items-start space-x-3">
                     <img src="images/course_science.png" alt="Science" class="w-11 h-11 rounded-xl object-cover bg-indigo-50 p-1 mt-0.5">
                     <div class="flex-1">
-                        <h4 class="font-bold text-xs text-slate-900 mb-1">Science (Physics, Chem, Bio)</h4>
-                        <div class="text-[11px] text-slate-700 space-y-0.5 bg-slate-50 p-2 rounded-lg">
+                        <h4 class="font-bold text-xs sm:text-sm text-slate-900 mb-1">Science (Physics, Chem, Bio)</h4>
+                        <div class="text-xs text-slate-700 space-y-0.5 bg-slate-50 p-2 rounded-lg">
                             <div class="flex justify-between"><span>• Class 4th to 8th:</span> <strong>₹499 /mo</strong></div>
                             <div class="flex justify-between"><span>• Class 9th & 10th:</span> <strong>₹999 /mo</strong></div>
                             <div class="flex justify-between"><span>• Class 11th & 12th:</span> <strong>₹1,299 /mo</strong></div>
@@ -280,16 +372,16 @@
                         <img src="images/course_computer.png" alt="Computer" class="w-9 h-9 rounded-xl object-cover bg-purple-50 p-1">
                         <div>
                             <h4 class="font-bold text-xs text-slate-900">Computer</h4>
-                            <p class="text-[9px] text-slate-500">Java, Python</p>
-                            <p class="text-xs font-extrabold text-indigo-700 mt-0.5">₹1,299 <span class="text-[8px] font-normal text-slate-500">/mo</span></p>
+                            <p class="text-[11px] text-slate-500">Java, Python</p>
+                            <p class="text-xs font-extrabold text-indigo-700 mt-0.5">₹1,299 <span class="text-[10px] font-normal text-slate-500">/mo</span></p>
                         </div>
                     </div>
                     <div class="cm-glass-card p-3 rounded-2xl flex items-center space-x-2.5">
                         <img src="images/course_english.png" alt="English" class="w-9 h-9 rounded-xl object-cover bg-amber-50 p-1">
                         <div>
                             <h4 class="font-bold text-xs text-slate-900">English</h4>
-                            <p class="text-[9px] text-slate-500">Lit & Lang</p>
-                            <p class="text-xs font-extrabold text-indigo-700 mt-0.5">₹799 <span class="text-[8px] font-normal text-slate-500">/mo</span></p>
+                            <p class="text-[11px] text-slate-500">Lit & Lang</p>
+                            <p class="text-xs font-extrabold text-indigo-700 mt-0.5">₹799 <span class="text-[10px] font-normal text-slate-500">/mo</span></p>
                         </div>
                     </div>
                 </div>
@@ -303,12 +395,12 @@
                         <img src="images/course_app.png" alt="App Making" class="w-10 h-10 rounded-xl object-cover bg-indigo-50 p-1">
                         <div>
                             <h4 class="font-bold text-xs text-slate-900">App Making</h4>
-                            <p class="text-[10px] text-slate-500">Android & PWA Live Projects</p>
+                            <p class="text-[11px] text-slate-500">Android & PWA Live Projects</p>
                         </div>
                     </div>
                     <div class="text-right">
                         <span class="text-xs font-extrabold text-slate-900 block mb-1">₹1,999</span>
-                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20App%20Making%20Course." target="_blank" class="text-[10px] cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20App%20Making%20Course." target="_blank" class="text-xs cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
                     </div>
                 </div>
 
@@ -317,12 +409,12 @@
                         <img src="images/course_web.png" alt="Web Dev" class="w-10 h-10 rounded-xl object-cover bg-teal-50 p-1">
                         <div>
                             <h4 class="font-bold text-xs text-slate-900">Web Development</h4>
-                            <p class="text-[10px] text-slate-500">HTML, CSS, JavaScript, Firebase</p>
+                            <p class="text-[11px] text-slate-500">HTML, CSS, JavaScript, Firebase</p>
                         </div>
                     </div>
                     <div class="text-right">
                         <span class="text-xs font-extrabold text-slate-900 block mb-1">₹1,499</span>
-                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Web%20Development%20Course." target="_blank" class="text-[10px] cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Web%20Development%20Course." target="_blank" class="text-xs cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
                     </div>
                 </div>
 
@@ -331,12 +423,12 @@
                         <img src="images/course_video.png" alt="Video Editing" class="w-10 h-10 rounded-xl object-cover bg-purple-50 p-1">
                         <div>
                             <h4 class="font-bold text-xs text-slate-900">Video Editing & Graphics</h4>
-                            <p class="text-[10px] text-slate-500">Premiere Pro, Canva & Reels</p>
+                            <p class="text-[11px] text-slate-500">Premiere Pro, Canva & Reels</p>
                         </div>
                     </div>
                     <div class="text-right">
                         <span class="text-xs font-extrabold text-slate-900 block mb-1">₹1,299</span>
-                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Video%20Editing%20Course." target="_blank" class="text-[10px] cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Video%20Editing%20Course." target="_blank" class="text-xs cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
                     </div>
                 </div>
 
@@ -345,12 +437,12 @@
                         <img src="images/graphics.png" alt="Graphics & 3D Craft" class="w-10 h-10 rounded-xl object-cover bg-amber-50 p-1">
                         <div>
                             <h4 class="font-bold text-xs text-slate-900">Graphics & 3D Craft</h4>
-                            <p class="text-[10px] text-slate-500">Blender, Pepakura & Poster Design</p>
+                            <p class="text-[11px] text-slate-500">Blender, Pepakura & Poster Design</p>
                         </div>
                     </div>
                     <div class="text-right">
                         <span class="text-xs font-extrabold text-slate-900 block mb-1">₹1,299</span>
-                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Graphics%20and%203D%20Craft%20Course." target="_blank" class="text-[10px] cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
+                        <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Graphics%20and%203D%20Craft%20Course." target="_blank" class="text-xs cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
                     </div>
                 </div>
             </div>
@@ -359,17 +451,17 @@
                 <div class="flex items-center space-x-3">
                     <img src="images/discount_badge.png" alt="Discount" class="w-10 h-10 rounded-xl object-cover bg-amber-400 p-1">
                     <div>
-                        <span class="bg-amber-400 text-slate-950 text-[9px] font-extrabold px-2 py-0.5 rounded uppercase">30% OFF</span>
+                        <span class="bg-amber-400 text-slate-950 text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">30% OFF</span>
                         <h4 class="font-bold text-xs text-amber-200 mt-0.5">Mega Tech Combo Pack</h4>
-                        <p class="text-[10px] text-teal-100">App Making + Web Dev + Video Editing Bundle</p>
+                        <p class="text-xs text-teal-100">App Making + Web Dev + Video Editing Bundle</p>
                     </div>
                 </div>
                 <div class="flex justify-between items-center pt-2 border-t border-white/20">
                     <div>
-                        <span class="text-[10px] line-through text-teal-200">₹4,797</span>
-                        <p class="text-sm font-extrabold">₹3,350 <span class="text-[9px] font-normal text-amber-200">(Save 30%)</span></p>
+                        <span class="text-xs line-through text-teal-200">₹4,797</span>
+                        <p class="text-sm font-extrabold">₹3,350 <span class="text-xs font-normal text-amber-200">(Save 30%)</span></p>
                     </div>
-                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20claim%20the%20Mega%20Tech%20Combo%20Pack%20with%2030%20percent%20discount%20at%20Rs.%203350." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-[11px] px-3.5 py-2 rounded-xl shadow transition">
+                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20claim%20the%20Mega%20Tech%20Combo%20Pack%20with%2030%20percent%20discount%20at%20Rs.%203350." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow transition">
                         💬 Claim 30% Off
                     </a>
                 </div>
@@ -381,14 +473,14 @@
             <div class="cm-hero-grad text-white p-4 rounded-2xl shadow-md flex items-center space-x-3.5">
                 <div class="relative">
                     <img id="studentProfileImg" src="images/student_1.png" alt="Profile" class="w-14 h-14 rounded-full object-cover border-2 border-amber-300 bg-white">
-                    <label for="profileImgInput" class="absolute bottom-0 right-0 bg-amber-400 text-slate-950 p-1 rounded-full cursor-pointer text-[9px] font-bold shadow" title="Change Photo">📷</label>
+                    <label for="profileImgInput" class="absolute bottom-0 right-0 bg-amber-400 text-slate-950 p-1 rounded-full cursor-pointer text-[10px] font-bold shadow" title="Change Photo">📷</label>
                     <input type="file" id="profileImgInput" accept="image/*" class="hidden" onchange="updateProfileImage(event)">
                 </div>
                 <div class="space-y-0.5 flex-1">
-                    <span id="studentModeBadge" class="bg-white/20 text-white text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full font-bold">Student Portal</span>
+                    <span id="studentModeBadge" class="bg-white/20 text-white text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full font-bold">Student Portal</span>
                     <h2 id="displayName" class="font-extrabold text-base pt-0.5">Welcome, Student!</h2>
                     <p class="text-xs text-teal-100">Class: <span id="displayClass" class="font-semibold text-white">ICSE Class 10</span></p>
-                    <p id="displayAssignedTutor" class="text-[10px] text-amber-200 font-semibold hidden"></p>
+                    <p id="displayAssignedTutor" class="text-xs text-amber-200 font-semibold hidden"></p>
                 </div>
             </div>
 
@@ -400,16 +492,16 @@
                 <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center">
                     <div>
                         <h4 id="displayEnrolledBatch" class="font-bold text-xs text-slate-900">Mathematics & Computer Batches</h4>
-                        <p id="displayBatchSubtext" class="text-[10px] text-slate-500">Batch Timing: 4:00 PM - 5:30 PM</p>
+                        <p id="displayBatchSubtext" class="text-xs text-slate-500">Batch Timing: 4:00 PM - 5:30 PM</p>
                     </div>
-                    <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-md">Active</span>
+                    <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-md">Active</span>
                 </div>
             </div>
 
             <div id="studentTrackingSection" class="cm-glass-card p-3.5 rounded-2xl space-y-2">
                 <div class="flex justify-between items-center">
                     <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide">📅 Attendance & Homework</h3>
-                    <span class="text-[9px] bg-teal-100 text-teal-800 font-bold px-2 py-0.5 rounded-full">Live</span>
+                    <span class="text-[10px] bg-teal-100 text-teal-800 font-bold px-2 py-0.5 rounded-full">Live</span>
                 </div>
                 <div id="studentAttendanceList" class="space-y-2 text-xs">
                     <p class="text-slate-400 text-center py-2">Loading attendance logs...</p>
@@ -435,8 +527,8 @@
         <div id="teacherDashboard" class="hidden space-y-3.5">
             <div class="cm-hero-grad text-white p-4 rounded-2xl shadow-md space-y-1">
                 <div class="flex justify-between items-center">
-                    <span class="bg-white/20 text-[9px] uppercase tracking-wider px-2.5 py-0.5 rounded-full font-bold">Verified Tutor</span>
-                    <span class="text-[9px] bg-amber-400 text-slate-950 px-2 py-0.5 rounded-full font-extrabold">91% Share • 15th & 30th</span>
+                    <span class="bg-white/20 text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full font-bold">Verified Tutor</span>
+                    <span class="text-[10px] bg-amber-400 text-slate-950 px-2 py-0.5 rounded-full font-extrabold">91% Share • 15th & 30th</span>
                 </div>
                 <h2 id="teacherDisplayName" class="font-extrabold text-base pt-0.5">Welcome, Tutor!</h2>
                 <p id="teacherDisplayMeta" class="text-xs text-teal-100">Lucknow • Maths, Science</p>
@@ -445,7 +537,7 @@
             <div class="cm-glass-card p-3.5 rounded-2xl space-y-2.5">
                 <div class="flex justify-between items-center">
                     <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide">👨‍🎓 Assigned Students</h3>
-                    <span id="teacherStudentCount" class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded-full">0</span>
+                    <span id="teacherStudentCount" class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
                 </div>
                 <div id="teacherStudentsContainer" class="space-y-2 text-xs">
                     <p class="text-slate-400 text-center py-2">Loading assigned students...</p>
@@ -487,8 +579,13 @@
 
     </main>
 
-    <!-- FLOATING CM BOT AI BUTTON -->
-    <button onclick="toggleAIAssistant()" class="fixed bottom-16 right-3 z-40 cm-hero-grad text-white px-3 py-2 rounded-full shadow-lg flex items-center space-x-1.5 font-bold text-[11px] border-2 border-white cm-bot-pill cursor-pointer">
+    <!-- FLOATING CALL BUTTON (BOTTOM LEFT) -->
+    <a href="tel:+918756866588" aria-label="Call Creative Minds" class="fixed bottom-16 left-3 z-40 w-11 h-11 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-xl flex items-center justify-center text-lg border-2 border-white transition">
+        📞
+    </a>
+
+    <!-- FLOATING CM BOT AI BUTTON (BOTTOM RIGHT) -->
+    <button onclick="toggleAIAssistant()" class="fixed bottom-16 right-3 z-40 cm-hero-grad text-white px-3.5 py-2 rounded-full shadow-xl flex items-center space-x-1.5 font-bold text-xs border-2 border-white cm-bot-pill cursor-pointer">
         <span>🤖</span>
         <span>CM Bot AI</span>
     </button>
@@ -501,7 +598,7 @@
                     <span class="text-base">🤖</span>
                     <div>
                         <h3 class="font-bold text-xs">CM Bot AI</h3>
-                        <p class="text-[9px] text-teal-100">● Online • Creative Minds Assistant</p>
+                        <p class="text-[10px] text-teal-100">● Online • Creative Minds Assistant</p>
                     </div>
                 </div>
                 <button onclick="toggleAIAssistant()" class="text-white/80 hover:text-white font-bold text-sm px-2 cursor-pointer">✕</button>
@@ -512,9 +609,9 @@
                     Namaste! Main <strong>CM Bot AI</strong> hoon. Coaching, Home Tuition demo, ₹99 tracking app ya Tutor 91% share ke baare mein poochiye! 😊
                 </div>
                 <div class="flex flex-wrap gap-1.5">
-                    <button onclick="sendQuickAIQuery('Book Home Tutor Demo & ₹99 App')" class="bg-teal-50 text-teal-800 border border-teal-200 font-semibold px-2.5 py-1 rounded-full text-[10px] cursor-pointer">🏠 Home Tutor</button>
-                    <button onclick="sendQuickAIQuery('Tutor 91% Share & 15th 30th Payout')" class="bg-indigo-50 text-indigo-800 border border-indigo-200 font-semibold px-2.5 py-1 rounded-full text-[10px] cursor-pointer">👨‍🏫 Tutor Payout</button>
-                    <button onclick="sendQuickAIQuery('Coaching Fees & Batches')" class="bg-amber-50 text-amber-800 border border-amber-200 font-semibold px-2.5 py-1 rounded-full text-[10px] cursor-pointer">📚 Fees</button>
+                    <button onclick="sendQuickAIQuery('Book Home Tutor Demo & ₹99 App')" class="bg-teal-50 text-teal-800 border border-teal-200 font-semibold px-2.5 py-1 rounded-full text-xs cursor-pointer">🏠 Home Tutor</button>
+                    <button onclick="sendQuickAIQuery('Tutor 91% Share & 15th 30th Payout')" class="bg-indigo-50 text-indigo-800 border border-indigo-200 font-semibold px-2.5 py-1 rounded-full text-xs cursor-pointer">👨‍🏫 Tutor Payout</button>
+                    <button onclick="sendQuickAIQuery('Coaching Fees & Batches')" class="bg-amber-50 text-amber-800 border border-amber-200 font-semibold px-2.5 py-1 rounded-full text-xs cursor-pointer">📚 Fees</button>
                 </div>
             </div>
 
@@ -530,19 +627,19 @@
         <div class="max-w-md mx-auto flex justify-around py-1.5">
             <button onclick="switchTab('home')" class="flex flex-col items-center text-slate-600 hover:text-teal-700 space-y-0.5 cursor-pointer">
                 <img src="images/student.png" class="w-5 h-5 object-contain" alt="Home">
-                <span class="text-[10px] font-semibold">Home</span>
+                <span class="text-xs font-semibold">Home</span>
             </button>
             <button onclick="switchTab('courses')" class="flex flex-col items-center text-slate-600 hover:text-teal-700 space-y-0.5 cursor-pointer">
                 <img src="images/courses.png" class="w-5 h-5 object-contain" alt="Courses">
-                <span class="text-[10px] font-semibold">Courses</span>
+                <span class="text-xs font-semibold">Courses</span>
             </button>
             <button onclick="checkNotesAccess()" class="flex flex-col items-center text-slate-600 hover:text-teal-700 space-y-0.5 cursor-pointer">
                 <img src="images/notes.png" class="w-5 h-5 object-contain" alt="Notes">
-                <span class="text-[10px] font-semibold">Notes</span>
+                <span class="text-xs font-semibold">Notes</span>
             </button>
             <button onclick="toggleAboutModal()" class="flex flex-col items-center text-slate-600 hover:text-teal-700 space-y-0.5 cursor-pointer">
                 <img src="images/faculty.png" class="w-5 h-5 object-contain" alt="About">
-                <span class="text-[10px] font-semibold">About</span>
+                <span class="text-xs font-semibold">About</span>
             </button>
         </div>
     </nav>
@@ -554,7 +651,7 @@
                 <h3 class="font-bold text-sm text-slate-800">🏠 Book Home Tutor (Free Demo)</h3>
                 <button onclick="toggleHomeTuitionDemoModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
-            <p class="text-[10px] text-teal-800 bg-teal-50 border border-teal-100 p-2.5 rounded-xl leading-relaxed">
+            <p class="text-xs text-teal-800 bg-teal-50 border border-teal-100 p-2.5 rounded-xl leading-relaxed">
                 Free nearby demo first. After selection, advance fee + <strong>₹99</strong> unlocks attendance, progress & notes.
             </p>
             <div class="space-y-2 text-xs">
@@ -594,7 +691,7 @@
                 <h3 class="font-bold text-sm text-slate-800">👨‍🏫 Join as Verified Home Tutor</h3>
                 <button onclick="toggleTutorRegModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
-            <p class="text-[10px] text-indigo-800 bg-indigo-50 border border-indigo-100 p-2.5 rounded-xl leading-relaxed">
+            <p class="text-xs text-indigo-800 bg-indigo-50 border border-indigo-100 p-2.5 rounded-xl leading-relaxed">
                 Keep <strong>91% of fee</strong> (9% platform fee). Payout sent <strong>half on 15th</strong> & <strong>remaining on 30th</strong>.
             </p>
             <div class="space-y-2 text-xs">
@@ -624,7 +721,7 @@
                 <button onclick="loadAdminLeadsOverview()" class="w-full cm-orange-btn text-white font-bold py-2 rounded-xl transition cursor-pointer">
                     📊 View Live Leads
                 </button>
-                <div id="adminLeadsViewer" class="hidden space-y-1.5 bg-slate-50 p-2.5 rounded-xl border border-slate-200 max-h-40 overflow-y-auto text-[10px]"></div>
+                <div id="adminLeadsViewer" class="hidden space-y-1.5 bg-slate-50 p-2.5 rounded-xl border border-slate-200 max-h-40 overflow-y-auto text-xs"></div>
 
                 <hr class="border-slate-100">
                 <h4 class="font-bold text-teal-800">1. Add Verified Student</h4>
@@ -761,7 +858,7 @@
         <div class="bg-white w-full max-w-md rounded-3xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
                 <h3 id="quizTitleHeader" class="font-bold text-sm text-teal-800">Quiz Challenge</h3>
-                <span id="quizTimerBadge" class="bg-indigo-100 text-indigo-800 font-bold text-[10px] px-2.5 py-1 rounded-full">Q 1/1</span>
+                <span id="quizTimerBadge" class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-1 rounded-full">Q 1/1</span>
             </div>
             <div id="quizQuestionContainer" class="space-y-3 text-xs"></div>
             <div class="flex justify-between pt-2 border-t border-slate-100">
@@ -781,7 +878,7 @@
                 <p id="finalScoreDisplay" class="text-2xl font-extrabold text-teal-700">0 / 0</p>
             </div>
             <div id="demoCoachingAlertBox" class="hidden bg-amber-50 border border-amber-200 p-3 rounded-2xl space-y-2 text-left">
-                <p class="text-[11px] text-slate-700">Book a <strong>Free Demo Class</strong> with Saurabh Sir to boost your score!</p>
+                <p class="text-xs text-slate-700">Book a <strong>Free Demo Class</strong> with Saurabh Sir to boost your score!</p>
                 <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20book%20a%20Demo%20Class!" target="_blank" class="block w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2 rounded-lg">
                     Book Demo Class 🚀
                 </a>
@@ -803,7 +900,7 @@
                 <img src="images/founder.png" alt="Founder" class="w-20 h-20 rounded-full object-cover border-4 border-teal-500 shadow">
                 <div class="text-center">
                     <h4 class="font-extrabold text-sm text-slate-900">Saurabh Verma</h4>
-                    <p class="text-[10px] text-teal-700 font-semibold">Founder & Lead Instructor (Since 2016)</p>
+                    <p class="text-xs text-teal-700 font-semibold">Founder & Lead Instructor (Since 2016)</p>
                 </div>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
@@ -1311,9 +1408,9 @@
                     <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 space-y-0.5">
                         <div class="flex justify-between items-center">
                             <span class="font-bold text-slate-800">${log.date || 'Class'}</span>
-                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">${log.status}</span>
+                            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">${log.status}</span>
                         </div>
-                        <p class="text-[11px] text-slate-600">${log.homework}</p>
+                        <p class="text-xs text-slate-600">${log.homework}</p>
                     </div>
                 `).join('');
             } catch (e) {
@@ -1385,8 +1482,8 @@
                         const half = Math.round(share / 2);
                         return `<div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
                             <p class="font-bold text-slate-900">${s.name} (${s.studentClass})</p>
-                            <p class="text-[10px] text-slate-500">${s.enrolledCourse}</p>
-                            ${fee > 0 ? `<p class="text-[10px] text-emerald-700 font-semibold mt-0.5">91% Share: ₹${share} (15th: ₹${half} • 30th: ₹${share - half})</p>` : ''}
+                            <p class="text-xs text-slate-500">${s.enrolledCourse}</p>
+                            ${fee > 0 ? `<p class="text-xs text-emerald-700 font-semibold mt-0.5">91% Share: ₹${share} (15th: ₹${half} • 30th: ₹${share - half})</p>` : ''}
                         </div>`;
                     }).join('');
                 }
@@ -1402,9 +1499,9 @@
                     : demos.slice(0, 4).map(d => `<div class="p-2 bg-orange-50 rounded-xl border border-orange-100 flex justify-between items-center">
                         <div>
                             <p class="font-bold text-slate-800">${d.studentClass} • ${d.subjects}</p>
-                            <p class="text-[10px] text-slate-500">${d.area}</p>
+                            <p class="text-xs text-slate-500">${d.area}</p>
                         </div>
-                        <a href="https://wa.me/918756866588?text=${encodeURIComponent(`Tutor ${tutorData.name} wants demo for ${d.studentClass} ${d.subjects} in ${d.area}`)}" target="_blank" class="bg-orange-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg">Claim</a>
+                        <a href="https://wa.me/918756866588?text=${encodeURIComponent(`Tutor ${tutorData.name} wants demo for ${d.studentClass} ${d.subjects} in ${d.area}`)}" target="_blank" class="bg-orange-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg">Claim</a>
                     </div>`).join('');
             } catch (e) { console.error(e); }
         }
@@ -1489,10 +1586,10 @@
                 container.innerHTML = filtered.map(note => `
                     <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center space-x-2">
                         <div>
-                            <span class="text-[9px] bg-teal-100 text-teal-800 font-bold px-1.5 py-0.5 rounded">${note.studentClass}</span>
+                            <span class="text-[10px] bg-teal-100 text-teal-800 font-bold px-1.5 py-0.5 rounded">${note.studentClass}</span>
                             <p class="font-bold text-slate-800 mt-0.5">${note.title}</p>
                         </div>
-                        <a href="${note.link}" target="_blank" class="text-teal-700 font-bold text-[11px] bg-teal-50 px-2.5 py-1 rounded-lg border border-teal-200">Open</a>
+                        <a href="${note.link}" target="_blank" class="text-teal-700 font-bold text-xs bg-teal-50 px-2.5 py-1 rounded-lg border border-teal-200">Open</a>
                     </div>
                 `).join('');
             } catch (e) { container.innerHTML = `<div class="p-2.5 bg-slate-50 rounded-xl text-center text-red-500">Error loading notes.</div>`; }
@@ -1622,13 +1719,13 @@
             let reply = "";
 
             if (q.includes('demo') || q.includes('home') || q.includes('tutor') || q.includes('tuition') || q.includes('99')) {
-                reply = `🏠 <strong>Home Tuition + ₹99 App:</strong> Free nearby demo pehle. Selection ke baad advance fee + <strong>₹99</strong> mein attendance, progress & notes milte hain.<br><br><div class="flex flex-wrap gap-1.5"><button onclick="toggleAIAssistant(); toggleHomeTuitionDemoModal();" class="cm-orange-btn text-white font-bold px-2.5 py-1 rounded-lg text-[10px] cursor-pointer">Book Demo →</button><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Home Tuition Demo: ' + text)}" target="_blank" class="bg-emerald-500 text-white font-bold px-2.5 py-1 rounded-lg text-[10px]">💬 WhatsApp</a></div>`;
+                reply = `🏠 <strong>Home Tuition + ₹99 App:</strong> Free nearby demo pehle. Selection ke baad advance fee + <strong>₹99</strong> mein attendance, progress & notes milte hain.<br><br><div class="flex flex-wrap gap-1.5"><button onclick="toggleAIAssistant(); toggleHomeTuitionDemoModal();" class="cm-orange-btn text-white font-bold px-2.5 py-1 rounded-lg text-xs cursor-pointer">Book Demo →</button><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Home Tuition Demo: ' + text)}" target="_blank" class="bg-emerald-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">💬 WhatsApp</a></div>`;
             } else if (q.includes('job') || q.includes('teach') || q.includes('91') || q.includes('15') || q.includes('30') || q.includes('payout')) {
-                reply = `👨‍🏫 <strong>Tutor Payout:</strong> Aapko <strong>91% fee</strong> milti hai (9% platform fee). Advance ke baad <strong>15th ko half</strong> aur <strong>30th ko baaki</strong> payout.<br><br><div class="flex flex-wrap gap-1.5"><button onclick="toggleAIAssistant(); toggleTutorRegModal();" class="cm-hero-grad text-white font-bold px-2.5 py-1 rounded-lg text-[10px] cursor-pointer">Apply Tutor →</button><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Tutor Enquiry: ' + text)}" target="_blank" class="bg-emerald-500 text-white font-bold px-2.5 py-1 rounded-lg text-[10px]">💬 WhatsApp</a></div>`;
+                reply = `👨‍🏫 <strong>Tutor Payout:</strong> Aapko <strong>91% fee</strong> milti hai (9% platform fee). Advance ke baad <strong>15th ko half</strong> aur <strong>30th ko baaki</strong> payout.<br><br><div class="flex flex-wrap gap-1.5"><button onclick="toggleAIAssistant(); toggleTutorRegModal();" class="cm-hero-grad text-white font-bold px-2.5 py-1 rounded-lg text-xs cursor-pointer">Apply Tutor →</button><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Tutor Enquiry: ' + text)}" target="_blank" class="bg-emerald-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">💬 WhatsApp</a></div>`;
             } else if (q.includes('fee') || q.includes('course') || q.includes('class') || q.includes('coaching')) {
-                reply = `📚 <strong>Coaching Fees:</strong> Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12 & Computer: ₹1,299/mo.<br><br><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Coaching Enquiry: ' + text)}" target="_blank" class="inline-block bg-emerald-500 text-white font-bold px-2.5 py-1 rounded-lg text-[10px]">💬 WhatsApp</a>`;
+                reply = `📚 <strong>Coaching Fees:</strong> Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12 & Computer: ₹1,299/mo.<br><br><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Coaching Enquiry: ' + text)}" target="_blank" class="inline-block bg-emerald-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">💬 WhatsApp</a>`;
             } else {
-                reply = `Main <strong>CM Bot AI</strong> hoon! Aap yahan details dekh sakte hain ya seedha WhatsApp par baat kar sakte hain:<br><br><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI / Saurabh Sir, ' + text)}" target="_blank" class="inline-block bg-emerald-500 text-white font-bold px-3 py-1 rounded-lg text-[10px]">💬 Continue on WhatsApp</a>`;
+                reply = `Main <strong>CM Bot AI</strong> hoon! Aap yahan details dekh sakte hain ya seedha WhatsApp par baat kar sakte hain:<br><br><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI / Saurabh Sir, ' + text)}" target="_blank" class="inline-block bg-emerald-500 text-white font-bold px-3 py-1 rounded-lg text-xs">💬 Continue on WhatsApp</a>`;
             }
 
             setTimeout(() => {
