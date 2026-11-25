@@ -37,6 +37,15 @@
             border-color: #ff6100;
             box-shadow: 0 12px 24px -8px rgba(29, 78, 216, 0.14);
         }
+        .cm-call-pill {
+            background: #ffffff;
+            color: #ff6100;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+        }
+        .cm-call-pill:hover {
+            background: #fff7ed;
+        }
     </style>
 </head>
 <body class="min-h-screen w-full m-0 p-0 flex flex-col justify-between overflow-x-hidden">
@@ -45,17 +54,22 @@
     <header class="cm-header-grad text-white sticky top-0 z-50 shadow-md">
         <div class="max-w-xl mx-auto px-4 py-3 flex justify-between items-center gap-2">
             <div class="flex items-center space-x-2.5 cursor-pointer" onclick="handleSecretAdminTrigger()">
-                <img src="images/logo.png" alt="The Creative Minds Logo" class="w-10 h-10 rounded-full object-cover border-2 border-amber-300 bg-white">
+                <!-- Logo with Orange Round Ring -->
+                <img src="images/logo.png" alt="The Creative Minds Logo" class="w-10 h-10 rounded-full object-cover border-2 border-[#ff6100] ring-2 ring-[#ff6100]/60 bg-white">
                 <div>
                     <h1 class="font-bold text-base leading-tight">Creative Minds</h1>
                     <p class="text-[11px] text-teal-100 font-medium">Think Smart, Learn Fast</p>
                 </div>
             </div>
             <div class="flex items-center space-x-2">
-                <a href="tel:+918756866588" class="bg-white/15 hover:bg-white/25 text-white px-3 py-1.5 rounded-full text-xs font-semibold border border-white/25 transition">
-                    📞 Call
+                <!-- High-Contrast Call Pill with Crisp Icon -->
+                <a href="tel:+918756866588" class="cm-call-pill px-3 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/>
+                    </svg>
+                    <span>Call</span>
                 </a>
-                <button id="pwaInstallBtn" onclick="installPWAApp()" class="hidden bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-1.5 rounded-full text-xs font-bold transition cursor-pointer">
+                <button id="pwaInstallBtn" onclick="installPWAApp()" class="hidden bg-[#ff6100] hover:bg-[#e55700] text-white px-3 py-1.5 rounded-full text-xs font-bold transition cursor-pointer">
                     Install
                 </button>
                 <button id="topLoginBtn" onclick="toggleAuthModal()" class="bg-white text-slate-900 hover:bg-slate-100 px-3.5 py-1.5 rounded-full text-xs font-bold shadow transition cursor-pointer">
@@ -70,60 +84,34 @@
         <!-- HOME VIEW -->
         <div id="visitorView" class="space-y-4">
 
-            <!-- HERO CARD WITH TOP ACTION BUTTONS -->
-            <section class="cm-header-grad text-white rounded-2xl p-4 sm:p-5 shadow-lg space-y-3.5">
-                <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
-                    <span class="bg-white/15 px-3 py-1 rounded-full">Rajajipuram, Lucknow</span>
-                    <span class="bg-amber-400 text-slate-950 px-3 py-1 rounded-full font-bold">ICSE • ISC • CBSE • UP Board</span>
-                </div>
-
-                <!-- HOME TUITION & COACHING BUTTONS RIGHT AT TOP -->
+            <!-- TOP ACTION BUTTONS + DETAILS (Rajajipuram box removed, motion banner stays on top) -->
+            <section class="space-y-3">
                 <div class="grid grid-cols-2 gap-2.5">
-                    <button onclick="toggleHomeTuitionDemoModal()" class="cm-orange-btn text-white p-3 rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center transition hover:brightness-105 cursor-pointer">
-                        <span>🏠 Book Home Tutor</span>
-                        <span class="text-[11px] font-medium text-amber-100">Free Nearby Demo</span>
+                    <button onclick="toggleTutorRegModal()" class="cm-orange-btn text-white p-3 rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center transition hover:brightness-105 cursor-pointer">
+                        <span>👩‍🏫 Join as a Tutor</span>
+                        <span class="text-[11px] font-medium text-amber-100">91% Share • 15th & 30th</span>
                     </button>
-                    <button onclick="toggleStudentRegModal()" class="bg-white text-slate-900 hover:bg-slate-100 p-3 rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center shadow transition cursor-pointer">
+                    <button onclick="toggleStudentRegModal()" class="cm-card text-slate-900 hover:bg-slate-50 p-3 rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center transition cursor-pointer">
                         <span>📝 Coaching Form</span>
                         <span class="text-[11px] font-medium text-slate-600">Classroom Admission</span>
                     </button>
                 </div>
 
-                <div class="space-y-1">
-                    <h2 class="font-bold text-lg sm:text-xl leading-snug">
+                <div class="cm-card rounded-2xl p-4 space-y-1">
+                    <h2 class="font-bold text-base sm:text-lg text-slate-900 leading-snug">
                         Smart Coaching & Verified Home Tuitions in Lucknow
                     </h2>
-                    <p class="text-xs sm:text-sm text-teal-100 leading-relaxed">
-                        Free nearby demo • ₹99 tracking app (attendance, notes & progress) • 91% tutor share (15th & 30th payout).
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        ICSE • ISC • CBSE • UP Board (Class 1–12) • Free nearby home tuition demo • ₹99 tracking app (attendance, notes & progress) • 91% tutor share (15th & 30th payout) • Rajajipuram, Lucknow.
                     </p>
                 </div>
 
-                <div class="rounded-xl overflow-hidden bg-slate-950/25 border border-white/15">
+                <div class="rounded-2xl overflow-hidden cm-card p-1">
                     <video src="images/banner_animated.mp4" autoplay loop muted playsinline class="w-full h-auto object-cover rounded-xl"></video>
                 </div>
             </section>
 
-            <!-- QUICK LINKS ROW -->
-            <section class="grid grid-cols-4 gap-2 text-center">
-                <div onclick="switchTab('courses')" class="cm-card p-3 rounded-xl cursor-pointer">
-                    <img src="images/courses.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="Courses">
-                    <span class="text-xs font-semibold text-slate-800">Courses</span>
-                </div>
-                <div onclick="checkNotesAccess()" class="cm-card p-3 rounded-xl cursor-pointer">
-                    <img src="images/notes.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="Notes">
-                    <span class="text-xs font-semibold text-slate-800">Notes</span>
-                </div>
-                <div onclick="toggleAboutModal()" class="cm-card p-3 rounded-xl cursor-pointer">
-                    <img src="images/faculty.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="About">
-                    <span class="text-xs font-semibold text-slate-800">About</span>
-                </div>
-                <div onclick="openQuizRegisterModal()" class="cm-card p-3 rounded-xl cursor-pointer">
-                    <img src="images/quiz.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="Quiz">
-                    <span class="text-xs font-semibold text-slate-800">Quiz</span>
-                </div>
-            </section>
-
-            <!-- COURSE CARDS ON HOME PAGE -->
+            <!-- COURSE CARDS ON HOME PAGE (Middle quick-link row removed as bottom nav handles navigation) -->
             <section class="space-y-2.5">
                 <div class="flex items-center justify-between px-1">
                     <h3 class="font-bold text-sm sm:text-base text-slate-900">Subjects & Courses</h3>
@@ -131,7 +119,7 @@
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                    <div onclick="openSubjectDetail('Mathematics (Class 4 - 12)', 'images/course_math.png', 'ICSE • ISC • CBSE • UP Board', '<p>• Concept clarity, board exam practice & weekly tests.</p><p>• Classroom & verified home tuition available.</p>', 'Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12: ₹1,299/mo', 'Mathematics (Class 4 - 12)')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                    <div onclick="openSubjectDetail('Mathematics (Class 4 - 12)', 'images/course_math.png', 'ICSE • ISC • CBSE • UP Board', '<p>• Concept clarity, board exam practice, sample papers & weekly tests.</p><p>• Classroom batches in Rajajipuram & verified home tuition across Lucknow.</p><p>• Covers Algebra, Geometry, Trigonometry, Calculus & Applied Maths.</p>', 'Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12: ₹1,299/mo', 'Mathematics (Class 4 - 12)')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
                         <img src="images/course_math.png" alt="Mathematics" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
                             <h4 class="font-bold text-sm text-slate-900">Mathematics</h4>
@@ -140,7 +128,7 @@
                         <p class="text-xs font-bold text-blue-800">From ₹499/mo</p>
                     </div>
 
-                    <div onclick="openSubjectDetail('Science (Physics, Chem, Bio)', 'images/course_science.png', 'ICSE • ISC • CBSE • UP Board', '<p>• Practical concepts, numericals & board exam prep.</p><p>• Regular doubt solving & test series.</p>', 'Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12: ₹1,299/mo', 'Science (Physics, Chem, Bio)')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                    <div onclick="openSubjectDetail('Science (Physics, Chem, Bio)', 'images/course_science.png', 'ICSE • ISC • CBSE • UP Board', '<p>• Deep concept building, numericals, diagrams & board exam preparation.</p><p>• Regular doubt-clearing sessions, concept checks & test series.</p><p>• Suitable for school exams and strong foundation building.</p>', 'Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12: ₹1,299/mo', 'Science (Physics, Chem, Bio)')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
                         <img src="images/course_science.png" alt="Science" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
                             <h4 class="font-bold text-sm text-slate-900">Science</h4>
@@ -149,7 +137,7 @@
                         <p class="text-xs font-bold text-blue-800">From ₹499/mo</p>
                     </div>
 
-                    <div onclick="openSubjectDetail('Computer Programming', 'images/course_computer.png', 'Java • Python • Coding', '<p>• Coding fundamentals, syllabus practice & mini-projects.</p><p>• Step-by-step guidance from basics.</p>', '₹1,299 / month', 'Computer Programming')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                    <div onclick="openSubjectDetail('Computer Programming', 'images/course_computer.png', 'Java • Python • C++ • Coding & AI', '<p>• Practical coding from scratch, logic building & board syllabus practice.</p><p>• Hands-on mini-projects, debugging & modern AI tools guidance.</p><p>• Ideal for school computer subjects and beginners.</p>', '₹1,299 / month', 'Computer Programming')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
                         <img src="images/course_computer.png" alt="Computer" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
                             <h4 class="font-bold text-sm text-slate-900">Computer</h4>
@@ -158,7 +146,7 @@
                         <p class="text-xs font-bold text-blue-800">₹1,299/mo</p>
                     </div>
 
-                    <div onclick="openSubjectDetail('English Literature & Language', 'images/course_english.png', 'Grammar • Writing • Speaking', '<p>• Grammar clarity, answer writing & spoken practice.</p><p>• Helpful for school exams & confidence.</p>', '₹799 / month', 'English Course')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                    <div onclick="openSubjectDetail('English Literature & Language', 'images/course_english.png', 'Grammar • Writing • Speaking', '<p>• Strong grammar rules, comprehension, essay/letter writing & speaking practice.</p><p>• Focused guidance for ICSE/ISC/CBSE/UP Board exams and fluency.</p><p>• Builds confidence in classroom & communication.</p>', '₹799 / month', 'English Course')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
                         <img src="images/course_english.png" alt="English" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
                             <h4 class="font-bold text-sm text-slate-900">English</h4>
@@ -167,7 +155,7 @@
                         <p class="text-xs font-bold text-blue-800">₹799/mo</p>
                     </div>
 
-                    <div onclick="openSubjectDetail('App Making & PWA', 'images/course_app.png', 'Android • PWA • Live Projects', '<p>• Build and publish real mobile & web apps.</p><p>• Practical project-based training.</p>', '₹1,999 Course Fee', 'App Making Course')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                    <div onclick="openSubjectDetail('App Making & PWA', 'images/course_app.png', 'Android • PWA • Live Projects', '<p>• Learn how to design, build and publish real Progressive Web & mobile apps.</p><p>• Includes UI layout, database integration & live deployment workflow.</p><p>• Practical project-based training with mentor support.</p>', '₹1,999 Course Fee', 'App Making Course')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
                         <img src="images/course_app.png" alt="App Making" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
                             <h4 class="font-bold text-sm text-slate-900">App Making</h4>
@@ -176,7 +164,7 @@
                         <p class="text-xs font-bold text-blue-800">₹1,999</p>
                     </div>
 
-                    <div onclick="openSubjectDetail('Web Development', 'images/course_web.png', 'HTML • CSS • JS • Firebase', '<p>• Create modern websites & interactive web apps.</p><p>• Hands-on practice with live hosting.</p>', '₹1,499 Course Fee', 'Web Development Course')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                    <div onclick="openSubjectDetail('Web Development', 'images/course_web.png', 'HTML • CSS • JS • Firebase', '<p>• Create modern responsive websites, forms & interactive web apps.</p><p>• Covers frontend design, JavaScript logic, cloud database & free hosting.</p><p>• Hands-on portfolio building from day one.</p>', '₹1,499 Course Fee', 'Web Development Course')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
                         <img src="images/course_web.png" alt="Web Development" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
                             <h4 class="font-bold text-sm text-slate-900">Web Dev</h4>
@@ -187,15 +175,15 @@
                 </div>
             </section>
 
-            <!-- TUTOR APPLY & SLOGAN CARD -->
+            <!-- COACHING FORM & SLOGAN CARD -->
             <section class="cm-card rounded-2xl p-4 space-y-3">
                 <div class="flex items-center justify-between gap-3">
                     <div class="space-y-0.5">
-                        <h3 class="font-bold text-sm text-slate-900">Earn 91% Tutor Share • 15th & 30th Payout</h3>
-                        <p class="text-xs text-slate-600">Verified home tuition placements in Lucknow</p>
+                        <h3 class="font-bold text-sm text-slate-900">The Creative Minds Coaching</h3>
+                        <p class="text-xs text-slate-600">Rajajipuram, Lucknow • ICSE, ISC, CBSE & UP Board • Small batches & regular tests</p>
                     </div>
-                    <button onclick="toggleTutorRegModal()" class="cm-header-grad text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow whitespace-nowrap cursor-pointer">
-                        Apply Tutor
+                    <button onclick="toggleStudentRegModal()" class="cm-header-grad text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow whitespace-nowrap cursor-pointer">
+                        Coaching Form
                     </button>
                 </div>
 
@@ -254,10 +242,122 @@
                 <p class="text-slate-600">Phone: <a href="tel:+918756866588" class="font-bold text-slate-900 hover:underline">+91 8756866588</a></p>
                 <div class="flex flex-wrap items-center gap-4 pt-1 font-semibold text-blue-700">
                     <a href="https://creative-minds-app-pal.vercel.app/" target="_blank" class="hover:underline">Website</a>
-                    <a href="home-tuition-lucknow.html" class="hover:underline">Home Tuition</a>
+                    <button onclick="toggleHomeTuitionDemoModal()" class="hover:underline font-semibold text-blue-700 cursor-pointer">Home Tuition</button>
                     <a href="https://www.facebook.com/" target="_blank" class="hover:underline">Facebook</a>
                 </div>
             </footer>
+        </div>
+
+        <!-- FULL ABOUT PAGE VIEW (Founder Info First -> Coaching Gallery Photos & Videos Below) -->
+        <div id="aboutPageView" class="hidden space-y-4">
+            <button onclick="switchTab('home')" class="w-full cm-card text-slate-800 font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center cursor-pointer">
+                ← Back to Home
+            </button>
+
+            <!-- 1. FOUNDER INFORMATION FIRST -->
+            <section class="cm-card rounded-2xl p-4 sm:p-5 space-y-4">
+                <div class="flex flex-col sm:flex-row items-center gap-4 border-b border-slate-100 pb-4">
+                    <img src="images/founder.png" alt="Saurabh Verma - Founder" class="w-24 h-24 rounded-2xl object-cover border-2 border-[#ff6100] bg-slate-100 shrink-0">
+                    <div class="text-center sm:text-left space-y-1">
+                        <span class="inline-block bg-blue-50 text-blue-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">Founder & Lead Instructor</span>
+                        <h2 class="font-bold text-lg text-slate-900">Saurabh Verma</h2>
+                        <p class="text-xs font-semibold text-[#ff6100]">B.Tech in Electronics and Communication • 11+ Years Teaching Experience</p>
+                        <p class="text-xs text-slate-600 font-medium">CMS Alumnus • The Creative Minds Coaching Institute, Rajajipuram, Lucknow</p>
+                    </div>
+                </div>
+
+                <div class="space-y-2.5 text-xs text-slate-700 leading-relaxed">
+                    <p>
+                        <strong>Saurabh Verma</strong> is a <strong>City Montessori School (CMS) alumnus</strong> and holds a <strong>B.Tech in Electronics and Communication</strong>, bringing <strong>11+ years of teaching and mentoring experience</strong> across ICSE, ISC, CBSE, and UP Board students.
+                    </p>
+                    <p>
+                        He leads <strong>The Creative Minds Coaching Institute</strong> in <strong>Rajajipuram, Lucknow</strong> with the tagline <em>"Think Smart, Learn Fast"</em> and the motto <em>"Number lana ya top par ana, Creative Minds ke sath ab asan hai pana!"</em>
+                    </p>
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-1.5">
+                        <h3 class="font-bold text-xs text-slate-900">Core Expertise & Subjects</h3>
+                        <p>• <strong>Academics:</strong> Mathematics (Standard, Core, Applied, Basic), Science (Physics, Chemistry, Biology), English (Literature, Language, Speaking), History, Civics & Geography (Class 1–12).</p>
+                        <p>• <strong>Tech & Practical Skills:</strong> Python, Java, C++, HTML, Coding, AI, App/PWA Development, Graphic Design & Video Editing.</p>
+                        <p>• <strong>Home Tuition Ecosystem:</strong> Free nearby demo, ₹99 tracking app (attendance, notes & progress), and 91% tutor share with 15th & 30th payouts.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. COACHING GALLERY (PHOTOS & VIDEOS — Ready for adding images/videos later) -->
+            <section class="cm-card rounded-2xl p-4 sm:p-5 space-y-3.5">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                    <div>
+                        <h3 class="font-bold text-sm sm:text-base text-slate-900">Coaching Gallery — Photos & Videos</h3>
+                        <p class="text-xs text-slate-500">Classroom sessions, practical labs, events & activity clips</p>
+                    </div>
+                    <span class="bg-amber-100 text-amber-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full">Gallery</span>
+                </div>
+
+                <!-- Photo Slots (Replace src when photos are ready) -->
+                <div class="space-y-2">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-slate-700">Classroom & Institute Photos</h4>
+                    <div id="galleryPhotoGrid" class="grid grid-cols-2 gap-2.5">
+                        <div class="bg-slate-50 border border-dashed border-slate-300 rounded-xl p-3 text-center space-y-1.5">
+                            <img src="" data-gallery-photo="1" alt="Classroom Teaching Photo" class="hidden w-full h-28 object-cover rounded-lg">
+                            <div class="gallery-placeholder py-5 text-slate-400">
+                                <p class="text-lg">🏫</p>
+                                <p class="text-xs font-semibold text-slate-600">Classroom Photo 1</p>
+                                <p class="text-[11px] text-slate-400">Photo slot ready to add</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 border border-dashed border-slate-300 rounded-xl p-3 text-center space-y-1.5">
+                            <img src="" data-gallery-photo="2" alt="Science & Coding Session Photo" class="hidden w-full h-28 object-cover rounded-lg">
+                            <div class="gallery-placeholder py-5 text-slate-400">
+                                <p class="text-lg">💻</p>
+                                <p class="text-xs font-semibold text-slate-600">Lab & Batch Photo 2</p>
+                                <p class="text-[11px] text-slate-400">Photo slot ready to add</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 border border-dashed border-slate-300 rounded-xl p-3 text-center space-y-1.5">
+                            <img src="" data-gallery-photo="3" alt="Test & Mentoring Photo" class="hidden w-full h-28 object-cover rounded-lg">
+                            <div class="gallery-placeholder py-5 text-slate-400">
+                                <p class="text-lg">📝</p>
+                                <p class="text-xs font-semibold text-slate-600">Test & Doubt Photo 3</p>
+                                <p class="text-[11px] text-slate-400">Photo slot ready to add</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 border border-dashed border-slate-300 rounded-xl p-3 text-center space-y-1.5">
+                            <img src="" data-gallery-photo="4" alt="Institute Highlights Photo" class="hidden w-full h-28 object-cover rounded-lg">
+                            <div class="gallery-placeholder py-5 text-slate-400">
+                                <p class="text-lg">🎓</p>
+                                <p class="text-xs font-semibold text-slate-600">Events & Highlights 4</p>
+                                <p class="text-[11px] text-slate-400">Photo slot ready to add</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Slots (Replace src when videos are ready) -->
+                <div class="space-y-2 pt-1">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-slate-700">Coaching Videos</h4>
+                    <div id="galleryVideoGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div class="bg-slate-50 border border-dashed border-slate-300 rounded-xl p-3 text-center space-y-1.5">
+                            <video src="" data-gallery-video="1" controls playsinline class="hidden w-full h-32 object-cover rounded-lg bg-black"></video>
+                            <div class="gallery-placeholder py-5 text-slate-400">
+                                <p class="text-lg">🎬</p>
+                                <p class="text-xs font-semibold text-slate-600">Coaching Intro & Tour Video</p>
+                                <p class="text-[11px] text-slate-400">Video slot ready to add</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 border border-dashed border-slate-300 rounded-xl p-3 text-center space-y-1.5">
+                            <video src="" data-gallery-video="2" controls playsinline class="hidden w-full h-32 object-cover rounded-lg bg-black"></video>
+                            <div class="gallery-placeholder py-5 text-slate-400">
+                                <p class="text-lg">🎥</p>
+                                <p class="text-xs font-semibold text-slate-600">Teaching & Project Clip</p>
+                                <p class="text-[11px] text-slate-400">Video slot ready to add</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <!-- SUBJECT DETAIL PAGE VIEW -->
@@ -440,8 +540,8 @@
         <div id="studentDashboard" class="hidden space-y-3.5">
             <div class="cm-header-grad text-white p-4 rounded-2xl shadow-md flex items-center space-x-3.5">
                 <div class="relative">
-                    <img id="studentProfileImg" src="images/student_1.png" alt="Profile" class="w-14 h-14 rounded-full object-cover border-2 border-amber-300 bg-white">
-                    <label for="profileImgInput" class="absolute bottom-0 right-0 bg-amber-400 text-slate-950 p-1 rounded-full cursor-pointer text-xs font-bold shadow" title="Change Photo">📷</label>
+                    <img id="studentProfileImg" src="images/student_1.png" alt="Profile" class="w-14 h-14 rounded-full object-cover border-2 border-[#ff6100] bg-white">
+                    <label for="profileImgInput" class="absolute bottom-0 right-0 bg-[#ff6100] text-white p-1 rounded-full cursor-pointer text-xs font-bold shadow" title="Change Photo">📷</label>
                     <input type="file" id="profileImgInput" accept="image/*" class="hidden" onchange="updateProfileImage(event)">
                 </div>
                 <div class="space-y-0.5 flex-1">
@@ -496,7 +596,7 @@
             <div class="cm-header-grad text-white p-4 rounded-2xl shadow-md space-y-1">
                 <div class="flex justify-between items-center">
                     <span class="bg-white/20 text-xs px-2.5 py-0.5 rounded-full font-semibold">Verified Tutor</span>
-                    <span class="text-xs bg-amber-400 text-slate-950 px-2 py-0.5 rounded-full font-bold">91% Share • 15th & 30th</span>
+                    <span class="text-xs bg-[#ff6100] text-white px-2 py-0.5 rounded-full font-bold">91% Share • 15th & 30th</span>
                 </div>
                 <h2 id="teacherDisplayName" class="font-bold text-base pt-0.5">Welcome, Tutor!</h2>
                 <p id="teacherDisplayMeta" class="text-xs text-teal-100">Lucknow • Maths, Science</p>
@@ -585,24 +685,28 @@
         </div>
     </div>
 
-    <!-- BOTTOM NAVIGATION BAR -->
+    <!-- STICKY BOTTOM NAVIGATION BAR (Includes Home Tuition button) -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg z-40">
-        <div class="max-w-md mx-auto flex justify-around py-1.5">
+        <div class="max-w-xl mx-auto flex justify-around py-1.5 px-1">
             <button onclick="switchTab('home')" class="flex flex-col items-center text-slate-700 hover:text-blue-700 space-y-0.5 cursor-pointer">
                 <img src="images/student.png" class="w-5 h-5 object-contain" alt="Home">
-                <span class="text-xs font-semibold">Home</span>
+                <span class="text-[11px] font-semibold">Home</span>
             </button>
             <button onclick="switchTab('courses')" class="flex flex-col items-center text-slate-700 hover:text-blue-700 space-y-0.5 cursor-pointer">
                 <img src="images/courses.png" class="w-5 h-5 object-contain" alt="Courses">
-                <span class="text-xs font-semibold">Courses</span>
+                <span class="text-[11px] font-semibold">Courses</span>
+            </button>
+            <button onclick="toggleHomeTuitionDemoModal()" class="flex flex-col items-center text-[#ff6100] hover:text-[#e55700] space-y-0.5 cursor-pointer">
+                <span class="text-base leading-none h-5 flex items-center justify-center">🏠</span>
+                <span class="text-[11px] font-bold">Home Tuition</span>
             </button>
             <button onclick="checkNotesAccess()" class="flex flex-col items-center text-slate-700 hover:text-blue-700 space-y-0.5 cursor-pointer">
                 <img src="images/notes.png" class="w-5 h-5 object-contain" alt="Notes">
-                <span class="text-xs font-semibold">Notes</span>
+                <span class="text-[11px] font-semibold">Notes</span>
             </button>
-            <button onclick="toggleAboutModal()" class="flex flex-col items-center text-slate-700 hover:text-blue-700 space-y-0.5 cursor-pointer">
+            <button onclick="switchTab('about')" class="flex flex-col items-center text-slate-700 hover:text-blue-700 space-y-0.5 cursor-pointer">
                 <img src="images/faculty.png" class="w-5 h-5 object-contain" alt="About">
-                <span class="text-xs font-semibold">About</span>
+                <span class="text-[11px] font-semibold">About</span>
             </button>
         </div>
     </nav>
@@ -651,7 +755,7 @@
     <div id="tutorRegModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-sm text-slate-900">Join as Verified Home Tutor</h3>
+                <h3 class="font-bold text-sm text-slate-900">Join as a Verified Tutor</h3>
                 <button onclick="toggleTutorRegModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
             <p class="text-xs text-slate-700 bg-slate-50 border border-slate-200 p-2.5 rounded-xl leading-relaxed">
@@ -852,34 +956,11 @@
         </div>
     </div>
 
-    <!-- ABOUT MODAL -->
-    <div id="aboutModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3.5 relative max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-sm text-slate-900">About Creative Minds</h3>
-                <button onclick="toggleAboutModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
-            </div>
-            <div class="flex flex-col items-center space-y-1.5">
-                <img src="images/founder.png" alt="Founder" class="w-20 h-20 rounded-full object-cover border-4 border-blue-600">
-                <div class="text-center">
-                    <h4 class="font-bold text-sm text-slate-900">Saurabh Verma</h4>
-                    <p class="text-xs text-blue-700 font-semibold">Founder & Lead Instructor (Since 2016)</p>
-                </div>
-            </div>
-            <p class="text-xs text-slate-600 leading-relaxed">
-                <strong>The Creative Minds Coaching Institute</strong> (<em>"Think Smart, Learn Fast"</em>) in Rajajipuram, Lucknow offers academic coaching (ICSE, ISC, CBSE, UP Board), coding/tech skills, and verified home tuitions with free nearby demo, ₹99 tracking app, and 91% tutor share (15th & 30th payout).
-            </p>
-            <button onclick="toggleAboutModal()" class="w-full cm-header-grad text-white font-bold text-xs py-2.5 rounded-xl shadow cursor-pointer">
-                Close
-            </button>
-        </div>
-    </div>
-
     <!-- STUDENT REGISTRATION MODAL -->
     <div id="studentRegModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center">
-                <h3 class="font-bold text-sm text-slate-900">Coaching Admission</h3>
+                <h3 class="font-bold text-sm text-slate-900">Coaching Admission Form</h3>
                 <button onclick="toggleStudentRegModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
             <div class="space-y-2 text-xs">
@@ -923,6 +1004,8 @@
         window.getDocs = getDocs;
 
         window.addEventListener('DOMContentLoaded', () => {
+            syncGalleryMediaSlots();
+
             const savedPic = localStorage.getItem('student_profile_pic');
             if (savedPic) {
                 document.getElementById('studentProfileImg').src = savedPic;
@@ -959,6 +1042,32 @@
         let loggedInStudentPhone = null;
         let loggedInTeacher = null;
         let deferredPrompt = null;
+
+        function syncGalleryMediaSlots() {
+            document.querySelectorAll('#galleryPhotoGrid img').forEach(img => {
+                const src = (img.getAttribute('src') || '').trim();
+                const placeholder = img.parentElement.querySelector('.gallery-placeholder');
+                if (src) {
+                    img.classList.remove('hidden');
+                    if (placeholder) placeholder.classList.add('hidden');
+                } else {
+                    img.classList.add('hidden');
+                    if (placeholder) placeholder.classList.remove('hidden');
+                }
+            });
+
+            document.querySelectorAll('#galleryVideoGrid video').forEach(vid => {
+                const src = (vid.getAttribute('src') || '').trim();
+                const placeholder = vid.parentElement.querySelector('.gallery-placeholder');
+                if (src) {
+                    vid.classList.remove('hidden');
+                    if (placeholder) placeholder.classList.add('hidden');
+                } else {
+                    vid.classList.add('hidden');
+                    if (placeholder) placeholder.classList.remove('hidden');
+                }
+            });
+        }
 
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
@@ -1000,16 +1109,12 @@
             document.getElementById('detailSubjectWhatsAppBtn').href = `https://wa.me/918756866588?text=${encodeURIComponent(`Hello Saurabh Sir, I want to enquire about ${courseKey}.`)}`;
 
             document.getElementById('visitorView').classList.add('hidden');
+            document.getElementById('aboutPageView').classList.add('hidden');
             document.getElementById('coursesSection').classList.add('hidden');
             document.getElementById('studentDashboard').classList.add('hidden');
             document.getElementById('teacherDashboard').classList.add('hidden');
             document.getElementById('subjectDetailView').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function toggleAboutModal() {
-            const modal = document.getElementById('aboutModal');
-            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
         }
 
         function toggleStudentRegModal() {
@@ -1081,6 +1186,7 @@
 
         function switchTab(tabName) {
             const visitorView = document.getElementById('visitorView');
+            const aboutPageView = document.getElementById('aboutPageView');
             const coursesSection = document.getElementById('coursesSection');
             const subjectDetailView = document.getElementById('subjectDetailView');
             const studentDashboard = document.getElementById('studentDashboard');
@@ -1088,6 +1194,7 @@
             const topLoginBtn = document.getElementById('topLoginBtn');
 
             visitorView.classList.add('hidden');
+            aboutPageView.classList.add('hidden');
             coursesSection.classList.add('hidden');
             subjectDetailView.classList.add('hidden');
             studentDashboard.classList.add('hidden');
@@ -1104,9 +1211,15 @@
                     visitorView.classList.remove('hidden');
                     topLoginBtn.classList.remove('hidden');
                 }
+            } else if (tabName === 'about') {
+                syncGalleryMediaSlots();
+                aboutPageView.classList.remove('hidden');
+                topLoginBtn.classList.toggle('hidden', Boolean(loggedInStudentClass || loggedInTeacher));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else if (tabName === 'courses') {
                 coursesSection.classList.remove('hidden');
                 topLoginBtn.classList.toggle('hidden', Boolean(loggedInStudentClass || loggedInTeacher));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else if (tabName === 'notes') {
                 if (!loggedInStudentClass) {
                     alert("Log in to access notes.");
@@ -1290,6 +1403,7 @@
             loggedInTeacher = null;
 
             document.getElementById('visitorView').classList.add('hidden');
+            document.getElementById('aboutPageView').classList.add('hidden');
             document.getElementById('coursesSection').classList.add('hidden');
             document.getElementById('subjectDetailView').classList.add('hidden');
             document.getElementById('teacherDashboard').classList.add('hidden');
@@ -1411,6 +1525,7 @@
             loggedInStudentClass = null;
 
             document.getElementById('visitorView').classList.add('hidden');
+            document.getElementById('aboutPageView').classList.add('hidden');
             document.getElementById('coursesSection').classList.add('hidden');
             document.getElementById('subjectDetailView').classList.add('hidden');
             document.getElementById('studentDashboard').classList.add('hidden');
