@@ -7,104 +7,90 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         html {
             scroll-behavior: smooth;
         }
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at top left, #ccfbf1 0%, #f8fafc 42%, #e0e7ff 100%);
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7fb;
             color: #0f172a;
+            font-size: 14px;
         }
-        .cm-hero-grad {
-            background: linear-gradient(135deg, #0f766e 0%, #1d4ed8 52%, #6d28d9 100%);
+        .cm-header-grad {
+            background: linear-gradient(135deg, #0f766e 0%, #1d4ed8 55%, #6d28d9 100%);
         }
         .cm-orange-btn {
-            background: linear-gradient(135deg, #ff6100 0%, #ff8800 100%);
-            box-shadow: 0 10px 22px -8px rgba(255, 97, 0, 0.55);
+            background: linear-gradient(135deg, #ff6100 0%, #ff851b 100%);
+            box-shadow: 0 8px 18px -6px rgba(255, 97, 0, 0.5);
         }
-        .cm-glass-card {
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.88);
-            box-shadow: 0 12px 28px -10px rgba(15, 23, 42, 0.11);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        .cm-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 6px 18px -6px rgba(15, 23, 42, 0.07);
+            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
         }
-        .cm-glass-card:hover {
+        .cm-card:hover {
             transform: translateY(-2px);
-            border-color: rgba(255, 97, 0, 0.45);
-            box-shadow: 0 16px 32px -10px rgba(29, 78, 216, 0.16);
-        }
-        @keyframes pulseSlow {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-        .cm-bot-pill {
-            animation: pulseSlow 2.8s infinite ease-in-out;
+            border-color: #ff6100;
+            box-shadow: 0 12px 24px -8px rgba(29, 78, 216, 0.14);
         }
     </style>
 </head>
 <body class="min-h-screen w-full m-0 p-0 flex flex-col justify-between overflow-x-hidden">
 
-    <!-- TOP SOCIAL & CONTACT UTILITY BAR -->
-    <div class="bg-slate-950 text-white text-[11px]">
-        <div class="max-w-xl mx-auto px-4 py-1.5 flex items-center justify-between gap-2">
-            <div class="flex items-center space-x-3 font-semibold">
-                <a href="tel:+918756866588" class="text-amber-300 hover:underline flex items-center space-x-1">
-                    <span>📞</span>
-                    <span>+91 8756866588</span>
-                </a>
-                <span class="text-slate-600">|</span>
-                <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enquire%20about%20Creative%20Minds." target="_blank" class="text-emerald-300 hover:underline flex items-center space-x-1">
-                    <span>💬</span>
-                    <span>WhatsApp</span>
-                </a>
-            </div>
-            <div class="flex items-center space-x-2.5 font-bold text-[11px]">
-                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" class="w-6 h-6 rounded-full bg-blue-600 hover:bg-blue-500 flex items-center justify-center text-white transition">f</a>
-                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="w-6 h-6 rounded-full bg-pink-600 hover:bg-pink-500 flex items-center justify-center text-white transition">📸</a>
-                <a href="https://www.youtube.com/@CraftraxStudio" target="_blank" aria-label="YouTube" class="w-6 h-6 rounded-full bg-red-600 hover:bg-red-500 flex items-center justify-center text-white transition">▶</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- STICKY TOP HEADER -->
-    <header class="cm-hero-grad text-white sticky top-0 z-50 shadow-lg">
-        <div class="max-w-xl mx-auto px-4 py-2.5 flex justify-between items-center">
+    <!-- SINGLE CLEAN STICKY HEADER -->
+    <header class="cm-header-grad text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-xl mx-auto px-4 py-3 flex justify-between items-center gap-2">
             <div class="flex items-center space-x-2.5 cursor-pointer" onclick="handleSecretAdminTrigger()">
-                <img src="images/logo.png" alt="The Creative Minds Logo" class="w-9 h-9 rounded-full object-cover border-2 border-amber-300 shadow">
+                <img src="images/logo.png" alt="The Creative Minds Logo" class="w-10 h-10 rounded-full object-cover border-2 border-amber-300 bg-white">
                 <div>
-                    <h1 class="font-extrabold text-sm sm:text-base leading-tight tracking-tight">Creative Minds</h1>
-                    <p class="text-[10px] sm:text-[11px] text-amber-200 font-semibold">Think Smart, Learn Fast</p>
+                    <h1 class="font-bold text-base leading-tight">Creative Minds</h1>
+                    <p class="text-[11px] text-teal-100 font-medium">Think Smart, Learn Fast</p>
                 </div>
             </div>
             <div class="flex items-center space-x-2">
-                <button id="pwaInstallBtn" onclick="installPWAApp()" class="hidden bg-amber-400 hover:bg-amber-300 text-slate-950 px-2.5 py-1.5 rounded-full text-xs font-extrabold transition cursor-pointer">
-                    📲 Install
+                <a href="tel:+918756866588" class="bg-white/15 hover:bg-white/25 text-white px-3 py-1.5 rounded-full text-xs font-semibold border border-white/25 transition">
+                    📞 Call
+                </a>
+                <button id="pwaInstallBtn" onclick="installPWAApp()" class="hidden bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-1.5 rounded-full text-xs font-bold transition cursor-pointer">
+                    Install
                 </button>
-                <button id="topLoginBtn" onclick="toggleAuthModal()" class="bg-white/15 hover:bg-white/25 text-white px-3.5 py-1.5 rounded-full text-xs font-bold border border-white/30 transition cursor-pointer">
+                <button id="topLoginBtn" onclick="toggleAuthModal()" class="bg-white text-slate-900 hover:bg-slate-100 px-3.5 py-1.5 rounded-full text-xs font-bold shadow transition cursor-pointer">
                     <span id="authBtnText">Login</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <main class="max-w-xl mx-auto w-full px-4 py-4 flex-1 flex flex-col space-y-4 pb-28">
+    <main class="max-w-xl mx-auto w-full px-4 py-4 flex-1 flex flex-col space-y-4 pb-24">
 
-        <!-- BEST-OF-THE-BEST HOME PAGE WITH ALL COURSE CARDS & RICH TYPOGRAPHY -->
+        <!-- HOME VIEW -->
         <div id="visitorView" class="space-y-4">
 
-            <!-- HERO SHOWCASE CARD -->
-            <section class="cm-hero-grad text-white rounded-3xl p-4 sm:p-5 shadow-xl space-y-3">
-                <div class="flex items-center justify-between gap-2 text-[11px] font-extrabold">
-                    <span class="bg-white/15 border border-white/25 px-2.5 py-1 rounded-full">🚀 Rajajipuram, Lucknow</span>
-                    <span class="bg-amber-400 text-slate-950 px-2.5 py-1 rounded-full">ICSE • ISC • CBSE • UP Board</span>
+            <!-- HERO CARD WITH TOP ACTION BUTTONS -->
+            <section class="cm-header-grad text-white rounded-2xl p-4 sm:p-5 shadow-lg space-y-3.5">
+                <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
+                    <span class="bg-white/15 px-3 py-1 rounded-full">Rajajipuram, Lucknow</span>
+                    <span class="bg-amber-400 text-slate-950 px-3 py-1 rounded-full font-bold">ICSE • ISC • CBSE • UP Board</span>
+                </div>
+
+                <!-- HOME TUITION & COACHING BUTTONS RIGHT AT TOP -->
+                <div class="grid grid-cols-2 gap-2.5">
+                    <button onclick="toggleHomeTuitionDemoModal()" class="cm-orange-btn text-white p-3 rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center transition hover:brightness-105 cursor-pointer">
+                        <span>🏠 Book Home Tutor</span>
+                        <span class="text-[11px] font-medium text-amber-100">Free Nearby Demo</span>
+                    </button>
+                    <button onclick="toggleStudentRegModal()" class="bg-white text-slate-900 hover:bg-slate-100 p-3 rounded-xl font-bold text-xs sm:text-sm flex flex-col items-center justify-center shadow transition cursor-pointer">
+                        <span>📝 Coaching Form</span>
+                        <span class="text-[11px] font-medium text-slate-600">Classroom Admission</span>
+                    </button>
                 </div>
 
                 <div class="space-y-1">
-                    <h2 class="font-extrabold text-lg sm:text-xl leading-snug">
+                    <h2 class="font-bold text-lg sm:text-xl leading-snug">
                         Smart Coaching & Verified Home Tuitions in Lucknow
                     </h2>
                     <p class="text-xs sm:text-sm text-teal-100 leading-relaxed">
@@ -112,144 +98,126 @@
                     </p>
                 </div>
 
-                <div class="rounded-2xl overflow-hidden bg-slate-950/30 border border-white/15">
-                    <video src="images/banner_animated.mp4" autoplay loop muted playsinline class="w-full h-auto object-cover rounded-2xl"></video>
-                </div>
-
-                <div class="grid grid-cols-2 gap-2.5 pt-0.5">
-                    <button onclick="toggleStudentRegModal()" class="bg-white text-indigo-950 hover:bg-teal-50 p-3 rounded-2xl font-extrabold text-xs sm:text-sm flex flex-col items-center justify-center shadow transition cursor-pointer">
-                        <span>📝 Coaching Admission</span>
-                        <span class="text-[11px] font-semibold text-indigo-700">Classroom Batch Form</span>
-                    </button>
-                    <button onclick="toggleHomeTuitionDemoModal()" class="cm-orange-btn text-white p-3 rounded-2xl font-extrabold text-xs sm:text-sm flex flex-col items-center justify-center transition hover:brightness-105 cursor-pointer">
-                        <span>🏠 Book Home Tutor</span>
-                        <span class="text-[11px] font-semibold text-amber-100">Free Nearby Demo</span>
-                    </button>
+                <div class="rounded-xl overflow-hidden bg-slate-950/25 border border-white/15">
+                    <video src="images/banner_animated.mp4" autoplay loop muted playsinline class="w-full h-auto object-cover rounded-xl"></video>
                 </div>
             </section>
 
-            <!-- 4-CARD QUICK HUB -->
+            <!-- QUICK LINKS ROW -->
             <section class="grid grid-cols-4 gap-2 text-center">
-                <div onclick="switchTab('courses')" class="cm-glass-card p-2.5 rounded-2xl cursor-pointer">
+                <div onclick="switchTab('courses')" class="cm-card p-3 rounded-xl cursor-pointer">
                     <img src="images/courses.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="Courses">
-                    <span class="text-xs font-bold text-slate-800">Courses</span>
+                    <span class="text-xs font-semibold text-slate-800">Courses</span>
                 </div>
-                <div onclick="checkNotesAccess()" class="cm-glass-card p-2.5 rounded-2xl cursor-pointer">
+                <div onclick="checkNotesAccess()" class="cm-card p-3 rounded-xl cursor-pointer">
                     <img src="images/notes.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="Notes">
-                    <span class="text-xs font-bold text-slate-800">Notes</span>
+                    <span class="text-xs font-semibold text-slate-800">Notes</span>
                 </div>
-                <div onclick="toggleAboutModal()" class="cm-glass-card p-2.5 rounded-2xl cursor-pointer">
+                <div onclick="toggleAboutModal()" class="cm-card p-3 rounded-xl cursor-pointer">
                     <img src="images/faculty.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="About">
-                    <span class="text-xs font-bold text-slate-800">About</span>
+                    <span class="text-xs font-semibold text-slate-800">About</span>
                 </div>
-                <div onclick="openQuizRegisterModal()" class="cm-glass-card p-2.5 rounded-2xl cursor-pointer">
+                <div onclick="openQuizRegisterModal()" class="cm-card p-3 rounded-xl cursor-pointer">
                     <img src="images/quiz.png" class="w-7 h-7 mx-auto mb-1 object-contain" alt="Quiz">
-                    <span class="text-xs font-bold text-slate-800">Quiz</span>
+                    <span class="text-xs font-semibold text-slate-800">Quiz</span>
                 </div>
             </section>
 
-            <!-- HOME PAGE SUBJECT & COURSE CARDS SHOWCASE -->
+            <!-- COURSE CARDS ON HOME PAGE -->
             <section class="space-y-2.5">
                 <div class="flex items-center justify-between px-1">
-                    <h3 class="font-extrabold text-sm text-slate-900">Popular Subjects & Skill Courses</h3>
-                    <button onclick="switchTab('courses')" class="text-xs font-bold text-indigo-700 hover:underline cursor-pointer">View All →</button>
+                    <h3 class="font-bold text-sm sm:text-base text-slate-900">Subjects & Courses</h3>
+                    <button onclick="switchTab('courses')" class="text-xs font-semibold text-blue-700 hover:underline cursor-pointer">All Courses →</button>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                    <!-- Mathematics Card -->
-                    <div onclick="openSubjectDetail('Mathematics (Class 4 - 12)', 'images/course_math.png', 'ICSE • ISC • CBSE • UP Board', '<p>• Concept clarity, board exam practice & weekly tests.</p><p>• Classroom & verified home tuition available.</p>', 'Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12: ₹1,299/mo', 'Mathematics (Class 4 - 12)')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
-                        <img src="images/course_math.png" alt="Mathematics" class="w-11 h-11 rounded-xl object-cover bg-teal-50 p-1">
+                    <div onclick="openSubjectDetail('Mathematics (Class 4 - 12)', 'images/course_math.png', 'ICSE • ISC • CBSE • UP Board', '<p>• Concept clarity, board exam practice & weekly tests.</p><p>• Classroom & verified home tuition available.</p>', 'Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12: ₹1,299/mo', 'Mathematics (Class 4 - 12)')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_math.png" alt="Mathematics" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">Mathematics</h4>
-                            <p class="text-[11px] text-slate-600">Class 4th to 12th</p>
+                            <h4 class="font-bold text-sm text-slate-900">Mathematics</h4>
+                            <p class="text-xs text-slate-600">Class 4th to 12th</p>
                         </div>
-                        <p class="text-xs font-extrabold text-teal-800">From ₹499 <span class="text-[11px] font-medium text-slate-500">/mo</span></p>
+                        <p class="text-xs font-bold text-blue-800">From ₹499/mo</p>
                     </div>
 
-                    <!-- Science Card -->
-                    <div onclick="openSubjectDetail('Science (Physics, Chem, Bio)', 'images/course_science.png', 'ICSE • ISC • CBSE • UP Board', '<p>• Practical experiments, numericals & NCERT/ICSE board prep.</p><p>• Individual attention & regular doubt sessions.</p>', 'Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12: ₹1,299/mo', 'Science (Physics, Chem, Bio)')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
-                        <img src="images/course_science.png" alt="Science" class="w-11 h-11 rounded-xl object-cover bg-indigo-50 p-1">
+                    <div onclick="openSubjectDetail('Science (Physics, Chem, Bio)', 'images/course_science.png', 'ICSE • ISC • CBSE • UP Board', '<p>• Practical concepts, numericals & board exam prep.</p><p>• Regular doubt solving & test series.</p>', 'Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12: ₹1,299/mo', 'Science (Physics, Chem, Bio)')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_science.png" alt="Science" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">Science</h4>
-                            <p class="text-[11px] text-slate-600">Phy • Chem • Bio</p>
+                            <h4 class="font-bold text-sm text-slate-900">Science</h4>
+                            <p class="text-xs text-slate-600">Phy • Chem • Bio</p>
                         </div>
-                        <p class="text-xs font-extrabold text-indigo-800">From ₹499 <span class="text-[11px] font-medium text-slate-500">/mo</span></p>
+                        <p class="text-xs font-bold text-blue-800">From ₹499/mo</p>
                     </div>
 
-                    <!-- Computer Card -->
-                    <div onclick="openSubjectDetail('Computer Programming', 'images/course_computer.png', 'Java • Python • C++ • Coding', '<p>• Hands-on coding logic, board syllabus & real mini-projects.</p><p>• Beginner-friendly step-by-step mentorship.</p>', '₹1,299 / month', 'Computer Programming')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
-                        <img src="images/course_computer.png" alt="Computer" class="w-11 h-11 rounded-xl object-cover bg-purple-50 p-1">
+                    <div onclick="openSubjectDetail('Computer Programming', 'images/course_computer.png', 'Java • Python • Coding', '<p>• Coding fundamentals, syllabus practice & mini-projects.</p><p>• Step-by-step guidance from basics.</p>', '₹1,299 / month', 'Computer Programming')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_computer.png" alt="Computer" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">Computer</h4>
-                            <p class="text-[11px] text-slate-600">Java & Python</p>
+                            <h4 class="font-bold text-sm text-slate-900">Computer</h4>
+                            <p class="text-xs text-slate-600">Java & Python</p>
                         </div>
-                        <p class="text-xs font-extrabold text-purple-800">₹1,299 <span class="text-[11px] font-medium text-slate-500">/mo</span></p>
+                        <p class="text-xs font-bold text-blue-800">₹1,299/mo</p>
                     </div>
 
-                    <!-- English Card -->
-                    <div onclick="openSubjectDetail('English Literature & Language', 'images/course_english.png', 'Grammar • Writing • Fluency', '<p>• Strong grammar, answer writing practice & spoken confidence.</p><p>• Suitable for school exams & communication.</p>', '₹799 / month', 'English Course')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
-                        <img src="images/course_english.png" alt="English" class="w-11 h-11 rounded-xl object-cover bg-amber-50 p-1">
+                    <div onclick="openSubjectDetail('English Literature & Language', 'images/course_english.png', 'Grammar • Writing • Speaking', '<p>• Grammar clarity, answer writing & spoken practice.</p><p>• Helpful for school exams & confidence.</p>', '₹799 / month', 'English Course')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_english.png" alt="English" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">English</h4>
-                            <p class="text-[11px] text-slate-600">Lit, Lang & Speaking</p>
+                            <h4 class="font-bold text-sm text-slate-900">English</h4>
+                            <p class="text-xs text-slate-600">Lit, Lang & Speaking</p>
                         </div>
-                        <p class="text-xs font-extrabold text-amber-800">₹799 <span class="text-[11px] font-medium text-slate-500">/mo</span></p>
+                        <p class="text-xs font-bold text-blue-800">₹799/mo</p>
                     </div>
 
-                    <!-- App Making Card -->
-                    <div onclick="openSubjectDetail('App Making & PWA', 'images/course_app.png', 'Android • PWA • Live Projects', '<p>• Build and publish real mobile & web apps from scratch.</p><p>• Includes UI layout, database & deployment basics.</p>', '₹1,999 Course Fee', 'App Making Course')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
-                        <img src="images/course_app.png" alt="App Making" class="w-11 h-11 rounded-xl object-cover bg-indigo-50 p-1">
+                    <div onclick="openSubjectDetail('App Making & PWA', 'images/course_app.png', 'Android • PWA • Live Projects', '<p>• Build and publish real mobile & web apps.</p><p>• Practical project-based training.</p>', '₹1,999 Course Fee', 'App Making Course')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_app.png" alt="App Making" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">App Making</h4>
-                            <p class="text-[11px] text-slate-600">Android & PWA</p>
+                            <h4 class="font-bold text-sm text-slate-900">App Making</h4>
+                            <p class="text-xs text-slate-600">Android & PWA</p>
                         </div>
-                        <p class="text-xs font-extrabold text-slate-900">₹1,999 <span class="text-[11px] font-medium text-slate-500">course</span></p>
+                        <p class="text-xs font-bold text-blue-800">₹1,999</p>
                     </div>
 
-                    <!-- Web Development Card -->
-                    <div onclick="openSubjectDetail('Web Development', 'images/course_web.png', 'HTML • CSS • JS • Firebase', '<p>• Create responsive websites, portfolios & interactive apps.</p><p>• Practical workflow with live hosting guidance.</p>', '₹1,499 Course Fee', 'Web Development Course')" class="cm-glass-card p-3 rounded-2xl cursor-pointer flex flex-col justify-between space-y-2">
-                        <img src="images/course_web.png" alt="Web Development" class="w-11 h-11 rounded-xl object-cover bg-teal-50 p-1">
+                    <div onclick="openSubjectDetail('Web Development', 'images/course_web.png', 'HTML • CSS • JS • Firebase', '<p>• Create modern websites & interactive web apps.</p><p>• Hands-on practice with live hosting.</p>', '₹1,499 Course Fee', 'Web Development Course')" class="cm-card p-3.5 rounded-xl cursor-pointer flex flex-col justify-between space-y-2">
+                        <img src="images/course_web.png" alt="Web Development" class="w-10 h-10 rounded-lg object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900">Web Dev</h4>
-                            <p class="text-[11px] text-slate-600">HTML, CSS, JS</p>
+                            <h4 class="font-bold text-sm text-slate-900">Web Dev</h4>
+                            <p class="text-xs text-slate-600">HTML, CSS, JS</p>
                         </div>
-                        <p class="text-xs font-extrabold text-slate-900">₹1,499 <span class="text-[11px] font-medium text-slate-500">course</span></p>
+                        <p class="text-xs font-bold text-blue-800">₹1,499</p>
                     </div>
                 </div>
             </section>
 
-            <!-- TUTOR HIRING & SLOGAN BANNER -->
-            <section class="cm-glass-card rounded-3xl p-4 space-y-3">
-                <div class="flex items-center justify-between gap-2">
+            <!-- TUTOR APPLY & SLOGAN CARD -->
+            <section class="cm-card rounded-2xl p-4 space-y-3">
+                <div class="flex items-center justify-between gap-3">
                     <div class="space-y-0.5">
-                        <span class="text-[10px] font-extrabold uppercase tracking-wider text-teal-800 bg-teal-50 border border-teal-200 px-2 py-0.5 rounded-full">For Educators</span>
-                        <h3 class="font-extrabold text-xs sm:text-sm text-slate-900 pt-1">Earn 91% Share • Payout on 15th & 30th</h3>
-                        <p class="text-xs text-slate-600">No 50% agency cut • Verified home tuition placements across Lucknow</p>
+                        <h3 class="font-bold text-sm text-slate-900">Earn 91% Tutor Share • 15th & 30th Payout</h3>
+                        <p class="text-xs text-slate-600">Verified home tuition placements in Lucknow</p>
                     </div>
-                    <button onclick="toggleTutorRegModal()" class="cm-hero-grad text-white font-bold text-xs px-3 py-2 rounded-xl shadow whitespace-nowrap cursor-pointer">
-                        👨‍🏫 Apply Tutor
+                    <button onclick="toggleTutorRegModal()" class="cm-header-grad text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow whitespace-nowrap cursor-pointer">
+                        Apply Tutor
                     </button>
                 </div>
 
-                <div class="bg-gradient-to-r from-teal-50 via-indigo-50 to-purple-50 border border-indigo-100 rounded-2xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <p class="font-extrabold text-xs text-slate-900 leading-snug">
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                    <p class="font-semibold text-xs sm:text-sm text-slate-800">
                         "Number lana ya top par ana, Creative Minds ke sath ab asan hai pana!"
                     </p>
-                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enquire%20about%20Creative%20Minds." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow text-center whitespace-nowrap transition">
-                        💬 WhatsApp Enquiry
+                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enquire%20about%20Creative%20Minds." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl text-center whitespace-nowrap transition">
+                        WhatsApp Enquiry
                     </a>
                 </div>
             </section>
 
             <!-- STUDENT REVIEWS -->
             <section class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                <div class="cm-glass-card p-3.5 rounded-2xl space-y-1.5">
+                <div class="cm-card p-3.5 rounded-xl space-y-1.5">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
-                            <img src="images/student_1.png" alt="Student" class="w-8 h-8 rounded-full object-cover border border-teal-300 bg-white">
+                            <img src="images/student_1.png" alt="Student" class="w-8 h-8 rounded-full object-cover border border-slate-200 bg-white">
                             <div>
-                                <h4 class="font-bold text-xs text-slate-900">Ananya Verma</h4>
-                                <p class="text-[11px] text-slate-500">ICSE Class 10</p>
+                                <h4 class="font-bold text-xs sm:text-sm text-slate-900">Ananya Verma</h4>
+                                <p class="text-xs text-slate-500">ICSE Class 10</p>
                             </div>
                         </div>
                         <span class="text-amber-500 text-xs font-bold">★★★★★</span>
@@ -259,13 +227,13 @@
                     </p>
                 </div>
 
-                <div class="cm-glass-card p-3.5 rounded-2xl space-y-1.5">
+                <div class="cm-card p-3.5 rounded-xl space-y-1.5">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
-                            <img src="images/student_2.png" alt="Student" class="w-8 h-8 rounded-full object-cover border border-teal-300 bg-white">
+                            <img src="images/student_2.png" alt="Student" class="w-8 h-8 rounded-full object-cover border border-slate-200 bg-white">
                             <div>
-                                <h4 class="font-bold text-xs text-slate-900">Rohan Singh</h4>
-                                <p class="text-[11px] text-slate-500">Computer & App Dev</p>
+                                <h4 class="font-bold text-xs sm:text-sm text-slate-900">Rohan Singh</h4>
+                                <p class="text-xs text-slate-500">Computer & App Dev</p>
                             </div>
                         </div>
                         <span class="text-amber-500 text-xs font-bold">★★★★★</span>
@@ -276,52 +244,52 @@
                 </div>
             </section>
 
-            <!-- BOTTOM CONTACT FOOTER -->
-            <footer class="cm-glass-card rounded-3xl p-4 text-xs text-slate-700 space-y-2">
-                <div class="flex items-center justify-between border-b border-slate-200/70 pb-2">
-                    <span class="font-extrabold text-slate-900">The Creative Minds Coaching Institute</span>
-                    <span class="text-[11px] font-bold text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded-full">Since 2016</span>
+            <!-- CLEAN CONTACT FOOTER -->
+            <footer class="cm-card rounded-2xl p-4 text-xs text-slate-700 space-y-2">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                    <span class="font-bold text-sm text-slate-900">The Creative Minds Coaching Institute</span>
+                    <span class="text-xs font-semibold text-blue-700">Since 2016</span>
                 </div>
-                <p class="text-slate-600">📍 <strong>Location:</strong> Rajajipuram, Lucknow, Uttar Pradesh</p>
-                <p class="text-slate-600">📞 <strong>Phone:</strong> <a href="tel:+918756866588" class="font-extrabold text-indigo-700 hover:underline">+91 8756866588</a></p>
-                <div class="flex flex-wrap items-center justify-between gap-2 pt-1 font-bold">
-                    <a href="https://creative-minds-app-pal.vercel.app/" target="_blank" class="text-teal-700 hover:underline">🌐 Website</a>
-                    <a href="home-tuition-lucknow.html" class="text-indigo-700 hover:underline">🏠 Home Tuition Page</a>
-                    <a href="https://www.facebook.com/" target="_blank" class="text-blue-700 hover:underline">📘 Facebook</a>
+                <p class="text-slate-600">Location: Rajajipuram, Lucknow, Uttar Pradesh</p>
+                <p class="text-slate-600">Phone: <a href="tel:+918756866588" class="font-bold text-slate-900 hover:underline">+91 8756866588</a></p>
+                <div class="flex flex-wrap items-center gap-4 pt-1 font-semibold text-blue-700">
+                    <a href="https://creative-minds-app-pal.vercel.app/" target="_blank" class="hover:underline">Website</a>
+                    <a href="home-tuition-lucknow.html" class="hover:underline">Home Tuition</a>
+                    <a href="https://www.facebook.com/" target="_blank" class="hover:underline">Facebook</a>
                 </div>
             </footer>
         </div>
 
         <!-- SUBJECT DETAIL PAGE VIEW -->
         <div id="subjectDetailView" class="hidden space-y-3">
-            <button onclick="switchTab('home')" class="w-full cm-glass-card text-slate-800 font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center space-x-1 cursor-pointer">
-                <span>← Back to Home</span>
+            <button onclick="switchTab('home')" class="w-full cm-card text-slate-800 font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center cursor-pointer">
+                ← Back to Home
             </button>
 
-            <div class="cm-glass-card p-4 rounded-2xl space-y-3">
+            <div class="cm-card p-4 rounded-2xl space-y-3">
                 <div class="flex flex-col items-center space-y-2 text-center border-b border-slate-100 pb-3">
                     <img id="detailSubjectImg" src="" alt="Subject Card Image" class="w-full h-auto max-h-[300px] rounded-xl object-contain mx-auto bg-slate-50 p-2 border border-slate-100">
                     <div>
-                        <h2 id="detailSubjectTitle" class="font-extrabold text-base text-slate-900">Subject Title</h2>
-                        <p id="detailSubjectSubtitle" class="text-xs text-orange-600 font-bold mt-0.5"></p>
+                        <h2 id="detailSubjectTitle" class="font-bold text-base text-slate-900">Subject Title</h2>
+                        <p id="detailSubjectSubtitle" class="text-xs text-orange-600 font-semibold mt-0.5"></p>
                     </div>
                 </div>
 
                 <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 space-y-1.5">
-                    <h3 class="font-bold text-xs text-slate-800">📖 Course Overview:</h3>
+                    <h3 class="font-bold text-xs text-slate-800">Course Overview:</h3>
                     <div id="detailSubjectDesc" class="text-xs text-slate-600 leading-relaxed space-y-1"></div>
                 </div>
 
-                <div class="bg-teal-50 p-3 rounded-xl border border-teal-200 text-center">
-                    <p id="detailSubjectPricing" class="text-xs font-extrabold text-teal-900"></p>
+                <div class="bg-blue-50 p-3 rounded-xl border border-blue-100 text-center">
+                    <p id="detailSubjectPricing" class="text-xs font-bold text-blue-900"></p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-2">
-                    <a id="detailSubjectWhatsAppBtn" href="#" target="_blank" class="block w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2.5 rounded-xl shadow transition">
-                        Join Coaching 💬
+                    <a id="detailSubjectWhatsAppBtn" href="#" target="_blank" class="block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2.5 rounded-xl transition">
+                        Join Coaching
                     </a>
                     <button onclick="toggleHomeTuitionDemoModal()" class="block w-full text-center cm-orange-btn text-white font-bold text-xs py-2.5 rounded-xl transition cursor-pointer">
-                        Book Home Tutor 🏠
+                        Book Home Tutor
                     </button>
                 </div>
             </div>
@@ -329,25 +297,25 @@
 
         <!-- COURSES CATALOG PAGE VIEW -->
         <div id="coursesSection" class="hidden space-y-3.5">
-            <div class="rounded-2xl overflow-hidden cm-glass-card p-1">
+            <div class="rounded-2xl overflow-hidden cm-card p-1">
                 <video src="images/course_banner_animated.mp4" autoplay loop muted playsinline class="w-full h-auto object-cover rounded-xl"></video>
             </div>
 
-            <button onclick="switchTab('home')" class="w-full cm-glass-card text-slate-800 font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center space-x-1 cursor-pointer">
-                <span>← Back to Home</span>
+            <button onclick="switchTab('home')" class="w-full cm-card text-slate-800 font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center cursor-pointer">
+                ← Back to Home
             </button>
 
             <div class="space-y-2.5">
                 <h3 class="font-bold text-xs uppercase tracking-wider text-slate-600 px-1">Academic Courses</h3>
 
-                <div class="cm-glass-card p-3.5 rounded-2xl flex items-start space-x-3">
-                    <img src="images/course_math.png" alt="Math" class="w-11 h-11 rounded-xl object-cover bg-teal-50 p-1 mt-0.5">
+                <div class="cm-card p-3.5 rounded-2xl flex items-start space-x-3">
+                    <img src="images/course_math.png" alt="Math" class="w-11 h-11 rounded-xl object-cover bg-slate-100 p-1 mt-0.5">
                     <div class="flex-1">
                         <div class="flex justify-between items-center mb-1">
-                            <h4 class="font-bold text-xs sm:text-sm text-slate-900">Mathematics (Class 4 - 12)</h4>
-                            <span class="text-[10px] bg-teal-100 text-teal-800 font-bold px-2 py-0.5 rounded-full">Core</span>
+                            <h4 class="font-bold text-sm text-slate-900">Mathematics (Class 4 - 12)</h4>
+                            <span class="text-xs bg-blue-50 text-blue-800 font-semibold px-2 py-0.5 rounded-full">Core</span>
                         </div>
-                        <div class="text-xs text-slate-700 space-y-0.5 bg-slate-50 p-2 rounded-lg">
+                        <div class="text-xs text-slate-700 space-y-0.5 bg-slate-50 p-2.5 rounded-lg">
                             <div class="flex justify-between"><span>• Class 4th to 8th:</span> <strong>₹499 /mo</strong></div>
                             <div class="flex justify-between"><span>• Class 9th & 10th:</span> <strong>₹999 /mo</strong></div>
                             <div class="flex justify-between"><span>• Class 11th & 12th:</span> <strong>₹1,299 /mo</strong></div>
@@ -355,11 +323,11 @@
                     </div>
                 </div>
 
-                <div class="cm-glass-card p-3.5 rounded-2xl flex items-start space-x-3">
-                    <img src="images/course_science.png" alt="Science" class="w-11 h-11 rounded-xl object-cover bg-indigo-50 p-1 mt-0.5">
+                <div class="cm-card p-3.5 rounded-2xl flex items-start space-x-3">
+                    <img src="images/course_science.png" alt="Science" class="w-11 h-11 rounded-xl object-cover bg-slate-100 p-1 mt-0.5">
                     <div class="flex-1">
-                        <h4 class="font-bold text-xs sm:text-sm text-slate-900 mb-1">Science (Physics, Chem, Bio)</h4>
-                        <div class="text-xs text-slate-700 space-y-0.5 bg-slate-50 p-2 rounded-lg">
+                        <h4 class="font-bold text-sm text-slate-900 mb-1">Science (Physics, Chem, Bio)</h4>
+                        <div class="text-xs text-slate-700 space-y-0.5 bg-slate-50 p-2.5 rounded-lg">
                             <div class="flex justify-between"><span>• Class 4th to 8th:</span> <strong>₹499 /mo</strong></div>
                             <div class="flex justify-between"><span>• Class 9th & 10th:</span> <strong>₹999 /mo</strong></div>
                             <div class="flex justify-between"><span>• Class 11th & 12th:</span> <strong>₹1,299 /mo</strong></div>
@@ -368,20 +336,20 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-2">
-                    <div class="cm-glass-card p-3 rounded-2xl flex items-center space-x-2.5">
-                        <img src="images/course_computer.png" alt="Computer" class="w-9 h-9 rounded-xl object-cover bg-purple-50 p-1">
+                    <div class="cm-card p-3 rounded-2xl flex items-center space-x-2.5">
+                        <img src="images/course_computer.png" alt="Computer" class="w-9 h-9 rounded-xl object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-900">Computer</h4>
-                            <p class="text-[11px] text-slate-500">Java, Python</p>
-                            <p class="text-xs font-extrabold text-indigo-700 mt-0.5">₹1,299 <span class="text-[10px] font-normal text-slate-500">/mo</span></p>
+                            <h4 class="font-bold text-xs sm:text-sm text-slate-900">Computer</h4>
+                            <p class="text-xs text-slate-500">Java, Python</p>
+                            <p class="text-xs font-bold text-blue-800 mt-0.5">₹1,299 <span class="font-normal text-slate-500">/mo</span></p>
                         </div>
                     </div>
-                    <div class="cm-glass-card p-3 rounded-2xl flex items-center space-x-2.5">
-                        <img src="images/course_english.png" alt="English" class="w-9 h-9 rounded-xl object-cover bg-amber-50 p-1">
+                    <div class="cm-card p-3 rounded-2xl flex items-center space-x-2.5">
+                        <img src="images/course_english.png" alt="English" class="w-9 h-9 rounded-xl object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-900">English</h4>
-                            <p class="text-[11px] text-slate-500">Lit & Lang</p>
-                            <p class="text-xs font-extrabold text-indigo-700 mt-0.5">₹799 <span class="text-[10px] font-normal text-slate-500">/mo</span></p>
+                            <h4 class="font-bold text-xs sm:text-sm text-slate-900">English</h4>
+                            <p class="text-xs text-slate-500">Lit & Lang</p>
+                            <p class="text-xs font-bold text-blue-800 mt-0.5">₹799 <span class="font-normal text-slate-500">/mo</span></p>
                         </div>
                     </div>
                 </div>
@@ -390,79 +358,79 @@
             <div class="space-y-2.5">
                 <h3 class="font-bold text-xs uppercase tracking-wider text-slate-600 px-1">Tech & Craft Courses</h3>
 
-                <div class="cm-glass-card p-3.5 rounded-2xl flex items-center justify-between">
+                <div class="cm-card p-3.5 rounded-2xl flex items-center justify-between">
                     <div class="flex items-center space-x-3">
-                        <img src="images/course_app.png" alt="App Making" class="w-10 h-10 rounded-xl object-cover bg-indigo-50 p-1">
+                        <img src="images/course_app.png" alt="App Making" class="w-10 h-10 rounded-xl object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-900">App Making</h4>
-                            <p class="text-[11px] text-slate-500">Android & PWA Live Projects</p>
+                            <h4 class="font-bold text-xs sm:text-sm text-slate-900">App Making</h4>
+                            <p class="text-xs text-slate-500">Android & PWA Live Projects</p>
                         </div>
                     </div>
                     <div class="text-right">
-                        <span class="text-xs font-extrabold text-slate-900 block mb-1">₹1,999</span>
+                        <span class="text-xs font-bold text-slate-900 block mb-1">₹1,999</span>
                         <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20App%20Making%20Course." target="_blank" class="text-xs cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
                     </div>
                 </div>
 
-                <div class="cm-glass-card p-3.5 rounded-2xl flex items-center justify-between">
+                <div class="cm-card p-3.5 rounded-2xl flex items-center justify-between">
                     <div class="flex items-center space-x-3">
-                        <img src="images/course_web.png" alt="Web Dev" class="w-10 h-10 rounded-xl object-cover bg-teal-50 p-1">
+                        <img src="images/course_web.png" alt="Web Dev" class="w-10 h-10 rounded-xl object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-900">Web Development</h4>
-                            <p class="text-[11px] text-slate-500">HTML, CSS, JavaScript, Firebase</p>
+                            <h4 class="font-bold text-xs sm:text-sm text-slate-900">Web Development</h4>
+                            <p class="text-xs text-slate-500">HTML, CSS, JavaScript, Firebase</p>
                         </div>
                     </div>
                     <div class="text-right">
-                        <span class="text-xs font-extrabold text-slate-900 block mb-1">₹1,499</span>
+                        <span class="text-xs font-bold text-slate-900 block mb-1">₹1,499</span>
                         <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Web%20Development%20Course." target="_blank" class="text-xs cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
                     </div>
                 </div>
 
-                <div class="cm-glass-card p-3.5 rounded-2xl flex items-center justify-between">
+                <div class="cm-card p-3.5 rounded-2xl flex items-center justify-between">
                     <div class="flex items-center space-x-3">
-                        <img src="images/course_video.png" alt="Video Editing" class="w-10 h-10 rounded-xl object-cover bg-purple-50 p-1">
+                        <img src="images/course_video.png" alt="Video Editing" class="w-10 h-10 rounded-xl object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-900">Video Editing & Graphics</h4>
-                            <p class="text-[11px] text-slate-500">Premiere Pro, Canva & Reels</p>
+                            <h4 class="font-bold text-xs sm:text-sm text-slate-900">Video Editing & Graphics</h4>
+                            <p class="text-xs text-slate-500">Premiere Pro, Canva & Reels</p>
                         </div>
                     </div>
                     <div class="text-right">
-                        <span class="text-xs font-extrabold text-slate-900 block mb-1">₹1,299</span>
+                        <span class="text-xs font-bold text-slate-900 block mb-1">₹1,299</span>
                         <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Video%20Editing%20Course." target="_blank" class="text-xs cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
                     </div>
                 </div>
 
-                <div class="cm-glass-card p-3.5 rounded-2xl flex items-center justify-between">
+                <div class="cm-card p-3.5 rounded-2xl flex items-center justify-between">
                     <div class="flex items-center space-x-3">
-                        <img src="images/graphics.png" alt="Graphics & 3D Craft" class="w-10 h-10 rounded-xl object-cover bg-amber-50 p-1">
+                        <img src="images/graphics.png" alt="Graphics & 3D Craft" class="w-10 h-10 rounded-xl object-cover bg-slate-100 p-1">
                         <div>
-                            <h4 class="font-bold text-xs text-slate-900">Graphics & 3D Craft</h4>
-                            <p class="text-[11px] text-slate-500">Blender, Pepakura & Poster Design</p>
+                            <h4 class="font-bold text-xs sm:text-sm text-slate-900">Graphics & 3D Craft</h4>
+                            <p class="text-xs text-slate-500">Blender, Pepakura & Poster Design</p>
                         </div>
                     </div>
                     <div class="text-right">
-                        <span class="text-xs font-extrabold text-slate-900 block mb-1">₹1,299</span>
+                        <span class="text-xs font-bold text-slate-900 block mb-1">₹1,299</span>
                         <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20enroll%20in%20Graphics%20and%203D%20Craft%20Course." target="_blank" class="text-xs cm-orange-btn text-white px-3 py-1 rounded-lg font-bold">Join</a>
                     </div>
                 </div>
             </div>
 
-            <div class="cm-hero-grad p-4 rounded-2xl text-white shadow-md space-y-2.5">
+            <div class="cm-header-grad p-4 rounded-2xl text-white shadow-md space-y-2.5">
                 <div class="flex items-center space-x-3">
                     <img src="images/discount_badge.png" alt="Discount" class="w-10 h-10 rounded-xl object-cover bg-amber-400 p-1">
                     <div>
-                        <span class="bg-amber-400 text-slate-950 text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">30% OFF</span>
-                        <h4 class="font-bold text-xs text-amber-200 mt-0.5">Mega Tech Combo Pack</h4>
+                        <span class="bg-amber-400 text-slate-950 text-xs font-bold px-2 py-0.5 rounded uppercase">30% OFF</span>
+                        <h4 class="font-bold text-sm text-amber-200 mt-1">Mega Tech Combo Pack</h4>
                         <p class="text-xs text-teal-100">App Making + Web Dev + Video Editing Bundle</p>
                     </div>
                 </div>
                 <div class="flex justify-between items-center pt-2 border-t border-white/20">
                     <div>
                         <span class="text-xs line-through text-teal-200">₹4,797</span>
-                        <p class="text-sm font-extrabold">₹3,350 <span class="text-xs font-normal text-amber-200">(Save 30%)</span></p>
+                        <p class="text-sm font-bold">₹3,350 <span class="text-xs font-normal text-amber-200">(Save 30%)</span></p>
                     </div>
-                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20claim%20the%20Mega%20Tech%20Combo%20Pack%20with%2030%20percent%20discount%20at%20Rs.%203350." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow transition">
-                        💬 Claim 30% Off
+                    <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20claim%20the%20Mega%20Tech%20Combo%20Pack%20with%2030%20percent%20discount%20at%20Rs.%203350." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition">
+                        Claim 30% Off
                     </a>
                 </div>
             </div>
@@ -470,45 +438,45 @@
 
         <!-- STUDENT DASHBOARD VIEW -->
         <div id="studentDashboard" class="hidden space-y-3.5">
-            <div class="cm-hero-grad text-white p-4 rounded-2xl shadow-md flex items-center space-x-3.5">
+            <div class="cm-header-grad text-white p-4 rounded-2xl shadow-md flex items-center space-x-3.5">
                 <div class="relative">
                     <img id="studentProfileImg" src="images/student_1.png" alt="Profile" class="w-14 h-14 rounded-full object-cover border-2 border-amber-300 bg-white">
-                    <label for="profileImgInput" class="absolute bottom-0 right-0 bg-amber-400 text-slate-950 p-1 rounded-full cursor-pointer text-[10px] font-bold shadow" title="Change Photo">📷</label>
+                    <label for="profileImgInput" class="absolute bottom-0 right-0 bg-amber-400 text-slate-950 p-1 rounded-full cursor-pointer text-xs font-bold shadow" title="Change Photo">📷</label>
                     <input type="file" id="profileImgInput" accept="image/*" class="hidden" onchange="updateProfileImage(event)">
                 </div>
                 <div class="space-y-0.5 flex-1">
-                    <span id="studentModeBadge" class="bg-white/20 text-white text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full font-bold">Student Portal</span>
-                    <h2 id="displayName" class="font-extrabold text-base pt-0.5">Welcome, Student!</h2>
+                    <span id="studentModeBadge" class="bg-white/20 text-white text-xs px-2 py-0.5 rounded-full font-semibold">Student Portal</span>
+                    <h2 id="displayName" class="font-bold text-base pt-0.5">Welcome, Student!</h2>
                     <p class="text-xs text-teal-100">Class: <span id="displayClass" class="font-semibold text-white">ICSE Class 10</span></p>
                     <p id="displayAssignedTutor" class="text-xs text-amber-200 font-semibold hidden"></p>
                 </div>
             </div>
 
-            <div id="batchesSection" class="cm-glass-card p-3.5 rounded-2xl space-y-2">
+            <div id="batchesSection" class="cm-card p-3.5 rounded-2xl space-y-2">
                 <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-1.5">
                     <img src="images/batches.png" class="w-4 h-4 object-contain" alt="">
                     <span>Enrolled Batch / Tuition</span>
                 </h3>
                 <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center">
                     <div>
-                        <h4 id="displayEnrolledBatch" class="font-bold text-xs text-slate-900">Mathematics & Computer Batches</h4>
+                        <h4 id="displayEnrolledBatch" class="font-bold text-xs sm:text-sm text-slate-900">Mathematics & Computer Batches</h4>
                         <p id="displayBatchSubtext" class="text-xs text-slate-500">Batch Timing: 4:00 PM - 5:30 PM</p>
                     </div>
                     <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-md">Active</span>
                 </div>
             </div>
 
-            <div id="studentTrackingSection" class="cm-glass-card p-3.5 rounded-2xl space-y-2">
+            <div id="studentTrackingSection" class="cm-card p-3.5 rounded-2xl space-y-2">
                 <div class="flex justify-between items-center">
-                    <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide">📅 Attendance & Homework</h3>
-                    <span class="text-[10px] bg-teal-100 text-teal-800 font-bold px-2 py-0.5 rounded-full">Live</span>
+                    <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide">Attendance & Homework</h3>
+                    <span class="text-xs bg-blue-50 text-blue-800 font-semibold px-2 py-0.5 rounded-full">Live</span>
                 </div>
                 <div id="studentAttendanceList" class="space-y-2 text-xs">
                     <p class="text-slate-400 text-center py-2">Loading attendance logs...</p>
                 </div>
             </div>
 
-            <div id="notesSection" class="cm-glass-card p-3.5 rounded-2xl space-y-2">
+            <div id="notesSection" class="cm-card p-3.5 rounded-2xl space-y-2">
                 <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide flex items-center space-x-1.5">
                     <img src="images/notes.png" class="w-4 h-4 object-contain" alt="">
                     <span id="notesSectionTitle">Study Notes</span>
@@ -525,48 +493,48 @@
 
         <!-- TEACHER / HOME TUTOR DASHBOARD VIEW -->
         <div id="teacherDashboard" class="hidden space-y-3.5">
-            <div class="cm-hero-grad text-white p-4 rounded-2xl shadow-md space-y-1">
+            <div class="cm-header-grad text-white p-4 rounded-2xl shadow-md space-y-1">
                 <div class="flex justify-between items-center">
-                    <span class="bg-white/20 text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full font-bold">Verified Tutor</span>
-                    <span class="text-[10px] bg-amber-400 text-slate-950 px-2 py-0.5 rounded-full font-extrabold">91% Share • 15th & 30th</span>
+                    <span class="bg-white/20 text-xs px-2.5 py-0.5 rounded-full font-semibold">Verified Tutor</span>
+                    <span class="text-xs bg-amber-400 text-slate-950 px-2 py-0.5 rounded-full font-bold">91% Share • 15th & 30th</span>
                 </div>
-                <h2 id="teacherDisplayName" class="font-extrabold text-base pt-0.5">Welcome, Tutor!</h2>
+                <h2 id="teacherDisplayName" class="font-bold text-base pt-0.5">Welcome, Tutor!</h2>
                 <p id="teacherDisplayMeta" class="text-xs text-teal-100">Lucknow • Maths, Science</p>
             </div>
 
-            <div class="cm-glass-card p-3.5 rounded-2xl space-y-2.5">
+            <div class="cm-card p-3.5 rounded-2xl space-y-2.5">
                 <div class="flex justify-between items-center">
-                    <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide">👨‍🎓 Assigned Students</h3>
-                    <span id="teacherStudentCount" class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                    <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide">Assigned Students</h3>
+                    <span id="teacherStudentCount" class="bg-blue-50 text-blue-800 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
                 </div>
                 <div id="teacherStudentsContainer" class="space-y-2 text-xs">
                     <p class="text-slate-400 text-center py-2">Loading assigned students...</p>
                 </div>
             </div>
 
-            <div class="cm-glass-card p-3.5 rounded-2xl space-y-2.5">
-                <h3 class="font-bold text-xs text-slate-900">✍️ Update Attendance & Homework</h3>
+            <div class="cm-card p-3.5 rounded-2xl space-y-2.5">
+                <h3 class="font-bold text-xs sm:text-sm text-slate-900">Update Attendance & Homework</h3>
                 <div class="space-y-2 text-xs">
-                    <select id="teacherLogStudentSelect" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                    <select id="teacherLogStudentSelect" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                         <option value="">-- Select Student --</option>
                     </select>
                     <div class="grid grid-cols-2 gap-2">
-                        <select id="teacherLogStatus" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                            <option value="Present ✅">Present ✅</option>
-                            <option value="Absent ❌">Absent ❌</option>
-                            <option value="Test Day 📝">Test Day 📝</option>
+                        <select id="teacherLogStatus" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                            <option value="Present">Present</option>
+                            <option value="Absent">Absent</option>
+                            <option value="Test Day">Test Day</option>
                         </select>
-                        <input type="date" id="teacherLogDate" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                        <input type="date" id="teacherLogDate" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                     </div>
-                    <input type="text" id="teacherLogHomework" placeholder="Topic / Progress / Homework" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                    <input type="text" id="teacherLogHomework" placeholder="Topic / Progress / Homework" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                     <button onclick="submitTeacherStudentLog()" class="w-full cm-orange-btn text-white font-bold py-2.5 rounded-xl transition cursor-pointer">
-                        Save Update 🚀
+                        Save Update
                     </button>
                 </div>
             </div>
 
-            <div class="cm-glass-card p-3.5 rounded-2xl space-y-2">
-                <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide">🔔 Recent Demo Requests</h3>
+            <div class="cm-card p-3.5 rounded-2xl space-y-2">
+                <h3 class="font-bold text-xs text-slate-800 uppercase tracking-wide">Recent Demo Requests</h3>
                 <div id="teacherDemoLeadsContainer" class="space-y-2 text-xs">
                     <p class="text-slate-400 text-center py-2">Checking demo requests...</p>
                 </div>
@@ -579,13 +547,8 @@
 
     </main>
 
-    <!-- FLOATING CALL BUTTON (BOTTOM LEFT) -->
-    <a href="tel:+918756866588" aria-label="Call Creative Minds" class="fixed bottom-16 left-3 z-40 w-11 h-11 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-xl flex items-center justify-center text-lg border-2 border-white transition">
-        📞
-    </a>
-
-    <!-- FLOATING CM BOT AI BUTTON (BOTTOM RIGHT) -->
-    <button onclick="toggleAIAssistant()" class="fixed bottom-16 right-3 z-40 cm-hero-grad text-white px-3.5 py-2 rounded-full shadow-xl flex items-center space-x-1.5 font-bold text-xs border-2 border-white cm-bot-pill cursor-pointer">
+    <!-- FLOATING CM BOT AI BUTTON -->
+    <button onclick="toggleAIAssistant()" class="fixed bottom-16 right-3 z-40 cm-header-grad text-white px-3.5 py-2 rounded-full shadow-lg flex items-center space-x-1.5 font-bold text-xs border-2 border-white cursor-pointer">
         <span>🤖</span>
         <span>CM Bot AI</span>
     </button>
@@ -593,51 +556,51 @@
     <!-- CM BOT AI MODAL -->
     <div id="aiAssistantModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-end sm:items-center justify-center p-3">
         <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[78vh]">
-            <div class="cm-hero-grad text-white p-3 flex justify-between items-center">
+            <div class="cm-header-grad text-white p-3 flex justify-between items-center">
                 <div class="flex items-center space-x-2">
                     <span class="text-base">🤖</span>
                     <div>
                         <h3 class="font-bold text-xs">CM Bot AI</h3>
-                        <p class="text-[10px] text-teal-100">● Online • Creative Minds Assistant</p>
+                        <p class="text-xs text-teal-100">Creative Minds Assistant</p>
                     </div>
                 </div>
                 <button onclick="toggleAIAssistant()" class="text-white/80 hover:text-white font-bold text-sm px-2 cursor-pointer">✕</button>
             </div>
 
             <div id="aiChatMessages" class="p-3 space-y-2 overflow-y-auto flex-1 bg-slate-50 text-xs max-h-[300px]">
-                <div class="bg-white p-2.5 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 text-slate-700 leading-relaxed">
-                    Namaste! Main <strong>CM Bot AI</strong> hoon. Coaching, Home Tuition demo, ₹99 tracking app ya Tutor 91% share ke baare mein poochiye! 😊
+                <div class="bg-white p-2.5 rounded-2xl rounded-tl-none border border-slate-100 text-slate-700 leading-relaxed">
+                    Namaste! Main <strong>CM Bot AI</strong> hoon. Coaching, Home Tuition demo, ₹99 tracking app ya Tutor 91% share ke baare mein poochiye.
                 </div>
                 <div class="flex flex-wrap gap-1.5">
-                    <button onclick="sendQuickAIQuery('Book Home Tutor Demo & ₹99 App')" class="bg-teal-50 text-teal-800 border border-teal-200 font-semibold px-2.5 py-1 rounded-full text-xs cursor-pointer">🏠 Home Tutor</button>
-                    <button onclick="sendQuickAIQuery('Tutor 91% Share & 15th 30th Payout')" class="bg-indigo-50 text-indigo-800 border border-indigo-200 font-semibold px-2.5 py-1 rounded-full text-xs cursor-pointer">👨‍🏫 Tutor Payout</button>
-                    <button onclick="sendQuickAIQuery('Coaching Fees & Batches')" class="bg-amber-50 text-amber-800 border border-amber-200 font-semibold px-2.5 py-1 rounded-full text-xs cursor-pointer">📚 Fees</button>
+                    <button onclick="sendQuickAIQuery('Book Home Tutor Demo & ₹99 App')" class="bg-blue-50 text-blue-800 border border-blue-200 font-semibold px-2.5 py-1 rounded-full text-xs cursor-pointer">Home Tutor</button>
+                    <button onclick="sendQuickAIQuery('Tutor 91% Share & 15th 30th Payout')" class="bg-blue-50 text-blue-800 border border-blue-200 font-semibold px-2.5 py-1 rounded-full text-xs cursor-pointer">Tutor Payout</button>
+                    <button onclick="sendQuickAIQuery('Coaching Fees & Batches')" class="bg-amber-50 text-amber-800 border border-amber-200 font-semibold px-2.5 py-1 rounded-full text-xs cursor-pointer">Fees</button>
                 </div>
             </div>
 
             <div class="p-2 bg-white border-t border-slate-100 flex items-center space-x-2">
-                <input type="text" id="aiUserInput" onkeypress="if(event.key==='Enter') handleAISend()" placeholder="Ask CM Bot AI..." class="flex-1 p-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-teal-500">
+                <input type="text" id="aiUserInput" onkeypress="if(event.key==='Enter') handleAISend()" placeholder="Ask CM Bot AI..." class="flex-1 p-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-blue-500">
                 <button onclick="handleAISend()" class="cm-orange-btn text-white font-bold px-3 py-2 rounded-xl text-xs cursor-pointer">Send</button>
             </div>
         </div>
     </div>
 
     <!-- BOTTOM NAVIGATION BAR -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-slate-200 shadow-lg z-40">
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-lg z-40">
         <div class="max-w-md mx-auto flex justify-around py-1.5">
-            <button onclick="switchTab('home')" class="flex flex-col items-center text-slate-600 hover:text-teal-700 space-y-0.5 cursor-pointer">
+            <button onclick="switchTab('home')" class="flex flex-col items-center text-slate-700 hover:text-blue-700 space-y-0.5 cursor-pointer">
                 <img src="images/student.png" class="w-5 h-5 object-contain" alt="Home">
                 <span class="text-xs font-semibold">Home</span>
             </button>
-            <button onclick="switchTab('courses')" class="flex flex-col items-center text-slate-600 hover:text-teal-700 space-y-0.5 cursor-pointer">
+            <button onclick="switchTab('courses')" class="flex flex-col items-center text-slate-700 hover:text-blue-700 space-y-0.5 cursor-pointer">
                 <img src="images/courses.png" class="w-5 h-5 object-contain" alt="Courses">
                 <span class="text-xs font-semibold">Courses</span>
             </button>
-            <button onclick="checkNotesAccess()" class="flex flex-col items-center text-slate-600 hover:text-teal-700 space-y-0.5 cursor-pointer">
+            <button onclick="checkNotesAccess()" class="flex flex-col items-center text-slate-700 hover:text-blue-700 space-y-0.5 cursor-pointer">
                 <img src="images/notes.png" class="w-5 h-5 object-contain" alt="Notes">
                 <span class="text-xs font-semibold">Notes</span>
             </button>
-            <button onclick="toggleAboutModal()" class="flex flex-col items-center text-slate-600 hover:text-teal-700 space-y-0.5 cursor-pointer">
+            <button onclick="toggleAboutModal()" class="flex flex-col items-center text-slate-700 hover:text-blue-700 space-y-0.5 cursor-pointer">
                 <img src="images/faculty.png" class="w-5 h-5 object-contain" alt="About">
                 <span class="text-xs font-semibold">About</span>
             </button>
@@ -646,19 +609,19 @@
 
     <!-- HOME TUITION FREE DEMO MODAL -->
     <div id="homeTuitionDemoModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-sm text-slate-800">🏠 Book Home Tutor (Free Demo)</h3>
+                <h3 class="font-bold text-sm text-slate-900">Book Home Tutor (Free Demo)</h3>
                 <button onclick="toggleHomeTuitionDemoModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
-            <p class="text-xs text-teal-800 bg-teal-50 border border-teal-100 p-2.5 rounded-xl leading-relaxed">
+            <p class="text-xs text-slate-700 bg-slate-50 border border-slate-200 p-2.5 rounded-xl leading-relaxed">
                 Free nearby demo first. After selection, advance fee + <strong>₹99</strong> unlocks attendance, progress & notes.
             </p>
             <div class="space-y-2 text-xs">
-                <input type="text" id="htParentName" placeholder="Parent / Student Name *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="tel" id="htParentPhone" placeholder="WhatsApp / Phone Number *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                <input type="text" id="htParentName" placeholder="Parent / Student Name *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="tel" id="htParentPhone" placeholder="WhatsApp / Phone Number *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                 <div class="grid grid-cols-2 gap-2">
-                    <select id="htStudentClass" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                    <select id="htStudentClass" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                         <option value="Class 1-5">Class 1 - 5</option>
                         <option value="Class 6">Class 6</option>
                         <option value="Class 7">Class 7</option>
@@ -668,17 +631,17 @@
                         <option value="Class 11">Class 11</option>
                         <option value="Class 12">Class 12</option>
                     </select>
-                    <select id="htBoard" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                    <select id="htBoard" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                         <option value="ICSE / ISC">ICSE / ISC</option>
                         <option value="CBSE">CBSE</option>
                         <option value="UP Board">UP Board</option>
                     </select>
                 </div>
-                <input type="text" id="htArea" placeholder="Lucknow Area / Colony *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="text" id="htSubjects" placeholder="Subjects Needed *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="text" id="htPreference" placeholder="Preferred Gender & Timing" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                <input type="text" id="htArea" placeholder="Lucknow Area / Colony *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="text" id="htSubjects" placeholder="Subjects Needed *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="text" id="htPreference" placeholder="Preferred Gender & Timing" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                 <button onclick="submitHomeTuitionDemoRequest()" class="w-full cm-orange-btn text-white font-bold py-2.5 rounded-xl transition cursor-pointer">
-                    Request Free Demo on WhatsApp 🚀
+                    Request Free Demo on WhatsApp
                 </button>
             </div>
         </div>
@@ -686,22 +649,22 @@
 
     <!-- TUTOR APPLICATION MODAL -->
     <div id="tutorRegModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-sm text-slate-800">👨‍🏫 Join as Verified Home Tutor</h3>
+                <h3 class="font-bold text-sm text-slate-900">Join as Verified Home Tutor</h3>
                 <button onclick="toggleTutorRegModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
-            <p class="text-xs text-indigo-800 bg-indigo-50 border border-indigo-100 p-2.5 rounded-xl leading-relaxed">
+            <p class="text-xs text-slate-700 bg-slate-50 border border-slate-200 p-2.5 rounded-xl leading-relaxed">
                 Keep <strong>91% of fee</strong> (9% platform fee). Payout sent <strong>half on 15th</strong> & <strong>remaining on 30th</strong>.
             </p>
             <div class="space-y-2 text-xs">
-                <input type="text" id="tutorRegName" placeholder="Full Name *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="tel" id="tutorRegPhone" placeholder="WhatsApp / Phone Number *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="text" id="tutorRegQual" placeholder="Qualification (B.Sc / B.Tech / B.Ed) *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="text" id="tutorRegSubjects" placeholder="Subjects & Classes *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="text" id="tutorRegAreas" placeholder="Preferred Lucknow Areas *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <button onclick="submitTutorApplication()" class="w-full cm-hero-grad text-white font-bold py-2.5 rounded-xl shadow transition cursor-pointer">
-                    Apply on WhatsApp 🚀
+                <input type="text" id="tutorRegName" placeholder="Full Name *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="tel" id="tutorRegPhone" placeholder="WhatsApp / Phone Number *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="text" id="tutorRegQual" placeholder="Qualification (B.Sc / B.Tech / B.Ed) *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="text" id="tutorRegSubjects" placeholder="Subjects & Classes *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="text" id="tutorRegAreas" placeholder="Preferred Lucknow Areas *" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <button onclick="submitTutorApplication()" class="w-full cm-header-grad text-white font-bold py-2.5 rounded-xl shadow transition cursor-pointer">
+                    Apply on WhatsApp
                 </button>
             </div>
         </div>
@@ -709,22 +672,22 @@
 
     <!-- HIDDEN ADMIN MODAL -->
     <div id="adminNotesModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-sm text-slate-800">⚙️ Admin Panel</h3>
+                <h3 class="font-bold text-sm text-slate-900">Admin Panel</h3>
                 <button onclick="toggleAdminNotesModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
 
             <div class="space-y-2.5 text-xs">
-                <input type="password" id="adminPasswordInput" placeholder="Master Admin Password" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                <input type="password" id="adminPasswordInput" placeholder="Master Admin Password" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
 
                 <button onclick="loadAdminLeadsOverview()" class="w-full cm-orange-btn text-white font-bold py-2 rounded-xl transition cursor-pointer">
-                    📊 View Live Leads
+                    View Live Leads
                 </button>
                 <div id="adminLeadsViewer" class="hidden space-y-1.5 bg-slate-50 p-2.5 rounded-xl border border-slate-200 max-h-40 overflow-y-auto text-xs"></div>
 
                 <hr class="border-slate-100">
-                <h4 class="font-bold text-teal-800">1. Add Verified Student</h4>
+                <h4 class="font-bold text-slate-900">1. Add Verified Student</h4>
                 <input type="text" id="adminStudentName" placeholder="Student Name" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
                 <input type="tel" id="adminStudentPhone" placeholder="Phone Number" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
                 <input type="text" id="adminStudentClass" placeholder="Class (e.g. Class 10)" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
@@ -736,7 +699,7 @@
                 </button>
 
                 <hr class="border-slate-100">
-                <h4 class="font-bold text-indigo-800">Approve Verified Tutor</h4>
+                <h4 class="font-bold text-slate-900">Approve Verified Tutor</h4>
                 <input type="text" id="adminTutorName" placeholder="Tutor Name" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
                 <input type="tel" id="adminTutorPhone" placeholder="Tutor Phone" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
                 <input type="text" id="adminTutorSubjects" placeholder="Subjects & Area" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
@@ -745,8 +708,8 @@
                 </button>
 
                 <hr class="border-slate-100">
-                <h4 class="font-bold text-slate-800">2. Publish Note</h4>
-                <select id="adminNoteClass" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                <h4 class="font-bold text-slate-900">2. Publish Note</h4>
+                <select id="adminNoteClass" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                     <option value="Class 4">Class 4</option>
                     <option value="Class 5">Class 5</option>
                     <option value="Class 6">Class 6</option>
@@ -759,13 +722,13 @@
                 </select>
                 <input type="text" id="adminNoteTitle" placeholder="Note Title" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
                 <input type="url" id="adminNoteLink" placeholder="Drive / Link" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
-                <button onclick="saveNewNoteToFirebase()" class="w-full cm-hero-grad text-white font-bold py-2 rounded-xl transition cursor-pointer">
+                <button onclick="saveNewNoteToFirebase()" class="w-full cm-header-grad text-white font-bold py-2 rounded-xl transition cursor-pointer">
                     Publish Note
                 </button>
 
                 <hr class="border-slate-100">
-                <h4 class="font-bold text-slate-800">3. Publish Quiz Question</h4>
-                <select id="adminQuizClass" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                <h4 class="font-bold text-slate-900">3. Publish Quiz Question</h4>
+                <select id="adminQuizClass" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                     <option value="Class 4">Class 4</option>
                     <option value="Class 5">Class 5</option>
                     <option value="Class 6">Class 6</option>
@@ -782,7 +745,7 @@
                 <input type="text" id="adminQuizOptC" placeholder="Option C" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
                 <input type="text" id="adminQuizOptD" placeholder="Option D" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
                 <input type="number" id="adminQuizCorrect" min="0" max="3" value="0" class="w-full p-2 rounded-xl border border-slate-200 bg-slate-50">
-                <button onclick="saveNewQuizToFirebase()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-xl transition cursor-pointer">
+                <button onclick="saveNewQuizToFirebase()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl transition cursor-pointer">
                     Publish Quiz
                 </button>
             </div>
@@ -791,33 +754,33 @@
 
     <!-- LOGIN MODAL -->
     <div id="authModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-sm text-slate-800">🔐 Login Portal</h3>
+                <h3 class="font-bold text-sm text-slate-900">Login Portal</h3>
                 <button onclick="toggleAuthModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
 
             <div class="grid grid-cols-2 gap-1.5 bg-slate-100 p-1 rounded-xl text-xs font-bold">
-                <button id="roleTabStudent" onclick="setLoginRole('student')" class="py-2 rounded-lg cm-hero-grad text-white shadow transition cursor-pointer">
-                    🎓 Student
+                <button id="roleTabStudent" onclick="setLoginRole('student')" class="py-2 rounded-lg cm-header-grad text-white shadow transition cursor-pointer">
+                    Student
                 </button>
                 <button id="roleTabTeacher" onclick="setLoginRole('teacher')" class="py-2 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer">
-                    👨‍🏫 Home Tutor
+                    Home Tutor
                 </button>
             </div>
 
             <div id="studentLoginForm" class="space-y-2 text-xs">
-                <input type="text" id="loginName" placeholder="Student Name" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="text" id="loginClass" placeholder="Class (e.g. Class 10)" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="tel" id="loginPhone" placeholder="Registered Phone Number" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <button onclick="verifyStudentLogin()" class="w-full cm-hero-grad text-white font-bold py-2.5 rounded-xl shadow transition cursor-pointer">
+                <input type="text" id="loginName" placeholder="Student Name" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="text" id="loginClass" placeholder="Class (e.g. Class 10)" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="tel" id="loginPhone" placeholder="Registered Phone Number" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <button onclick="verifyStudentLogin()" class="w-full cm-header-grad text-white font-bold py-2.5 rounded-xl shadow transition cursor-pointer">
                     Login as Student
                 </button>
             </div>
 
             <div id="teacherLoginForm" class="hidden space-y-2 text-xs">
-                <input type="text" id="tutorLoginName" placeholder="Registered Tutor Name" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="tel" id="tutorLoginPhone" placeholder="Registered Phone Number" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                <input type="text" id="tutorLoginName" placeholder="Registered Tutor Name" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="tel" id="tutorLoginPhone" placeholder="Registered Phone Number" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                 <button onclick="verifyTeacherLogin()" class="w-full cm-orange-btn text-white font-bold py-2.5 rounded-xl transition cursor-pointer">
                     Login as Tutor
                 </button>
@@ -827,14 +790,14 @@
 
     <!-- QUIZ REGISTER MODAL -->
     <div id="quizRegisterModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-3 relative">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-sm text-slate-800">🎯 Quiz Arena</h3>
+                <h3 class="font-bold text-sm text-slate-900">Quiz Arena</h3>
                 <button onclick="closeQuizRegisterModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
             <div class="space-y-2 text-xs">
-                <input type="text" id="quizUserName" placeholder="Your Full Name" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <select id="quizUserClass" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                <input type="text" id="quizUserName" placeholder="Your Full Name" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <select id="quizUserClass" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                     <option value="Class 4">Class 4</option>
                     <option value="Class 5">Class 5</option>
                     <option value="Class 6">Class 6</option>
@@ -845,9 +808,9 @@
                     <option value="Class 11">Class 11</option>
                     <option value="Class 12">Class 12</option>
                 </select>
-                <input type="tel" id="quizUserPhone" placeholder="Phone Number" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
+                <input type="tel" id="quizUserPhone" placeholder="Phone Number" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
                 <button onclick="startInteractiveQuizFromFirebase()" class="w-full cm-orange-btn text-white font-bold py-2.5 rounded-xl transition cursor-pointer">
-                    Start Quiz 🚀
+                    Start Quiz
                 </button>
             </div>
         </div>
@@ -855,10 +818,10 @@
 
     <!-- QUIZ PLAY MODAL -->
     <div id="quizPlayModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-3xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
+        <div class="bg-white w-full max-w-md rounded-2xl p-5 shadow-2xl space-y-4 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 id="quizTitleHeader" class="font-bold text-sm text-teal-800">Quiz Challenge</h3>
-                <span id="quizTimerBadge" class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-1 rounded-full">Q 1/1</span>
+                <h3 id="quizTitleHeader" class="font-bold text-sm text-blue-900">Quiz Challenge</h3>
+                <span id="quizTimerBadge" class="bg-blue-50 text-blue-800 text-xs font-bold px-2.5 py-1 rounded-full">Q 1/1</span>
             </div>
             <div id="quizQuestionContainer" class="space-y-3 text-xs"></div>
             <div class="flex justify-between pt-2 border-t border-slate-100">
@@ -870,20 +833,20 @@
 
     <!-- QUIZ RESULT MODAL -->
     <div id="quizResultModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl text-center space-y-4 relative">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-6 shadow-2xl text-center space-y-4 relative">
             <div class="w-14 h-14 bg-amber-100 rounded-full flex items-center justify-center mx-auto text-2xl">🏆</div>
-            <h3 class="font-extrabold text-base text-slate-900">Quiz Completed!</h3>
-            <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+            <h3 class="font-bold text-base text-slate-900">Quiz Completed</h3>
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
                 <p class="text-xs text-slate-500">Your Score:</p>
-                <p id="finalScoreDisplay" class="text-2xl font-extrabold text-teal-700">0 / 0</p>
+                <p id="finalScoreDisplay" class="text-2xl font-bold text-blue-800">0 / 0</p>
             </div>
-            <div id="demoCoachingAlertBox" class="hidden bg-amber-50 border border-amber-200 p-3 rounded-2xl space-y-2 text-left">
-                <p class="text-xs text-slate-700">Book a <strong>Free Demo Class</strong> with Saurabh Sir to boost your score!</p>
-                <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20book%20a%20Demo%20Class!" target="_blank" class="block w-full text-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2 rounded-lg">
-                    Book Demo Class 🚀
+            <div id="demoCoachingAlertBox" class="hidden bg-amber-50 border border-amber-200 p-3 rounded-xl space-y-2 text-left">
+                <p class="text-xs text-slate-700">Book a <strong>Free Demo Class</strong> with Saurabh Sir to boost your score.</p>
+                <a href="https://wa.me/918756866588?text=Hello%20Saurabh%20Sir,%20I%20want%20to%20book%20a%20Demo%20Class!" target="_blank" class="block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2 rounded-lg">
+                    Book Demo Class
                 </a>
             </div>
-            <button onclick="closeQuizResultModal()" class="w-full cm-hero-grad text-white font-bold py-2.5 rounded-xl text-xs shadow cursor-pointer">
+            <button onclick="closeQuizResultModal()" class="w-full cm-header-grad text-white font-bold py-2.5 rounded-xl text-xs shadow cursor-pointer">
                 Back to Home
             </button>
         </div>
@@ -891,22 +854,22 @@
 
     <!-- ABOUT MODAL -->
     <div id="aboutModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-3.5 relative max-h-[90vh] overflow-y-auto">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3.5 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-sm text-slate-800">🏆 About Creative Minds</h3>
+                <h3 class="font-bold text-sm text-slate-900">About Creative Minds</h3>
                 <button onclick="toggleAboutModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
             <div class="flex flex-col items-center space-y-1.5">
-                <img src="images/founder.png" alt="Founder" class="w-20 h-20 rounded-full object-cover border-4 border-teal-500 shadow">
+                <img src="images/founder.png" alt="Founder" class="w-20 h-20 rounded-full object-cover border-4 border-blue-600">
                 <div class="text-center">
-                    <h4 class="font-extrabold text-sm text-slate-900">Saurabh Verma</h4>
-                    <p class="text-xs text-teal-700 font-semibold">Founder & Lead Instructor (Since 2016)</p>
+                    <h4 class="font-bold text-sm text-slate-900">Saurabh Verma</h4>
+                    <p class="text-xs text-blue-700 font-semibold">Founder & Lead Instructor (Since 2016)</p>
                 </div>
             </div>
             <p class="text-xs text-slate-600 leading-relaxed">
                 <strong>The Creative Minds Coaching Institute</strong> (<em>"Think Smart, Learn Fast"</em>) in Rajajipuram, Lucknow offers academic coaching (ICSE, ISC, CBSE, UP Board), coding/tech skills, and verified home tuitions with free nearby demo, ₹99 tracking app, and 91% tutor share (15th & 30th payout).
             </p>
-            <button onclick="toggleAboutModal()" class="w-full cm-hero-grad text-white font-bold text-xs py-2.5 rounded-xl shadow cursor-pointer">
+            <button onclick="toggleAboutModal()" class="w-full cm-header-grad text-white font-bold text-xs py-2.5 rounded-xl shadow cursor-pointer">
                 Close
             </button>
         </div>
@@ -914,19 +877,19 @@
 
     <!-- STUDENT REGISTRATION MODAL -->
     <div id="studentRegModal" style="display: none;" class="fixed inset-0 bg-black/50 z-50 items-center justify-center p-4">
-        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl space-y-3 relative max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center">
-                <h3 class="font-bold text-sm text-slate-800">📝 Coaching Admission</h3>
+                <h3 class="font-bold text-sm text-slate-900">Coaching Admission</h3>
                 <button onclick="toggleStudentRegModal()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
             </div>
             <div class="space-y-2 text-xs">
-                <input type="text" id="regName" placeholder="Full Name" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="tel" id="regPhone" placeholder="Phone Number" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="text" id="regClass" placeholder="Class / Board" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="text" id="regSchool" placeholder="School Name" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <input type="text" id="regSubjects" placeholder="Subjects Wanted" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-semibold">
-                <button onclick="submitStudentRegistrationWhatsApp()" class="w-full cm-hero-grad text-white font-bold py-2.5 rounded-xl shadow transition cursor-pointer">
-                    Send on WhatsApp 💬
+                <input type="text" id="regName" placeholder="Full Name" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="tel" id="regPhone" placeholder="Phone Number" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="text" id="regClass" placeholder="Class / Board" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="text" id="regSchool" placeholder="School Name" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <input type="text" id="regSubjects" placeholder="Subjects Wanted" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 font-medium">
+                <button onclick="submitStudentRegistrationWhatsApp()" class="w-full cm-header-grad text-white font-bold py-2.5 rounded-xl shadow transition cursor-pointer">
+                    Send on WhatsApp
                 </button>
             </div>
         </div>
@@ -1006,7 +969,7 @@
 
         async function installPWAApp() {
             if (!deferredPrompt) {
-                alert("Tap browser menu (⋮) and select 'Add to Home screen'.");
+                alert("Tap browser menu and select 'Add to Home screen'.");
                 return;
             }
             deferredPrompt.prompt();
@@ -1078,7 +1041,7 @@
             if (role === 'student') {
                 stuForm.classList.remove('hidden');
                 tchForm.classList.add('hidden');
-                tabStu.className = "py-2 rounded-lg cm-hero-grad text-white shadow transition cursor-pointer";
+                tabStu.className = "py-2 rounded-lg cm-header-grad text-white shadow transition cursor-pointer";
                 tabTch.className = "py-2 rounded-lg text-slate-600 hover:text-slate-900 transition cursor-pointer";
             } else {
                 stuForm.classList.add('hidden');
@@ -1211,7 +1174,7 @@
                 }
             } catch (e) { console.error(e); }
 
-            const plainText = `🏠 Home Tuition Free Demo Request:
+            const plainText = `Home Tuition Free Demo Request:
 - Name: ${parentName}
 - Phone: ${parentPhone}
 - Class/Board: ${studentClass} (${board})
@@ -1241,7 +1204,7 @@
                 }
             } catch (e) { console.error(e); }
 
-            const plainText = `👨‍🏫 Tutor Application (91% Share • 15th & 30th Payout):
+            const plainText = `Tutor Application (91% Share • 15th & 30th Payout):
 - Name: ${name}
 - Phone: ${phone}
 - Qualification: ${qualification}
@@ -1307,12 +1270,12 @@
             try {
                 const demoSnap = await window.getDocs(window.collection(window.db, "home_tuition_demos"));
                 const tutorSnap = await window.getDocs(window.collection(window.db, "tutor_applications"));
-                let html = `<p class="font-bold text-teal-800">Demos (${demoSnap.size}):</p>`;
+                let html = `<p class="font-bold text-slate-900">Demos (${demoSnap.size}):</p>`;
                 demoSnap.forEach(doc => {
                     const d = doc.data();
                     html += `<div class="p-1.5 bg-white rounded border border-slate-100 mb-1"><strong>${d.parentName}</strong> (${d.parentPhone}) • ${d.studentClass} • ${d.area}</div>`;
                 });
-                html += `<p class="font-bold text-indigo-800 mt-1.5">Tutors (${tutorSnap.size}):</p>`;
+                html += `<p class="font-bold text-slate-900 mt-1.5">Tutors (${tutorSnap.size}):</p>`;
                 tutorSnap.forEach(doc => {
                     const t = doc.data();
                     html += `<div class="p-1.5 bg-white rounded border border-slate-100 mb-1"><strong>${t.name}</strong> (${t.phone}) • ${t.areas}</div>`;
@@ -1586,10 +1549,10 @@
                 container.innerHTML = filtered.map(note => `
                     <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex justify-between items-center space-x-2">
                         <div>
-                            <span class="text-[10px] bg-teal-100 text-teal-800 font-bold px-1.5 py-0.5 rounded">${note.studentClass}</span>
+                            <span class="text-xs bg-blue-50 text-blue-800 font-semibold px-1.5 py-0.5 rounded">${note.studentClass}</span>
                             <p class="font-bold text-slate-800 mt-0.5">${note.title}</p>
                         </div>
-                        <a href="${note.link}" target="_blank" class="text-teal-700 font-bold text-xs bg-teal-50 px-2.5 py-1 rounded-lg border border-teal-200">Open</a>
+                        <a href="${note.link}" target="_blank" class="text-blue-700 font-bold text-xs bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">Open</a>
                     </div>
                 `).join('');
             } catch (e) { container.innerHTML = `<div class="p-2.5 bg-slate-50 rounded-xl text-center text-red-500">Error loading notes.</div>`; }
@@ -1634,7 +1597,7 @@
                 <p class="font-bold text-slate-800 text-xs mb-2.5">${q.question}</p>
                 <div class="space-y-2">
                     ${q.options.map((opt, idx) => `
-                        <label class="block p-2.5 rounded-xl border border-slate-200 hover:bg-teal-50 cursor-pointer font-medium flex items-center space-x-2">
+                        <label class="block p-2.5 rounded-xl border border-slate-200 hover:bg-blue-50 cursor-pointer font-medium flex items-center space-x-2">
                             <input type="radio" name="qOption" value="${idx}" ${userQuizAnswers[currentQuizIndex] === idx ? 'checked' : ''} onchange="userQuizAnswers[currentQuizIndex] = ${idx}">
                             <span>${opt}</span>
                         </label>
@@ -1642,7 +1605,7 @@
                 </div>
             `;
             document.getElementById('prevQuizBtn').style.display = currentQuizIndex === 0 ? 'none' : 'block';
-            document.getElementById('nextQuizBtn').innerText = currentQuizIndex === currentQuizData.length - 1 ? 'Submit 🏁' : 'Next →';
+            document.getElementById('nextQuizBtn').innerText = currentQuizIndex === currentQuizData.length - 1 ? 'Submit' : 'Next →';
         }
 
         function nextQuizQuestion() {
@@ -1695,7 +1658,6 @@
             switchTab('home');
         }
 
-        // CM BOT AI ASSISTANT
         function toggleAIAssistant() {
             const modal = document.getElementById('aiAssistantModal');
             modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
@@ -1712,24 +1674,24 @@
             if (!text) return;
 
             const chatBox = document.getElementById('aiChatMessages');
-            chatBox.innerHTML += `<div class="bg-teal-600 text-white p-2.5 rounded-2xl rounded-tr-none ml-8 shadow-sm">${escapeAiText(text)}</div>`;
+            chatBox.innerHTML += `<div class="bg-blue-600 text-white p-2.5 rounded-2xl rounded-tr-none ml-8">${escapeAiText(text)}</div>`;
             input.value = '';
 
             const q = text.toLowerCase();
             let reply = "";
 
             if (q.includes('demo') || q.includes('home') || q.includes('tutor') || q.includes('tuition') || q.includes('99')) {
-                reply = `🏠 <strong>Home Tuition + ₹99 App:</strong> Free nearby demo pehle. Selection ke baad advance fee + <strong>₹99</strong> mein attendance, progress & notes milte hain.<br><br><div class="flex flex-wrap gap-1.5"><button onclick="toggleAIAssistant(); toggleHomeTuitionDemoModal();" class="cm-orange-btn text-white font-bold px-2.5 py-1 rounded-lg text-xs cursor-pointer">Book Demo →</button><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Home Tuition Demo: ' + text)}" target="_blank" class="bg-emerald-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">💬 WhatsApp</a></div>`;
+                reply = `<strong>Home Tuition + ₹99 App:</strong> Free nearby demo pehle. Selection ke baad advance fee + <strong>₹99</strong> mein attendance, progress & notes milte hain.<br><br><div class="flex flex-wrap gap-1.5"><button onclick="toggleAIAssistant(); toggleHomeTuitionDemoModal();" class="cm-orange-btn text-white font-bold px-2.5 py-1 rounded-lg text-xs cursor-pointer">Book Demo →</button><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Home Tuition Demo: ' + text)}" target="_blank" class="bg-emerald-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">WhatsApp</a></div>`;
             } else if (q.includes('job') || q.includes('teach') || q.includes('91') || q.includes('15') || q.includes('30') || q.includes('payout')) {
-                reply = `👨‍🏫 <strong>Tutor Payout:</strong> Aapko <strong>91% fee</strong> milti hai (9% platform fee). Advance ke baad <strong>15th ko half</strong> aur <strong>30th ko baaki</strong> payout.<br><br><div class="flex flex-wrap gap-1.5"><button onclick="toggleAIAssistant(); toggleTutorRegModal();" class="cm-hero-grad text-white font-bold px-2.5 py-1 rounded-lg text-xs cursor-pointer">Apply Tutor →</button><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Tutor Enquiry: ' + text)}" target="_blank" class="bg-emerald-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">💬 WhatsApp</a></div>`;
+                reply = `<strong>Tutor Payout:</strong> Aapko <strong>91% fee</strong> milti hai (9% platform fee). Advance ke baad <strong>15th ko half</strong> aur <strong>30th ko baaki</strong> payout.<br><br><div class="flex flex-wrap gap-1.5"><button onclick="toggleAIAssistant(); toggleTutorRegModal();" class="cm-header-grad text-white font-bold px-2.5 py-1 rounded-lg text-xs cursor-pointer">Apply Tutor →</button><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Tutor Enquiry: ' + text)}" target="_blank" class="bg-emerald-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">WhatsApp</a></div>`;
             } else if (q.includes('fee') || q.includes('course') || q.includes('class') || q.includes('coaching')) {
-                reply = `📚 <strong>Coaching Fees:</strong> Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12 & Computer: ₹1,299/mo.<br><br><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Coaching Enquiry: ' + text)}" target="_blank" class="inline-block bg-emerald-500 text-white font-bold px-2.5 py-1 rounded-lg text-xs">💬 WhatsApp</a>`;
+                reply = `<strong>Coaching Fees:</strong> Class 4–8: ₹499/mo • Class 9–10: ₹999/mo • Class 11–12 & Computer: ₹1,299/mo.<br><br><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI, Coaching Enquiry: ' + text)}" target="_blank" class="inline-block bg-emerald-600 text-white font-bold px-2.5 py-1 rounded-lg text-xs">WhatsApp</a>`;
             } else {
-                reply = `Main <strong>CM Bot AI</strong> hoon! Aap yahan details dekh sakte hain ya seedha WhatsApp par baat kar sakte hain:<br><br><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI / Saurabh Sir, ' + text)}" target="_blank" class="inline-block bg-emerald-500 text-white font-bold px-3 py-1 rounded-lg text-xs">💬 Continue on WhatsApp</a>`;
+                reply = `Main <strong>CM Bot AI</strong> hoon! Aap yahan details dekh sakte hain ya seedha WhatsApp par baat kar sakte hain:<br><br><a href="https://wa.me/918756866588?text=${encodeURIComponent('Hi CM Bot AI / Saurabh Sir, ' + text)}" target="_blank" class="inline-block bg-emerald-600 text-white font-bold px-3 py-1 rounded-lg text-xs">Continue on WhatsApp</a>`;
             }
 
             setTimeout(() => {
-                chatBox.innerHTML += `<div class="bg-white p-2.5 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 text-slate-700 leading-relaxed mr-4">${reply}</div>`;
+                chatBox.innerHTML += `<div class="bg-white p-2.5 rounded-2xl rounded-tl-none border border-slate-100 text-slate-700 leading-relaxed mr-4">${reply}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
             }, 220);
         }
