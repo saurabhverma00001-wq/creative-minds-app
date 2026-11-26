@@ -62,12 +62,9 @@
                 </div>
             </div>
             <div class="flex items-center space-x-2">
-                <!-- High-Contrast Call Pill with Crisp Icon -->
-                <a href="tel:+918756866588" class="cm-call-pill px-3 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5">
-                    <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/>
-                    </svg>
-                    <span>Call</span>
+                <!-- Find Tutor Button connected to Home Tuition Page -->
+                <a href="home-tuition-lucknow.html" class="cm-call-pill px-3 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1">
+                    <span>🔍 Find Tutor</span>
                 </a>
                 <button id="pwaInstallBtn" onclick="installPWAApp()" class="hidden bg-[#ff6100] hover:bg-[#e55700] text-white px-3 py-1.5 rounded-full text-xs font-bold transition cursor-pointer">
                     Install
@@ -242,7 +239,7 @@
                 <p class="text-slate-600">Phone: <a href="tel:+918756866588" class="font-bold text-slate-900 hover:underline">+91 8756866588</a></p>
                 <div class="flex flex-wrap items-center gap-4 pt-1 font-semibold text-blue-700">
                     <a href="https://creative-minds-app-pal.vercel.app/" target="_blank" class="hover:underline">Website</a>
-                    <button onclick="toggleHomeTuitionDemoModal()" class="hover:underline font-semibold text-blue-700 cursor-pointer">Home Tuition</button>
+                    <a href="home-tuition-lucknow.html" class="hover:underline font-semibold text-blue-700">Home Tuition</a>
                     <a href="https://www.facebook.com/" target="_blank" class="hover:underline">Facebook</a>
                 </div>
             </footer>
@@ -696,10 +693,10 @@
                 <img src="images/courses.png" class="w-5 h-5 object-contain" alt="Courses">
                 <span class="text-[11px] font-semibold">Courses</span>
             </button>
-            <button onclick="toggleHomeTuitionDemoModal()" class="flex flex-col items-center text-[#ff6100] hover:text-[#e55700] space-y-0.5 cursor-pointer">
+            <a href="home-tuition-lucknow.html" class="flex flex-col items-center text-[#ff6100] hover:text-[#e55700] space-y-0.5 cursor-pointer">
                 <span class="text-base leading-none h-5 flex items-center justify-center">🏠</span>
                 <span class="text-[11px] font-bold">Home Tuition</span>
-            </button>
+            </a>
             <button onclick="checkNotesAccess()" class="flex flex-col items-center text-slate-700 hover:text-blue-700 space-y-0.5 cursor-pointer">
                 <img src="images/notes.png" class="w-5 h-5 object-contain" alt="Notes">
                 <span class="text-[11px] font-semibold">Notes</span>
